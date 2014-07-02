@@ -16,6 +16,6 @@ urlpatterns = patterns('',
     #LogoutPage
     (r'^logout/$', 'WebDev.views.logout_user'),
     #UploadPage
-
+    (r'^upload/$', 'WebDev.views.upload'),
 
 )
