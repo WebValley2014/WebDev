@@ -83,5 +83,5 @@ STATIC_URL = '/static/'
 
 #Template path
 TEMPLATE_DIRS = (
-    os.path.join(BASE_DIR, 'templates'),
+    os.path.join(BASE_DIR, 'WebDev/templates'),
 )
