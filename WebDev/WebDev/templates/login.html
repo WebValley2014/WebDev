@@ -7,7 +7,7 @@
 </head>
 <body>
     <form action="{% url 'django.contrib.auth.views.login' %}" method="POST">
-		{% csrf_token %}
+        {% csrf_token %}
 		<input id="id_username" name="username" type="text" class="form-control" placeholder="Login" autofocus="">
 		<input type="password" name="password" id="id_password" class="form-control" placeholder="Password" />
 		<button type="submit">Entra</button>
