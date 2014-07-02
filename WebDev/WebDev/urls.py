@@ -13,7 +13,9 @@ urlpatterns = patterns('',
     (r'^$', "WebDev.views.index"),
     #Login page
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
-    #User_login
+    #LogoutPage
+    (r'^logout/$', 'WebDev.views.logout_user'),
+    #UploadPage
     (r'^upload/$', "WebDev.views.upload"),
 
 )
