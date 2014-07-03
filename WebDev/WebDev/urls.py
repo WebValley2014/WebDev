@@ -17,6 +17,8 @@ urlpatterns = patterns('',
     (r'^logout/$', 'WebDev.views.logout_user'),
     #UploadPage
     (r'^upload/$', "WebDev.views.upload"),
+    #Contatact Test
+    (r'^contact/$', "WebDev.views.contact"),
 
     # Classification urls
     url(r'^class/', include('classification.urls')),
