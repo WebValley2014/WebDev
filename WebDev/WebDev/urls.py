@@ -18,4 +18,10 @@ urlpatterns = patterns('',
     #UploadPage
     (r'^upload/$', 'WebDev.views.upload'),
 
+    # Classification urls
+    url(r'^class/', include('classification.urls')),
+    # Preprocess urls
+    url(r'^preproc/', include('preprocess.urls')),
+    # Network urls
+    url(r'^network/', include('network.urls')),
 )
