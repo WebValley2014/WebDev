@@ -9,9 +9,7 @@ from forms import ContactForm, UploadFileForm
 
 
 def index(request):
-    template = loader.get_template('index.html')
-    context = Context({'user': request.user})
-    return HttpResponse(template.render(context))
+    return render(request, 'index.html')
 
 def logout_user(request):
     logout(request)

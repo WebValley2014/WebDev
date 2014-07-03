@@ -83,6 +83,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
+#DUNNO IF NEEDED
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'WebDev/static'),
+)
+
+STATIC_ROOT = ''
 STATIC_URL = '/static/'
 
 #Template path
