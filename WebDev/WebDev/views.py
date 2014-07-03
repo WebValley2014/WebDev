@@ -4,7 +4,8 @@ from django.template import RequestContext, loader, Template, Context
 from django.contrib.auth import authenticate, login, logout
 from django.views.decorators.csrf import csrf_exempt, requires_csrf_token
 from django.shortcuts import render
-from forms import ContactForm
+from django.shortcuts import render_to_response
+from forms import ContactForm, UploadFileForm
 
 
 def index(request):
@@ -15,12 +16,6 @@ def index(request):
 def logout_user(request):
     logout(request)
     return HttpResponseRedirect('/')
-
-
-@login_required(login_url="/login")
-def upload(request):
-    return HttpResponse("UPLOAD")
-
 
 def contact(request):
     if request.method == 'POST': # If the form has been submitted...
@@ -39,3 +34,15 @@ def contact(request):
         'form': form,
     })
 
+@login_required(login_url="/login")
+def upload(request):
+    if request.method == 'POST':
+        form = UploadFileForm(request.POST, request.FILES)
+        if form.is_valid():
+            name = request.FILES['file'].name
+            return HttpResponse(name)
+    else:
+        form = UploadFileForm()
+    return render(request, 'upload.html', {
+        'form': form,
+        })
