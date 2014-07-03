@@ -16,8 +16,8 @@
 {# CONTENUTO #}
 
 {% block main %}
-	{% if form.errors %}<p style="text-align:center">Your username and password didn't match. Please try again.</p>{% endif %}
-	<form class="form" id="formLogin" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+	{% if form.errors %}<p style="text-align:center">Your username and password were incorrect. Please try again.</p>{% endif %}
+	<form class="form" id="formLogin" action="{% url 'django.contrib.auth.views.login' %}" method="POST"> 
 		{% csrf_token %}
 		<div class="input-group">
 			<span class="input-group-addon">
