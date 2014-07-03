@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     #UploadPage
     (r'^upload/$', "WebDev.views.upload"),
     #Contatact Test
-    (r'^contact/$', "WebDev.views.contact", "contatti"),
+    url(regex=r'^contact/$', view="WebDev.views.contact", name="contatti"),
 
     # Classification urls
     url(r'^class/', include('classification.urls')),
