@@ -9,5 +9,4 @@ django-celery==3.1.10
 jsonfield==0.9.20
 kombu==3.0.20
 pytz==2014.4
-qiime==1.8.0
 wsgiref==0.1.2
