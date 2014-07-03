@@ -73,7 +73,7 @@ class Results (models.Model):
         return os.path.join(settings.RESULT_PATH, self.task_id.task_id, filename)
 
     FILE_TYPES = (
-        ('csv', 'comma separated file'),
+        ('csv', 'comma separated ile'),
         ('img', 'jpg, tiff, png, pdf'),
         ('graph', 'gml, graphml'),
         ('txt', 'text description'),
