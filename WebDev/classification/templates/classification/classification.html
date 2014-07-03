@@ -8,7 +8,9 @@
 
 <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p><label for="id_file1">File1:</label> <input id="id_file1" name="file1" type="file" /></p>
+        <p><label for="id_file2">File2:</label> <input id="id_file2" name="file2" type="file" /></p>
+        <p><label for="id_file3">File3:</label> <input id="id_file3" name="file3" type="file" /></p>
         <input type="submit" value="Submit" />
     </form>
 </body>

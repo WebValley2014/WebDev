@@ -11,6 +11,6 @@ def handle_uploaded_file(f):
     if not os.path.exists(upload_full_path):
         os.makedirs(upload_full_path)
 
-    with open('preprocess/uploadedFiles/'+f.name, 'wb+') as destination:
+    with open(upload_full_path+f.name, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)

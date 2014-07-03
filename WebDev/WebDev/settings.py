@@ -98,4 +98,7 @@ TEMPLATE_DIRS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_CLASSIFICATION_ROOT = os.path.join(MEDIA_ROOT, 'classification')
 MEDIA_URL = '/media/'
+
+UPLOAD_PATH = '/static/'

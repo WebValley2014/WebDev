@@ -17,5 +17,5 @@ def classification(request):
             handle_uploaded_file(request.FILES['file3'])
             return render(request, 'classification/tuttook.html')
         else:
-            return render(request, 'classification/classification.html', {'form': form})
-    return render(request, 'classification/classification.html', {'form': form})
+            return render(request, 'classification/classification.html')
+    return render(request, 'classification/classification.html')
