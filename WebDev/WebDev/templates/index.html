@@ -3,22 +3,9 @@
 {# TAB HOME ATTIVA #}
 
 {% block hometab %}
-	<li class="activetab"><a href="">HOME</a></li>
+	<li class="activetab"><a href=".">HOME</a></li>
 {% endblock %}
 
-{# MOSTRA LE TAB SE L'UTENTE E' LOGGATO #}
-
-{% block uploadtab %}
-	{% if user.is_authenticated %}
-	<li><a href="#">UPLOAD</a></li>
-	{% endif %}
-{% endblock %}
-
-{% block taskstab %}
-	{% if user.is_authenticated %}
-	<li><a href="#">TASKS</a></li>
-	{% endif %}
-{% endblock %}
 
 {# CONTENUTO #}
 
