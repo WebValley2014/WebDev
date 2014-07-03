@@ -41,7 +41,8 @@ def upload(request):
         if form.is_valid():
             f = request.FILES['file']
             name = f.name
-            with open('WebDev/uploadedFiles/'+name, 'wb+') as destination:
+            pos = 'WebDev/uploadedFiles/'+name
+            with open(pos, 'wb+') as destination:
                 for chunk in f.chunks():
                      destination.write(chunk)
             return HttpResponse(name)
