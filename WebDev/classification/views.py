@@ -12,10 +12,8 @@ def classification(request):
     if request.POST and request.FILES:
         form = CLUploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['file1'])
-            handle_uploaded_file(request.FILES['file2'])
-            handle_uploaded_file(request.FILES['file3'])
+            handle_uploaded_file(request.FILES['file'])
             return render(request, 'classification/tuttook.html')
         else:
-            return render(request, 'classification/classification.html', {'form': form})
-    return render(request, 'classification/classification.html', {'form': form})
+            return render(request, 'classification/classification.html')
+    return render(request, 'classification/classification.html')

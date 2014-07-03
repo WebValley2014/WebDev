@@ -7,5 +7,5 @@ admin.autodiscover()
 
 urlpatterns = patterns('classification.views',
     #Upload of pre-processed files
-    url(regex=r'^classification/$', view="classification", name="classification"),
+    url(regex=r'^$', view="classification", name="classification"),
 )

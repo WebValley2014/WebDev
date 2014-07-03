@@ -10,6 +10,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import djcelery
+djcelery.setup_loader()
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 
@@ -98,6 +100,8 @@ TEMPLATE_DIRS = (
 )
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_CLASSIFICATION_ROOT = os.path.join(MEDIA_ROOT, 'classification')
+MEDIA_PREPROCESS_ROOT = os.path.join(MEDIA_ROOT, 'preprocess')
 MEDIA_URL = '/media/'
 
 # BROKER_URL = 'ampq://localhost:5672/0'
@@ -111,5 +115,5 @@ CELERY_RESULT_BACKEND = "amqp"
 
 CELERY_TASK_RESULT_EXPIRES = 18000  # 5 hours.
 
-import djcelery
-djcelery.setup_loader()
+
+UPLOAD_PATH = '/static/'

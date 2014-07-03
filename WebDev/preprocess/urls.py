@@ -9,6 +9,7 @@ urlpatterns = patterns('preprocess.views',
     #(r'$', 'preprocess'),
     url(regex='^launch/$', view=submit_celery, name='launch'),
     url(regex='^res/(.+)/$', view=get_results, name='res'),
+    url(regex=r'^$', view="preprocess", name="preprocess"),
 )
 
 
