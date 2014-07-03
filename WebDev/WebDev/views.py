@@ -2,8 +2,6 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext, loader, Template, Context
 from django.contrib.auth import authenticate, login, logout
-from django.shortcuts import render_to_response
-from .forms import UploadFileForm
 from django.views.decorators.csrf import csrf_exempt, requires_csrf_token
 #import django.contrib.auth.views.login
 
