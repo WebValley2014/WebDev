@@ -26,7 +26,7 @@
 								{% block hometab %}<li><a href="..">HOME</a></li>{% endblock %}
 								{% block uploadtab %}{% if user.is_authenticated %}<li><a href="#">UPLOAD</a></li>{% endif %}{% endblock %}
 								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}
-								{% block abouttab %}<li><a href="">ABOUT US</a></li>{% endblock %}
+								{% block abouttab %}<li><a href="/about_us/">ABOUT US</a></li>{% endblock %}
 								{% block contactstab %}<li><a href="/contact/">CONTACTS</a></li>{% endblock %}
 							</ul>
 							{% block login %}<li class="dropdown">
@@ -44,8 +44,8 @@
 											<a href="/logout/"><button id="loginbutton" type="button" class="btn btn-default">LOGOUT</button></a>
 									{% else %}
 										{% if form.errors %}<p style="text-align:center">Your username and password didn't match. Please try again.</p>{% endif %} 
-										{% csrf_token %}
 										<form class="form" id="formLogin" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+										{% csrf_token %}
 											<div class="input-group">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-user"></span>

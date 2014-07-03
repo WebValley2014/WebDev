@@ -15,10 +15,11 @@ urlpatterns = patterns('',
     url(r'^login/$', 'django.contrib.auth.views.login', {'template_name': 'login.html'}),
     #LogoutPage
     (r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': '/'}),
-    #UploadPage
-    (r'^upload/$', "WebDev.views.upload"),
-    #Contatact Test
-    (r'^contact/$', "WebDev.views.contact", "contatti"),
+    #Contatact
+    (r'^contact/$', "WebDev.views.contact"),
+    #About_us
+    (r'^about_us/$', "WebDev.views.about_us"),
+
 
     # Classification urls
     url(r'^class/', include('classification.urls')),
