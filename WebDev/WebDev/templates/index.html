@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {# TAB HOME ATTIVA #}
 
@@ -10,5 +11,13 @@
 {# CONTENUTO #}
 
 {% block main %}
-	Questa è la home page.
+	<div align="center">
+		<img src="{% static 'img/DNA_home.jpg' %}" width="400px"> 
+		<h1>BAZINGA - Analyse your data!</h1>
+		<p>
+			BAZINGA is a novel web platform for studying microbiota dysbiosis in childhood. The platform connects omics data and clinical phenotypes, implementing a system medicine approach, with a special focus on the support of reproducible research within interdisciplinary projects.<br>	
+			<h2>How to use BAZINGA:</h2>
+			<p>Upload --> Convert --> See...</p>
+		</p>
+	</div>
 {% endblock %}
