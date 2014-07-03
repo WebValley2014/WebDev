@@ -6,7 +6,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('preprocess.views',
     #Preprocess page
-    (r'$', 'preprocess'),
+    url(regex=r'^$', view="preprocess", name="preprocess"),
 
 )
 
