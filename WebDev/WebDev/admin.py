@@ -3,7 +3,7 @@ __author__ = 'davide'
 from django.contrib import admin
 #from myproject.myapp.models import Author
 
-class AuthorAdmin(admin.ModelAdmin):
-    pass
+#class AuthorAdmin(admin.ModelAdmin):
+#    pass
 
-admin.site.register(AuthorAdmin)
+#admin.site.register(AuthorAdmin)
