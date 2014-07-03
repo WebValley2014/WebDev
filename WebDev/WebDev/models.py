@@ -3,6 +3,8 @@ from django.db import models
 from .utils import get_bootsrap_badge, is_number
 from django.contrib.auth.models import User
 import json
+import os
+from django.conf import settings
 import djcelery
 import jsonfield
 
