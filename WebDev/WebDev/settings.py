@@ -99,3 +99,17 @@ TEMPLATE_DIRS = (
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+# BROKER_URL = 'ampq://localhost:5672/0'
+BROKER_URL = 'amqp://guest:guest@localhost:5672//'
+# List of modules to import when celery starts.
+# CELERY_IMPORTS = ('myapp.tasks', )
+## Using the database to store task state and results.pip
+CELERY_TRACK_STARTED = True
+CELERY_RESULT_BACKEND = "amqp"
+## CELERY_RESULT_BACKEND = 'amqp://guest:guest@localhost:5672//'
+
+CELERY_TASK_RESULT_EXPIRES = 18000  # 5 hours.
+
+import djcelery
+djcelery.setup_loader()
