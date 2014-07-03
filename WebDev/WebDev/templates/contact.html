@@ -6,27 +6,8 @@
 	<li class="activetab"><a href="">CONTACTS</a></li>
 {% endblock %}
 
-{# MOSTRA LE TAB SE L'UTENTE E' LOGGATO #}
 
-{% block uploadtab %}
-	{% if user.is_authenticated %}
-	<li><a href="#">UPLOAD</a></li>
-	{% endif %}
-{% endblock %}
-
-{% block taskstab %}
-	{% if user.is_authenticated %}
-	<li><a href="#">TASKS</a></li>
-	{% endif %}
-{% endblock %}
-
-{% block logintab %}
-	{% if user.is_authenticated %}
-		{{ user.username | upper }}
-	{% else %}
-		LOGIN
-	{% endif %}
-{% endblock %}
+{# CONTENUTO #}
 
 {% block main %}
 	<h1>The TEAM</h1>

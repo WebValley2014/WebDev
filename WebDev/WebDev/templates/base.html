@@ -24,46 +24,48 @@
 						<ul class="nav navbar-nav navbar-right">
 							<ul class="nav navbar-nav">
 								{% block hometab %}<li><a href="..">HOME</a></li>{% endblock %}
-								{% block uploadtab %}{% endblock %}
-								{% block taskstab %}{% endblock %}
-								{% block abouttab %}<li><a href="">ABOUT US</a></li>{% endblock %}
+								{% block uploadtab %}{% if user.is_authenticated %}<li><a href="#">UPLOAD</a></li>{% endif %}{% endblock %}
+								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}
+								{% block abouttab %}<li><a href="/about_us/">ABOUT US</a></li>{% endblock %}
 								{% block contactstab %}<li><a href="/contact/">CONTACTS</a></li>{% endblock %}
 							</ul>
-							<li class="dropdown">
+							{% block login %}<li class="dropdown">
 								<a href="#" class="dropdown" data-toggle="dropdown">
-									{% block logintab %}{% endblock %}
+									{% if user.is_authenticated %}
+										{{ user.username | upper }}
+									{% else %}
+										LOGIN
+									{% endif %}
 									<span id="caretlogin" class="caret"></span>
 								</a>
 								<div id="logindropdown" class="dropdown-menu">
-									{% block loginbox %}
-										{% if user.is_authenticated %}
-											{# MERDA DA SISTEMARE #}
-												<a href="/logout/"><button id="loginbutton" type="button" class="btn btn-default">LOGOUT</button></a>
-										{% else %}
-											<form class="form" id="formLogin" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
-												{% if form.errors %}<p>Your username and password didn't match. Please try again.</p>{% endif %} 
-												{% csrf_token %}
-												<div class="input-group">
-													<span class="input-group-addon">
-														<span class="glyphicon glyphicon-user"></span>
-													</span>
-													<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
-												</div>
-												<br />
-												<div class="input-group">
-													<span class="input-group-addon">
-														<span class="glyphicon glyphicon-asterisk"></span>
-													</span>
-													<input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
-												</div>
-												<br />
-												<button id="loginbutton" type="submit" class="btn btn-default">Submit</button>
-												<input type="hidden" name="next" value="/">
-											</form>
-										{% endif %}
-									{% endblock %}
+									{% if user.is_authenticated %}
+										{# MERDA DA SISTEMARE #}
+											<a href="/logout/"><button id="loginbutton" type="button" class="btn btn-default">LOGOUT</button></a>
+									{% else %}
+										{% if form.errors %}<p style="text-align:center">Your username and password didn't match. Please try again.</p>{% endif %} 
+										<form class="form" id="formLogin" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+										{% csrf_token %}
+											<div class="input-group">
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-user"></span>
+												</span>
+												<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
+											</div>
+											<br />
+											<div class="input-group">
+												<span class="input-group-addon">
+													<span class="glyphicon glyphicon-asterisk"></span>
+												</span>
+												<input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
+											</div>
+											<br />
+											<button id="loginbutton" type="submit" class="btn btn-default">Submit</button>
+											<input type="hidden" name="next" value="/">
+										</form>
+									{% endif %}
 								</div>
-							</li>
+							</li>{% endblock %}
 						</ul>
 					</div>
 				</div>

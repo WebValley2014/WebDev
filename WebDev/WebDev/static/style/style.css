@@ -94,3 +94,14 @@ main {
 ul {
 	list-style-type: none;
 }
+
+.input-group {
+	width: 238px;
+}
+
+#formLogin {
+	margin-left: -119px;
+	margin-right: -119px;
+	position: relative;
+	left: 50%;
+}
