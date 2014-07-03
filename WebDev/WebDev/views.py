@@ -37,7 +37,12 @@ def upload(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            name = request.FILES['file'].name
+            f = request.FILES['file']
+            name = f.name
+            pos = 'WebDev/uploadedFiles/'+name
+            with open(pos, 'wb+') as destination:
+                for chunk in f.chunks():
+                     destination.write(chunk)
             return HttpResponse(name)
     else:
         form = UploadFileForm()

@@ -1,1 +1,10 @@
-Django==1.6
+Django==1.6.5
+amqp==1.4.5
+anyjson==0.3.3
+billiard==3.3.0.18
+celery==3.1.12
+django-celery==3.1.10
+jsonfield==0.9.20
+kombu==3.0.20
+pytz==2014.4
+wsgiref==0.1.2
