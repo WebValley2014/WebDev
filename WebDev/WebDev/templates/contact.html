@@ -1,14 +1,115 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    <form action="/contact/" method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <input type="submit" value="Submit" />
-    </form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{# TAB CONTACTS ATTIVA #}
+
+{% block contactstab %}
+	<li class="activetab"><a href="">CONTACTS</a></li>
+{% endblock %}
+
+{# MOSTRA LE TAB SE L'UTENTE E' LOGGATO #}
+
+{% block uploadtab %}
+	{% if user.is_authenticated %}
+	<li><a href="#">UPLOAD</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block taskstab %}
+	{% if user.is_authenticated %}
+	<li><a href="#">TASKS</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block logintab %}
+	{% if user.is_authenticated %}
+		{{ user.username | upper }}
+	{% else %}
+		LOGIN
+	{% endif %}
+{% endblock %}
+
+{% block main %}
+	<h1>The TEAM</h1>
+	<h3>The WebValley team:</h3>
+	<h4>Tutors</h4>
+	<ul>
+		<li>Claudia Dolci</li>
+		<li>Giuseppe Jurman</li>
+		<li>Cesare Furlanello</li>
+		<li>Marco Chierici</li>
+		<li>Alessandro Zandona'</li>
+		<li>Marco Mina</li>
+		<li>Daniele Morabito</li>
+		<li>Shamar Droghetti</li>
+		<li>Gabriele Franch</li>
+		<li>Martina Calovi</li>
+		<li>Michele Filosi</li>
+		<li>Roberto Visintainer</li>
+		<li>Ernesto Arbitrio</li>
+	</ul><br />
+	<h4>Students</h4>
+	<ul>
+		<li>Andrea Rivera</li>
+		<li>Cristian Lizan</li>	
+		<li>Davide Bizzarri</li>
+		<li>Davide Farina</li>
+		<li>Davide Leonessi</li>	
+		<li>Deborah Miori</li>
+		<li>Federica Freddi</li>
+		<li>Filippo Quattrocchi</li>
+		<li>Hiromu Yakura</li>	
+		<li>Kaiwen Zheng</li>
+		<li>Kevin Lee</li>
+		<li>Luca Donini</li>
+		<li>Nebras Djemel</li>	
+		<li>Nina Bogdanovic</li>	
+		<li>Pia Sen</li>
+		<li>Ruchi Asthana</li>
+		<li>Stefano Valentini</li>
+		<li>Talissa Dreossi</li>
+		<li>Yuan Chen</li>
+	</ul>
+	<h2>Special thanks to</h2>
+	<ul>
+		<li>Provincia Autonoma di Trento</li>
+		<li>APT Terme di Comano</li><br>
+		<li>Dolomiti di Brenta</li>
+		<li>Comune di San Lorenzo in Banale</li>
+		<li>EDULIfE</li>
+		<li>FAST: Federation of the Scientific and Technical Associations, Italy</li>
+		<li>FBK Board of Directors</li>
+		<li>Italian Embassy, Washington DC</li>
+		<li>MIUR National Program for Mathematics and Science Education (PLS)</li>
+		<li>NYEX: Network of Young Excellence</li>
+		<li>Trentino Network</li>
+		<li>US Society for Science</li><br>
+		<li>INTEL ISEF</li>
+		<li>Center for Integrative Biology, UniTN</li>
+		<li>Children's Hospital and Research Institute, Bambino Gesu', Rome</li>
+		<li>Dip. di Pediatria e Neuropsichiatria Infantile, Sapienza</li><br>
+		<li>Universita' di Roma</li>
+		<li>Fondazione Edmund Mach</li>
+	</ul>
+	<h2>Contacts</h2>
+	<h4>Fondazione Bruno Kessler</h4>
+	<ul>
+		<li>Via Sommarive, 18</li>
+		<li>Povo (Trento), Italy 38123</li>
+		<li>P: +39 366 7554977</li><br>
+		<li>webvalley@fbk.eu</li>
+		<li>http://webvalley.fbk.eu</li><br>
+		<li>Cesare Furlanello</li>
+		<li>Giuseppe Jurman - jurman at fbk dot eu</li>
+		<li>Martina Calovi - mcalovi at fbk dot eu</li>
+	</ul><br>
+	<h4>Bambino Gesu' Ospedale Pediatrico</h4>
+	<ul>
+		<li>Centralino</li>
+		<li>tel. +39 06.6859.1</li><br>
+		<li>URP - Ufficio Relazioni con il Pubblico</li>
+		<li>e-mail: urp@opbg.net </li><br>
+		<li>tel. +39 06.6859.4888 - Sedi di Roma Gianicolo, Taormina, Potenza e Catanzaro </li>
+		<li>tel. +39 06.6859.3638 - Sede di Roma San Paolo </li>
+		<li>tel. +39 06.6859.3555 - Sedi di Palidoro e Santa Marinella</li>
+	</ul>
+{% endblock %}

@@ -84,7 +84,7 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'WebDev/static'),
 )
 
-STATIC_ROOT = ''
+STATIC_ROOT = '/home/cristian/WebDev/WebDev/WebDev/static'
 STATIC_URL = '/static/'
 
 #Template path
