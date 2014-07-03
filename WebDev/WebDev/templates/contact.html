@@ -20,13 +20,7 @@
 	{% endif %}
 {% endblock %}
 
-{% block logintab %}
-	{% if user.is_authenticated %}
-		{{ user.username | upper }}
-	{% else %}
-		LOGIN
-	{% endif %}
-{% endblock %}
+{# CONTENUTO #}
 
 {% block main %}
 	<h1>The TEAM</h1>
