@@ -6,7 +6,6 @@
 	<li class="activetab"><a href="">HOME</a></li>
 {% endblock %}
 
-
 {# MOSTRA LE TAB SE L'UTENTE E' LOGGATO #}
 
 {% block uploadtab %}
@@ -21,13 +20,7 @@
 	{% endif %}
 {% endblock %}
 
-{% block logintab %}
-	{% if user.is_authenticated %}
-		{{ user.username | upper }}
-	{% else %}
-		LOGIN
-	{% endif %}
-{% endblock %}
+{# CONTENUTO #}
 
 {% block main %}
 	Questa è la home page.

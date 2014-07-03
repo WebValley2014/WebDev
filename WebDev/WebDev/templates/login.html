@@ -1,20 +1,32 @@
-{% load static %}
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
-    {% if form.errors %}
-    <p>Your username and password didn't match. Please try again.</p>
-    {% endif %}
-    <form action="{% url 'django.contrib.auth.views.login' %}" method="POST">
-        {% csrf_token %}
-		<input id="id_username" name="username" type="text" class="form-control" placeholder="Login" autofocus="">
-		<input type="password" name="password" id="id_password" class="form-control" placeholder="Password" />
-		<button type="submit">Entra</button>
-		<input type="hidden" name="next" value="/">
-	</form>
-</body>
-</html>
+{% extends "base.html" %}
+
+{# TAB HOME ATTIVA #}
+
+{% block hometab %}
+	<li class="activetab"><a href="">HOME</a></li>
+{% endblock %}
+
+{# MOSTRA LE TAB SE L'UTENTE E' LOGGATO #}
+
+{% block uploadtab %}
+	{% if user.is_authenticated %}
+	<li><a href="#">UPLOAD</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block taskstab %}
+	{% if user.is_authenticated %}
+	<li><a href="#">TASKS</a></li>
+	{% endif %}
+{% endblock %}
+
+{% block login %}
+
+{% endblock %}
+
+
+{# CONTENUTO #}
+
+{% block main %}
+	Questa è la home page.
+{% endblock %}

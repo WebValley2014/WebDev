@@ -26,12 +26,17 @@
 								{% block hometab %}<li><a href="..">HOME</a></li>{% endblock %}
 								{% block uploadtab %}{% endblock %}
 								{% block taskstab %}{% endblock %}
-								{% block abouttab %}<li><a href="">ABOUT US</a></li>{% endblock %}
+								{% block abouttab %}<li><a href="/about_us/">ABOUT US</a></li>{% endblock %}
 								{% block contactstab %}<li><a href="/contact/">CONTACTS</a></li>{% endblock %}
 							</ul>
+							{% block login %}
 							<li class="dropdown">
 								<a href="#" class="dropdown" data-toggle="dropdown">
-									{% block logintab %}{% endblock %}
+									{% if user.is_authenticated %}
+										{{ user.username | upper }}
+									{% else %}
+										LOGIN
+									{% endif %}
 									<span id="caretlogin" class="caret"></span>
 								</a>
 								<div id="logindropdown" class="dropdown-menu">
@@ -64,6 +69,7 @@
 									{% endblock %}
 								</div>
 							</li>
+							{% endblock %}
 						</ul>
 					</div>
 				</div>
