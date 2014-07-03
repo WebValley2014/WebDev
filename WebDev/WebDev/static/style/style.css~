@@ -1,0 +1,95 @@
+*  {
+	margin: 0;
+	border: 0;
+	padding: 0;
+}
+
+html body {
+	background-color: #99a197;
+}
+
+#wrapper {
+	width: 80%;
+	margin-left: 10%;
+	margin-top: 20px
+}
+
+main {
+	padding: 40px;
+	background-color: white;
+}
+
+#topnavbar, #bottomnavbar {
+	margin: 0;
+	border: 0;
+	background-color: #cfdecc;
+}
+
+#topnavbar {
+	border-top-left-radius: 10px !important;
+	border-top-right-radius: 10px !important;
+}
+
+#logoimage {
+	height: 50px;
+}
+
+#bottomnavbar {
+	border-bottom-left-radius:10px !important;
+	border-bottom-right-radius:10px !important;
+}
+
+.navseparator {
+	height: 1px;
+	background-color: #777;
+}
+
+.navbar, .navbar-default {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
+}
+
+#logindropdown {
+	width: 300px;
+	padding: 30px;
+}
+
+#caretlogin {
+	margin-left: 5px;
+}
+
+#loginbutton {
+	width: 100px;
+	margin-left: 70px;
+}
+
+.activetab {
+	background-color: #bbccb8;
+}
+
+#footercontainer {
+	width: 100%;
+	padding: 10px;
+}
+
+#contactlist {
+	list-style-type: none;
+	margin: 0;
+}
+
+#footerleft {
+	float: left;
+}
+
+#footerright {
+	float: right;
+}
+
+.logofooter {
+	height: 80px;
+}
+
+ul {
+	list-style-type: none;
+}
