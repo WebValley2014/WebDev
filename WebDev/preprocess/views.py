@@ -20,7 +20,6 @@ def preprocess(request):
             handle_uploaded_file(request.FILES['file'])
             return HttpResponseRedirect('launch')
         else:
-            return render(request, 'preprocess/preprocess.html')
     return render(request, 'preprocess/preprocess.html')
 
 def submit_celery(request):
