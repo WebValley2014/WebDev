@@ -11,7 +11,7 @@ html body {
 #wrapper {
 	width: 80%;
 	margin-left: 10%;
-	margin-top: 20px;
+	margin-top: 50px;
 	margin-bottom: 20px;
 }
 
@@ -27,8 +27,11 @@ main {
 }
 
 #topnavbar {
-	border-top-left-radius: 10px !important;
-	border-top-right-radius: 10px !important;
+	border-bottom: 1px solid #777;
+	font-size: 13px;
+	position: fixed;
+	width: 80%;
+	top: 0;
 }
 
 #logoimage {
@@ -38,6 +41,7 @@ main {
 #bottomnavbar {
 	border-bottom-left-radius:10px !important;
 	border-bottom-right-radius:10px !important;
+	border-top: 1px solid #777;
 }
 
 .navseparator {

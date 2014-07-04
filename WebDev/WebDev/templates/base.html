@@ -18,12 +18,12 @@
 			<nav id="topnavbar" class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<img src="{% static 'img/logograssetto.png' %}" id="logoimage"></img>
+						<img src="{% static 'img/logo.png' %}" id="logoimage"></img>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<ul class="nav navbar-nav">
-								{% block hometab %}<li><a href="{% url 'index' %}">HOME</a></li>{% endblock %}
+								{% block hometab %}<li><a href="{% url 'index' %}">Home</a></li>{% endblock %}
 								{% block uploadtab %}{% if user.is_authenticated %}<li><a href="#">UPLOAD</a></li>{% endif %}{% endblock %}
 								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}
 								{% block abouttab %}<li><a href="{% url 'about' %}">ABOUT US</a></li>{% endblock %}
@@ -69,13 +69,11 @@
 					</div>
 				</div>
 			</nav>
-			<div class="navseparator"></div>
 			<main>
 				{% block main %}
 				Deh void.
 				{% endblock %}
 			</main>
-			<div class="navseparator"></div>
 			<nav id="bottomnavbar" class="navbar navbar-default" role="navigation">
 				<div id="footercontainer" class="container">
 					<div id="footerleft"> 
