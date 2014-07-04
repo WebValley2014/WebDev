@@ -41,25 +41,25 @@
 								<div id="logindropdown" class="dropdown-menu">
 									{% if user.is_authenticated %}
 										{# MERDA DA SISTEMARE #}
-											<a href="/logout/"><button id="loginbutton" type="button" class="btn btn-default">LOGOUT</button></a>
+										<a href="/logout/"><button type="button" class="btn btn-default centeredbutton">LOGOUT</button></a>
 									{% else %}
-										<form class="form" id="formLogin" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+										<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
 										{% csrf_token %}
-											<div class="input-group">
+											<div class="input-group forminp">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-user"></span>
 												</span>
 												<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
 											</div>
 											<br />
-											<div class="input-group">
+											<div class="input-group forminp">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-asterisk"></span>
 												</span>
 												<input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
 											</div>
 											<br />
-											<button id="loginbutton" type="submit" class="btn btn-default">Submit</button>
+											<button type="submit" class="btn btn-default centeredbutton">Submit</button>
 											<input type="hidden" name="next" value="/">
 										</form>
 									{% endif %}
@@ -83,7 +83,7 @@
 						<ul id="contactlist">
 							<li><a href="http://www.fbk.eu/">FBK Fondazione Bruno Kessler - Trento - +39 0461 314200</a></li> 
 							<li><a href="https://webvalley.fbk.eu/">WebValley - FBK</a></li>
-							<li><a href="http://www.ospedalebambinogesu.it/home">Ospedale Bambino Gesu' - Roma - urp@opbg.net</a></li>
+							<li><a href="http://www.ospedalebambinogesu.it/home">Ospedale Bambino Gesu' - Roma -</a> <a href="mailto:urp@opbg.net">urp@opbg.net</a></li>
 						</ul>
 					</div>
 					<div id="footerright">

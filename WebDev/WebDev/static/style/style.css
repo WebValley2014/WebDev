@@ -60,9 +60,12 @@ main {
 	margin-left: 5px;
 }
 
-#loginbutton {
+.centeredbutton {
 	width: 100px;
-	margin-left: 70px;
+	margin-left: -50px;
+	margin-right: -50px;
+	position: relative;
+	left: 50%;
 }
 
 .activetab {
@@ -99,9 +102,22 @@ ul {
 	width: 238px;
 }
 
-#formLogin {
-	margin-left: -119px;
-	margin-right: -119px;
-	position: relative;
-	left: 50%;
+.formbox {
+	width: 250px !important;
+	margin-left: -125px !important;
+	margin-right: -125px !important;
+	position: relative !important;
+	left: 50% !important;
+}
+
+.fileformbox {
+	width: 340px !important;
+	margin-left: -170px !important;
+	margin-right: -170px !important;
+	position: relative !important;
+	left: 50% !important;
+}
+
+.forminp {
+	width: 100%;
 }
