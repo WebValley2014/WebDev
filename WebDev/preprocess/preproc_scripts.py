@@ -147,3 +147,10 @@ class SFF2OTU:
         otu_table = os.path.join(os.path.dirname(self.sff[0]), self.job_id + '.otu_table.txt')
         self.command(['biom', 'convert', '-i', otu_table, '-b', '--header-key', 'taxonomy', '-o', otu_table])
         return otu_table
+
+
+def preprocess(job_id, sff, mapping):
+    core = multiprocessing.cpu_count() - 1
+
+    pipeline = SFF2OTU(job_id, sff, mapping)
+    return os.path.abspath(pipeline.run(core, processors = core))
