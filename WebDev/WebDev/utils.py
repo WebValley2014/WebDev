@@ -19,8 +19,8 @@ def handle_uploaded_file(pipeline,f):
     with open(os.path.join(upload_full_path, (pipeline.pip_id+".codes")), 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-    #k = Results(filetype='zip', filename=pipeline.pip_id+".codes", filepath=partial_path)
-    #k.save()
+    res = Results(filetype='zip', filename=pipeline.pip_id+".codes", filepath=partial_path)
+    res.save()
 
 #This function generate the response to download the file that is linked in file_path
 def download_file(filename, file_path):

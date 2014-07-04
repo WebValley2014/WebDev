@@ -34,7 +34,7 @@ def upload_preProcessed(request):
     p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
     p.save()
     form = CLUploadFileForm()
-    if request.POST and request.FILES and codesExtension(request.FILES['file']):
+    if request.POST and request.FILES and checkExtension(request.FILES['file'], 'codes'):
         form = CLUploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             handle_uploaded_file(p,request.FILES['file'])
