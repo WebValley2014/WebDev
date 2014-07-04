@@ -7,9 +7,9 @@ from .models import *
 
 def checkExtension(f, extension):
     u = f.name.split('.')
-    return (u[1]==extension)
+    return (u[len(u)-1]==extension)
 
-def handle_uploaded_file(pipeline,f):
+def handle_uploaded_file(pipeline, f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, str(pipeline.pip_name))
     upload_full_path = os.path.join(settings.MEDIA_ROOT, partial_path)
