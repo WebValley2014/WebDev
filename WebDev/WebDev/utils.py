@@ -5,9 +5,9 @@ from django.core.servers.basehttp import FileWrapper
 import mimetypes
 from .models import *
 
-def codesExtension(f):
+def checkExtension(f, extension):
     u = f.name.split('.')
-    return (u[1]=='codes')
+    return (u[1]==extension)
 
 def handle_uploaded_file(pipeline,f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
