@@ -102,6 +102,7 @@ TEMPLATE_DIRS = (
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_CLASSIFICATION_ROOT = os.path.join(MEDIA_ROOT, 'classification')
 MEDIA_PREPROCESS_ROOT = os.path.join(MEDIA_ROOT, 'preprocess')
+MEDIA_NETWORK_ROOT = os.path.join(MEDIA_ROOT, 'network')
 MEDIA_URL = '/media/'
 
 # BROKER_URL = 'ampq://localhost:5672/0'
