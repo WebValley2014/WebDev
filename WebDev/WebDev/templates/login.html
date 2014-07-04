@@ -2,7 +2,7 @@
 
 {# TITOLO #}
 {% block pagetitle %}
-	Login
+	Login - 
 {% endblock %}
 
 {# TAB HOME ATTIVA #}
@@ -24,14 +24,14 @@
 	{% if form.errors %}<p style="text-align:center">Your username and password were incorrect. Please try again.</p>{% endif %}
 	<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST"> 
 		{% csrf_token %}
-		<div class="input-group forminp">
+		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-user"></span>
 			</span>
 			<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
 		</div>
 		<br />
-		<div class="input-group forminp">
+		<div class="input-group">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-asterisk"></span>
 			</span>
