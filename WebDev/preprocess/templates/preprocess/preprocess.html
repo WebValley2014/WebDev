@@ -8,6 +8,7 @@
 
 
 {% block main %}
+	<p style="text-align:center">Select or drop a file to upload.</p><br />
 	<form id="dropform" class="form fileformbox dropzone" method="POST" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
