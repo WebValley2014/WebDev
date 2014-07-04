@@ -5,7 +5,7 @@
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>{% block pagetitle %}Home{% endblock %} - Nome progetto</title>
+    	<title>{% block pagetitle %}{% endblock %}CODES</title>
     	<link href="{% static 'style/bootstrap.css' %}" rel="stylesheet">
 		<link href="{% static 'style/style.css' %}" rel="stylesheet">
     	<!--[if lt IE 9]>
@@ -23,7 +23,7 @@
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
 							<ul class="nav navbar-nav">
-								{% block hometab %}<li><a href="{% url 'index' %}">Home</a></li>{% endblock %}
+								{% block hometab %}<li><a href="{% url 'index' %}">HOME</a></li>{% endblock %}
 								{% block uploadtab %}{% if user.is_authenticated %}<li><a href="#">UPLOAD</a></li>{% endif %}{% endblock %}
 								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}
 								{% block abouttab %}<li><a href="{% url 'about' %}">ABOUT US</a></li>{% endblock %}
@@ -45,14 +45,14 @@
 									{% else %}
 										<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
 										{% csrf_token %}
-											<div class="input-group forminp">
+											<div class="input-group">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-user"></span>
 												</span>
 												<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
 											</div>
 											<br />
-											<div class="input-group forminp">
+											<div class="input-group">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-asterisk"></span>
 												</span>

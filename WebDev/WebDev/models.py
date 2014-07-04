@@ -101,20 +101,21 @@ class Results (models.Model):
         ('graph', 'gml, graphml'),
         ('txt', 'text description'),
         ('json', 'json file'),
-        ('error', 'Error during computation')
+        ('error', 'Error during computation'),
+        ('zip', 'zip')
     )
 
-    process_name = models.CharField(max_length=40)
-    task_id = models.ForeignKey(RunningProcess)
-    filetype = models.CharField(max_length=36, choices=FILE_TYPES)
-    filename = models.CharField(max_length=40)
-    filepath = models.CharField(max_length=100)
-    filestore = models.FileField(upload_to=get_tmp_dir)
-    filecol = models.IntegerField(blank=True, null=True)
-    filerow = models.IntegerField(blank=True, null=True)
-    filefirstrow = models.TextField(blank=True, null=True)
-    imagestore = models.ImageField(upload_to=get_tmp_dir)
-    desc = models.TextField()
+    process_name = models.CharField(max_length=40)                  #celery
+    task_id = models.ForeignKey(RunningProcess)                     #Nome dell'app
+    filetype = models.CharField(max_length=36, choices=FILE_TYPES)  #Tipo di file (zip)
+    filename = models.CharField(max_length=40)                      #Nome del file
+    filepath = models.CharField(max_length=100)                     #Posizione del file da MEDIA_ROOT
+    filestore = models.FileField(upload_to=get_tmp_dir)             #BLANK
+    filecol = models.IntegerField(blank=True, null=True)            #BLANK
+    filerow = models.IntegerField(blank=True, null=True)            #BLANK
+    filefirstrow = models.TextField(blank=True, null=True)          #BLANK
+    imagestore = models.ImageField(upload_to=get_tmp_dir)           #BLANK
+    desc = models.TextField()                                       #BLANK
 
     def __unicode__(self):
         return u'%s: %s' % (self.task_id.task_id, self.filetype)

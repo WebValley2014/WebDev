@@ -17,15 +17,17 @@ from forms import CLUploadFileForm
 from WebDev.utils import *
 
 @login_required(login_url="/login")
-def classification(request, p_id = ''):
-    if(p_id == ''):
-        return HttpResponseRedirect('upload')
+def classification(request, p_id):
     if not check_owner(request.user, p_id):
         return render(request, "error_owner.html")
     context = {
         'p_id': p_id
     }
     return render(request, 'classification/main.html', context)
+
+@login_required(login_url="/login")
+def classification_redirect(request):
+    return HttpResponseRedirect("upload/")
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):

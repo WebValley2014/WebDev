@@ -14,6 +14,6 @@ urlpatterns = patterns('classification.views',
     url(regex=r'^option/(.+)/$', view="option", name="option"),
     #Home Classification
     url(regex=r'^(.+)/$', view="classification", name="classification"),
-    url(regex=r'^$', view="classification", name="classification"),
+    url(regex=r'^$', view="classification_redirect"),
 
 )
