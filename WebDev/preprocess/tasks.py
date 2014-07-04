@@ -18,7 +18,7 @@ import tempfile
 import time
 import uuid
 
-app = Celery('tasks', broker='amqp://localhost//')
+app = Celery('tasks', broker='amqp://wvlab:wv2014@54.72.200.168/', backend='amqp')
 
 @app.task
 def prepro(self, uniqueJobID, listofSFFfiles, listOfMappingFiles):
