@@ -7,8 +7,8 @@ admin.autodiscover()
 urlpatterns = patterns('preprocess.views',
     #Preprocess page
     #(r'$', 'preprocess'),
-    url(regex='^launch/$', view=submit_celery, name='launch'),
-    url(regex='^res/(.+)/$', view=get_results, name='res'),
+    url(regex='^launch/$', view="submit_celery", name='launch'),
+    url(regex='^res/(.+)/$', view="get_results", name='res'),
     url(regex=r'^$', view="preprocess", name="preprocess"),
 )
 

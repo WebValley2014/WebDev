@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 import djcelery
 from .tasks import add
+from WebDev.models import *
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import  HttpResponse
@@ -17,7 +18,7 @@ def preprocess(request):
         form = PPUploadFileForm(request.POST, request.FILES)
         if form.is_valid():
             handle_uploaded_file(request.FILES['file'])
-            return render(request, 'preprocess/tuttook.html')
+            return HttpResponseRedirect('launch')
         else:
             return render(request, 'preprocess/preprocess.html')
     return render(request, 'preprocess/preprocess.html')
@@ -26,7 +27,11 @@ def submit_celery(request):
 
     t = add.delay(4,4)
 
+    # runp = RunningProcess(process_name='Preprocessing',
+    #                     task_id=t.id,
+    #                     pip_id = Pipeline.objects.get(pip_id=uuid))
     context = {'uuid': t.id}
+
     return render(request, 'preprocess/proc_res.html', context)
 
 def get_results(request, uuid):

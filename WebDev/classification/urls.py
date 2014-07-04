@@ -6,6 +6,10 @@ from .views import *
 admin.autodiscover()
 
 urlpatterns = patterns('classification.views',
-    #Upload of pre-processed files
+    #Upload Pre-Processed file
+    url(regex=r'^upload/$', view="upload_preProcessed", name="upload_preProcessed"),
+    #Home Classification
+    url(regex=r'^(.+)/$', view="classification", name="classification"),
     url(regex=r'^$', view="classification", name="classification"),
+
 )
