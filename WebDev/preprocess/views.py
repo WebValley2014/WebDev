@@ -19,7 +19,6 @@ def preprocess(request):
             handle_uploaded_file(request.FILES['file'])
             return render(request, 'preprocess/tuttook.html')
         else:
-            return render(request, 'preprocess/preprocess.html')
     return render(request, 'preprocess/preprocess.html')
 
 def submit_celery(request):

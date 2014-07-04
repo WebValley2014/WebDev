@@ -14,6 +14,4 @@ def classification(request):
         if form.is_valid():
             handle_uploaded_file(request.FILES['file'])
             return render(request, 'classification/tuttook.html')
-        else:
-            return render(request, 'classification/classification.html')
     return render(request, 'classification/classification.html')
