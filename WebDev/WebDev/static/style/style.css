@@ -11,7 +11,7 @@ html body {
 #wrapper {
 	width: 80%;
 	margin-left: 10%;
-	margin-top: 20px;
+	margin-top: 50px;
 	margin-bottom: 20px;
 }
 
@@ -27,8 +27,11 @@ main {
 }
 
 #topnavbar {
-	border-top-left-radius: 10px !important;
-	border-top-right-radius: 10px !important;
+	border-bottom: 1px solid #777;
+	font-size: 13px;
+	position: fixed;
+	width: 80%;
+	top: 0;
 }
 
 #logoimage {
@@ -38,6 +41,7 @@ main {
 #bottomnavbar {
 	border-bottom-left-radius:10px !important;
 	border-bottom-right-radius:10px !important;
+	border-top: 1px solid #777;
 }
 
 .navseparator {
@@ -60,9 +64,12 @@ main {
 	margin-left: 5px;
 }
 
-#loginbutton {
+.centeredbutton {
 	width: 100px;
-	margin-left: 70px;
+	margin-left: -50px;
+	margin-right: -50px;
+	position: relative;
+	left: 50%;
 }
 
 .activetab {
@@ -99,9 +106,22 @@ ul {
 	width: 238px;
 }
 
-#formLogin {
-	margin-left: -119px;
-	margin-right: -119px;
-	position: relative;
-	left: 50%;
+.formbox {
+	width: 250px !important;
+	margin-left: -125px !important;
+	margin-right: -125px !important;
+	position: relative !important;
+	left: 50% !important;
+}
+
+.fileformbox {
+	width: 340px !important;
+	margin-left: -170px !important;
+	margin-right: -170px !important;
+	position: relative !important;
+	left: 50% !important;
+}
+
+.forminp {
+	width: 100%;
 }
