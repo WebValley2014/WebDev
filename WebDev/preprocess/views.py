@@ -1,6 +1,7 @@
 from django.shortcuts import render
 import djcelery
 from .tasks import add
+from WebDev.models import RunningProcess
 
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import  HttpResponse
@@ -25,7 +26,7 @@ def preprocess(request):
 def submit_celery(request):
 
     t = add.delay(4,4)
-
+    runp = RunningProcess()
     context = {'uuid': t.id}
     return render(request, 'preprocess/proc_res.html', context)
 
