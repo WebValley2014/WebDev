@@ -10,7 +10,12 @@ def fileExtension(f):
     return u[len(u)-1]
 
 def checkExtension(f,extension):
-    return fileExtension(f)==extension
+    return (fileExtension(f)==extension)
+
+def renameFile(f, filename):
+    ex = fileExtension(f)
+    f.name = '%s.%s' % (filename, ex)
+    return f
 
 def handle_uploaded_file(pipeline, f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
@@ -22,7 +27,8 @@ def handle_uploaded_file(pipeline, f):
     with open(os.path.join(upload_full_path, f.name), 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-    res = Results(filetype=fileExtension(f), filename=f.name, filepath=partial_path)
+    full_path = os.path.join(partial_path, f.name)
+    res = Results(filetype=fileExtension(f), filename=f.name, filepath=full_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path
