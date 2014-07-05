@@ -5,7 +5,7 @@
     	<meta charset="utf-8">
     	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     	<meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title>{% block pagetitle %}Home{% endblock %} - Nome progetto</title>
+    	<title>{% block pagetitle %}{% endblock %}CODES</title>
     	<link href="{% static 'style/bootstrap.css' %}" rel="stylesheet">
 		<link href="{% static 'style/style.css' %}" rel="stylesheet">
     	<!--[if lt IE 9]>
@@ -18,7 +18,7 @@
 			<nav id="topnavbar" class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<img src="{% static 'img/logograssetto.png' %}" id="logoimage"></img>
+						<img src="{% static 'img/logo.png' %}" id="logoimage"></img>
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
@@ -45,14 +45,14 @@
 									{% else %}
 										<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
 										{% csrf_token %}
-											<div class="input-group forminp">
+											<div class="input-group">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-user"></span>
 												</span>
 												<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
 											</div>
 											<br />
-											<div class="input-group forminp">
+											<div class="input-group">
 												<span class="input-group-addon">
 													<span class="glyphicon glyphicon-asterisk"></span>
 												</span>
@@ -69,13 +69,11 @@
 					</div>
 				</div>
 			</nav>
-			<div class="navseparator"></div>
 			<main>
 				{% block main %}
 				Deh void.
 				{% endblock %}
 			</main>
-			<div class="navseparator"></div>
 			<nav id="bottomnavbar" class="navbar navbar-default" role="navigation">
 				<div id="footercontainer" class="container">
 					<div id="footerleft"> 
@@ -87,8 +85,10 @@
 						</ul>
 					</div>
 					<div id="footerright">
-						<img height: 20px src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
-						<img height="120%"src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" />
+						<img src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
+						<img src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" />
+						<img src="{% static 'img/logoFBK.png' %}" class="logofooter" alt="FBK logo" />
+						<img src="{% static 'img/logoOspedale.png' %}" class="logofooter" alt="Ospedale logo" />
 					</div> 
 				</div>
 			</nav>
