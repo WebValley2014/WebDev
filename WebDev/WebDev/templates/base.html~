@@ -87,7 +87,7 @@
 						</ul>
 					</div>
 					<div id="footerright">
-						<img height: 20px src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
+						<img height: 20px; src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
 						<img height="120%"src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" />
 					</div> 
 				</div>
