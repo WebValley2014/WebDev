@@ -2,13 +2,62 @@ from django.shortcuts import render, HttpResponseRedirect
 import djcelery
 from .tasks import add
 from WebDev.models import *
-
 from django.contrib.auth.decorators import login_required
+import uuid
+from django.utils import timezone
 from django.shortcuts import  HttpResponse
-# Create your views here.
 
 from forms import PPUploadFileForm
-from utils import handle_uploaded_file
+from WebDev.utils import handle_uploaded_file, checkExtension
+
+@login_required(login_url="/login")
+def preprocess_redirect(request):
+    return HttpResponseRedirect("upload/")
+
+@login_required(login_url="/login")
+def get_results(request, p):
+    return
+
+@login_required(login_url="/login")
+def upload(request):
+    p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+    p.save()
+    form_error, ex_error = False, False
+    if request.POST and request.FILES:
+        try:
+            if checkExtension(request.FILES['file_zip'], 'zip') and checkExtension(request.FILES['file_map'], 'map'):
+                handle_uploaded_file(p, request.FILES['file_zip'])
+                handle_uploaded_file(p, request.FILES['file_map'])
+                return render(request, 'preprocess/tuttook.html')
+            else:
+                ex_error = True
+        except:
+            form_error = True
+    form = PPUploadFileForm()
+    c = {
+        'ex_error': ex_error,
+        'form_error': form_error
+    }
+    return render(request, 'preprocess/upload.html', c)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 @login_required(login_url="/login")
 def preprocess(request):
