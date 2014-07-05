@@ -18,7 +18,7 @@
 			<nav id="topnavbar" class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						<img src="{% static 'img/logo.png' %}" id="logoimage"></img>
+						{% block logo %}<img src="{% static 'img/logo.png' %}" id="logoimage" />{% endblock %}
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
@@ -41,7 +41,7 @@
 								<div id="logindropdown" class="dropdown-menu">
 									{% if user.is_authenticated %}
 										{# MERDA DA SISTEMARE #}
-										<a href="/logout/"><button type="button" class="btn btn-default centeredbutton">LOGOUT</button></a>
+										<a href="/logout/"><button type="submit" class="btn btn-default centeredbutton">LOGOUT</button></a>
 									{% else %}
 										<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
 										{% csrf_token %}

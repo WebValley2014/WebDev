@@ -9,7 +9,7 @@
 
 {% block main %}
 	<p style="text-align:center">Select or drop a file to upload.</p><br />
-	<form id="dropform" class="form fileformbox dropzone" method="POST" enctype="multipart/form-data"> 
+	<form id="dropform" class="form fileformbox dropzone" method="POST" action="" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
@@ -18,7 +18,10 @@
 			<input id="id_file" name="file" type="file" class="form-control" placeholder="Uploadfile" />
 		</div>
 		<br />
-		<input type="submit" class="btn btn-default centeredbutton" value="Submit" />
+		<button type="submit" class="btn btn-default centeredbutton start">Submit</button>
 	</form>
+	<br /><br />
+	<p style="text-align:center">Please wait for the file to finish uploading: do not leave the page, you will be redirected automatically.</p>
+
 	<script src="{% static 'script/dropzone.js' %}"></script>
 {% endblock %}

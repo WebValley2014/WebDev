@@ -7,17 +7,18 @@
 	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
 {% endblock %}
 
+{# NO DOPPIO LOGO #}
+
+{% block logo %}
+{% endblock %}
 
 {# CONTENUTO #}
 
 {% block main %}
-	<div align="center">
-		<img src="{% static 'img/DNA_home.jpg' %}" width="400px"> 
-		<h1>BAZINGA - Analyse your data!</h1>
-		<p>
-			BAZINGA is a novel web platform for studying microbiota dysbiosis in childhood. The platform connects omics data and clinical phenotypes, implementing a system medicine approach, with a special focus on the support of reproducible research within interdisciplinary projects.<br>	
-			<h2>How to use BAZINGA:</h2>
-			<p>Upload --> Convert --> See...</p>
-		</p>
+	<div style="text-align:center">
+		<img src="{% static 'img/logo.png' %}" style="width: 700px" />
+		<hr style="width: 100%; height: 2px; background-color: #777" /><br />
+		CODES is a novel web platform for studying microbiota dysbiosis in childhood.<br />
+		The platform connects omics data and clinical phenotypes, implementing a system medicine approach, with a special focus on the support of reproducible research within interdisciplinary projects.
 	</div>
 {% endblock %}
