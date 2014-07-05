@@ -22,7 +22,7 @@ def handle_uploaded_file(pipeline, f):
     with open(os.path.join(upload_full_path, f.name), 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-    res = Results(filetype='zip', filename=f.name, filepath=partial_path)
+    res = Results(filetype=fileExtension(f), filename=f.name, filepath=partial_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path
