@@ -10,10 +10,11 @@ from django.conf import settings
 import mimetypes
 from django.core.files import File
 from django.utils.encoding import smart_str
+import uuid
 # Create your views here.
 
 from forms import CLUploadFileForm
-from utils import handle_uploaded_file, download_file, check_owner
+from WebDev.utils import *
 
 @login_required(login_url="/login")
 def classification(request, p_id):
@@ -30,15 +31,16 @@ def classification_redirect(request):
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
-    p = Pipeline(pip_name='classification', pip_id='', started=timezone.now(), description='', owner=request.user)
+    p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
     p.save()
     form = CLUploadFileForm()
-    if request.POST and request.FILES:
+    if request.POST and request.FILES and checkExtension(request.FILES['file'], 'codes'):
         form = CLUploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.user.username, p.pk, request.FILES['file'])
-            return HttpResponseRedirect('/class/'+str(p.pk)+'/')
+            handle_uploaded_file(p,request.FILES['file'])
+            return render(request, 'classification/tuttook.html')
     return render(request, 'classification/classification.html')
+
 
 @login_required(login_url="/login")
 def download(request, p_id):
