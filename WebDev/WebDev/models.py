@@ -73,12 +73,13 @@ class Results (models.Model):
         return os.path.join(settings.RESULT_PATH, self.task_id.task_id, filename)
 
     FILE_TYPES = (
-        ('csv', 'comma separated ile'),
+        ('csv', 'comma separated file'),
         ('img', 'jpg, tiff, png, pdf'),
         ('graph', 'gml, graphml'),
         ('txt', 'text description'),
         ('json', 'json file'),
-        ('error', 'Error during computation')
+        ('error', 'Error during computation'),
+        ('input', 'Input file type')
     )
 
     process_name = models.CharField(max_length=40)
