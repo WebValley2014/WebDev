@@ -5,18 +5,22 @@ from django.core.servers.basehttp import FileWrapper
 import mimetypes
 from .models import *
 
+# Returns the file extension
 def fileExtension(f):
     u = f.name.split('.')
     return u[len(u)-1]
 
+# Checks whether the file extension is equal to the given extension
 def checkExtension(f,extension):
     return (fileExtension(f)==extension)
 
+# Renames the file
 def renameFile(f, filename):
     ex = fileExtension(f)
     f.name = '%s.%s' % (filename, ex)
     return f
 
+# Saves the file in MEDIA_ROOT/username/uuid/file + stores the attributes of the file in the db
 def handle_uploaded_file(pipeline, f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, str(pipeline.pip_name))
@@ -28,7 +32,7 @@ def handle_uploaded_file(pipeline, f):
         for chunk in f.chunks():
             destination.write(chunk)
     full_path = os.path.join(partial_path, f.name)
-    res = Results(filetype=fileExtension(f), filename=f.name, filepath=full_path)
+    res = Results(pip_id=pipeline, filetype=fileExtension(f), filename=f.name, filepath=full_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path
