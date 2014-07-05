@@ -5,9 +5,12 @@ from django.core.servers.basehttp import FileWrapper
 import mimetypes
 from .models import *
 
-def checkExtension(f, extension):
+def fileExtension(f):
     u = f.name.split('.')
-    return (u[len(u)-1]==extension)
+    return u[len(u)-1]
+
+def checkExtension(f,extension):
+    return fileExtension(f)==extension
 
 def handle_uploaded_file(pipeline, f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
@@ -16,10 +19,10 @@ def handle_uploaded_file(pipeline, f):
     if not os.path.exists(upload_full_path):
         os.makedirs(upload_full_path)
 
-    with open(os.path.join(upload_full_path, (pipeline.pip_id+".codes")), 'wb+') as destination:
+    with open(os.path.join(upload_full_path, f.name), 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-    res = Results(filetype='zip', filename=pipeline.pip_id+".codes", filepath=partial_path)
+    res = Results(filetype='zip', filename=f.name, filepath=partial_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path
