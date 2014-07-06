@@ -1,11 +1,14 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from WebDev.models import *
 from django.utils import timezone
+import uuid
+
 # Create your views here.
 
 from forms import NUploadFileForm
-from utils import handle_uploaded_file
+from WebDev.utils import *
 
 @login_required(login_url="/login")
 def network(request, p_id = ''):
@@ -15,12 +18,17 @@ def network(request, p_id = ''):
 
 @login_required(login_url="/login")
 def upload_network(request):
-    p = Pipeline(pip_name='Network', pip_id='', started=timezone.now(), description='', owner=request.user)
+    p = Pipeline(pip_name='network', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
     p.save()
     form = NUploadFileForm()
+    if not form.is_valid() and request.POST:
+        messages.warning(request, 'No uploaded file')
     if request.POST and request.FILES:
-        form = NUploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            handle_uploaded_file(request.user.username, p.pk, request.FILES['file'])
-            return render(request, 'network/tuttook.html')
+        if checkExtension(request.FILES['file'], 'codes'):
+            form = NUploadFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                handle_uploaded_file(p,request.FILES['file'])
+                return render(request, 'network/tuttook.html')
+        else:
+            messages.error(request, 'Wrong file type')
     return render(request, 'network/network.html')

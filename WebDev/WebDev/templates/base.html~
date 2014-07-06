@@ -85,10 +85,15 @@
 						</ul>
 					</div>
 					<div id="footerright">
+<<<<<<< HEAD
+						<img height: 20px src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
+						<img height="120%"src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" />
+=======
 						<img src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
 						<img src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" />
 						<img src="{% static 'img/logoFBK.png' %}" class="logofooter" alt="FBK logo" />
 						<img src="{% static 'img/logoOspedale.png' %}" class="logofooter" alt="Ospedale logo" />
+>>>>>>> 3b607b566b2dff7c6514dd22b3af80fa3be3dce9
 					</div> 
 				</div>
 			</nav>
