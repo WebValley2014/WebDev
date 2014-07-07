@@ -90,9 +90,6 @@ def start_preprocess(request, pip_id, new_pip=0):
 def processing(request, process_id):
     #Pick the results
     result = settings.APP.AsyncResult(process_id)
-    #IF finished
-    if result.ready():
-        return HttpResponseRedirect('The process is finished')
     return HttpResponse(result.status)
 
 
