@@ -21,7 +21,7 @@ def preprocess_redirect(request):
 
 @login_required(login_url="/login")
 def get_results(request, p):
-    return
+    return HttpResponse("Ok")
 
 @login_required(login_url="/login")
 def upload(request):
