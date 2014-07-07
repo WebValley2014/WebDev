@@ -1,4 +1,5 @@
 import datetime
+import hashlib
 from WebDev.models import *
 from django.contrib.auth.decorators import login_required
 import uuid
@@ -35,7 +36,7 @@ def upload(request):
                 messages.error(request, "Insert the correct file")
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
-                    p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+                    p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(), started=timezone.now(), description='', owner=request.user)
                     print p
                     p.save()
                     handle_uploaded_file(p, file_sff)
@@ -62,6 +63,7 @@ def upload(request):
 
 @login_required(login_url="/login")
 def deleteFile(request, id1, id2):
+    #Delete the file
     re1 = Results.objects.get(id=int(id1))
     re2 = Results.objects.get(id=int(id2))
     delete(re1)
@@ -71,21 +73,19 @@ def deleteFile(request, id1, id2):
 @login_required(login_url="/login")
 def start_preprocess(request, pip_id, new_pip=0):
     app = celery.Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
+
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
 
     preproc_id = app.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+
     input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
     store_before_celery(pip, input, preproc_id.id)
 
+
+
     return HttpResponse("OK")
-    #
-    #
-    #
-    #
-    #
-    #return HttpResponseRedirect('/preproc/processing/process_name/')
 
 @login_required(login_url='/login')
 def processing(request, process_name):
@@ -93,6 +93,10 @@ def processing(request, process_name):
     # OR
     # FINISHED
     return HttpResponse("PROCESSING")
+
+
+
+#CELERY FUNCTION
 
 def store_before_celery( pip_id ,jinput , task_id ):
     '''
