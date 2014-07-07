@@ -12,6 +12,9 @@ urlpatterns = patterns('classification.views',
     url(regex=r'^download/(.+)/$', view="download", name="download"),
     #Option-PreAnalytics
     url(regex=r'^option/(.+)/$', view="option", name="option"),
+
+    url(regex=r'^delete/(?P<id>[0-9]+)/$', view="deleteFile", name="delete"),
+
     #Home Classification
     url(regex=r'^(.+)/$', view="classification", name="classification"),
     url(regex=r'^$', view="classification_redirect"),

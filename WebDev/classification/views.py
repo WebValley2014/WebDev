@@ -48,6 +48,24 @@ def upload_preProcessed(request):
     oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
     return render(request, 'classification/classification.html', {'oldFiles': oldFiles})
 
+@login_required(login_url="/login")
+def deleteFile(request, id):
+    re = Results.objects.get(pk=id)
+    pos = re.filepath #pos = '/utente/uuid/classification/file'
+    os.remove(pos)
+    pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid/classification'
+    try:
+        os.rmdir(pos)
+        pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid'
+        try:
+            os.rmdir(pos)
+        except:
+            pass
+    except:
+        pass
+    re.delete()
+    return render(request, 'classification/tuttook.html')
+
 
 @login_required(login_url="/login")
 def download(request, p_id):

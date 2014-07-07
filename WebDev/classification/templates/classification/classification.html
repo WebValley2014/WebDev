@@ -8,7 +8,7 @@
 
 Choose one file or upload one: </br>
 {% for fi in oldFiles %}
-<a href="tuttook.html" {# Da sistemare l'href #}> {{ fi.filename }}</a>
+<a href="tuttook.html" {# Da sistemare l'href #}> {{ fi.filename }}</a> <a href={% url 'delete' fi.pk %}> Delete </a> </br>
 {% endfor %}
 
 {% if messages %}
