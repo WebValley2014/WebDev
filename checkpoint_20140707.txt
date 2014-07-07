@@ -37,11 +37,17 @@
              - "templates are pretty cool" (cit., Federica) O_o
              - working w/ cristian and deborah
 
+* django: render
+  [davide biz] - half way w/ views, ~53% completed
+  [nebras] - preproc works but need to figure out how to get and render
+             results automatically, ~35% completed
+  [hiromu] - live demo ...
+
+  
 
 ================================================================================
 FROM GDOC :: https://docs.google.com/a/fbk.eu/document/d/1U9HFykD-WYmBOR61VtzlazA1dRZdNzFrPBdieSZZD8Q/edit
 -------------------------------------------------
-
 Checkpoint:
 
 Machine Learning - Pre Processing
@@ -72,5 +78,6 @@ abundance plots with qiime        (Stefano)
     Gesture recognition            80%
 - Django
     Web-page (Codes)            100% (Fede, Deborah, Christian)
-Results render            
+Results render            53%
+Infrastructure                35% (FQ, DB, ND, H)
 
