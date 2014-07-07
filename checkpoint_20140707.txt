@@ -41,6 +41,7 @@
 ================================================================================
 FROM GDOC :: https://docs.google.com/a/fbk.eu/document/d/1U9HFykD-WYmBOR61VtzlazA1dRZdNzFrPBdieSZZD8Q/edit
 -------------------------------------------------
+
 Checkpoint:
 
 Machine Learning - Pre Processing
@@ -55,7 +56,8 @@ real-pred                (Kevin) ?
 plot -> biomarkers sample by sample 67.2% (Kevin, Stefano, Ruchi)
 filtering                    100% (Nina, Kevin Z)
 alpha-beta divesity            (Nina, Kevin  Z, Ruchi)
-scientific results (standard)        (Talissa, Andrea, Ben)
+scientific results Test on public data    50% (Talissa)    
+standards                60% (Andrea, Ben)
 plot metrics                (Stefano)
 abundance plots with qiime        (Stefano)
 
@@ -68,5 +70,7 @@ abundance plots with qiime        (Stefano)
     PCA plots + Oculus            80% (Davide F.)
     Philogeny tree    + Oculus?        40% 
     Gesture recognition            80%
-
+- Django
+    Web-page (Codes)            100% (Fede, Deborah, Christian)
+Results render            
 
