@@ -26,7 +26,11 @@
              2 more lines of code)
   [nebras] - kinect, ready it works, some gestures maybe to zoom the graphs
 
+* standards
+  [andrea] - half way, they are still reading some papers, ~50-60% completed
 
+* scientific results
+  [marco c.] - talissa working on this, reading papers etc, ~50% completed
 
 ================================================================================
 FROM GDOC :: https://docs.google.com/a/fbk.eu/document/d/1U9HFykD-WYmBOR61VtzlazA1dRZdNzFrPBdieSZZD8Q/edit
