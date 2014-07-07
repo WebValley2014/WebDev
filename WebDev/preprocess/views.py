@@ -66,8 +66,10 @@ def deleteFile(request, id1, id2):
     #Delete the file
     re1 = Results.objects.get(id=int(id1))
     re2 = Results.objects.get(id=int(id2))
-    delete(re1)
-    delete(re2)
+    if re1.owner == request.user:
+        delete(re1)
+    if re2.owner == request.user:
+        delete(re2)
     return HttpResponseRedirect('/preproc/upload')
 
 @login_required(login_url="/login")
