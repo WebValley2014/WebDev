@@ -31,8 +31,8 @@
     	{% endfor %}
 		</ul>
 	{% endif %}
-	<p style="text-align:center">Select or drop a <strong>CODES</strong> file for the upload.</p><br />
-	<form id="dropform" class="form fileformbox dropzone" method="post" enctype="multipart/form-data"> 
+	<p style="text-align:center">Select a <strong>.CODES</strong> file for the upload.</p><br />
+	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
@@ -45,7 +45,6 @@
 	</form>
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
-	<script src="{% static 'script/dropzone.js' %}"></script>
 	<br />
 	{% for fi in oldFiles %}
 		<a href="tuttook.html" {# Da sistemare l'href #}> {{ fi.filename }}</a> <a href={% url 'delete' fi.pk %}> Delete </a> </br>
