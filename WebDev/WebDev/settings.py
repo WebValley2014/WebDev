@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import djcelery
+import celery
+
 djcelery.setup_loader()
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
@@ -117,3 +119,6 @@ CELERY_TASK_RESULT_EXPIRES = 18000  # 5 hours.
 UPLOAD_PATH = '/static/'
 
 LOGIN_REDIRECT_URL = '/'
+
+#RabbitMQ SETTINGS
+APP = celery.Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')

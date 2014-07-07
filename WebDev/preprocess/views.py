@@ -5,13 +5,13 @@ from django.contrib.auth.decorators import login_required
 import uuid
 from forms import PPUploadFileForm
 from django.shortcuts import render, HttpResponseRedirect
-import celery
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from utils import pick_file_list
 from django.shortcuts import  HttpResponse
 from WebDev.utils import *
 from django.contrib import messages
+from django.conf import settings
 
 
 @login_required(login_url="/login")
@@ -74,28 +74,36 @@ def deleteFile(request, id1, id2):
 
 @login_required(login_url="/login")
 def start_preprocess(request, pip_id, new_pip=0):
-    app = celery.Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
 
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
 
-    preproc_id = app.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+    preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
 
     input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
     store_before_celery(pip, input, preproc_id.id)
 
-
-
-    return HttpResponse("OK")
+    return HttpResponseRedirect("/preproc/processing/"+preproc_id.id+"/")
 
 @login_required(login_url='/login')
-def processing(request, process_name):
-    # PROCESSING
-    # OR
-    # FINISHED
-    return HttpResponse("PROCESSING")
+def processing(request, process_id):
+    #Pick the results
+    result = settings.APP.AsyncResult(process_id)
+    return HttpResponse(result.status)
 
+@login_required(login_url='/login')
+def statusPP(request):
+    tList = RunningProcess.objects.all()
+    listPending = []
+    listOK = []
+    for el in tList:
+        if el.pip_id.owner==request.user:
+            if(settings.APP.AsyncResult(el.task_id).status=='PENDING'):
+                listPending.append(el)
+            else:
+                listOK.append(el)
+    return render(request, 'preprocess/status.html', {'listPending': listPending, 'listOK': listOK})
 
 
 #CELERY FUNCTION
