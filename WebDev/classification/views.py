@@ -32,8 +32,6 @@ def classification_redirect(request):
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
-    p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
-    p.save()
     form = CLUploadFileForm()
     if not form.is_valid() and request.POST:
         messages.warning(request, 'No uploaded file')
@@ -41,12 +39,32 @@ def upload_preProcessed(request):
         if checkExtension(request.FILES['file'], 'codes'):
             form = CLUploadFileForm(request.POST, request.FILES)
             if form.is_valid():
+                p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+                p.save()
                 handle_uploaded_file(p,request.FILES['file'])
                 return render(request, 'classification/tuttook.html')
         else:
             messages.error(request, 'Wrong file type')
     oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
     return render(request, 'classification/classification.html', {'oldFiles': oldFiles})
+
+@login_required(login_url="/login")
+def deleteFile(request, id):
+    re = Results.objects.get(pk=id)
+    pos = re.filepath #pos = '/utente/uuid/classification/file'
+    os.remove(pos)
+    pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid/classification'
+    try:
+        os.rmdir(pos)
+        pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid'
+        try:
+            os.rmdir(pos)
+        except:
+            pass
+    except:
+        pass
+    re.delete()
+    return render(request, 'classification/tuttook.html')
 
 
 @login_required(login_url="/login")

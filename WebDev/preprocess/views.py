@@ -8,7 +8,7 @@ from django.utils import timezone
 from django.shortcuts import  HttpResponse
 
 from forms import PPUploadFileForm
-from WebDev.utils import handle_uploaded_file, checkExtension
+from WebDev.utils import handle_uploaded_file, checkExtension, renameFile
 
 @login_required(login_url="/login")
 def preprocess_redirect(request):
@@ -23,15 +23,23 @@ def upload(request):
     p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
     p.save()
     form_error, ex_error = False, False
-    if request.POST and request.FILES:
-        try:
-            if checkExtension(request.FILES['file_zip'], 'zip') and checkExtension(request.FILES['file_map'], 'map'):
-                handle_uploaded_file(p, request.FILES['file_zip'])
-                handle_uploaded_file(p, request.FILES['file_map'])
-                return render(request, 'preprocess/tuttook.html')
-            else:
-                ex_error = True
-        except:
+    if request.POST:
+        if request.FILES:
+            try:
+                file_zip = request.FILES['file_zip']
+                file_map = request.FILES['file_map']
+            except:
+                form_error = True
+            if not form_error:
+                if checkExtension(file_zip, 'zip') and checkExtension(file_map, 'map'):
+                    file_zip = renameFile(file_zip, 'archivio_zip')
+                    file_map = renameFile(file_map, 'file_map')
+                    handle_uploaded_file(p, file_zip)
+                    handle_uploaded_file(p, file_map)
+                    return HttpResponseRedirect('/preproc/celery/'+p.pip_id)
+                else:
+                    ex_error = True
+        else:
             form_error = True
     form = PPUploadFileForm()
     c = {
@@ -40,6 +48,23 @@ def upload(request):
     }
     return render(request, 'preprocess/upload.html', c)
 
+@login_required(login_url="/login")
+def celery(request, uuid):
+    pip = Pipeline.objects.get(pip_id=uuid)
+    file = Results.objects.filter(pip_id=pip, process_name='preprocess')
+    #
+    #
+    #
+    #
+    #
+    return HttpResponseRedirect('/preproc/processing/process_name/')
+
+@login_required(login_url='/login')
+def processing(request, process_name):
+    # PROCESSING
+    # OR
+    # FINISHED
+    return HttpResponse("PROCESSING")
 
 
 
@@ -53,10 +78,7 @@ def upload(request):
 
 
 
-
-
-
-
+#Da eliminare
 
 
 @login_required(login_url="/login")

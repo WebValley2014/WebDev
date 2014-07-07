@@ -64,7 +64,7 @@ main {
 	padding: 30px;
 }
 
-#caretlogin {
+.caretfix {
 	margin-left: 5px;
 }
 
@@ -78,6 +78,10 @@ main {
 
 .activetab {
 	background-color: #bbccb8;
+}
+
+.activetab:hover {
+	background-color: #bbccb8 !important;
 }
 
 #footercontainer {
@@ -102,6 +106,7 @@ main {
 .logofooter {
 	height: 60px;
 	margin-top: 6px;
+	margin-left: 10px;
 }
 
 .nolist {
@@ -126,4 +131,13 @@ main {
 	margin-right: -170px !important;
 	position: relative !important;
 	left: 50% !important;
+}
+
+.dropdown-menu > li > a {
+	color: #777;
+}
+
+.dropdown-menu > li > a:hover {
+	background-color: #c5d4c3 !important;
+	color: #333;
 }

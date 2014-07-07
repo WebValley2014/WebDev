@@ -5,8 +5,12 @@ from .views import *
 admin.autodiscover()
 
 urlpatterns = patterns('preprocess.views',
+    #Processing
+    url(regex='^processing/(.+)/$', view='processing', name='processing'),
+    #Celery
+    url(regex='^celery/(.+)/$', view="celery", name="celery"),
     #Upload page
-    url(regex='^upload/$', view="upload", name='upload'),
+    url(regex='^upload/$', view="upload", name='preproc_upload'),
     #In processing page
     url(regex='^(.+)/$', view="get_results", name='get_result'),
     #Processing root (redirect to upload)
