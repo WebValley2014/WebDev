@@ -57,7 +57,7 @@ def celery(request, uuid):
     #
     #
     #
-    return HttpResponseRedirect('/preroc/processing/process_name/')
+    return HttpResponseRedirect('/preproc/processing/process_name/')
 
 @login_required(login_url='/login')
 def processing(request, process_name):
