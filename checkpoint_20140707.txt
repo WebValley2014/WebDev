@@ -85,5 +85,8 @@ Results render            53%
 Infrastructure                35% (FQ, DB, ND, H)
 
 - github
+-sleeping                     100% (*)
+
+60% 
 TAKE A PICTURE
 
