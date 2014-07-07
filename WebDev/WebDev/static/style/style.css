@@ -22,7 +22,13 @@ html body {
 
 main {
 	padding: 40px;
-	background-color: white;
+	background-color: #fff;
+}
+
+.navbar, .navbar-default {
+	-webkit-border-radius: 0 !important;
+	-moz-border-radius: 0 !important;
+	border-radius: 0 !important;
 }
 
 #topnavbar, #bottomnavbar {
@@ -51,12 +57,6 @@ main {
 	border-bottom-left-radius:10px !important;
 	border-bottom-right-radius:10px !important;
 	border-top: 1px solid #777;
-}
-
-.navbar, .navbar-default {
-	-webkit-border-radius: 0 !important;
-	-moz-border-radius: 0 !important;
-	border-radius: 0 !important;
 }
 
 #logindropdown {
@@ -92,7 +92,7 @@ main {
 
 #footerleft {
 	float: left;
-	font-size: 10px;
+	font-size: 13px;
 }
 
 #footerright {
@@ -100,10 +100,11 @@ main {
 }
 
 .logofooter {
-	height: 50px;
+	height: 60px;
+	margin-top: 6px;
 }
 
-ul {
+.nolist {
 	list-style-type: none;
 }
 

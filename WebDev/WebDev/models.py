@@ -96,7 +96,7 @@ class Results (models.Model):
         return os.path.join(settings.RESULT_PATH, self.task_id.task_id, filename)
 
     FILE_TYPES = (
-        ('csv', 'comma separated ile'),
+        ('csv', 'comma separated file'),
         ('img', 'jpg, tiff, png, pdf'),
         ('graph', 'gml, graphml'),
         ('txt', 'text description'),
@@ -106,6 +106,7 @@ class Results (models.Model):
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery
+    owner = models.ForeignKey(User)
     pip_id = models.ForeignKey(Pipeline)
     task_id = models.ForeignKey(RunningProcess, null=True, blank=True)          #Nome dell'app
     filetype = models.CharField(max_length=36, choices=FILE_TYPES)              #Tipo di file (zip)

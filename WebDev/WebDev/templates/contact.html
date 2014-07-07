@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
-{# TITOLO #}
+{# TITLE #}
 {% block pagetitle %}
 	Contact us - 
 {% endblock %}
 
-{# TAB CONTACTS ATTIVA #}
+{# CONTACTS TAB ACTIVE #}
 
 {% block contactstab %}
 	<li class="activetab"><a href="{% url 'contact' %}">CONTACTS</a></li>
 {% endblock %}
 
 
-{# CONTENUTO #}
+{# CONTENT #}
 
 {% block main %}
 	<h1>The TEAM</h1>
 	<h3>The WebValley team:</h3>
 	<h4>Tutors</h4>
-	<ul>
+	<ul class="nolist">
 		<li>Claudia Dolci</li>
 		<li>Giuseppe Jurman</li>
 		<li>Cesare Furlanello</li>
@@ -34,7 +34,7 @@
 		<li>Ernesto Arbitrio</li>
 	</ul><br />
 	<h4>Students</h4>
-	<ul>
+	<ul class="nolist">
 		<li>Andrea Rivera</li>
 		<li>Cristian Lizan</li>	
 		<li>Davide Bizzarri</li>
@@ -56,7 +56,7 @@
 		<li>Yuan Chen</li>
 	</ul>
 	<h2>Special thanks to</h2>
-	<ul>
+	<ul class="nolist">
 		<li>Provincia Autonoma di Trento</li>
 		<li>APT Terme di Comano</li><br>
 		<li>Dolomiti di Brenta</li>
@@ -78,7 +78,7 @@
 	</ul>
 	<h2>Contacts</h2>
 	<h4>Fondazione Bruno Kessler</h4>
-	<ul>
+	<ul class="nolist">
 		<li>Via Sommarive, 18</li>
 		<li>Povo (Trento), Italy 38123</li>
 		<li>P: +39 366 7554977</li><br>
@@ -89,7 +89,7 @@
 		<li>Martina Calovi - mcalovi at fbk dot eu</li>
 	</ul><br>
 	<h4>Bambino Gesu' Ospedale Pediatrico</h4>
-	<ul>
+	<ul class="nolist">
 		<li>Centralino</li>
 		<li>tel. +39 06.6859.1</li><br>
 		<li>URP - Ufficio Relazioni con il Pubblico</li>
