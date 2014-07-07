@@ -5,6 +5,8 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import multiprocessing
+
 
 __author__ = 'michele'
 
@@ -153,4 +155,10 @@ def preprocess(job_id, sff, mapping):
     core = multiprocessing.cpu_count() - 1
 
     pipeline = SFF2OTU(job_id, sff, mapping)
-    return os.path.abspath(pipeline.run(core, processors = core))
+
+    g= pipeline.run(core, processors = core)
+
+    t = { pathname = os.path.abspath(g) ,
+          filename = os.path.basename(g)
+        }
+    return t
