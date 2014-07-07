@@ -1,24 +1,24 @@
 {% extends "base.html" %}
 
-{# TITOLO #}
+{# TITLE #}
 {% block pagetitle %}
 	Login - 
 {% endblock %}
 
-{# TAB HOME ATTIVA #}
+{# HOME TAB ACTIVE #}
 
 {% block hometab %}
 	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
 {% endblock %}
 
 
-{# TOGLIERE IL TAB DEL LOGIN #}
+{# REMOVE LOGIN TAB #}
 
 {% block login %}
 {% endblock %}
 
 
-{# CONTENUTO #}
+{# CONTENT #}
 
 {% block main %}
 	{% if form.errors %}<p style="text-align:center">Your username and password were incorrect. Please try again.</p>{% endif %}

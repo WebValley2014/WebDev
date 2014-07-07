@@ -24,7 +24,7 @@
 						<ul class="nav navbar-nav navbar-right">
 							<ul class="nav navbar-nav">
 								{% block hometab %}<li><a href="{% url 'index' %}">HOME</a></li>{% endblock %}
-								{% block uploadtab %}{% if user.is_authenticated %}<li><a href="#">UPLOAD</a></li>{% endif %}{% endblock %}
+								{% block uploadtab %}{% if user.is_authenticated %}<li><a href="{% url 'upload' %}">UPLOAD</a></li>{% endif %}{% endblock %}
 								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}
 								{% block abouttab %}<li><a href="{% url 'about' %}">ABOUT US</a></li>{% endblock %}
 								{% block contactstab %}<li><a href="{% url 'contact' %}">CONTACTS</a></li>{% endblock %}
@@ -81,14 +81,15 @@
 						<ul id="contactlist">
 							<li><a href="http://www.fbk.eu/">FBK Fondazione Bruno Kessler - Trento - +39 0461 314200</a></li> 
 							<li><a href="https://webvalley.fbk.eu/">WebValley - FBK</a></li>
-							<li><a href="http://www.ospedalebambinogesu.it/home">Ospedale Bambino Gesu' - Roma -</a> <a href="mailto:urp@opbg.net">urp@opbg.net</a></li>
+							<li><a href="http://www.ospedalebambinogesu.it/home">Ospedale Bambino Gesù - Roma -</a> <a href="mailto:urp@opbg.net">urp@opbg.net</a></li>
 						</ul>
 					</div>
 					<div id="footerright">
-						<img src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo"/>
-						<img src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" />
-						<img src="{% static 'img/logoFBK.png' %}" class="logofooter" alt="FBK logo" />
-						<img src="{% static 'img/logoOspedale.png' %}" class="logofooter" alt="Ospedale logo" />
+						<a href="http://webvalley.fbk.eu/"><img src="{% static 'img/logowvfbk.png' %}" class="logofooter" alt="WebValley logo" /></a>
+						<a href="https://www.fbk.eu/"><img src="{% static 'img/logoFBK.png' %}" class="logofooter" alt="FBK logo" /></a>
+						<a href="http://www.ospedalebambinogesu.it/"><img src="{% static 'img/logoOspedale.png' %}" class="logofooter" alt="Ospedale logo" /></a>
+						<a href="http://www.lacassarurale.it/"><img src="{% static 'img/logoCassaRurale.png' %}" class="logofooter" alt="Cassa Rurale logo" /></a>
+						<a href="http://www.visitacomano.it/"><img src="{% static 'img/logoComano.png' %}" class="logofooter" alt="Comano logo" /></a>
 					</div> 
 				</div>
 			</nav>
