@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# TAB HOME ATTIVA #}
+
+{% block hometab %}
+	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
+{% endblock %}
+
+
+{# CONTENUTO #}
+
+{% block main %}
+	<div align="center">
+		<img src="{% static 'img/DNA_home.jpg' %}" width="400px"> 
+		<h1>CODES - Analyse your data!</h1>
+		
+	</div>	
+	<div align="left">
+<p>CODES is a novel web platform for studying microbiota dysbiosis in childhood. The platform connects omics data and clinical phenotypes, implementing a system medicine approach, with a special focus on the support of reproducible research within interdisciplinary projects.<br/>
+Introduction<br/>
+CODE (Children Omics Dysbiosis Elaboration System) is developed for microbiodata 16s sequence analysis, fingerprinting and classification as a possible tool for preliminary macrobiotic dybiosis diagnosis in pediatric IBD patients.
+The input of the program, the raw data from 16s sequencing will be analyzed by the system into graphs, OTU tables, and has the ability of comparing different results of previously done sample. The output then would result in the classification, fingerprinting and diagnostic of new samples according to the data received. CODE is a great tool for researchers or clinicians to further comprehend children's macrobiota and further understand the diagnosis of Dysbiosis in the patients.</p>
+	</div>	
+			<h2>How to use CODES:</h2>
+			<p>Upload --> Convert --> See...</p>
+		
+	</div>
+{% endblock %}
