@@ -32,20 +32,64 @@
 		</ul>
 	{% endif %}
 	<p style="text-align:center">Select a <strong>.CODES</strong> file for the upload.</p><br />
-	<form id="dropform" class="form fileformbox dropzone" method="post" enctype="multipart/form-data">
+	<form id="dropform" class="form fileformbox dropzone" name="dropform" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file"> CODES</span>
 			</span>
-			<input id="id_file" name="file" type="file" class="form-control" />
+			<input id="fileToUpload" name="file" type="file" class="form-control" onchange="fileSelected();" />
 		</div>
 		<br />
-		<input type="submit" class="btn btn-default centeredbutton start" value="Submit" />
+		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
+		<br /><br />
+		<div>
+        	<p class="size" data-dz-size></p>
+        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+			</div>
+        </div>
 	</form>
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
-	<br />
+	<script type="text/javascript">
+		function uploadFile() {
+			// document.forms["dropform"].submit();
+			var fd = new FormData();
+			fd.append("file", document.getElementById('fileToUpload').files[0]);
+			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+			var xhr = new XMLHttpRequest();
+			xhr.upload.addEventListener("progress", uploadProgress, false);
+			xhr.addEventListener("load", uploadComplete, false);
+			//xhr.addEventListener("error", uploadFailed, false);
+			//xhr.addEventListener("abort", uploadCanceled, false);
+			xhr.open("POST", "");
+			xhr.send(fd);
+		}
+
+      function uploadProgress(evt) {
+        if (evt.lengthComputable) {
+		  document.getElementById('progress-bar').style.width = Math.round(evt.loaded * 100 / evt.total).toString() + '%';
+        }
+        else {
+          document.getElementById('progressNumber').innerHTML = 'unable to compute';
+        }
+      }
+
+      function uploadComplete(evt) {
+        /* This event is raised when the server send back a response */
+        alert(evt.target.responseText);
+		// document.forms["dropform"].submit();
+      }
+
+      function uploadFailed(evt) {
+        alert("There was an error attempting to upload the file.");
+      }
+
+      function uploadCanceled(evt) {
+        alert("The upload has been canceled by the user or the browser dropped the connection.");
+      }
+    </script>
 	{% for fi in oldFiles %}
 		<a href="tuttook.html" {# Da sistemare l'href #}> {{ fi.filename }}</a> <a href={% url 'delete' fi.pk %}> Delete </a> </br>
 	{% endfor %}

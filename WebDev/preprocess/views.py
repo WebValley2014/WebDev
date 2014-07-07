@@ -36,7 +36,7 @@ def upload(request):
                     p.save()
                     handle_uploaded_file(p, file_zip)
                     handle_uploaded_file(p, file_map)
-                    return HttpResponseRedirect('/preproc/celery/'+p.pip_id)
+                    return HttpResponse('/preproc/celery/'+p.pip_id)
                 else:
                     ex_error = True
         else:
