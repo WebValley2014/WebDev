@@ -25,6 +25,33 @@
 
 
 
-
-
 ==========  from gdoc ==================  
+Checkpoint:
+
+Machine Learning - Pre Processing
+
+- Preprocessing        Done
+    15 mins/sff
+- Machine Learning:
+svm                    100%
+rf                    100%
+diagnosis                (Luca, Pia)
+real-pred                (Kevin) ?
+plot -> biomarkers sample by sample (Kevin, Stefano)
+filtering                    100% (Nina, Kevin Z)
+alpha-beta divesity            (Nina, Kevin  Z, Ruchi)
+scientific results (standard)        (Talissa, Andrea, Ben)
+plot metrics                (Stefano)
+abundance plots with qiime        (Stefano)
+
+- Network 
+    produce data                80% (Davide, Stefano)
+    pickle files
+    igraph + static plots            32.7% (Stefano)
+
+-3D viz
+    PCA plots + Oculus            80% (Davide F.)
+    Philogeny tree    + Oculus?        40% 
+    Gesture recognition            80%
+
+
