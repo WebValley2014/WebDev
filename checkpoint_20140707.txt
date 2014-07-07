@@ -1,4 +1,4 @@
-2014-07-07
+2014-07-07 ~22:10
 
 * celery
   [nebras] - almost done, everything ok for tomorrow morning
@@ -17,10 +17,10 @@
 * 3D visualization
   [davide] - PCA plots, almost done,  ~80% completed
            - philogeny trees graphs, started today, ~40% completed
-  
-
-
-
+           - oculus: it's easy, just take the code for the other graphs
+             and make it usable by the oculus (almost automatic, with
+             2 more lines of code)
+  [nebras] - kinect, ready it works, some gestures maybe to zoom the graphs
 
 
 
