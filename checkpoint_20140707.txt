@@ -1,5 +1,7 @@
 2014-07-07 ~22:10
--------------------------------------------
+-----------------------------------------
+=== NOTE: speakers in square brackets ===
+
 
 * celery
   [nebras] - almost done, everything ok for tomorrow morning
@@ -14,8 +16,9 @@
              care of this task
   
 * network
-  [davide, stefano] - data production, almost done, ~80% completed
-                    - data stored in pickle files
+  [beppe] - stefano & davide leo working on data production,
+            almost done, ~80% completed
+          - data stored in pickle files
   [stefano] - working on igraph and static plots, ~30% completed
   
 * 3D visualization
@@ -80,4 +83,7 @@ abundance plots with qiime        (Stefano)
     Web-page (Codes)            100% (Fede, Deborah, Christian)
 Results render            53%
 Infrastructure                35% (FQ, DB, ND, H)
+
+- github
+TAKE A PICTURE
 
