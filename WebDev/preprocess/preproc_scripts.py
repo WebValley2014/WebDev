@@ -12,9 +12,9 @@ __author__ = 'michele'
 
 class SFF2OTU:
     def __init__(self, job_id, sff, mapping):
-        if isinstance(sff, str):
+        if isinstance(sff, str) or isinstance(sff, unicode):
             sff = [sff]
-        if isinstance(mapping, str):
+        if isinstance(mapping, str) or isinstance(mapping, unicode):
             mapping = [mapping]
 
         if len(sff) != len(mapping):

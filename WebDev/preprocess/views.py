@@ -12,7 +12,8 @@ from django.shortcuts import  HttpResponse
 from WebDev.utils import *
 from django.contrib import messages
 from django.conf import settings
-
+import os
+import time
 
 @login_required(login_url="/login")
 def preprocess_redirect(request):
@@ -79,6 +80,9 @@ def start_preprocess(request, pip_id, new_pip=0):
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
 
+    print file_sff.filepath, os.path.exists(file_sff.filepath)
+    print file_map.filepath, os.path.exists(file_map.filepath)
+
     preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
 
     input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
@@ -86,13 +90,21 @@ def start_preprocess(request, pip_id, new_pip=0):
 
     return HttpResponseRedirect("/preproc/processing/"+preproc_id.id+"/")
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 def processing(request, process_id):
     #Pick the results
+    print 'Is worked'
     result = settings.APP.AsyncResult(process_id)
     return HttpResponse(result.status)
 
-
+def processing_finish(request, pip_id, task_id):
+    result = settings.APP.AsyncResult(task_id)
+    while not result.ready():
+        time.sleep(1)
+    r = result.get()
+    store_after_celery(r, task_id)
+    print 'ok'
+    return HttpResponse('OK')
 
 #CELERY FUNCTION
 
@@ -114,23 +126,23 @@ def store_before_celery( pip_id ,jinput , task_id ):
                          inputs=jinput,
                          submitted = datetime.datetime.now() ,
                          task_id = task_id,
-                         started = None,
-                         finished = None,
                      )
+    rundb.save()
+    return rundb.task_id
 
-    return rundb
-
-def store_after_celery(rundb , task_ret ):
+def store_after_celery(task_ret, task_id):
     '''
     Run after Celery Task
     :param rundb: from store_before_celery
     :param task_ret:  return of the celery task
     :return: True
     '''
-
+    rundb = RunningProcess.object.get(task_id=task_id)
     tp = 'txt'
     rundb.started = task_ret.st,
     rundb.finished = task_ret.ft,
+
+    rundb.save()
 
     resdb = Results(
                          process_name=rundb.process_name,
@@ -139,6 +151,7 @@ def store_after_celery(rundb , task_ret ):
                          filetype=tp,
                          filename=task_ret.funct.filename ,
                      )
+    resdb.save()
 
     return True
 

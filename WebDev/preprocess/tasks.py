@@ -19,6 +19,7 @@ import os
 import optparse
 import uuid
 from preproc_scripts import preprocess
+import urllib2
 
 
 
@@ -36,6 +37,8 @@ def prepro(self , uniqueJobID , listofSFFfiles, listOfMappingFiles):
                   'ft': finishTime
                  }
 
+     x = 'http://localhost:8000/preproc/processing/%s/%s/' % (uniqueJobID, self.request.id)
+     urllib2.urlopen(x)
 
      return task_ret,
 
