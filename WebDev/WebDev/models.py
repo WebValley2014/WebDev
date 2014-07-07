@@ -102,7 +102,8 @@ class Results (models.Model):
         ('txt', 'text description'),
         ('json', 'json file'),
         ('error', 'Error during computation'),
-        ('zip', 'zip')
+        ('zip', 'zip'),
+        ('sff', 'sff')
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery

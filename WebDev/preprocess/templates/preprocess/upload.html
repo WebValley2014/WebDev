@@ -31,14 +31,14 @@
     	{% endfor %}
 		</ul>
 	{% endif %}
-	<p style="text-align:center">Select a <strong>.ZIP</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	<p style="text-align:center">Select a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-compressed" style="width:58px"> ZIP</span>
+				<span class="glyphicon glyphicon-compressed" style="width:58px"> SFF</span>
 			</span>
-			<input id="id_file" name="file_zip" type="file" class="form-control" />
+			<input id="id_file" name="file_sff" type="file" class="form-control" />
 		</div>
 		<br />
 		<div class="input-group forminp">

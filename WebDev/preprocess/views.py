@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 import uuid
 from forms import PPUploadFileForm
 from django.shortcuts import render, HttpResponseRedirect
-import djcelery
+import celery
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from utils import pick_file_list
@@ -29,15 +29,16 @@ def upload(request):
     if request.POST:
         if request.FILES:
             try:
-                file_zip = request.FILES['file_zip']
+                file_sff = request.FILES['file_sff']
                 file_map = request.FILES['file_map']
             except:
                 messages.error(request, "Insert the correct file")
             if not form_error:
-                if checkExtension(file_zip, 'zip') and checkExtension(file_map, 'map'):
+                if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
                     p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+                    print p
                     p.save()
-                    handle_uploaded_file(p, file_zip)
+                    handle_uploaded_file(p, file_sff)
                     handle_uploaded_file(p, file_map)
                     return HttpResponseRedirect('/preproc/celery/'+p.pip_id)
                 else:
@@ -68,10 +69,17 @@ def deleteFile(request, id1, id2):
     return HttpResponseRedirect('/preproc/upload')
 
 @login_required(login_url="/login")
-def celery(request, pip_id, new_pip=0):
-    return HttpResponse(new_pip)
-    #pip = Pipeline.objects.get(pip_id=uuid)
-    #file = Results.objects.filter(pip_id=pip, process_name='preprocess')
+def start_preprocess(request, pip_id, new_pip=0):
+    app = celery.Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
+    pip = Pipeline.objects.get(pip_id=pip_id)
+    file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
+    file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
+
+    preproc_id = app.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+    input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
+    store_before_celery(pip, input, preproc_id.id)
+
+    return HttpResponse("OK")
     #
     #
     #
@@ -85,7 +93,8 @@ def processing(request, process_name):
     # OR
     # FINISHED
     return HttpResponse("PROCESSING")
-def store_before_celery( pip_id ,jinput , task_id , tmpdir):
+
+def store_before_celery( pip_id ,jinput , task_id ):
     '''
 
     This Function Stores the running process and info related to the results to the database.
@@ -102,9 +111,9 @@ def store_before_celery( pip_id ,jinput , task_id , tmpdir):
                          pip_id=pip_id,
                          inputs=jinput,
                          submitted = datetime.datetime.now() ,
-                         task_id = taskid,
-                         started = NULL,
-                         finished = NULL ,
+                         task_id = task_id,
+                         started = None,
+                         finished = None,
                      )
 
     return rundb

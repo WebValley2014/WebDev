@@ -1,6 +1,6 @@
 from celery import Celery 
 from django.conf import settings
-
+import datetime
 celery = Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
 
 @celery.task(bind=True)
@@ -31,9 +31,9 @@ def prepro(self , uniqueJobID , listofSFFfiles, listOfMappingFiles):
      self.update_state(state='RUNNING', meta='Preprocessing...')
      t = preprocess(uniqueJobID, listofSFFfiles , listOfMappingFiles)
      finishTime = unicode(datetime.datetime.now())
-     task_ret = { funct= t ,
-                  st = startTime,
-                  ft = finishTime
+     task_ret = { 'funct': t ,
+                  'st': startTime,
+                  'ft': finishTime
                  }
 
 

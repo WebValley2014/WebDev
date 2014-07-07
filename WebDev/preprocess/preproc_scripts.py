@@ -158,7 +158,7 @@ def preprocess(job_id, sff, mapping):
 
     g= pipeline.run(core, processors = core)
 
-    t = { pathname = os.path.abspath(g) ,
-          filename = os.path.basename(g)
+    t = { 'pathname': os.path.abspath(g) ,
+          'filename': os.path.basename(g)
         }
     return t
