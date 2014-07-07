@@ -1,14 +1,19 @@
 from django.conf import settings
-import os
-import datetime
-__author__ = 'filippo'
-def handle_uploaded_file(f):
-    #upload_dir = datetime.date.today().strftime(settings.UPLOAD_PATH)
-    #upload_full_path = os.path.join(settings.MEDIA_PREPROCESS_ROOT, upload_dir)
-    upload_full_path = settings.MEDIA_PREPROCESS_ROOT
-    if not os.path.exists(upload_full_path):
-        os.makedirs(upload_full_path)
 
-    with open(os.path.join(upload_full_path, f.name), 'wb+') as destination:
-        for chunk in f.chunks():
-            destination.write(chunk)
+def pick_file_list(pre_file):
+    lis_file = []
+    for f in pre_file:
+        lis_file.append(f)
+    #Reorder the list in a bidimensional list
+    final_file = []
+    while len(lis_file) != 0:
+        first_file = lis_file[0]
+        pip_id = first_file.pip_id
+        lis_file.remove(first_file)
+        for f in lis_file:
+            if f.pip_id == pip_id:
+                second_file = f
+                lis_file.remove(f)
+                break
+        final_file.append([first_file, second_file, pip_id.pip_id])
+    return final_file

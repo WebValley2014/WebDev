@@ -54,6 +54,7 @@
 	</form>
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
+    {% if file_exist %}
     <p>
         <h3>Select file</h3>
         {% for file in file_list %}
@@ -61,8 +62,9 @@
             {{ file.0.filename }} |
             {{ file.1.filename }} |
             <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> |
-            <a href="/preproc/delete/{{ file.2 }}/"> DELETE </a>
+            <a href="/preproc/delete/{{ file.0.pk }}/{{ file.1.pk }}/"> DELETE </a>
         </p>
         {% endfor %}
     </p>
+    {% endif %}
 {% endblock %}

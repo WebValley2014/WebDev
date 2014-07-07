@@ -5,6 +5,8 @@ from .views import *
 admin.autodiscover()
 
 urlpatterns = patterns('preprocess.views',
+    #Delete File
+    url(regex='^delete/(.+)/(.+)/$', view='deleteFile'),
     #Processing
     url(regex='^processing/(.+)/$', view='processing', name='processing'),
     #Celery

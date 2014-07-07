@@ -5,10 +5,10 @@ from WebDev.models import *
 from django.contrib.auth.decorators import login_required
 import uuid
 from django.utils import timezone
+from utils import pick_file_list
 from django.shortcuts import  HttpResponse
-
 from forms import PPUploadFileForm
-from WebDev.utils import handle_uploaded_file, checkExtension, renameFile
+from WebDev.utils import *
 
 @login_required(login_url="/login")
 def preprocess_redirect(request):
@@ -44,33 +44,27 @@ def upload(request):
 
     #ELSE GENERATE THE FILE UPLOAD PAGE
     pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
-    #return HttpResponseRedirect(pre_file)
-    #Insert the querry results in a list
-    lis_file = []
-    for f in pre_file:
-        lis_file.append(f)
-    #Reorder the list in a bidimensional list
-    final_file = []
-    while len(lis_file) != 0:
-        first_file = lis_file[0]
-        pip_id = first_file.pip_id
-        lis_file.remove(first_file)
-        for f in lis_file:
-            if f.pip_id == pip_id:
-                second_file = f
-                lis_file.remove(f)
-                break
-        final_file.append([first_file, second_file, pip_id.pip_id])
-    #html = ''
-    #for f in final_file:
-    #    html += f[0].filename + ' - ' + f[0].pip_id.pip_id + ' | ' + f[1].filename + ' - ' + f[0].pip_id.pip_id + '<br>'
-    #return HttpResponse(html)
+    #Order the list
+    final_file = pick_file_list(pre_file)
+    if len(final_file) == 0:
+        file_exist = False
+    else:
+        file_exist = True
     c = {
         'ex_error': ex_error,
         'form_error': form_error,
-        'file_list': final_file
+        'file_list': final_file,
+        'file_exist': file_exist
     }
     return render(request, 'preprocess/upload.html', c)
+
+@login_required(login_url="/login")
+def deleteFile(request, id1, id2):
+    re1 = Results.objects.get(id=int(id1))
+    re2 = Results.objects.get(id=int(id2))
+    delete(re1)
+    delete(re2)
+    return HttpResponseRedirect('/preproc/upload')
 
 @login_required(login_url="/login")
 def celery(request, pip_id, new_pip=0):
