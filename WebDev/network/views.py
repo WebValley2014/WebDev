@@ -18,8 +18,6 @@ def network(request, p_id = ''):
 
 @login_required(login_url="/login")
 def upload_network(request):
-    p = Pipeline(pip_name='network', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
-    p.save()
     form = NUploadFileForm()
     if not form.is_valid() and request.POST:
         messages.warning(request, 'No uploaded file')
@@ -27,6 +25,8 @@ def upload_network(request):
         if checkExtension(request.FILES['file'], 'codes'):
             form = NUploadFileForm(request.POST, request.FILES)
             if form.is_valid():
+                p = Pipeline(pip_name='network', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+                p.save()
                 handle_uploaded_file(p,request.FILES['file'])
                 return render(request, 'network/tuttook.html')
         else:

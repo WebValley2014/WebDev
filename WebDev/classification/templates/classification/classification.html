@@ -31,8 +31,13 @@
     	{% endfor %}
 		</ul>
 	{% endif %}
+<<<<<<< HEAD
 	<p style="text-align:center">Select a <strong>.CODES</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
+=======
+	<p style="text-align:center">Select or drop a <strong>CODES</strong> file for the upload.</p><br />
+	<form id="dropform" class="form fileformbox dropzone" method="post" enctype="multipart/form-data" action="{% url 'class_upload' %}">
+>>>>>>> 336fdd564e220bf38dec67f2223824aba42569c4
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">

@@ -32,8 +32,6 @@ def classification_redirect(request):
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
-    p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
-    p.save()
     form = CLUploadFileForm()
     if not form.is_valid() and request.POST:
         messages.warning(request, 'No uploaded file')
@@ -41,6 +39,8 @@ def upload_preProcessed(request):
         if checkExtension(request.FILES['file'], 'codes'):
             form = CLUploadFileForm(request.POST, request.FILES)
             if form.is_valid():
+                p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+                p.save()
                 handle_uploaded_file(p,request.FILES['file'])
                 return render(request, 'classification/tuttook.html')
         else:
@@ -64,7 +64,7 @@ def deleteFile(request, id):
     except:
         pass
     re.delete()
-    return render(request, 'classification/tuttook.html')
+    return upload_preProcessed(request)
 
 
 @login_required(login_url="/login")
