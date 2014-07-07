@@ -24,12 +24,13 @@
 {# CONTENT #}
 
 {% block main %}
-	{% if form_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter all the required files.</p><br />
-    {% endif %}
-    {% if ex_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter the correct type of files.</p><br />
-    {% endif %}
+	{% if messages %}
+		<ul class="messages">
+    	{% for message in messages %}
+    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    	{% endfor %}
+		</ul>
+	{% endif %}
 	<p style="text-align:center">Select a <strong>.ZIP</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
 		{% csrf_token %}
@@ -65,8 +66,8 @@
     </tr>
         {% for file in file_list %}
         <tr>
-            <td> {{ file.0.filename }} </td>
             <td> {{ file.1.filename }} </td>
+            <td> {{ file.0.filename }} </td>
             <td>  <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> </td>
             <td> <a href="/preproc/delete/{{ file.0.pk }}/{{ file.1.pk }}/"> DELETE </a> </td>
         </tr>

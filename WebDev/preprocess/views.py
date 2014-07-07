@@ -9,6 +9,8 @@ from utils import pick_file_list
 from django.shortcuts import  HttpResponse
 from forms import PPUploadFileForm
 from WebDev.utils import *
+from django.contrib import messages
+
 
 @login_required(login_url="/login")
 def preprocess_redirect(request):
@@ -29,7 +31,7 @@ def upload(request):
                 file_zip = request.FILES['file_zip']
                 file_map = request.FILES['file_map']
             except:
-                form_error = True
+                messages.error(request, "Insert the correct file")
             if not form_error:
                 if checkExtension(file_zip, 'zip') and checkExtension(file_map, 'map'):
                     p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
@@ -38,9 +40,9 @@ def upload(request):
                     handle_uploaded_file(p, file_map)
                     return HttpResponseRedirect('/preproc/celery/'+p.pip_id)
                 else:
-                    ex_error = True
+                    messages.error(request, "File type incorrect")
         else:
-            form_error = True
+            messages.error(request, "Insert the correct file")
 
     #ELSE GENERATE THE FILE UPLOAD PAGE
     pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
@@ -51,8 +53,6 @@ def upload(request):
     else:
         file_exist = True
     c = {
-        'ex_error': ex_error,
-        'form_error': form_error,
         'file_list': final_file,
         'file_exist': file_exist
     }
