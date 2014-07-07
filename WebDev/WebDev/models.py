@@ -102,7 +102,8 @@ class Results (models.Model):
         ('txt', 'text description'),
         ('json', 'json file'),
         ('error', 'Error during computation'),
-        ('zip', 'zip')
+        ('zip', 'zip'),
+        ('sff', 'sff')
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery
@@ -111,7 +112,7 @@ class Results (models.Model):
     task_id = models.ForeignKey(RunningProcess, null=True, blank=True)          #Nome dell'app
     filetype = models.CharField(max_length=36, choices=FILE_TYPES)              #Tipo di file (zip)
     filename = models.CharField(max_length=40)                                  #Nome del file
-    filepath = models.CharField(max_length=100)                                 #Posizione del file da MEDIA_ROOT con nome file
+    filepath = models.CharField(max_length=100)                                 #Posizione completa del file
     filestore = models.FileField(upload_to=get_tmp_dir, null=True, blank=True)  #BLANK
     filecol = models.IntegerField(blank=True, null=True)                        #BLANK
     filerow = models.IntegerField(blank=True, null=True)                        #BLANK

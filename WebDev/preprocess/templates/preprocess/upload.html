@@ -24,20 +24,21 @@
 {# CONTENT #}
 
 {% block main %}
-	{% if form_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter all the required files.</p><br />
-    {% endif %}
-    {% if ex_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter the correct type of files.</p><br />
-    {% endif %}
-	<p style="text-align:center">Select a <strong>.ZIP</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	{% if messages %}
+		<ul class="messages">
+    	{% for message in messages %}
+    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    	{% endfor %}
+		</ul>
+	{% endif %}
+	<p style="text-align:center">Select a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-compressed" style="width:58px"> ZIP</span>
+				<span class="glyphicon glyphicon-compressed" style="width:58px"> SFF</span>
 			</span>
-			<input id="id_file" name="file_zip" type="file" class="form-control" />
+			<input id="id_file" name="file_sff" type="file" class="form-control" />
 		</div>
 		<br />
 		<div class="input-group forminp">
@@ -48,18 +49,29 @@
 		</div>
 		<br />
 		<input type="submit" class="btn btn-default centeredbutton start" value="Submit" />
+		<br />
 	</form>
+
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
-    <p>
-        <h3>Select file</h3>
+
+
+    {% if file_exist %}
+    <table class="table table-striped">
+    <tr>
+        <th> File ZIP </th>
+        <th> File MAP </th>
+        <th> Select </th>
+        <th> Delete </th>
+    </tr>
         {% for file in file_list %}
-        <p>
-            {{ file.0.filename }} |
-            {{ file.1.filename }} |
-            <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> |
-            <a href="/preproc/delete/{{ file.2 }}/"> DELETE </a>
-        </p>
+        <tr>
+            <td> {{ file.1.filename }} </td>
+            <td> {{ file.0.filename }} </td>
+            <td>  <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> </td>
+            <td> <a href="/preproc/delete/{{ file.0.pk }}/{{ file.1.pk }}/"> DELETE </a> </td>
+        </tr>
         {% endfor %}
-    </p>
+    </table>
+    {% endif %}
 {% endblock %}

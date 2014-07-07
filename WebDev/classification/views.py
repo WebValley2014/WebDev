@@ -46,25 +46,15 @@ def upload_preProcessed(request):
         else:
             messages.error(request, 'Wrong file type')
     oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
-    return render(request, 'classification/classification.html', {'oldFiles': oldFiles})
+    oldFiles = oldFiles.order_by('-id')
+    return render(request, 'classification/classification.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
 
 @login_required(login_url="/login")
 def deleteFile(request, id):
     re = Results.objects.get(pk=id)
-    pos = re.filepath #pos = '/utente/uuid/classification/file'
-    os.remove(pos)
-    pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid/classification'
-    try:
-        os.rmdir(pos)
-        pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid'
-        try:
-            os.rmdir(pos)
-        except:
-            pass
-    except:
-        pass
-    re.delete()
-    return upload_preProcessed(request)
+    if re.owner == request.user:
+        delete(re)
+    return HttpResponseRedirect('/class/upload')
 
 
 @login_required(login_url="/login")
