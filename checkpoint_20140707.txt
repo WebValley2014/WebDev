@@ -4,10 +4,15 @@
   (nebras) almost done, everything ok for tomorrow morning
 
 * pre-processing 
-  (ale) done, 15 mins for ssf processing
+  [ale] done, 15 mins for ssf processing
 * machine learning
-  (luca) the base script done, random forest almost done too
-  (ale)  got new plots, 
+  [luca] the base script done, random forest almost done too
+  [ale]  got new plots
+  
+* network
+  [davide, stefano] data production, almost done, ~80% completed
+                    stored in pickle files
+  [stefano] working on igraph and static plots, ~30% completed
   
   
 
