@@ -64,7 +64,7 @@ def deleteFile(request, id):
     except:
         pass
     re.delete()
-    return render(request, 'classification/tuttook.html')
+    return upload_preProcessed(request)
 
 
 @login_required(login_url="/login")
