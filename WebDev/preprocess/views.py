@@ -20,9 +20,9 @@ def get_results(request, p):
 
 @login_required(login_url="/login")
 def upload(request):
-    p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
-    p.save()
+
     form_error, ex_error = False, False
+    #IF FIELE UPLOADED
     if request.POST:
         if request.FILES:
             try:
@@ -32,8 +32,8 @@ def upload(request):
                 form_error = True
             if not form_error:
                 if checkExtension(file_zip, 'zip') and checkExtension(file_map, 'map'):
-                    file_zip = renameFile(file_zip, 'archivio_zip')
-                    file_map = renameFile(file_map, 'file_map')
+                    p = Pipeline(pip_name='preprocess', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
+                    p.save()
                     handle_uploaded_file(p, file_zip)
                     handle_uploaded_file(p, file_map)
                     return HttpResponseRedirect('/preproc/celery/'+p.pip_id)
@@ -41,23 +41,48 @@ def upload(request):
                     ex_error = True
         else:
             form_error = True
-    form = PPUploadFileForm()
+
+    #ELSE GENERATE THE FILE UPLOAD PAGE
+    pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
+    #return HttpResponseRedirect(pre_file)
+    #Insert the querry results in a list
+    lis_file = []
+    for f in pre_file:
+        lis_file.append(f)
+    #Reorder the list in a bidimensional list
+    final_file = []
+    while len(lis_file) != 0:
+        first_file = lis_file[0]
+        pip_id = first_file.pip_id
+        lis_file.remove(first_file)
+        for f in lis_file:
+            if f.pip_id == pip_id:
+                second_file = f
+                lis_file.remove(f)
+                break
+        final_file.append([first_file, second_file, pip_id.pip_id])
+    #html = ''
+    #for f in final_file:
+    #    html += f[0].filename + ' - ' + f[0].pip_id.pip_id + ' | ' + f[1].filename + ' - ' + f[0].pip_id.pip_id + '<br>'
+    #return HttpResponse(html)
     c = {
         'ex_error': ex_error,
-        'form_error': form_error
+        'form_error': form_error,
+        'file_list': final_file
     }
     return render(request, 'preprocess/upload.html', c)
 
 @login_required(login_url="/login")
-def celery(request, uuid):
-    pip = Pipeline.objects.get(pip_id=uuid)
-    file = Results.objects.filter(pip_id=pip, process_name='preprocess')
+def celery(request, pip_id, new_pip=0):
+    return HttpResponse(new_pip)
+    #pip = Pipeline.objects.get(pip_id=uuid)
+    #file = Results.objects.filter(pip_id=pip, process_name='preprocess')
     #
     #
     #
     #
     #
-    return HttpResponseRedirect('/preproc/processing/process_name/')
+    #return HttpResponseRedirect('/preproc/processing/process_name/')
 
 @login_required(login_url='/login')
 def processing(request, process_name):

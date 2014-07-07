@@ -8,6 +8,7 @@ urlpatterns = patterns('preprocess.views',
     #Processing
     url(regex='^processing/(.+)/$', view='processing', name='processing'),
     #Celery
+    url(regex='^celery/(.+)/([0-1]{1})/$', view="celery", name="celery"),
     url(regex='^celery/(.+)/$', view="celery", name="celery"),
     #Upload page
     url(regex='^upload/$', view="upload", name='preproc_upload'),

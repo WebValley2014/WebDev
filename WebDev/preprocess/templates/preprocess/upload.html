@@ -52,4 +52,15 @@
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
 	<script src="{% static 'script/dropzone.js' %}"></script>
+    <p>
+        <h3>Select file</h3>
+        {% for file in file_list %}
+        <p>
+            {{ file.0.filename }} |
+            {{ file.1.filename }} |
+            <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> |
+            <a href="/preproc/delete/{{ file.2 }}/"> DELETE </a>
+        </p>
+        {% endfor %}
+    </p>
 {% endblock %}
