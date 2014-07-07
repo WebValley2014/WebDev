@@ -25,24 +25,18 @@
 
 {% block main %}
 	{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-	{% if form_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter all the required files.</p><br />
-    {% endif %}
-    {% if ex_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter the correct type of files.</p><br />
-    {% endif %}
-	<p style="text-align:center">Select or drop a <strong>ZIP</strong> and a <strong>MAP</strong> file for the upload.</p><br />
+		<ul class="messages">
+    	{% for message in messages %}
+    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    	{% endfor %}
+		</ul>
+	{% endif %}
+	<p style="text-align:center">Select or drop a <strong>CODES</strong> file for the upload.</p><br />
 	<form id="dropform" class="form fileformbox dropzone" method="post" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file" style="width:58px"> ZIP</span>
+				<span class="glyphicon glyphicon-file"> CODES</span>
 			</span>
 			<input id="id_file" name="file" type="file" class="form-control" />
 		</div>
