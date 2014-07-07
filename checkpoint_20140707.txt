@@ -32,6 +32,12 @@
 * scientific results
   [marco c.] - talissa working on this, reading papers etc, ~50% completed
 
+* django: web interface
+  [federica] - templates completed, 100% completed
+             - "templates are pretty cool" (cit., Federica) O_o
+             - working w/ cristian and deborah
+
+
 ================================================================================
 FROM GDOC :: https://docs.google.com/a/fbk.eu/document/d/1U9HFykD-WYmBOR61VtzlazA1dRZdNzFrPBdieSZZD8Q/edit
 -------------------------------------------------
