@@ -3,7 +3,7 @@
 
 {# TITLE #}
 {% block pagetitle %}
-	Upload - 
+	Preprocess - 
 {% endblock %}
 
 {# UPLOAD TAB ACTIVE #}
@@ -13,7 +13,7 @@
 			<a href="#" class="dropdown-toggle activetab" data-toggle="dropdown">START<span class="caret caretfix"></span></a>
 			<ul class="dropdown-menu" role="menu">
 				<li class="disabled"><a href="{% url 'preproc_upload' %}">Preprocessing</a></li>
-				<li><a href="#">Classification</a></li>
+				<li><a href="{% url 'class_upload' %}">Classification</a></li>
 				<li><a href="#">Network</a></li>
 			</ul>
 		</li>

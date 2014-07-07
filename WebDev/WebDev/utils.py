@@ -24,14 +24,16 @@ def renameFile(f, filename):
 def handle_uploaded_file(pipeline, f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, str(pipeline.pip_name))
-    upload_full_path = os.path.join(settings.MEDIA_ROOT, partial_path)
-    if not os.path.exists(upload_full_path):
-        os.makedirs(upload_full_path)
+    full_path = os.path.join(settings.MEDIA_ROOT, partial_path)
+    if not os.path.exists(full_path):
+        os.makedirs(full_path)
 
-    with open(os.path.join(upload_full_path, f.name), 'wb+') as destination:
+    full_path=os.path.join(full_path, f.name)
+
+    with open(full_path, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-    full_path = os.path.join(partial_path, f.name)
+
     res = Results(process_name=pipeline.pip_name, owner=pipeline.owner , pip_id=pipeline, filetype=fileExtension(f), filename=f.name, filepath=full_path)
     res.save()
 

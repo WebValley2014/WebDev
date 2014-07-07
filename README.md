@@ -1,1 +1,1 @@
-**Metagenomics Repository for Data Analysis**, aka WebDev/Middleware group.
+**Children's Omics Dysbiosis Evaluation System**
