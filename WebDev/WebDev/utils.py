@@ -56,12 +56,12 @@ def check_owner(user, p_id):
 
 # Deletes the file corresponding to the given Results object
 def delete(re):
-    pos = re.filepath #pos = '/utente/uuid/app/file'
+    pos = re.filepath #pos = '.../utente/uuid/app/file'
     os.remove(pos)
-    pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/uuid/app'
+    pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '.../utente/uuid/app'
     try:
         os.rmdir(pos)
-        pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '/utente/app'
+        pos = os.sep.join(pos.split(os.sep)[:-1]) # pos = '.../utente/app'
         try:
             os.rmdir(pos)
         except:

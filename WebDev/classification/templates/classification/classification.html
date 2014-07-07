@@ -46,7 +46,20 @@
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
 	<br />
+    {% if file_exist %}
+    <table class="table table-striped">
+    <tr>
+        <th> File name </th>
+        <th> Select </th>
+        <th> Delete </th>
+    </tr>
 	{% for fi in oldFiles %}
-		<a href="tuttook.html" {# Da sistemare l'href #}> {{ fi.filename }}</a> <a href={% url 'delete' fi.pk %}> Delete </a> </br>
+            <tr>
+            <td> {{ fi.filename }}</td>
+            <td> <a href="" {# da sistemare #}> SELECT </a></td>
+            <td> <a href={% url 'delete' fi.pk %}> DELETE </a> </td>
+            </tr>
 	{% endfor %}
+    </table>
+    {% endif %}
 {% endblock %}
