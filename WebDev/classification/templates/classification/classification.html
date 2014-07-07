@@ -31,14 +31,14 @@
     	{% endfor %}
 		</ul>
 	{% endif %}
-	<p style="text-align:center">Select a <strong>.CODES</strong> file for the upload.</p><br />
+	<p style="text-align:center">Select or drop a <strong>.CODES</strong> file for the upload.</p><br />
 	<form id="dropform" class="form fileformbox dropzone" name="dropform" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file"> CODES</span>
 			</span>
-			<input id="fileToUpload" name="file" type="file" class="form-control" onchange="fileSelected();" />
+			<input id="fileToUpload" name="file" type="file" class="form-control" />
 		</div>
 		<br />
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
@@ -54,15 +54,14 @@
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
 	<script type="text/javascript">
 		function uploadFile() {
-			// document.forms["dropform"].submit();
 			var fd = new FormData();
 			fd.append("file", document.getElementById('fileToUpload').files[0]);
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 			var xhr = new XMLHttpRequest();
 			xhr.upload.addEventListener("progress", uploadProgress, false);
 			xhr.addEventListener("load", uploadComplete, false);
-			//xhr.addEventListener("error", uploadFailed, false);
-			//xhr.addEventListener("abort", uploadCanceled, false);
+			xhr.addEventListener("error", uploadFailed, false);
+			xhr.addEventListener("abort", uploadCanceled, false);
 			xhr.open("POST", "");
 			xhr.send(fd);
 		}
@@ -77,9 +76,7 @@
       }
 
       function uploadComplete(evt) {
-        /* This event is raised when the server send back a response */
-        alert(evt.target.responseText);
-		// document.forms["dropform"].submit();
+        // alert(evt.target.responseText);
       }
 
       function uploadFailed(evt) {

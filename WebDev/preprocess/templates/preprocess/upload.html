@@ -31,47 +31,87 @@
     	{% endfor %}
 		</ul>
 	{% endif %}
-	<p style="text-align:center">Select a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-compressed" style="width:58px"> SFF</span>
+				<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
 			</span>
-			<input id="id_file" name="file_sff" type="file" class="form-control" />
+			<input id="file_sff" name="file_sff" type="file" class="form-control" />
 		</div>
 		<br />
 		<div class="input-group forminp">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file"> MAP</span>
 			</span>
-			<input id="id_file" name="file_map" type="file" class="form-control" />
+			<input id="file_map" name="file_map" type="file" class="form-control" />
 		</div>
 		<br />
-		<input type="submit" class="btn btn-default centeredbutton start" value="Submit" />
-		<br />
+		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
+		<br /><br />
+		<div>
+        	<p class="size" data-dz-size></p>
+        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+			</div>
+        </div>
 	</form>
+	<script type="text/javascript">
+		function uploadFile() {
+			var fd = new FormData();
+			fd.append("file_sff", document.getElementById('file_sff').files[0]);
+			fd.append("file_map", document.getElementById('file_map').files[0]);
+			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+			var xhr = new XMLHttpRequest();
+			xhr.upload.addEventListener("progress", uploadProgress, false);
+			xhr.addEventListener("load", uploadComplete, false);
+			xhr.addEventListener("error", uploadFailed, false);
+			xhr.addEventListener("abort", uploadCanceled, false);
+			xhr.open("POST", "");
+			xhr.send(fd);
+		}
 
+		function uploadProgress(evt) {
+			if (evt.lengthComputable) {
+				document.getElementById('progress-bar').style.width = Math.round(evt.loaded * 100 / evt.total).toString() + '%';
+			}
+			else {
+				document.getElementById('progressNumber').innerHTML = 'unable to compute';
+			}
+		}
+
+		function uploadComplete(evt) {
+			window.location.replace(evt.target.responseText);
+		}
+
+		function uploadFailed(evt) {
+			alert("There was an error attempting to upload the file.");
+		}
+
+		function uploadCanceled(evt) {
+			alert("The upload has been canceled by the user or the browser dropped the connection.");
+		}
+	</script>
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
-
-
+	<br /><br />
     {% if file_exist %}
-    <table class="table table-striped">
-    <tr>
-        <th> File ZIP </th>
-        <th> File MAP </th>
-        <th> Select </th>
-        <th> Delete </th>
-    </tr>
-        {% for file in file_list %}
-        <tr>
-            <td> {{ file.1.filename }} </td>
-            <td> {{ file.0.filename }} </td>
-            <td>  <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> </td>
-            <td> <a href="/preproc/delete/{{ file.0.pk }}/{{ file.1.pk }}/"> DELETE </a> </td>
-        </tr>
-        {% endfor %}
-    </table>
-    {% endif %}
+    	<table class="table table-striped">
+    		<tr>
+				<th> File ZIP </th>
+				<th> File MAP </th>
+				<th> Select </th>
+				<th> Delete </th>
+			</tr>
+			{% for file in file_list %}
+				<tr>
+					<td> {{ file.1.filename }} </td>
+					<td> {{ file.0.filename }} </td>
+					<td>  <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> </td>
+					<td> <a href="/preproc/delete/{{ file.0.pk }}/{{ file.1.pk }}/"> DELETE </a> </td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
 {% endblock %}
