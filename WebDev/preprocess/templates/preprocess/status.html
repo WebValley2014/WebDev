@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# TITLE #}
+{% block pagetitle %}
+	Status -
+{% endblock %}
+
+{# UPLOAD TAB ACTIVE #}
+{% block uploadtab %}
+	{% if user.is_authenticated %}
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle activetab" data-toggle="dropdown">START<span class="caret caretfix"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li class="disabled"><a href="{% url 'preproc_upload' %}">Preprocessing</a></li>
+				<li><a href="{% url 'class_upload' %}">Classification</a></li>
+				<li><a href="#">Network</a></li>
+			</ul>
+		</li>
+	{% endif %}
+{% endblock %}
+
+
+{# CONTENT #}
+
+{% block main %}
+	<h3> Pending processes </h3> </br>
+    <ul class="list-group">
+    {% for el in listPending %}
+            <li class="list-group-item list-group-item-warning">{{ el.process_name }}</li>
+    {% endfor %}
+    {% for el in listOK %}
+            <li class="list-group-item list-group-item-success">{{ el.process_name }}</li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -7,6 +7,8 @@ admin.autodiscover()
 urlpatterns = patterns('preprocess.views',
     #Delete File
     url(regex='^delete/(.+)/(.+)/$', view='deleteFile', name='file_delete'),
+    #Status
+    url(regex='^status/$', view='statusPP', name='statusPP'),
     #Processing
     url(regex='^processing/(.+)/(.+)/$', view='processing_finish', name='processing_finish'),
     url(regex='^processing/(.+)/$', view='processing', name='processing'),
