@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from django.contrib import messages
 from django.conf import settings
 from WebDev.models import *
 import os
@@ -34,12 +35,18 @@ def upload_preProcessed(request):
     p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
     p.save()
     form = CLUploadFileForm()
-    if request.POST and request.FILES and checkExtension(request.FILES['file'], 'codes'):
-        form = CLUploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            handle_uploaded_file(p,request.FILES['file'])
-            return render(request, 'classification/tuttook.html')
-    return render(request, 'classification/classification.html')
+    if not form.is_valid() and request.POST:
+        messages.warning(request, 'No uploaded file')
+    if request.POST and request.FILES:
+        if checkExtension(request.FILES['file'], 'codes'):
+            form = CLUploadFileForm(request.POST, request.FILES)
+            if form.is_valid():
+                handle_uploaded_file(p,request.FILES['file'])
+                return render(request, 'classification/tuttook.html')
+        else:
+            messages.error(request, 'Wrong file type')
+    oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
+    return render(request, 'classification/classification.html', {'oldFiles': oldFiles})
 
 
 @login_required(login_url="/login")

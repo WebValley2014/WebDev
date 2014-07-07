@@ -20,7 +20,7 @@ def renameFile(f, filename):
     f.name = '%s.%s' % (filename, ex)
     return f
 
-# Saves the file in MEDIA_ROOT/username/uuid/file + stores the attributes of the file in the db
+# Saves the file in MEDIA_ROOT/username/uuid/app/file + stores the attributes of the file in the db
 def handle_uploaded_file(pipeline, f):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, str(pipeline.pip_name))
@@ -32,7 +32,7 @@ def handle_uploaded_file(pipeline, f):
         for chunk in f.chunks():
             destination.write(chunk)
     full_path = os.path.join(partial_path, f.name)
-    res = Results(pip_id=pipeline, filetype=fileExtension(f), filename=f.name, filepath=full_path)
+    res = Results(process_name=pipeline.pip_name, owner=pipeline.owner , pip_id=pipeline, filetype=fileExtension(f), filename=f.name, filepath=full_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path
