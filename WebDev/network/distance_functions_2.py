@@ -107,7 +107,7 @@ def epsilon(a_one,a_two,gamma):
     # laplacian	
     l_one = laplacian(a_one)   
     l_two = laplacian(a_two)   
- 
+
     # eigenvalues
     e_one = np.real_if_close(np.linalg.eigvals(l_one))
     e_two = np.real_if_close(np.linalg.eigvals(l_two))
@@ -117,9 +117,12 @@ def epsilon(a_one,a_two,gamma):
     e_two.sort()
    
     # excluding smallest value (zero)
-    ee_one = e_one[1:]
-    ee_two = e_two[1:]
+    ee_one = np.real_if_close(e_one[1:],tol=1e-10)
+    ee_two = np.real_if_close(e_two[1:],tol=1e-10)
  
+    print ee_one
+    print ee_two    
+
     # omega 
     omega_one = np.sqrt([round(l,10) for l in ee_one])
     omega_two= np.sqrt([round(l,10) for l in ee_two])

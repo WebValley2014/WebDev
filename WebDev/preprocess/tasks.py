@@ -33,13 +33,11 @@ import sff2otu
 def prepro(self , uniqueJobID , listofSFFfiles, listOfMappingFiles):
 
     print 'Prepro started'
-    print self.request.id
     self.update_state(state='RUNNING')
     core = max(multiprocessing.cpu_count() - 1, 1)
-
     start_time = unicode(datetime.datetime.now())
     pipeline = sff2otu.SFF2OTU(uniqueJobID, listofSFFfiles, listOfMappingFiles)
-    result = pipeline.run(processors = core)
+    result = pipeline.run(processors = core, qtrim = 'F')
     finish_time = unicode(datetime.datetime.now())
 
     return {'funct': os.path.abspath(result['txt']), 'st': start_time, 'ft': finish_time}
