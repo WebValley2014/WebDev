@@ -145,7 +145,6 @@ def store_before_celery(pip_id, jinput, task_id):
     pname= 'Preprocessing'
 
     try:
-        print 'porcodio'
         rundb = RunningProcess(process_name=pname,
                                pip_id=pip_id,
                                inputs=jinput,
