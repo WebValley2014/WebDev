@@ -34,7 +34,6 @@ def upload(request):
 	if request.POST:
 		if request.FILES:
 			try:
-				print str(request.FILES)
 				length = int(request.POST.get("length"))
 				file_sff = []
 				file_map = []
@@ -44,23 +43,17 @@ def upload(request):
 					file_sff.append(a)
 					file_map.append(b)
 			except:
-				messages.error(request, "Insert the correct files")
 				form_error = True
-			print form_error
 			if not form_error:
 				for i in range(length):
 					if not checkExtension(file_sff[i], 'sff') or not checkExtension(file_map[i], 'map'):
 						ex_error = True
-				print ex_error
 				if not ex_error:                
 					p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(), started=timezone.now(), description='', owner=request.user)
 					p.save()
-					#print str(p.pip_id)
-					print length
 					for i in range(length):
-						print i
-						handle_uploaded_file(p, file_sff[i])
-						handle_uploaded_file(p, file_map[i])
+						handle_uploaded_file(p, file_sff[i], 'preprocessing')
+						handle_uploaded_file(p, file_map[i], 'preprocessing')
 					return HttpResponse('/preproc/celery/' + p.pip_id)
 				else:
 					messages.error(request, "File type incorrect")
