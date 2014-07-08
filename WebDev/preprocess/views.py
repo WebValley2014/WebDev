@@ -98,6 +98,18 @@ def processing(request, process_id):
     result = settings.APP.AsyncResult(process_id)
     return HttpResponse(result.status)
 
+def processing_finish(request, pip_id, task_id):
+    result = settings.APP.AsyncResult(task_id)
+    while not result.ready():
+        time.sleep(1)
+    r = result.get()
+    rp = RunningProcess.objects.get(task_id=task_id)
+    if store_after_celery(rp, r):
+        return HttpResponse('OK')
+    else:
+        return HttpResponse('Error')
+
+
 @login_required(login_url='/login')
 def statusPP(request):
     tList = RunningProcess.objects.filter(process_name='Preprocessing')
