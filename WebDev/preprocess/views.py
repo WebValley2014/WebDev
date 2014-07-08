@@ -14,6 +14,8 @@ from django.contrib import messages
 from django.conf import settings
 import os
 import time
+from WebDev.store import *
+
 
 
 @login_required(login_url="/login")
@@ -94,7 +96,7 @@ def start_preprocess(request, pip_id, new_pip=0):
     
     
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
-    store_before_celery(pip, input_data, preproc_id.id)
+    store_before_celery(pip, input_data, preproc_id.id , 'Preprocessing')
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
 
@@ -111,7 +113,7 @@ def processing_finish(request, pip_id, task_id):
         time.sleep(1)
     r = result.get()
     rp = RunningProcess.objects.get(task_id=task_id)
-    if store_after_celery(rp, r):
+    if store_after_celery(rp, r , 'txt'):
         return HttpResponse('OK')
     else:
         return HttpResponse('Error')
