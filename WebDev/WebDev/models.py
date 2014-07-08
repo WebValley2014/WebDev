@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 import json
 import os
 from django.conf import settings
-import djcelery
+#import djcelery
 import jsonfield
 
 __author__ = 'michele'
@@ -52,12 +52,13 @@ class RunningProcess(models.Model):
     finished = models.DateTimeField(blank=True, null=True)
 
     # From id returns task result
-    @property
+    '''@property
     def celery_task(self):
         try:
             return djcelery.celery.AsyncResult(self.task_id)
         except Exception:
             return None
+            '''
 
     @property
     def badge_status(self):
