@@ -84,9 +84,13 @@ def start_preprocess(request, pip_id, new_pip=0):
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
 
-    preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+    #preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
 
+    preproc_id = settings.APP.send_task("tasks.add", (5, 10))
+    
+    
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
+    print  'Culo'
     store_before_celery(pip, input_data, preproc_id.id)
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
@@ -136,13 +140,18 @@ def store_before_celery(pip_id, jinput, task_id):
     :return: RunningProcess Database
     '''
     pname= 'Preprocessing'
-    rundb = RunningProcess(process_name=pname,
-                           pip_id=pip_id,
-                           inputs=jinput,
-                           submitted=datetime.datetime.now(),
-                           task_id=task_id,
+
+    try:
+        print 'porcodio'
+        rundb = RunningProcess(process_name=pname,
+                               pip_id=pip_id,
+                               inputs=jinput,
+                               submitted=datetime.datetime.now(),
+                               task_id=task_id,
                            )
-    rundb.save()
+        rundb.save()
+    except Exception, e:
+        print e
     return True
 
 def store_after_celery(rundb, task_ret):
