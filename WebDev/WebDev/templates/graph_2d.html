@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# HOME TAB ACTIVE #}
+
+{% block hometab %}
+	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
+{% endblock %}
+
+{# CONTENT #}
+
+{% block main %}
+	<ul class="pagination">
+		<li><a href="#">&laquo;</a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">&raquo;</a></li>
+	</ul>
+
+	<ul class="pagination">
+		<li><a href="#">&laquo;</a></li>
+		<li><a href="#">1</a></li>
+		<li><a href="#">2</a></li>
+		<li><a href="#">3</a></li>
+		<li><a href="#">4</a></li>
+		<li><a href="#">5</a></li>
+		<li><a href="#">&raquo;</a></li>
+	</ul>
+{% endblock %}

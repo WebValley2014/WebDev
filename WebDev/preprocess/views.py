@@ -14,6 +14,8 @@ from django.contrib import messages
 from django.conf import settings
 import os
 import time
+from WebDev.store import *
+
 
 
 @login_required(login_url="/login")
@@ -36,7 +38,7 @@ def upload(request):
                 file_sff = request.FILES['file_sff']
                 file_map = request.FILES['file_map']
             except:
-                messages.error(request, "Insert the correct file")
+                messages.error(request, "Insert the correct files")
                 form_error = True
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
@@ -49,6 +51,8 @@ def upload(request):
                     return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
+            else:
+                messages.warning(request, 'No uploaded file')
         else:
             messages.error(request, "Insert the correct file")
 
@@ -64,6 +68,7 @@ def upload(request):
         'file_list': final_file,
         'file_exist': file_exist
     }
+
     return render(request, 'preprocess/upload.html', c)
 
 
@@ -91,47 +96,28 @@ def start_preprocess(request, pip_id, new_pip=0):
     
     
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
-    print  'Salva su database prima che celery abbia finito'
-    store_before_celery(pip, input_data, preproc_id.id)
+    store_before_celery(pip, input_data, preproc_id.id , 'Preprocessing')
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
 
 
-#@login_required(login_url='/login')
-def processing(request, task_id):
+@login_required(login_url='/login')
+def processing(request, process_id):
     # Pick the results
-    result = settings.APP.AsyncResult(task_id)
-    if result.ready():
-        return HttpResponseRedirect('/preproc/processing_finish/%s/' % (task_id,))
-    else:
-        return HttpResponse(result.status)
+    result = settings.APP.AsyncResult(process_id)
+    return HttpResponse(result.status)
 
-
-def processing_finish(request, task_id):
-    print 'Chiamata'
-    # Pick the results
-    result = settings.APP.AsyncResult(task_id)
-    if result.ready():
-        r = result.get()
-        rp = RunningProcess.objects.get(task_id=task_id)
-        if store_after_celery(rp, r):
-            return HttpResponse('OK')
-        else:
-            return HttpResponse('Error')
-    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
-
-'''
 def processing_finish(request, pip_id, task_id):
     result = settings.APP.AsyncResult(task_id)
     while not result.ready():
         time.sleep(1)
     r = result.get()
     rp = RunningProcess.objects.get(task_id=task_id)
-    if store_after_celery(rp, r):
+    if store_after_celery(rp, r , 'txt'):
         return HttpResponse('OK')
     else:
         return HttpResponse('Error')
-'''
+
 
 @login_required(login_url='/login')
 def statusPP(request):
@@ -147,49 +133,3 @@ def statusPP(request):
     return render(request, 'preprocess/status.html', {'listPending': listPending, 'listOK': listOK})
 
 # CELERY FUNCTION
-
-def store_before_celery(pip_id, jinput, task_id):
-    '''
-    This Function Stores the running process and info related to the results to the database.
-    Needs to be called directly after [variable]= celery.start_task()
-
-    :param pip_id: pipeline ID from Pipeline model.
-    :param jinput: Dictionary of Inputs
-    :param task_id: taskid
-    :return: RunningProcess Database
-    '''
-    pname= 'Preprocessing'
-
-    try:
-        print 'Save database RunningProcess'
-        rundb = RunningProcess(process_name=pname,
-                               pip_id=pip_id,
-                               inputs=jinput,
-                               submitted=datetime.datetime.now(),
-                               task_id=task_id,
-                           )
-        rundb.save()
-    except Exception, e:
-        print e
-    return True
-
-def store_after_celery(rundb, task_ret):
-    '''
-    Run after Celery Task
-    :param rundb: from store_before_celery
-    :param task_ret:  return of the celery task
-    :return: True
-    '''
-
-    tp = 'txt'
-    rundb.started = task_ret.st
-    rundb.finished = task_ret.ft
-
-    resdb = Results(process_name=rundb.process_name,
-                    task_id=rundb.task_id,
-                    filepath=task_ret.funct.pathname,
-                    filetype=tp,
-                    filename=task_ret.funct.filename,
-                    )
-    resdb.save()
-    return True

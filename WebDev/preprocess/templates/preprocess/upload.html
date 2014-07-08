@@ -54,7 +54,7 @@
         	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px">
           		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 			</div>
-			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px ;z-index:2">0 %</div>
+			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px; z-index:2">0 %</div>
 			<div style="margin-left: auto; margin-right: auto">
 			<div id="f_size" class="glyphicon glyphicon-hdd"> A</div>
 			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> B</div>
@@ -124,7 +124,12 @@
 		}
 
 		function uploadComplete(evt) {
-			window.location.replace(evt.target.responseText);
+			if (evt.target.responseText == 'error') {
+				window.location.replace('/')
+			}
+			else {
+				window.location.replace(evt.target.responseText);
+			}
 		}
 
 		function uploadFailed(evt) {
