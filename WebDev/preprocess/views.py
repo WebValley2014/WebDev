@@ -84,6 +84,43 @@ def upload(request):
 	}
 	return render(request, 'preprocess/upload.html', c)
 
+	print 'Upload Chiamato'
+	form_error, ex_error = False, False
+	#IF FILE UPLOADED
+	if request.POST:
+		if request.FILES:
+			try:
+				file_sff = request.FILES['file_sff']
+				file_map = request.FILES['file_map']
+			except:
+				messages.error(request, "Insert the correct files")
+				form_error = True
+			if not form_error:
+				if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
+					p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),started=timezone.now(), description='', owner=request.user)
+					p.save()
+					handle_uploaded_file(p, file_sff)
+					handle_uploaded_file(p, file_map)
+				return HttpResponse('/preproc/celery/' + p.pip_id)
+			else:
+				messages.error(request, "File type incorrect")
+			messages.error(request, "Insert the correct files")
+		return HttpResponse('/preproc/upload/')
+
+	# ELSE GENERATE THE FILE UPLOAD PAGE
+	pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
+	#Order the list
+	final_file = pick_file_list(pre_file)
+	if len(final_file) == 0:
+		file_exist = False
+	else:
+		file_exist = True
+	c = {
+		'file_list': final_file,
+		'file_exist': file_exist
+	}
+	return render(request, 'preprocess/upload.html', c)
+
 
 @login_required(login_url="/login")
 def deleteFile(request, id1, id2):
@@ -187,4 +224,35 @@ def statusPP(request):
 
 			}
 	return render(request, 'preprocess/status.html', context)
+	tList = RunningProcess.objects.filter(process_name='Preprocessing')
+	listRunning = []
+	listFaliur = []
+	listPending = []
+	listSuccess = []
+	listRetry = []
+	listStarted = []
+	for el in tList:
+		if el.pip_id.owner==request.user:
+			status = settings.APP.AsyncResult(el.task_id).status
+		if(status == 'PENDING'):
+			listPending.append(el)
+		if(status == 'STARTED'):
+			listStarted.append(el)
+		if(status == 'RETRY'):
+			listRetry.append(el)
+		if(status == 'SUCCESS'):
+			listSuccess.append(el)
+		if(status == 'RUNNING'):
+			listRunning.append(el)
+		else:
+			listFaliur.append(el)
+	context = {
+		'listPending':  listPending,
+                'listStarted':  listStarted,
+                'listRetry':    listRetry,
+                'listSuccess':  listSuccess,
+                'listRunning':  listRunning,
+                'listFaliur':   listFaliur,
 
+	}
+	return render(request, 'preprocess/status.html', context)
