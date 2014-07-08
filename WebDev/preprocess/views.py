@@ -37,7 +37,6 @@ def upload(request):
             try:
                 file_sff = request.FILES['file_sff']
                 file_map = request.FILES['file_map']
-                file_txt = request.FILES['file_txt']
             except:
                 messages.error(request, "Insert the correct files")
                 form_error = True
@@ -46,8 +45,8 @@ def upload(request):
                     p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
-                    handle_uploaded_file(p, file_sff)
-                    handle_uploaded_file(p, file_map)
+                    handle_uploaded_file(p, file_sff, 'preprocess')
+                    handle_uploaded_file(p, file_map, 'preprocess')
                     return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
