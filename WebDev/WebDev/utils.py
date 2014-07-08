@@ -21,9 +21,11 @@ def renameFile(f, filename):
     return f
 
 # Saves the file in MEDIA_ROOT/username/uuid/app/file + stores the attributes of the file in the db
-def handle_uploaded_file(pipeline, f, procName):
+def handle_uploaded_file(pipeline, f, procName, filetype=None):
+    if filetype==None:
+        filetype = fileExtension(f)
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
-    partial_path = os.path.join(partial_path, str(pipeline.pip_name))
+    partial_path = os.path.join(partial_path, procName)
     full_path = os.path.join(settings.MEDIA_ROOT, partial_path)
     if not os.path.exists(full_path):
         os.makedirs(full_path)
@@ -33,8 +35,8 @@ def handle_uploaded_file(pipeline, f, procName):
     with open(full_path, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-	print procName
-    res = Results(process_name=procName, owner=pipeline.owner , pip_id=pipeline, filetype=fileExtension(f), filename=f.name, filepath=full_path)
+
+    res = Results(process_name=procName, owner=pipeline.owner , pip_id=pipeline, filetype=filetype, filename=f.name, filepath=full_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path

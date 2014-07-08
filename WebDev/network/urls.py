@@ -8,9 +8,9 @@ admin.autodiscover()
 urlpatterns = patterns('network.views',
     #Upload Pre-Processed file
     url(regex=r'^upload/$', view="upload_network", name="network_upload"),
-    url(regex=r'^step2/$', view='step2', name='step2'),
+    #url(regex=r'^step2/(.+)/$', view='step2', name='step2'),
     #Home Classification
-
+    url(regex=r'^celery/(.+)/$', view='start_network', name='start_network')
 
     url(regex=r'^delete/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)/$', view="deleteFile", name="delete"),
 
