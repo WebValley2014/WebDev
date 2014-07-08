@@ -1,15 +1,19 @@
 from celery import Celery 
 from django.conf import settings
 import datetime
+import time
+
 celery = Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
 
 @celery.task(bind=True)
 def add(self, x, y):
-    print 'Running'
-    thr = 1000000
-    i = 0
-    while (i < thr):
-        i += 1
+    print 'Running add task'
+
+    time.sleep(20)
+
+    #x = 'http://localhost:8000/preproc/processing_finish/%s/' % (self.request.id,)
+    #urllib2.urlopen(x)
+
     return x + y
 
 __author__ = 'nebras'
