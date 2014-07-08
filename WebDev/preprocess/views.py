@@ -124,7 +124,8 @@ def store_before_celery(pip_id, jinput, task_id):
             finished=None,
         )
         rundb.save()
-    except:
+    except Exception, e:
+        print e
         raise IOError
     return True
 
