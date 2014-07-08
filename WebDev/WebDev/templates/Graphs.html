@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+
+    <title>Graphs - CODES</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="./bootstrap.css">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <link rel="stylesheet" href="style.css" type="text/css" media="screen" charset="utf-8">
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript" charset="utf-8" src='script.js'></script>
+    <script type="text/javascript" charset="utf-8" src='bootstrap.min.js'></script>
+    <link rel="stylesheet" href="/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+
+  </head>
+
+
+<script>
+function path(name) {
+    	var path="/home/deborah/Desktop/graphs/" + name;
+	document.getElementById("graph").setAttribute('src', path);
+}
+
+function hidden(dis) {
+	dis.setAttribute('style', "display:none");
+}
+
+
+
+		window.pre = 'ACC';
+		window.post = '10';
+		window.path = '/home/deborah/Project/WebDev/WebDev/WebDev/WebDev/static/graphs_2d/';
+
+		function changePre(dis) {
+			var img = document.getElementById('graph');
+			window.pre = dis
+			var src = window.pre + '_' + window.post + '.png';
+			document.getElementById("graph").setAttribute('src', window.path + src);
+		}
+
+		function changePost(dis) {
+			var img = document.getElementById('graph');
+			window.post = dis
+			var src = window.pre + '_' + window.post + '.png';
+			document.getElementById("graph").setAttribute('src', window.path + src);
+		}
+
+
+</script>
+
+
+
+
+<h1 style="text-align:center">Graphs</h1><br /><br />
+
+<table align="center">
+<tr>
+<td>
+	<div class="btn-group">
+          <button type="button" style="margin-left:60px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Linear<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+           	<li onclick="changePre('ACC')" title="Accuracy"><a>ACC</a></li>
+		<li onclick="changePre('AUC')" title="Area Under Curve"><a>AUC</a></li>
+		<li onclick="changePre('MCC')" title="Matthew Correlation Coefficient"><a>MCC</a></li>
+		<li onclick="changePre('NPV')" title="Negative Predictive Value"><a>NPV</a></li>
+		<li onclick="changePre('PPV')" title="Positive Predictive Value" title="Positive Predictive Value" title="Positive Predictive Value"><a>PPV</a></li>
+		<li onclick="changePre('SENS')" title="Sensitivity"><a>SENS</a></li>
+		<li onclick="changePre('SPEC')" title="Specificity"><a>SPEC</a></li>
+          </ul>
+        </div>
+
+
+</td>
+<td>
+        <div class="btn-group">
+          <button type="button" style="margin-left:60px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Histogram<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+            <li href="" onclick="path('ACC_10.png')"><a>Graph 1</a></li>
+          </ul>
+        </div>
+</td>
+<td>
+        <div class="btn-group">
+          <button type="button" style="margin-left:60px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            Network<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+  	    <li href="" onclick="path('ACC_10.png')"><a>Graph 1</a></li>
+  	    <li href="" onclick="path('ACC_100.png')"><a>Graph 2</a></li>
+          </ul>
+        </div>
+</td>
+<td>
+        <div class="btn-group">
+          <button type="button" style="margin-left:60px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+            3D<span class="caret"></span>
+          </button>
+          <ul class="dropdown-menu" role="menu">
+  	    <li href="" onclick="window.location.href='http://www.google.com'"><a>3D Graphs</a></li>
+          </ul>
+        </div>
+
+</td>
+</tr>
+</table>
+
+<br /><br />
+
+<div align="center">
+	<img id="graph" src="/home/deborah/Project/WebDev/WebDev/WebDev/WebDev/static/graphs_2d/ACC_10.png" style="margin-left: 10px;" />
+	<br />
+	<ul id='repetitions' class="pagination">
+		<li onclick="changePost('10')"><a>10</a></li>
+		<li onclick="changePost('100')"><a>100</a></li>
+		<li onclick="changePost('1000')"><a>1000</a></li>
+		<li onclick="changePost('3964')"><a>3964</a></li>
+	</ul>
+</div>
+
+
+<body>
+
+<div align="center"><br /><br />
+<img id="graph" src="" alt=" ">
+</div>
+
+</body>
+</html>
