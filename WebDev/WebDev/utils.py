@@ -33,7 +33,7 @@ def handle_uploaded_file(pipeline, f, procName):
     with open(full_path, 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
-
+	print procName
     res = Results(process_name=procName, owner=pipeline.owner , pip_id=pipeline, filetype=fileExtension(f), filename=f.name, filepath=full_path)
     res.save()
 

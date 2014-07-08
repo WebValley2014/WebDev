@@ -34,6 +34,7 @@ def upload(request):
 	if request.POST:
 		if request.FILES:
 			try:
+				print str(request.FILES)
 				length = int(request.POST.get("length"))
 				file_sff = []
 				file_map = []
@@ -43,17 +44,24 @@ def upload(request):
 					file_sff.append(a)
 					file_map.append(b)
 			except:
+				messages.error(request, "Insert the correct files")
 				form_error = True
+			print form_error
 			if not form_error:
 				for i in range(length):
 					if not checkExtension(file_sff[i], 'sff') or not checkExtension(file_map[i], 'map'):
 						ex_error = True
+				print ex_error
 				if not ex_error:                
 					p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(), started=timezone.now(), description='', owner=request.user)
 					p.save()
+					#print str(p.pip_id)
+					print length
 					for i in range(length):
-						handle_uploaded_file(p, file_sff[i], 'preprocessing')
-						handle_uploaded_file(p, file_map[i], 'preprocessing')
+						print i
+						handle_uploaded_file(p, file_sff[i], 'preprocess')
+						handle_uploaded_file(p, file_map[i], 'preprocess')
+					print 'finish'
 					return HttpResponse('/preproc/celery/' + p.pip_id)
 				else:
 					messages.error(request, "File type incorrect")
@@ -76,44 +84,6 @@ def upload(request):
 		'file_exist': file_exist
 	}
 	return render(request, 'preprocess/upload.html', c)
-
-	print 'Upload Chiamato'
-	form_error, ex_error = False, False
-	#IF FILE UPLOADED
-	if request.POST:
-		if request.FILES:
-			try:
-				file_sff = request.FILES['file_sff']
-				file_map = request.FILES['file_map']
-			except:
-				messages.error(request, "Insert the correct files")
-				form_error = True
-			if not form_error:
-				if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
-					p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),started=timezone.now(), description='', owner=request.user)
-					p.save()
-					handle_uploaded_file(p, file_sff)
-					handle_uploaded_file(p, file_map)
-				return HttpResponse('/preproc/celery/' + p.pip_id)
-			else:
-				messages.error(request, "File type incorrect")
-			messages.error(request, "Insert the correct files")
-		return HttpResponse('/preproc/upload/')
-
-	# ELSE GENERATE THE FILE UPLOAD PAGE
-	pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
-	#Order the list
-	final_file = pick_file_list(pre_file)
-	if len(final_file) == 0:
-		file_exist = False
-	else:
-		file_exist = True
-	c = {
-		'file_list': final_file,
-		'file_exist': file_exist
-	}
-	return render(request, 'preprocess/upload.html', c)
-
 
 @login_required(login_url="/login")
 def deleteFile(request, id1, id2):
