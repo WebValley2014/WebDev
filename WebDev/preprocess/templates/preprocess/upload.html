@@ -32,7 +32,6 @@
 			</div>
     	{% endfor %}
 	{% endif %}
-
 	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data" style="width: 700px">
 		{% csrf_token %}
@@ -123,7 +122,10 @@
 			var fd = new FormData();
 			var files_sff = document.getElementsByClassName('sff');
 			var files_map = document.getElementsByClassName('map');
-
+			for (i = 0; i < files_sff.length; i++) {
+				files_sff[i] = files_sff[i].files[0];
+				files_map[i] = files_map[i].files[0]; // EXTRA CAUTION
+			}
 			fd.append("file_sff", files_sff); // CAUTION
 			fd.append("file_map", files_map); // CAUTION
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
