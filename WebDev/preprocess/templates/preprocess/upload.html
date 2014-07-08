@@ -66,8 +66,8 @@
 			var file_sff = document.getElementById('file_sff').files[0];
         	if (file_sff) { var fileSize_sff = file_sff.size; }
 			file_map = document.getElementById('file_map').files[0];
-        	if (file_map) { var fileSize_map = file_sff.size; }
-			var fileSize = fileSize_sff + fileSize_map; // the fileSize is wrong
+        	if (file_map) { var fileSize_map = file_map.size; }
+			var fileSize = fileSize_sff + fileSize_map;
 			if (fileSize < 1024 * 1024) {
             	fileSize = (Math.round(fileSize * 100 / (1024)) / 100).toString() + ' KB';
 			}

@@ -67,7 +67,7 @@ def download(request, p_id):
     download_path = os.path.join(download_path, str(pip[0].pk))
     download_path = os.path.join(download_path, 'file')
 
-    #Retriv the download
+    #Retrive the download
     return download_file("file.txt", download_path)
 
 def option(request, p_id):
