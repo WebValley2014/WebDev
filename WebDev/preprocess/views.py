@@ -37,6 +37,7 @@ def upload(request):
             try:
                 file_sff = request.FILES['file_sff']
                 file_map = request.FILES['file_map']
+                file_txt = request.FILES['file_txt']
             except:
                 messages.error(request, "Insert the correct files")
                 form_error = True
