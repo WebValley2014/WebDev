@@ -35,14 +35,16 @@ def store_after_celery(rundb, task_ret, tp):
     :return: True
     '''
 
-    rundb.started = task_ret.st
-    rundb.finished = task_ret.ft
+    print str()
+    rundb.started = task_ret[0]['st']
+    rundb.finished = task_ret[0]['ft']
 
     resdb = Results(process_name=rundb.process_name,
-                    task_id=rundb.task_id,
-                    filepath=task_ret.funct.pathname,
+                    task_id=rundb,
+                    filepath=task_ret[0]['funct']['pathname'],
                     filetype=tp,
-                    filename=task_ret.funct.filename,
+                    owner=rundb.pip_id.owner,
+                    pip_id=rundb.pip_id
                     )
     resdb.save()
     return True
