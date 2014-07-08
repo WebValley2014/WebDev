@@ -82,8 +82,8 @@ def start_preprocess(request, pip_id, new_pip=0):
 
     preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
 
-    input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
-    store_before_celery(pip, input, preproc_id.id)
+    input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
+    store_before_celery(pip, input_data, preproc_id.id)
 
     return HttpResponseRedirect("/preproc/processing/"+preproc_id.id+"/")
 
@@ -97,9 +97,8 @@ def processing(request, process_id):
 
 #CELERY FUNCTION
 
-def store_before_celery( pip_id ,jinput , task_id ):
+def store_before_celery(pip_id, jinput, task_id):
     '''
-
     This Function Stores the running process and info related to the results to the database.
     Needs to be called directly after [variable]= celery.start_task()
 
@@ -109,19 +108,16 @@ def store_before_celery( pip_id ,jinput , task_id ):
     :return: RunningProcess Database
     '''
     pname= 'Preprocessing'
-    rundb = RunningProcess(
-                         process_name=pname,
-                         pip_id=pip_id,
-                         inputs=jinput,
-                         submitted = datetime.datetime.now(),
-                         task_id = task_id,
-                         started = None,
-                         finished = None,
-                     )
+    rundb = RunningProcess(process_name=pname,
+                           pip_id=pip_id,
+                           inputs=jinput,
+                           submitted=datetime.datetime.now(),
+                           task_id=task_id,
+                           )
     rundb.save()
     return True
 
-def store_after_celery(rundb , task_ret ):
+def store_after_celery(rundb, task_ret):
     '''
     Run after Celery Task
     :param rundb: from store_before_celery
@@ -130,16 +126,14 @@ def store_after_celery(rundb , task_ret ):
     '''
 
     tp = 'txt'
-    rundb.started = task_ret.st,
-    rundb.finished = task_ret.ft,
+    rundb.started = task_ret.st
+    rundb.finished = task_ret.ft
 
-    resdb = Results(
-                         process_name=rundb.process_name,
-                         task_id = rundb.task_id,
-                         filepath=task_ret.funct.pathname ,
-                         filetype=tp,
-                         filename=task_ret.funct.filename ,
-                     )
-
+    resdb = Results(process_name=rundb.process_name,
+                    task_id=rundb.task_id,
+                    filepath=task_ret.funct.pathname,
+                    filetype=tp,
+                    filename=task_ret.funct.filename,
+                    )
+    resdb.save()
     return True
-
