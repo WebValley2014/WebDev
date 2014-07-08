@@ -42,7 +42,6 @@ def upload(request):
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
                     p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
                                  started=timezone.now(), description='', owner=request.user)
-                    print p
                     p.save()
                     handle_uploaded_file(p, file_sff)
                     handle_uploaded_file(p, file_map)
@@ -51,6 +50,7 @@ def upload(request):
                     messages.error(request, "File type incorrect")
         else:
             messages.error(request, "Insert the correct file")
+        return HttpResponse('/preproc/upload/')
 
     # ELSE GENERATE THE FILE UPLOAD PAGE
     pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')

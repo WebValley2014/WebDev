@@ -43,7 +43,7 @@ def upload_preProcessed(request):
                 p.save()
                 handle_uploaded_file(p,request.FILES['file'])
                 render(request, 'classification/tuttook.html')
-		return HttpResponse('classification/tuttok.html')
+		return HttpResponse('classification/tuttook.html')
         else:
             messages.error(request, 'Wrong file type')
     oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
