@@ -66,7 +66,6 @@ def upload(request):
         'file_list': final_file,
         'file_exist': file_exist
     }
-
     return render(request, 'preprocess/upload.html', c)
 
 
