@@ -113,13 +113,13 @@ def store_before_celery( pip_id ,jinput , task_id ):
                          process_name=pname,
                          pip_id=pip_id,
                          inputs=jinput,
-                         submitted = datetime.datetime.now() ,
+                         submitted = datetime.datetime.now(),
                          task_id = task_id,
                          started = None,
                          finished = None,
                      )
-
-    return rundb
+    rundb.save()
+    return True
 
 def store_after_celery(rundb , task_ret ):
     '''
