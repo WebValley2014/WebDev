@@ -1,3 +1,4 @@
+
 import csv
 import numpy
 import optparse
@@ -36,8 +37,8 @@ class SFF2OTU:
 
     def __del__(self):
         import shutil
-        shutil.rmtree(self.dir)
-        shutil.rmtree(self.fasta_dir)
+        #shutil.rmtree(self.dir)
+        #shutil.rmtree(self.fasta_dir)
 
     def run(self, processors = 1, percentage = 10, *args, **kwargs):
         kwargs['processors'] = processors
@@ -86,7 +87,10 @@ class SFF2OTU:
 
     def map2oligo(self):
         for mapping in self.mapping:
-            data = numpy.loadtxt(mapping, dtype = 'string')
+            data = numpy.loadtxt(mapping, dtype = 'string', delimiter = '\t')
+            if len(data.shape) == 1:
+                data = data.reshape((1, -1))
+
             output = os.path.join(self.dir, os.path.splitext(os.path.basename(mapping))[0] + '.oligo')
 
             with open(output, 'w') as oligo:
@@ -95,13 +99,13 @@ class SFF2OTU:
 
                 for i in xrange(data.shape[0]):
                     writer.writerow(['barcode', data[i, 1], data[i, 0]])
-
+            
             self.oligo.append(output)
 
     def trim(self, kwargs):
         if not len(self.fasta) == len(self.qual) == len(self.oligo):
             raise ValueError, 'sffinfo and map2oligo must be executed before trim'
-
+        
         for fasta, qual, oligo in zip(self.fasta, self.qual, self.oligo):
             kwargs['fasta'] = fasta
             kwargs['oligos'] = oligo
