@@ -86,9 +86,11 @@ def start_preprocess(request, pip_id, new_pip=0):
 
     #preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
 
-    preproc_id = settings.APP.send_task("add", (5, 10))
-
+    preproc_id = settings.APP.send_task("tasks.add", (5, 10))
+    
+    
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
+    print  'Culo'
     store_before_celery(pip, input_data, preproc_id.id)
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
@@ -114,7 +116,9 @@ def store_before_celery(pip_id, jinput, task_id):
     :return: RunningProcess Database
     '''
     pname= 'Preprocessing'
+
     try:
+        print 'porcodio'
         rundb = RunningProcess(process_name=pname,
                                pip_id=pip_id,
                                inputs=jinput,

@@ -8,9 +8,9 @@ urlpatterns = patterns('preprocess.views',
     #Delete File
     url(regex='^delete/(.+)/(.+)/$', view='deleteFile', name='file_delete'),
     #Status
-    url(regex='^status/$', view='statusPP', name='statusPP'),
+    # url(regex='^status/$', view='statusPP', name='statusPP'),
     #Processing
-    url(regex='^processing/(.+)/(.+)/$', view='processing_finish', name='processing_finish'),
+    # url(regex='^processing/(.+)/(.+)/$', view='processing_finish', name='processing_finish'),
     url(regex='^processing/(.+)/$', view='processing', name='processing'),
     #Celery
     url(regex='^celery/(.+)/([0-1]{1})/$', view="start_preprocess", name="celery"),
