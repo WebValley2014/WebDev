@@ -121,7 +121,7 @@ def processing_finish(request, task_id):
             return HttpResponse('Error')
     return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
 
-
+'''
 def processing_finish(request, pip_id, task_id):
     result = settings.APP.AsyncResult(task_id)
     while not result.ready():
@@ -132,7 +132,7 @@ def processing_finish(request, pip_id, task_id):
         return HttpResponse('OK')
     else:
         return HttpResponse('Error')
-
+'''
 
 @login_required(login_url='/login')
 def statusPP(request):
