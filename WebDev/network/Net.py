@@ -21,7 +21,7 @@ class Net:
         self.loadfiles()
         self.findsubmatrixes()
         self.mkadjmatrixes()
-        self.mkpngoutput()
+        #FIXME self.mkpngoutput()
         return self.himadjmatrix        #to DBizzarri
 
 ########
@@ -68,7 +68,7 @@ class Net:
             self.setrank[i] = self.setrank[i][0]
 
         filemetrics = open(self.metricsname)
-        nmetrics = filemetrics.readline()
+        self.nmetrics = filemetrics.readline()
         filemetrics.close()
         self.nmetrics = self.nmetrics.split('\t')
         self.nmetrics = self.nmetrics[1]
@@ -93,13 +93,12 @@ class Net:
         ok = 0	# for the condition of the while loop
         while ok < len(self.aunilabels):
             r2 = 0
-            maux = np.zeros((len(np.where(self.setlabels == self.aunilabels[ok])[0]), nmetrics))
+            maux = np.zeros((len(np.where(self.setlabels == self.aunilabels[ok])[0]), self.nmetrics))
             for r in np.where(self.setlabels == np.array(list(set(self.setlabels)))[ok])[0]:	#this is a very strange 2d-array with the positions of the ok-th different element of setlabels in setlabels itself
                 #print aunilabels
                 c2 = 0
-                for c in self.setlabels[self.nmetrics] self.setCol:#FIXME
-                for i in range(self.nmetrics)
-                    c = self.setlabels[self.setrank[i]]
+                for i in range(self.nmetrics):
+                    c = self.setrank[i]
                     maux[r2, c2] = self.mdata[r, c]
                     c2 += 1
                 r2 += 1
@@ -112,7 +111,7 @@ class Net:
     def mkadjmatrixes(self):
         self.adjmatrixes = []
         for i in range(len(self.aunilabels)):	# sgrulla down le labels
-            self.adjmatrixes.append(self.mknetfeatures(self.alabels[i],0.1))	#FIXME uses features, not samples! 0.1 is the threshold: check it!
+            self.adjmatrixes.append(self.mknetfeatures(self.alabels[i],0.1))	# uses features, not samples! 0.1 is the threshold: check it!
         self.adjmatrixes = np.array(self.adjmatrixes)
 		        ### now, the list adjmatrixes is filled in with the adjacency matrices of each different label
         self.himadjmatrix = np.zeros((len(self.aunilabels), len(self.aunilabels)))
@@ -120,10 +119,9 @@ class Net:
         for i in range(1, len(self.aunilabels)): #loop on label indexes
 
             for j in range(i):	#loop on previous labels
+		
     	        hamming, ipsen, self.himadjmatrix[i, j] = df.him(self.adjmatrixes[i], self.adjmatrixes[j])	#calculates the him distance between two networks
                 self.himadjmatrix[j, i] = self.himadjmatrix[i, j]	#makes symmetric the 'adjacency' matrix
-
-        #return (self.himadjmatrix)	#, aunilabels)
 
 ########
 
@@ -148,15 +146,15 @@ class Net:
                     L2 = [M[j,k] for j in range(nRow)]
 
                     if np.var(L1)==0 and np.var(L2)==0:
-	                    pear=[1.0,123]
+                        pear=[1.0,123]
                     elif np.var(L1)==0 or np.var(L2)==0:
-	                    pear=[0.,123]
+                        pear=[0.,123]
                     else:
-	                    pear = pearsonr(L1,L2)    #output as array
+                        pear = pearsonr(L1,L2)    #output as array
 
                     if pear > thre:
-	                    self.mNet[i,k] = abs(pear[0])
-	                    self.mNet[k,i] = abs(pear[0])
+                        self.mNet[i,k] = abs(pear[0])
+                        self.mNet[k,i] = abs(pear[0])
         ### mNet is now our network matrix
 
         return self.mNet

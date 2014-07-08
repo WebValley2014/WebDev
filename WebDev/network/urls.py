@@ -12,7 +12,7 @@ urlpatterns = patterns('network.views',
     #Home Classification
 
 
-    url(regex=r'^delete/(.+)/(.+)/(.+)/(.+)/(.+)/$', view="deleteFile", name="delete"),
+    url(regex=r'^delete/(.+)/(.+)/(.+)/(.+)/(.+)/(.+)/$', view="deleteFile", name="delete"),
 
     url(regex=r'^(.+)/$', view="network", name="network"),
     url(regex=r'^$', view="network_redirect", name="network")
