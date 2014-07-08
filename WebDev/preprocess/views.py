@@ -8,26 +8,28 @@ from django.shortcuts import render, HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from utils import pick_file_list
-from django.shortcuts import  HttpResponse
+from django.shortcuts import HttpResponse
 from WebDev.utils import *
 from django.contrib import messages
 from django.conf import settings
 import os
 import time
 
+
 @login_required(login_url="/login")
 def preprocess_redirect(request):
     return HttpResponseRedirect("upload/")
+
 
 @login_required(login_url="/login")
 def get_results(request, p):
     return HttpResponse("Ok")
 
+
 @login_required(login_url="/login")
 def upload(request):
-
     form_error, ex_error = False, False
-    #IF FIELE UPLOADED
+    # IF FIELE UPLOADED
     if request.POST:
         if request.FILES:
             try:
@@ -37,18 +39,19 @@ def upload(request):
                 messages.error(request, "Insert the correct file")
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
-                    p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(), started=timezone.now(), description='', owner=request.user)
+                    p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
+                                 started=timezone.now(), description='', owner=request.user)
                     print p
                     p.save()
                     handle_uploaded_file(p, file_sff)
                     handle_uploaded_file(p, file_map)
-                    return HttpResponse('/preproc/celery/'+p.pip_id)
+                    return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
         else:
             messages.error(request, "Insert the correct file")
 
-    #ELSE GENERATE THE FILE UPLOAD PAGE
+    # ELSE GENERATE THE FILE UPLOAD PAGE
     pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
     #Order the list
     final_file = pick_file_list(pre_file)
@@ -62,9 +65,10 @@ def upload(request):
     }
     return render(request, 'preprocess/upload.html', c)
 
+
 @login_required(login_url="/login")
 def deleteFile(request, id1, id2):
-    #Delete the file
+    # Delete the file
     re1 = Results.objects.get(id=int(id1))
     re2 = Results.objects.get(id=int(id2))
     if re1.owner == request.user:
@@ -73,9 +77,9 @@ def deleteFile(request, id1, id2):
         delete(re2)
     return HttpResponseRedirect('/preproc/upload')
 
+
 @login_required(login_url="/login")
 def start_preprocess(request, pip_id, new_pip=0):
-
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
@@ -85,19 +89,19 @@ def start_preprocess(request, pip_id, new_pip=0):
     input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
     store_before_celery(pip, input, preproc_id.id)
 
-    return HttpResponseRedirect("/preproc/processing/"+preproc_id.id+"/")
+    return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
+
 
 @login_required(login_url='/login')
 def processing(request, process_id):
-    #Pick the results
+    # Pick the results
     result = settings.APP.AsyncResult(process_id)
     return HttpResponse(result.status)
 
 
+# CELERY FUNCTION
 
-#CELERY FUNCTION
-
-def store_before_celery( pip_id ,jinput , task_id ):
+def store_before_celery(pip_id, jinput, task_id):
     '''
 
     This Function Stores the running process and info related to the results to the database.
@@ -108,20 +112,24 @@ def store_before_celery( pip_id ,jinput , task_id ):
     :param task_id: taskid
     :return: RunningProcess Database
     '''
-    pname= 'Preprocessing'
-    rundb = RunningProcess(
-                         process_name=pname,
-                         pip_id=pip_id,
-                         inputs=jinput,
-                         submitted = datetime.datetime.now(),
-                         task_id = task_id,
-                         started = None,
-                         finished = None,
-                     )
-    rundb.save()
+    pname = 'Preprocessing'
+    try:
+        rundb = RunningProcess(
+            process_name=pname,
+            pip_id=pip_id,
+            inputs=jinput,
+            submitted=datetime.datetime.now(),
+            task_id=task_id,
+            started=None,
+            finished=None,
+        )
+        rundb.save()
+    except:
+        raise IOError
     return True
 
-def store_after_celery(rundb , task_ret ):
+
+def store_after_celery(rundb, task_ret):
     '''
     Run after Celery Task
     :param rundb: from store_before_celery
@@ -134,12 +142,12 @@ def store_after_celery(rundb , task_ret ):
     rundb.finished = task_ret.ft,
 
     resdb = Results(
-                         process_name=rundb.process_name,
-                         task_id = rundb.task_id,
-                         filepath=task_ret.funct.pathname ,
-                         filetype=tp,
-                         filename=task_ret.funct.filename ,
-                     )
+        process_name=rundb.process_name,
+        task_id=rundb.task_id,
+        filepath=task_ret.funct.pathname,
+        filetype=tp,
+        filename=task_ret.funct.filename,
+    )
 
     return True
 
