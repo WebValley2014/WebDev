@@ -38,24 +38,43 @@
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file"> CODES</span>
 			</span>
-			<input id="fileToUpload" name="file" type="file" class="form-control" />
+			<input id="file" name="file" type="file" class="form-control" />
 		</div>
 		<br />
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
-		<div>
-        	<p class="size" data-dz-size></p>
-        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+		<div id="progress_cont" style="display: none; height: 100px;">
+        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px">
           		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 			</div>
-        </div>
+			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px ;z-index:2">0 %</div>
+			<div style="margin-left: auto; margin-right: auto">
+			<div id="f_size" class="glyphicon glyphicon-hdd"> A</div>
+			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> B</div>
+			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> C</div></div>
+		</div>
 	</form>
 	<br /><br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
 	<script type="text/javascript">
 		function uploadFile() {
+			var file = document.getElementById('file').files[0];
+        	if (file) { var fileSize = file.size; }
+			if (fileSize > 1024 * 1024) {
+            	fileSize = (Math.round(fileSize * 100 / (1024 * 1024)) / 100).toString() + ' MB';
+			}
+          	else {
+				if (fileSize > 1024 * 1024 * 1024) {
+            		fileSize = (Math.round(fileSize * 100 / (1024 * 1024 * 1024)) / 100).toString() + ' GB';
+				}
+				else {
+					fileSize = (Math.round(fileSize * 100 / 1024) / 100).toString() + ' KB';
+				}
+			}
+          	document.getElementById('f_size').innerHTML = ' ' + (fileSize);
+
 			var fd = new FormData();
-			fd.append("file", document.getElementById('fileToUpload').files[0]);
+			fd.append("file", file);
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 			var xhr = new XMLHttpRequest();
 			xhr.upload.addEventListener("progress", uploadProgress, false);
@@ -64,29 +83,49 @@
 			xhr.addEventListener("abort", uploadCanceled, false);
 			xhr.open("POST", "");
 			xhr.send(fd);
+
+			window.startTime = new Date().getTime();
+			document.getElementById('progress_cont').style.display = 'block';
 		}
 
-      function uploadProgress(evt) {
-        if (evt.lengthComputable) {
-		  document.getElementById('progress-bar').style.width = Math.round(evt.loaded * 100 / evt.total).toString() + '%';
-        }
-        else {
-          document.getElementById('progressNumber').innerHTML = 'unable to compute';
-        }
-      }
+		function uploadProgress(evt) {
+			if (evt.lengthComputable) {
+				var PerCent = Math.round(evt.loaded * 100 / evt.total).toString();
+				document.getElementById('progress-bar').style.width = PerCent + '%';
+				document.getElementById('progress-num').innerHTML = PerCent + ' %';
+				var AverageSpeed = evt.loaded * 1000 / 1024 / (new Date().getTime() - window.startTime);
+				document.getElementById('up_spd').innerHTML = ' ' + Math.round(AverageSpeed) + ' KB/s';
+				var KbLeft = (evt.total - evt.loaded) / 1024;
+				var timeLeft = Math.round(KbLeft / AverageSpeed);
+				var timeLeftS = '';
+				if (timeLeft > 3600) {
+					timeLeftS = ' ' + Math.round(timeLeft / 3600) + 'h ' + Math.round((timeLeft % 3600)/60) + 'm ' + (timeLeft % 60) + 's';
+				}
+				else {
+					if (timeLeft > 60) {
+						timeLeftS = ' ' + Math.round(timeLeft / 60) + 'm ' + (timeLeft % 60) + 's';
+					}
+					else { timeLeftS = ' ' + timeLeft + 's'; }
+				}
+				document.getElementById('tm_lft').innerHTML = timeLeftS;
+			}
+			else {
+				document.getElementById('progressNumber').innerHTML = 'unable to compute';
+			}
+		}
 
-      function uploadComplete(evt) {
-        // alert(evt.target.responseText);
-      }
+		function uploadComplete(evt) {
+			window.location.replace(evt.target.responseText);
+		}
 
-      function uploadFailed(evt) {
-        alert("There was an error attempting to upload the file.");
-      }
+		function uploadFailed(evt) {
+			alert("There was an error attempting to upload the file.");
+		}
 
-      function uploadCanceled(evt) {
-        alert("The upload has been canceled by the user or the browser dropped the connection.");
-      }
-    </script>
+		function uploadCanceled(evt) {
+			alert("The upload has been canceled by the user or the browser dropped the connection.");
+		}
+	</script>
 	<br />
     {% if file_exist %}
     <table class="table table-striped">

@@ -37,6 +37,7 @@ def upload(request):
                 file_map = request.FILES['file_map']
             except:
                 messages.error(request, "Insert the correct file")
+                form_error = True
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
                     p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
@@ -84,19 +85,53 @@ def start_preprocess(request, pip_id, new_pip=0):
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
 
-    preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+    #preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
 
+    preproc_id = settings.APP.send_task("tasks.add", (5, 10))
+    
+    
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
+    print  'Salva su database prima che celery abbia finito'
     store_before_celery(pip, input_data, preproc_id.id)
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
 
 
-@login_required(login_url='/login')
-def processing(request, process_id):
+#@login_required(login_url='/login')
+def processing(request, task_id):
     # Pick the results
-    result = settings.APP.AsyncResult(process_id)
-    return HttpResponse(result.status)
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        return HttpResponseRedirect('/preproc/processing_finish/%s/' % (task_id,))
+    else:
+        return HttpResponse(result.status)
+
+
+def processing_finish(request, task_id):
+    print 'Chiamata'
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        if store_after_celery(rp, r):
+            return HttpResponse('OK')
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
+
+'''
+def processing_finish(request, pip_id, task_id):
+    result = settings.APP.AsyncResult(task_id)
+    while not result.ready():
+        time.sleep(1)
+    r = result.get()
+    rp = RunningProcess.objects.get(task_id=task_id)
+    if store_after_celery(rp, r):
+        return HttpResponse('OK')
+    else:
+        return HttpResponse('Error')
+'''
 
 @login_required(login_url='/login')
 def statusPP(request):
@@ -124,13 +159,18 @@ def store_before_celery(pip_id, jinput, task_id):
     :return: RunningProcess Database
     '''
     pname= 'Preprocessing'
-    rundb = RunningProcess(process_name=pname,
-                           pip_id=pip_id,
-                           inputs=jinput,
-                           submitted=datetime.datetime.now(),
-                           task_id=task_id,
+
+    try:
+        print 'Save database RunningProcess'
+        rundb = RunningProcess(process_name=pname,
+                               pip_id=pip_id,
+                               inputs=jinput,
+                               submitted=datetime.datetime.now(),
+                               task_id=task_id,
                            )
-    rundb.save()
+        rundb.save()
+    except Exception, e:
+        print e
     return True
 
 def store_after_celery(rundb, task_ret):

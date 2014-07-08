@@ -19,6 +19,9 @@ urlpatterns = patterns('',
     url(r'^contact/$', "WebDev.views.contact", name='contact'),
     #About_us
     url(r'^about_us/$', "WebDev.views.about_us", name='about'),
+    #FARINA
+    url(r'^graph_prova/$', "WebDev.views.graph_prova", name='graph'),
+    url(r'^graph_prova_oculus/$', "WebDev.views.graph_prova_oculus", name='graph_oculus'),
 
 
     # Classification urls
