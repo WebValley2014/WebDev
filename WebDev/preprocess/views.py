@@ -160,7 +160,7 @@ def statusPP(request):
                 listRunning.append(el)
             else:
                 listFaliur.append(el)
-            context = {
+    context = {
                 'listPending':  listPending,
                 'listStarted':  listStarted,
                 'listRetry':    listRetry,
