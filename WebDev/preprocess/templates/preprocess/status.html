@@ -29,8 +29,13 @@
     {% for el in listPending %}
             <li class="list-group-item list-group-item-warning">Started: {{ el.submitted }}</li>
     {% endfor %}
+	<h3> Running processes </h3> </br>
+    <ul class="list-group">
+    {% for el in listRunning %}
+            <li class="list-group-item list-group-item-warning">Started: {{ el.submitted }}</li>
+    {% endfor %}
     <h3> Completed processes </h3> </br>
-    {% for el in listOK %}
+    {% for el in listSuccess %}
             <li class="list-group-item list-group-item-success">Started: {{ el.submitted }}</li>
     {% endfor %}
     </ul>

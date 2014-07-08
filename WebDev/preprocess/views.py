@@ -102,6 +102,8 @@ def start_preprocess(request, pip_id, new_pip=0):
 def processing(request, task_id):
     # Pick the results
     result = settings.APP.AsyncResult(task_id)
+    print str(result.status)
+    print str(settings.APP)
     if result.ready():
         return HttpResponseRedirect('/preproc/processing_finish/%s/' % (task_id,))
     else:
@@ -115,7 +117,7 @@ def processing_finish(request, task_id):
     if result.ready():
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
-        if store_after_celery(rp, r):
+        if store_after_celery(rp, r , 'txt'):
             return HttpResponse('OK')
         else:
             return HttpResponse('Error')
@@ -137,13 +139,35 @@ def processing_finish(request, pip_id, task_id):
 @login_required(login_url='/login')
 def statusPP(request):
     tList = RunningProcess.objects.filter(process_name='Preprocessing')
+    listRunning = []
+    listFaliur = []
     listPending = []
-    listOK = []
+    listSuccess = []
+    listRetry = []
+    listStarted = []
     for el in tList:
         if el.pip_id.owner==request.user:
-            if(settings.APP.AsyncResult(el.task_id).status=='PENDING'):
+            status = settings.APP.AsyncResult(el.task_id).status
+            if(status == 'PENDING'):
                 listPending.append(el)
+            if(status == 'STARTED'):
+                listStarted.append(el)
+            if(status == 'RETRY'):
+                listRetry.append(el)
+            if(status == 'SUCCESS'):
+                listSuccess.append(el)
+            if(status == 'RUNNING'):
+                listRunning.append(el)
             else:
-                listOK.append(el)
-    return render(request, 'preprocess/status.html', {'listPending': listPending, 'listOK': listOK})
+                listFaliur.append(el)
+            context = {
+                'listPending':  listPending,
+                'listStarted':  listStarted,
+                'listRetry':    listRetry,
+                'listSuccess':  listSuccess,
+                'listRunning':  listRunning,
+                'listFaliur':   listFaliur,
+
+            }
+    return render(request, 'preprocess/status.html', context)
 
