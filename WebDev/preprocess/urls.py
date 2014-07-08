@@ -18,7 +18,7 @@ urlpatterns = patterns('preprocess.views',
     #Upload page
     url(regex='^upload/$', view="upload", name='preproc_upload'),
     #In processing page
-    url(regex='^(.+)/$', view="get_results", name='get_result'),
+    # url(regex='^(.+)/$', view="get_results", name='get_result'),
     #Processing root (redirect to upload)
     url(regex=r'^$', view="preprocess_redirect", name='redirect_preproc'),
 )
