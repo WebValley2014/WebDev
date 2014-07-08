@@ -14,7 +14,7 @@
 			<ul class="dropdown-menu" role="menu">
 				<li class="disabled"><a href="{% url 'preproc_upload' %}">Preprocessing</a></li>
 				<li><a href="{% url 'class_upload' %}">Classification</a></li>
-				<li><a href="#">Network</a></li>
+				<li><a href="{% url 'network_upload' %}">Network</a></li>
 			</ul>
 		</li>
 	{% endif %}
@@ -24,45 +24,185 @@
 {# CONTENT #}
 
 {% block main %}
-	{% if form_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter all the required files.</p><br />
-    {% endif %}
-    {% if ex_error %}
-        <p style="color: red; text-align: center; font-weight: bold">ERROR: please enter the correct type of files.</p><br />
-    {% endif %}
-	<p style="text-align:center">Select a <strong>.ZIP</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
-	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
+	{% if messages %}
+    	{% for message in messages %}
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            	<strong>Error!</strong> {{ message }}
+			</div>
+    	{% endfor %}
+	{% endif %}
+	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	<form class="form fileformbox" method="post" enctype="multipart/form-data" style="width: 700px">
 		{% csrf_token %}
-		<div class="input-group forminp">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-compressed" style="width:58px"> ZIP</span>
-			</span>
-			<input id="id_file" name="file_zip" type="file" class="form-control" />
+		<div class="file_buttons">
+			<div class="file_pair" style="width: 700px; margin-left: -350px; margin-right: -350px; position: relative; left: 50%;">
+				<div class="input-group" style="width: 340px; float: left;">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
+					</span>
+					<input id="sff_1" name="file" type="file" class="form-control sff" />
+				</div>
+				<div class="input-group" style="width: 340px; float: right">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-file"> MAP</span>
+					</span>
+					<input id="map_1" name="file" type="file" class="form-control map" />
+				</div>
+			</div>
+			<br /><br />
+			<div id="plus_minus" style="width: 84px; margin-left: -42px; margin-right: -42px; position: relative; left: 50%;">
+				<span class="btn btn-default" onclick="addFilePair()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</span>
+				<span class="btn btn-default" onclick="removeFilePair()">
+					<span class="glyphicon glyphicon-minus"></span>
+				</span>
+			</div>
 		</div>
-		<br />
-		<div class="input-group forminp">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file"> MAP</span>
-			</span>
-			<input id="id_file" name="file_map" type="file" class="form-control" />
+		<br /><br />
+		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
+		<br /><br />
+		<div id="progress_cont" style="display: none; height: 100px;">
+        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px">
+          		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+			</div>
+			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px; z-index:2">0 %</div>
+			<div style="margin-left: auto; margin-right: auto">
+			<div id="f_size" class="glyphicon glyphicon-hdd"> 0 KB</div>
+			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> 0 KB/s</div>
+			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> 0s</div></div>
 		</div>
-		<br />
-		<input type="submit" class="btn btn-default centeredbutton start" value="Submit" />
-		<br />
-		<div>
-        <p class="size" data-dz-size></p>
 	</form>
-	<br /><br />
+	<script type="text/javascript">
+		var filePair = document.getElementsByClassName('file_pair')[0];
+		var fpParent = filePair.parentNode;
+
+		function addFilePair() {
+			var clone = filePair.cloneNode(true);
+			fpParent.insertBefore(clone, fpParent.childNodes[fpParent.children.length]);
+			var br = document.createElement('br');
+			fpParent.insertBefore(br, fpParent.childNodes[fpParent.children.length-1]);
+			var br = document.createElement('br');
+			fpParent.insertBefore(br, fpParent.childNodes[fpParent.children.length]);
+		}
+
+		function removeFilePair() {
+			var l = document.getElementsByClassName('file_pair').length;
+			if (l > 1) {
+				fpParent.removeChild(fpParent.childNodes[fpParent.children.length-3]);
+				fpParent.removeChild(fpParent.childNodes[fpParent.children.length-1]);
+				fpParent.removeChild(fpParent.childNodes[fpParent.children.length-1]);
+			}
+		} 
+
+		function uploadFile() {
+
+			/* CALCULATE TOTAL FILE SIZE */
+			var fileSize = 0;
+			for (i = 0; i < document.getElementsByName('file').length; i++) {
+				fileSize += document.getElementsByName('file')[i].size;
+			}
+
+			/* FORMAT FILE SIZE */
+			if (fileSize < 1024 * 1024) {
+            	fileSize = (Math.round(fileSize * 100 / (1024)) / 100).toString() + ' KB';
+			}
+          	else {
+				if (fileSize < 1024 * 1024 * 1024) {
+            		fileSize = (Math.round(fileSize * 100 / (1024 * 1024)) / 100).toString() + ' MB';
+				}
+				else {
+					fileSize = (Math.round(fileSize * 100 / (1024 * 1024 * 1024)) / 100).toString() + ' GB';
+				}
+			}
+
+          	document.getElementById('f_size').innerHTML = ' ' + (fileSize);
+
+			var fd = new FormData();
+			var files_sff = document.getElementsByClassName('sff');
+			var files_map = document.getElementsByClassName('map');
+
+			fd.append("file_sff", files_sff[0].files[0]); // CAUTION
+			fd.append("file_map", files_map[0].files[0]); // CAUTION
+			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+
+			var xhr = new XMLHttpRequest();
+
+			xhr.upload.addEventListener("progress", uploadProgress, false);
+			xhr.addEventListener("load", uploadComplete, false);
+			xhr.addEventListener("error", uploadFailed, false);
+			xhr.addEventListener("abort", uploadCanceled, false);
+
+			xhr.open("POST", "");
+			xhr.send(fd);
+
+			window.startTime = new Date().getTime();
+			document.getElementById('progress_cont').style.display = 'block';
+		}
+
+		function uploadProgress(evt) {
+			if (evt.lengthComputable) {
+				var PerCent = Math.round(evt.loaded * 100 / evt.total).toString();
+				document.getElementById('progress-bar').style.width = PerCent + '%';
+				document.getElementById('progress-num').innerHTML = PerCent + ' %';
+				var AverageSpeed = evt.loaded * 1000 / 1024 / (new Date().getTime() - window.startTime);
+				document.getElementById('up_spd').innerHTML = ' ' + Math.round(AverageSpeed) + ' KB/s';
+				var KbLeft = (evt.total - evt.loaded) / 1024;
+				var timeLeft = Math.round(KbLeft / AverageSpeed);
+				var timeLeftS = '';
+				if (timeLeft > 3600) {
+					timeLeftS = ' ' + Math.round(timeLeft / 3600) + 'h ' + Math.round((timeLeft % 3600)/60) + 'm ' + (timeLeft % 60) + 's';
+				}
+				else {
+					if (timeLeft > 60) {
+						timeLeftS = ' ' + Math.round(timeLeft / 60) + 'm ' + (timeLeft % 60) + 's';
+					}
+					else { timeLeftS = ' ' + timeLeft + 's'; }
+				}
+				document.getElementById('tm_lft').innerHTML = timeLeftS;
+			}
+			else {
+				document.getElementById('progressNumber').innerHTML = 'unable to compute';
+			}
+		}
+
+		function uploadComplete(evt) {
+			if (evt.target.responseText == 'error') {
+				window.location.replace("{% url 'preproc_upload' %}")
+			}
+			else {
+				window.location.replace(evt.target.responseText);
+			}
+		}
+
+		function uploadFailed(evt) {
+			alert("There was an error attempting to upload the file.");
+		}
+
+		function uploadCanceled(evt) {
+			alert("The upload has been canceled by the user or the browser dropped the connection.");
+		}
+	</script>
+	<br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
-    <p>
-        <h3>Select file</h3>
-        {% for file in file_list %}
-        <p>
-            {{ file.0.filename }} |
-            {{ file.1.filename }} |
-            <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> |
-            <a href="/preproc/delete/{{ file.2 }}/"> DELETE </a>
-        </p>
-        {% endfor %}
-    </p>
+	<br /><br />
+    {% if file_exist %}
+    	<table class="table table-striped" style="width:100%">
+    		<tr>
+				<th>ZIP</th>
+				<th>File MAP</th>
+				<th>Select</th>
+				<th>Delete</th>
+			</tr>
+			{% for file in file_list %}
+				<tr>
+					<td> {{ file.1.filename }} </td>
+					<td> {{ file.0.filename }} </td>
+					<td>  <a href="/preproc/celery/{{ file.2 }}/1/"> SELECT </a> </td>
+					<td> <a href="/preproc/delete/{{ file.0.pk }}/{{ file.1.pk }}/"> DELETE </a> </td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% endif %}
 {% endblock %}

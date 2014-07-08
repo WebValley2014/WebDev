@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 import json
 import os
 from django.conf import settings
-import djcelery
+#import djcelery
 import jsonfield
 
 __author__ = 'michele'
@@ -52,12 +52,13 @@ class RunningProcess(models.Model):
     finished = models.DateTimeField(blank=True, null=True)
 
     # From id returns task result
-    @property
+    '''@property
     def celery_task(self):
         try:
             return djcelery.celery.AsyncResult(self.task_id)
         except Exception:
             return None
+            '''
 
     @property
     def badge_status(self):
@@ -102,16 +103,17 @@ class Results (models.Model):
         ('txt', 'text description'),
         ('json', 'json file'),
         ('error', 'Error during computation'),
-        ('zip', 'zip')
+        ('zip', 'zip'),
+        ('sff', 'sff')
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery
     owner = models.ForeignKey(User)
     pip_id = models.ForeignKey(Pipeline)
-    task_id = models.ForeignKey(RunningProcess, null=True, blank=True)          #Nome dell'app
+    task_id = models.ForeignKey(RunningProcess, null=True, blank=True)          #Run process
     filetype = models.CharField(max_length=36, choices=FILE_TYPES)              #Tipo di file (zip)
-    filename = models.CharField(max_length=40)                                  #Nome del file
-    filepath = models.CharField(max_length=100)                                 #Posizione del file da MEDIA_ROOT con nome file
+    filename = models.CharField(max_length=100, blank=True, null=True)          #Nome del file
+    filepath = models.CharField(max_length=500)                                 #Posizione completa del file
     filestore = models.FileField(upload_to=get_tmp_dir, null=True, blank=True)  #BLANK
     filecol = models.IntegerField(blank=True, null=True)                        #BLANK
     filerow = models.IntegerField(blank=True, null=True)                        #BLANK

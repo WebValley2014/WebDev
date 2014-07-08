@@ -1,18 +1,22 @@
-import os
+#!/usr/bin/env python
+
 import csv
 import numpy
-import shutil
+import optparse
+import os
+import re
 import subprocess
 import sys
 import tempfile
+import uuid
+import multiprocessing
 
-__author__ = 'michele'
 
 class SFF2OTU:
     def __init__(self, job_id, sff, mapping):
-        if isinstance(sff, str):
+        if isinstance(sff, str) or isinstance(sff, unicode):
             sff = [sff]
-        if isinstance(mapping, str):
+        if isinstance(mapping, str) or isinstance(mapping, unicode):
             mapping = [mapping]
 
         if len(sff) != len(mapping):
@@ -33,10 +37,13 @@ class SFF2OTU:
         self.group = []
 
     def __del__(self):
+        import shutil
         shutil.rmtree(self.dir)
         shutil.rmtree(self.fasta_dir)
 
-    def run(self, parallel = 1, *args, **kwargs):
+    def run(self, processors = 1, *args, **kwargs):
+        kwargs['processors'] = processors
+
         self.sffinfo()
         self.map2oligo()
         self.trim(kwargs)
@@ -44,8 +51,9 @@ class SFF2OTU:
 
         mapfile = self.merge_map()
         self.merge_fasta(mapfile)
-        self.pick_otus(parallel)
-        return self.biom_convert()
+        self.pick_otus(processors)
+        taxa_otu = self.summarize_taxa()
+        return self.merge_otu(taxa_otu)
 
     def command(self, args):
         process = subprocess.Popen(args, stdout = subprocess.PIPE, stderr = subprocess.PIPE)
@@ -64,7 +72,7 @@ class SFF2OTU:
 
     def sffinfo(self):
         for sff in self.sff:
-            command = 'sffinfo(sff=%s,fasta=T,qfile=T,sfftxt=F,flow=F)' % sff
+            command = 'sffinfo(sff=%s,fasta=T)' % sff
             output = self.mothur(self.dir, command)
 
             for line in output[output.index('Output File Names: \n') + 1:]:
@@ -86,13 +94,13 @@ class SFF2OTU:
 
                 for i in xrange(data.shape[0]):
                     writer.writerow(['barcode', data[i, 1], data[i, 0]])
-
+            
             self.oligo.append(output)
 
     def trim(self, kwargs):
         if not len(self.fasta) == len(self.qual) == len(self.oligo):
             raise ValueError, 'sffinfo and map2oligo must be executed before trim'
-
+        
         for fasta, qual, oligo in zip(self.fasta, self.qual, self.oligo):
             kwargs['fasta'] = fasta
             kwargs['oligos'] = oligo
@@ -142,15 +150,72 @@ class SFF2OTU:
         combined = os.path.join(self.dir, 'combined_seqs.fna')
         self.command(['pick_de_novo_otus.py', '-i', combined, '-o', self.dir, '-f', '-a', '-O', str(parallel)])
 
-    def biom_convert(self):
+    def summarize_taxa(self):
         biom = os.path.join(self.dir, 'otu_table.biom')
+        taxa_out = os.path.join(self.dir, 'taxa_out')
+        self.command(['summarize_taxa.py', '-i', biom, '-o', taxa_out])
+        return taxa_out
+
+    def merge_otu(self, taxa_out):
+        line = None
+        data = None
+
+        for otu in os.listdir(taxa_out):
+            if not re.search('L[0-9]*.txt$', otu):
+                continue
+
+            matrix = numpy.loadtxt(os.path.join(taxa_out, otu), dtype = str, delimiter = '\t')
+            if line == None:
+                line = matrix[0]
+
+            if data == None:
+                data = matrix[1:]
+            else:
+                data = numpy.concatenate((data, matrix[1:]))
+
+        line[0] = '#OTU ID'
+        line = numpy.append(line, 'Label')
+
+        data = numpy.append(data, data[:, 0].reshape(len(data), 1), axis = 1)
+        for i in xrange(len(data)):
+            data[i, 0] = 'merged' + str(i)
+
         otu_table = os.path.join(os.path.dirname(self.sff[0]), self.job_id + '.otu_table.txt')
-        self.command(['biom', 'convert', '-i', otu_table, '-b', '--header-key', 'taxonomy', '-o', otu_table])
+        with open(otu_table, 'w') as output:
+            writer = csv.writer(output, delimiter = '\t', lineterminator = '\n')
+            writer.writerow(line)
+            for line in data:
+                writer.writerow(line)
+
         return otu_table
 
+# if __name__ == '__main__':
+#     parser = optparse.OptionParser(usage = 'Usage: %prog [OPTIONS]')
+#     parser.add_option('-p', '--parallel', help = 'number of jobs for parallelizing in denosing and pick_de_novo_otus.py [default: %default]', type = 'int', default = 1)
+#     parser.add_option('-s', '--sff-files', help = 'sff files (comma separated)')
+#     parser.add_option('-m', '--map-files', help = 'map files (comma separated)')
+
+#     options, args = parser.parse_args()
+#     if not options.sff_files:
+#         parser.error('sff files must be specified')
+#     if not options.map_files:
+#         parser.error('map files must be specified')
+
+#     sff = options.sff_files.split(',')
+#     mapping = options.map_files.split(',')
+#     job_id = str(uuid.uuid4())
+
+#     sff2otu = SFF2OTU(job_id, sff, mapping)
+#     print(sff2otu.run(processors = options.parallel))
 
 def preprocess(job_id, sff, mapping):
     core = multiprocessing.cpu_count() - 1
 
     pipeline = SFF2OTU(job_id, sff, mapping)
-    return os.path.abspath(pipeline.run(core, processors = core))
+
+    g= pipeline.run(processors = 1)
+
+    t = { 'pathname': os.path.abspath(g) ,
+          'filename': os.path.basename(g)
+        }
+    return t

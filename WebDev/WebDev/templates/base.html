@@ -18,7 +18,7 @@
 			<nav id="topnavbar" class="navbar navbar-default" role="navigation">
 				<div class="container-fluid">
 					<div class="navbar-header">
-						{% block logo %}<a href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" id="logoimage" /></a>{% endblock %}
+						{% block logo %}<a href="{% url 'index' %}"><img src="{% static 'img/logo_bar.png' %}" id="logoimage" /></a>{% endblock %}
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
@@ -30,7 +30,7 @@
 									<ul class="dropdown-menu" role="menu">
 										<li><a href="{% url 'preproc_upload' %}">Preprocessing</a></li>
 										<li><a href="{% url 'class_upload' %}">Classification</a></li>
-										<li><a href="#">Network</a></li>
+										<li><a href="{% url 'network_upload' %}">Network</a></li>
 									</ul>
 								</li>{% endif %}{% endblock %}
 								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}

@@ -1,0 +1,92 @@
+2014-07-07 ~22:10--22:47
+-----------------------------------------
+=== NOTE: speakers in square brackets ===
+
+
+* celery
+  [nebras] - almost done, everything ok for tomorrow morning
+
+* pre-processing 
+  [ale] - done, 15 mins for ssf processing
+
+* machine learning
+  [luca] - the base script done, random forest almost done too
+  [ale]  - got new plots
+  [hiromu] - PCA calibration not ready yet, michele asked who wants to take
+             care of this task
+  
+* network
+  [beppe] - stefano & davide leo working on data production,
+            almost done, ~80% completed
+          - data stored in pickle files
+  [stefano] - working on igraph and static plots, ~30% completed
+  
+* 3D visualization
+  [davide] - PCA plots, almost done,  ~80% completed
+           - philogeny trees graphs, started today, ~40% completed
+           - oculus: it's easy, just take the code for the other graphs
+             and make it usable by the oculus (almost automatic, with
+             2 more lines of code)
+  [nebras] - kinect, ready it works, some gestures maybe to zoom the graphs
+
+* standards
+  [andrea] - half way, they are still reading some papers, ~50-60% completed
+
+* scientific results
+  [marco c.] - talissa working on this, reading papers etc, ~50% completed
+
+* django: web interface
+  [federica] - templates completed, 100% completed
+             - "templates are pretty cool" (cit., Federica) O_o
+             - working w/ cristian and deborah
+
+* django: render
+  [davide biz] - half way w/ views, ~53% completed
+  [nebras] - preproc works but need to figure out how to get and render
+             results automatically, ~35% completed
+  [hiromu] - live demo ...
+
+  
+
+================================================================================
+FROM GDOC :: https://docs.google.com/a/fbk.eu/document/d/1U9HFykD-WYmBOR61VtzlazA1dRZdNzFrPBdieSZZD8Q/edit
+-------------------------------------------------
+Checkpoint:
+
+Machine Learning - Pre Processing
+
+- Preprocessing        Done
+    15 mins/sff
+- Machine Learning:
+svm                    100%
+rf                    100%
+diagnosis                (Luca, Pia)
+real-pred                (Kevin) ?
+plot -> biomarkers sample by sample 67.2% (Kevin, Stefano, Ruchi)
+filtering                    100% (Nina, Kevin Z)
+alpha-beta divesity            (Nina, Kevin  Z, Ruchi)
+scientific results Test on public data    50% (Talissa)    
+standards                60% (Andrea, Ben)
+plot metrics                (Stefano)
+abundance plots with qiime        (Stefano)
+
+- Network 
+    produce data                80% (Davide, Stefano)
+    pickle files
+    igraph + static plots            32.7% (Stefano)
+
+-3D viz
+    PCA plots + Oculus            80% (Davide F.)
+    Philogeny tree    + Oculus?        40% 
+    Gesture recognition            80%
+- Django
+    Web-page (Codes)            100% (Fede, Deborah, Christian)
+Results render            53%
+Infrastructure                35% (FQ, DB, ND, H)
+
+- github
+-sleeping                     100% (*)
+
+60% 
+TAKE A PICTURE
+
