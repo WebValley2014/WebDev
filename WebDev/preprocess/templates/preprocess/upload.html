@@ -38,14 +38,14 @@
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
 			</span>
-			<input id="file_sff" name="file_sff" type="file" class="form-control" />
+			<input id="sff_1" name="file" type="file" class="form-control sff" />
 		</div>
 		<br />
 		<div class="input-group forminp">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file"> MAP</span>
 			</span>
-			<input id="file_map" name="file_map" type="file" class="form-control" />
+			<input id="map_1" name="file" type="file" class="form-control map" />
 		</div>
 		<br />
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
@@ -63,11 +63,14 @@
 	</form>
 	<script type="text/javascript">
 		function uploadFile() {
-			var file_sff = document.getElementById('file_sff').files[0];
-        	if (file_sff) { var fileSize_sff = file_sff.size; }
-			file_map = document.getElementById('file_map').files[0];
-        	if (file_map) { var fileSize_map = file_sff.size; }
-			var fileSize = fileSize_sff + fileSize_map; // the fileSize is wrong
+
+			/* CALCULATE TOTAL FILE SIZE */
+			var fileSize = 0;
+			for (i = 0; i < document.getElementsByName('file').length; i++) {
+				fileSize += document.getElementsByName('file')[i].size;
+			}
+
+			/* FORMAT FILE SIZE */
 			if (fileSize < 1024 * 1024) {
             	fileSize = (Math.round(fileSize * 100 / (1024)) / 100).toString() + ' KB';
 			}
@@ -79,17 +82,25 @@
 					fileSize = (Math.round(fileSize * 100 / (1024 * 1024 * 1024)) / 100).toString() + ' GB';
 				}
 			}
+
           	document.getElementById('f_size').innerHTML = ' ' + (fileSize);
 
+
 			var fd = new FormData();
-			fd.append("file_sff", file_sff);
-			fd.append("file_map", file_map);
+			var files_sff = document.getElementsByClassName('sff');
+			var files_map = document.getElementsByClassName('map');
+
+			fd.append("file_sff", files_sff); // CAUTION
+			fd.append("file_map", files_map); // CAUTION
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
+
 			var xhr = new XMLHttpRequest();
+
 			xhr.upload.addEventListener("progress", uploadProgress, false);
 			xhr.addEventListener("load", uploadComplete, false);
 			xhr.addEventListener("error", uploadFailed, false);
 			xhr.addEventListener("abort", uploadCanceled, false);
+
 			xhr.open("POST", "");
 			xhr.send(fd);
 
@@ -125,7 +136,7 @@
 
 		function uploadComplete(evt) {
 			if (evt.target.responseText == 'error') {
-				window.location.replace('/')
+				window.location.replace("{% url 'preproc_upload' %}")
 			}
 			else {
 				window.location.replace(evt.target.responseText);
