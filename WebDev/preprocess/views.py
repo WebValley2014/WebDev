@@ -36,7 +36,7 @@ def upload(request):
                 file_sff = request.FILES['file_sff']
                 file_map = request.FILES['file_map']
             except:
-                messages.error(request, "Insert the correct file")
+                messages.error(request, "Insert the correct files")
                 form_error = True
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
@@ -49,6 +49,8 @@ def upload(request):
                     return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
+            else:
+                messages.warning(request, 'No uploaded file')
         else:
             messages.error(request, "Insert the correct file")
 
@@ -64,6 +66,7 @@ def upload(request):
         'file_list': final_file,
         'file_exist': file_exist
     }
+
     return render(request, 'preprocess/upload.html', c)
 
 
@@ -91,7 +94,6 @@ def start_preprocess(request, pip_id, new_pip=0):
     
     
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
-    print  'Culo'
     store_before_celery(pip, input_data, preproc_id.id)
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
