@@ -1,0 +1,566 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# HOME TAB ACTIVE #}
+
+{% block hometab %}
+	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
+{% endblock %}
+
+{# CONTENT #}
+
+{% block main %}
+	<script src="{% static '3DLibraries/build/three.js' %}"></script>
+	<script src="{% static '3DLibraries/examples/js/controls/OrbitControls.js' %}"></script>
+	<script src="{% static '3DLibraries/build/THREEx.KeyboardState.js' %}"></script>
+	<div align="center"><p>Controls: "O" and "P" to resize the points. Right mouse button to move the graph. Left mouse button to rotate the graph. Press mouse wheel to zoom.</p></div>
+			<div id="threeJsCanvas" style="position: static;" align="center"></div>
+
+        <script type="text/javascript">
+function ajaxRequest(){
+    var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+    if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
+        for (var i=0; i<activexmodes.length; i++){
+            try{
+                return new ActiveXObject(activexmodes[i])
+            }
+            catch(e){
+    //suppress error
+            }
+        }
+    }
+    else if (window.XMLHttpRequest) // if Mozilla, Safari etc
+        return new XMLHttpRequest()
+ else
+  return false
+}
+
+var r ;
+var call = function(url) {
+    var a = new ajaxRequest ();
+
+    a.open("GET", url, false);
+    a.send(null);
+    r = a.responseText;
+
+}
+//closed and reopened script here
+
+//will be taken from a file once the page is online
+var dataMatrix = []
+/*
+[[0.2, 0.15, 0.35, 0.18, 0.12],
+[0.2, 0.4, 0.19, 0.09, 0.12],
+[0.35, 0.2, 0.15, 0.08, 0.22],
+[0.27, 0.28, 0.25, 0.10, 0.10]];*/
+
+var samplesStatus = [0, 0, 1, 1, 0, 1, 1, 1, 1, 0, 0, 0]; //status of the patients
+
+// standard global variables
+var container, scene, camera, renderer, controls;
+
+document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+var projector = new THREE.Projector();
+
+//My Variables
+var samples = []; //contains the lines of the file
+var headers = ["Name", "PC1", "PC2", "PC3"]; //headers of the lines to be shown on the popup
+var popup = []; //contains the differnet parts of the popup
+var edges = []; //contains eventual edges of the graph
+var labels = []; //contains the 3 labels of the axis as objects
+var sphereRadius = 0.5; //used to resize the points
+var selected; //the object that is currently selected
+var popupGroup; //not used, I believe
+var XSize = 820; //width of the canvas
+var YSize = 580; //height of the canvas
+var objects = []; //contains the 3D points of the graph
+
+var camerahelper;
+
+init();
+animate();
+			
+function init() 
+{
+
+    container = document.getElementById("threeJsCanvas");
+	//document.body.appendChild(container);
+
+	scene = new THREE.Scene();
+	keyboard = new THREEx.KeyboardState();
+	
+	// camera attributes
+	var VIEW_ANGLE = 45, ASPECT = XSize/YSize, NEAR = 0.1, FAR = 20000;
+	// set up camera
+	camera = new THREE.PerspectiveCamera(VIEW_ANGLE, ASPECT, NEAR, FAR);
+	
+	// add the camera to the scene
+	scene.add(camera);
+	camera.position.set(0,0,30);
+	camera.lookAt(new THREE.Vector3(-10, -3, 0));	
+
+    renderer = new THREE.WebGLRenderer({antialias: true});
+		        renderer.setSize(window.innerWidth, window.innerHeight);
+	renderer.setSize(XSize, YSize);
+
+	container = document.getElementById("threeJsCanvas");
+    //document.body.appendChild( container );
+	
+	container.appendChild( renderer.domElement );
+	
+	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	controls.target = new THREE.Vector3(-10, -3, 0);
+	
+	///////////
+	// LIGHT //
+	///////////
+	
+	var light = new THREE.PointLight(0xffffff);
+	light.position.set(0, 0, 30);
+	scene.add(light);
+	var light2 = new THREE.PointLight(0xffffff);
+	light2.position.set(-30, -30, 0);
+	scene.add(light2);
+	var ambientLight = new THREE.AmbientLight(0x111111);
+	scene.add(ambientLight);
+
+	/////////////
+	// DRAWING //
+	/////////////
+
+	call("{% static '3DLibraries/principal_coordinates.txt' %}"); // DA MODIFICARE
+	ReadToMatrix();
+	call("{$ static '3DLibraries/testStatus.txt' %}"); // DA MODIFICARE
+	ReadToStatus();
+	MatrixToSamples();
+	CreateAxis();
+	CreateLabels();
+	CreateGraph();
+}
+
+function ReadToMatrix() {
+	dataMatrix = [];
+	splitted = r.split(' ');
+	var j = 0;
+	for(var i = 0; i < (splitted.length - 1) / 4; i++) {
+		dataMatrix.push([]);
+		dataMatrix[i][0] = splitted[j++];
+		dataMatrix[i][1] = splitted[j++];
+		dataMatrix[i][2] = splitted[j++];
+		dataMatrix[i][3] = splitted[j++];
+	}	
+}
+
+function ReadToStatus() {
+	samplesStatus = [];
+	splitted = r.split(' ');
+	for(var i = 0; i < splitted.length - 1; i++) {
+		samplesStatus.push(splitted[i]);
+	}	
+}
+
+function onWindowResize() {
+	camera.left = window.innerWidth / -2;
+	camera.right = window.innerWidth / 2;
+	camera.top = window.innerHeight / 2;
+	camera.bottom = window.innerHeight / -2;
+	camera.updateProjectionMatrix();
+	camerahelper.update();
+	renderer.setSize(window.innerWidth, window.innerHeight);
+}
+
+function animate() 
+{
+	if (keyboard.pressed("P")) { //increase the size of the spheres
+        sphereRadius += 0.01; 
+		UpdateGraph(); }
+	if (keyboard.pressed("O")) { //decrease the size of the spheres
+        sphereRadius -= 0.01; 
+		UpdateGraph(); }
+	/*if (keyboard.pressed("C")) { //clear the selection. Not working
+		selected.DataValues = new THREE.Object3D();	
+		WriteTable(selected);
+		CreatePopup(selected);
+		MakeTransparent(selected);
+		MakeBigger(selected); } */
+    requestAnimationFrame( animate );
+	render();	
+}
+
+
+
+function render() 
+{	
+	renderer.render( scene, camera );
+}
+
+function MatrixToSamples() { //puts the data into the samples array
+	for(var i = 0; i < dataMatrix.length; i++) {
+		samples[i] = {};
+		if(samplesStatus[i] == 0) {
+			samples[i].Status = "Control";
+			samples[i].IsCtrl = true; }
+		else {
+			samples[i].Status = "Disease";
+			samples[i].IsCtrl = false; }
+		samples[i].Name = dataMatrix[i][0];
+		samples[i].PC1 = dataMatrix[i][1];
+		samples[i].PC2 = dataMatrix[i][2];
+		samples[i].PC3 = dataMatrix[i][3];
+	}
+}
+
+function CreateAxis() { //creates the 3 axis. each one is 100% long
+	var axisGeom = new THREE.CubeGeometry(20, 0.2, 0.2, 1, 1, 1);
+	var axisMat = new THREE.MeshBasicMaterial({color: 0xffffff});
+	var axis = new THREE.Mesh(axisGeom, axisMat);
+	axis.position.set(-10, -10, -10);
+	scene.add(axis); //X
+	axis2 = new THREE.Mesh(axisGeom, axisMat);
+	axis2.position.set(-20, -10, 0);
+	axis2.rotation.set(0, Math.PI / 2, 0);
+	scene.add(axis2); //Y
+	axis3 = new THREE.Mesh(axisGeom, axisMat);
+	axis3.rotation.set(0, 0, Math.PI / 2);
+	axis3.position.set(-20, 0, -10);
+	scene.add(axis3);//Z
+}
+
+function CreateLabels() {
+	var labelGeom = new THREE.CubeGeometry(4, 2, 0.5, 1, 1, 1);
+	for(var i = 0; i < 3; i++)
+	{
+		var text = "PC" + (i+1);
+		var canvas = document.createElement('canvas');
+		var context = canvas.getContext('2d');
+		context.font = "60px Arial"; //it works. no more questions
+		context.fillStyle = "rgb(255,255,255)"; //white text
+		context.fillText(text, 10, 50, 290);
+		var texture = new THREE.Texture(canvas);
+		texture.needsUpdate = true;
+		var materials =  [  //Face Materials. No "artifacts"
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({map:texture, transparent: true, opacity:1}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0})
+		];
+		materials[5].depthWrite = false;
+		materials[4].depthWrite = false;
+		materials[3].depthWrite = false;
+		materials[2].depthWrite = false;
+		materials[1].depthWrite = false;
+		materials[0].depthWrite = false;
+		labelMat = new THREE.MeshFaceMaterial(materials);
+		var label = new THREE.Mesh(labelGeom, labelMat);
+		if(i == 0)
+			label.position.set(0, -10, -10);		
+		else if (i == 1) 
+			label.position.set(-17.5, 9, -10);
+		else {
+			label.position.set(-20.2, -10, 8);
+			label.rotation.set(0, Math.PI / 2, 0);
+		}
+		labels.push(label);
+		scene.add(labels[i]);
+	}
+}
+
+/* function CreateTestGraph() {
+	var mat;
+	for(var i = 0; i < objects.length; i++)
+		scene.remove(objects[i]);
+	objects = [];
+	for(var i = 0; i < 10; i++) {
+		var mat;
+		if(i%2 == 0)
+			mat = new THREE.MeshLambertMaterial({color: 0xff0000, transparent: true});
+		else
+			mat = new THREE.MeshLambertMaterial({color: 0x00ff00, transparent: true});
+		mat.depthWrite = false;
+		var sphereGeom = new THREE.SphereGeometry(1, 20, 20);
+		objects[i] = new THREE.Mesh(sphereGeom, mat);
+		if(i%2 == 0)
+			objects[i].position.z = 0;
+		else
+			objects[i].position.z = 4;
+		if(i <= 1) {
+			objects[i].position.x = -1.5 + i;
+			objects[i].position.y = 5; }
+		else 
+			objects[i].position.x = -16 + i*3;
+		//Tags
+		objects[i].DataValues = [];
+		objects[i].DataValues.push("Female"); //Sex
+		objects[i].DataValues.push(i); //Age
+		objects[i].DataValues.push("10.5%");
+		objects[i].DataValues.push("10.5%");
+		objects[i].DataValues.push("10.5%");
+		objects[i].DataValues.push("10.5%");
+		objects[i].DataValues.push("10.5%");
+		objects[i].DataValues.push("10.5%");
+		//objects.push(objects[i]);
+		//objects[i].scale.x = sphereRadius;
+		//objects[i].scale.y = sphereRadius;
+		//objects[i].scale.z = sphereRadius;
+		}
+				
+	for(var i = 0; i < objects.length; i++) {
+		scene.add(objects[i]);				
+	}
+
+	/*for(var i = 0; i < objects.length; i++) {
+	if(i%2 == 0)
+		drawEdge(objects[0], objects[i]);
+	else
+		drawEdge(objects[1], objects[i]);
+	}
+}*/
+
+function CreateGraph() {
+	//remove eventual old objects
+	for(var i = 0; i < objects.length; i++)
+		scene.remove(objects[i]);
+	objects = [];
+
+	var minX = 0;
+	var minY = 0;
+	var minZ = 0;
+	
+	for(var j = 0; j < samples.length; j++) {
+		if(parseFloat(samples[j].PC1) < minX)
+			minX = parseFloat(samples[j].PC1);
+		if(parseFloat(samples[j].PC2) < minY)
+			minY = parseFloat(samples[j].PC2);
+		if(parseFloat(samples[j].PC3) < minZ)
+			minZ = parseFloat(samples[j].PC3);
+	}	
+
+	var sphereMat;
+	for(var i = 0; i < samples.length; i++) { //samples to objects
+/*
+		if(samples[i].IsCtrl) 
+			sphereMat = new THREE.MeshLambertMaterial({color: 0x00ff00, transparent: true}); 	
+		else
+*/
+			sphereMat = new THREE.MeshLambertMaterial({color: 0xff0000, transparent: true});
+		sphereMat.depthWrite = false;
+		var sphereGeom = new THREE.SphereGeometry(0.8, 20, 20);
+		objects[i] = new THREE.Mesh(sphereGeom, sphereMat);
+		
+		objects[i].position.x = -20 + samples[i].PC1 * 20 - minX * 20;
+		objects[i].position.y = -10 + samples[i].PC2 * 20 - minY * 20;
+		objects[i].position.z = -10 + samples[i].PC3 * 20 - minZ * 20;
+		objects[i].DataValues = []; // Contains all the data taken from the samples. It's a copy
+		objects[i].DataValues.push(samples[i].Name);
+		objects[i].DataValues.push(samples[i].PC1);
+		objects[i].DataValues.push(samples[i].PC2);
+		objects[i].DataValues.push(samples[i].PC3);
+		//objects.push(objects[i]);
+
+		objects[i].scale.x = sphereRadius;
+		objects[i].scale.y = sphereRadius;
+		objects[i].scale.z = sphereRadius;
+	}
+
+		for(var i = 0; i < objects.length; i++) {
+			scene.add(objects[i]);				
+		}
+}
+
+function UpdateGraph(){ //called after resizing the points
+	for(i in objects) {
+		if(objects[i] == selected) {
+			objects[i].scale.x = sphereRadius * 1.3;
+			objects[i].scale.y = sphereRadius * 1.3;
+			objects[i].scale.z = sphereRadius * 1.3;
+		}
+		else {
+			objects[i].scale.x = sphereRadius;
+			objects[i].scale.y = sphereRadius;
+			objects[i].scale.z = sphereRadius;
+		}
+	}	
+}
+
+function drawEdge(source, target) { //draws an edge from "source" to "target"
+	var lineGeom = new THREE.Geometry();
+	var lineMat = new THREE.LineBasicMaterial({ color: 0x444444, opacity: 1, linewidth: 2, transparent: true });
+	lineMat.depthWrite = false;
+	lineGeom.vertices.push(source.position);
+	lineGeom.vertices.push(target.position);
+
+	line = new THREE.Line( lineGeom, lineMat, THREE.LinePieces );
+	line.scale.x = line.scale.y = line.scale.z =1;
+	line.originalScale = 10;
+				
+	edges.push(line);
+	scene.add( line );
+}
+
+
+function onDocumentMouseDown( event ) { //called when the user clicks
+    event.preventDefault();
+
+    /*var vector = new THREE.Vector3(
+        ( (event.clientX - 5) / XSize ) * 2 - 1, //5px is the correction for the border around the canvas
+      - ( (event.clientY - 5) / YSize ) * 2 + 1,
+        0.5
+    );*/
+
+    var vector = new THREE.Vector3(
+        ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1, //5px is the correction for the border around the canvas
+      - ( ( event.clientY + window.pageYOffset - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1,
+        0.5
+    );
+    projector.unprojectVector( vector, camera );
+    var ray = new THREE.Raycaster( camera.position, 
+                             vector.sub( camera.position ).normalize() );
+	ray.far = 1000;
+	ray.near = 1;
+	ray.precision = 1;
+    var intersects = ray.intersectObjects( objects );
+
+    if ( intersects.length > 0 ) { // called when the user clicks on an object
+		selected = intersects[0].object;
+		WriteTable(selected);
+		CreatePopup(selected);
+		MakeTransparent(selected);
+		MakeBigger(selected);
+	}
+}
+
+function WriteTable(object) { //writes the table below the graph
+	var table = document.getElementById("data-table-cont");
+	InitDataTable(object);
+}
+
+function InitDataTable(object) { //puts data in the table
+	var tableCont = document.getElementById("data-table");
+	for(i in object.DataValues) { // clear table
+		tableCont.deleteRow(-1);	
+	}
+	for(i in object.DataValues) { // create table
+		var newLine = tableCont.insertRow(-1);
+		var newCell1 = newLine.insertCell(0);
+		newCell1.innerHTML = headers[i];
+		var newCell2 = newLine.insertCell(1);	
+		newCell2.innerHTML = object.DataValues[i];
+	}
+}
+
+function CreatePopup(object) { //creates the popup
+	for(i in popup) {
+		scene.remove(popup[i]);	
+	}
+	popup = []; //clear the popup
+
+	popupGroup = new THREE.Object3D();
+	
+	popupFrameGeom = new THREE.CubeGeometry(8.6, object.DataValues.length * 0.8 + 0.6, 0.55, 1, 1, 1); //these values work. don't ask.
+	popupFrameMat = new THREE.MeshLambertMaterial({color:0x000099});
+	popupFrame = new THREE.Mesh(popupFrameGeom, popupFrameMat);
+	popupFrame.position.x = object.position.x + 5.5;
+	popupFrame.position.y = object.position.y + 5;
+	popupFrame.position.z = object.position.z - 0.1;
+	popup.push(popupFrame);
+	//popupGroup.add(popupFrame);
+	//popupFrame.rotation = camera.rotation;
+	//popupFrame.material.opacity = 0.7;
+	scene.add(popupFrame);
+
+	popupBackGeom = new THREE.CubeGeometry(8, object.DataValues.length * 0.8, 0.5, 1, 1, 1);
+	popupBackMat = new THREE.MeshLambertMaterial({color:0x000022});
+	popupBack = new THREE.Mesh(popupBackGeom, popupBackMat);
+	popupBack.position.x = object.position.x + 5.5;
+	popupBack.position.y = object.position.y + 5;
+	popupBack.position.z = object.position.z - 0.01;
+	//popupBack.rotation = camera.rotation
+	popup.push(popupBack);
+	//popupBack.material.opacity = 0.7;
+	//popupGroup.addChild(popupBack);
+	scene.add(popupBack);
+
+	var messages = []; //contains all the lines to show on the popup
+	for(i in object.DataValues) {
+		messages.push(headers[i] + ":" + object.DataValues[i]);
+	}
+
+	for(i in object.DataValues) { //creates each line of the popup
+		var canvas = document.createElement('canvas');
+		var context = canvas.getContext('2d');
+		context.font = "60px Arial"; //it works. no more questions
+		context.fillStyle = "rgb(255,255,255)"; //white text
+
+		context.fillText(messages[i], 10, 50, 290);
+		var texture = new THREE.Texture(canvas);
+		texture.needsUpdate = true;	
+		//textures
+		popupGeom = new THREE.CubeGeometry(7, 2, 0.5, 1, 1, 1);
+		var materials =  [  //Face Materials. No "artifacts"
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0}),
+		new THREE.MeshBasicMaterial({map:texture, transparent: true, opacity:1}),
+		new THREE.MeshBasicMaterial({transparent: true, opacity:0})
+		];
+		materials[5].depthWrite = false; //allows to show the whole edge/connection of the popup
+		materials[4].depthWrite = false;
+		materials[3].depthWrite = false;
+		materials[2].depthWrite = false;
+		materials[1].depthWrite = false;
+		materials[0].depthWrite = false;
+		//popupMat = new THREE.MeshBasicMaterial({map:texture});
+		popupMat = new THREE.MeshFaceMaterial(materials);
+		//popupMat.depthWrite = false;
+		//popupMat.transparent = true;
+		popup3D = new THREE.Mesh(popupGeom, popupMat);
+		popup3D.position.x = object.position.x + 5;
+		popup3D.position.y = object.position.y + 4.9 - i * 0.8 + (object.DataValues.length -2) * 0.39 ; //You change this, I kill you :)
+		popup3D.position.z = object.position.z ;
+		//popupGroup.addChild(popup3D);
+		popup.push(popup3D);
+		//popup3D.material.opacity = 0.7;
+		scene.add(popup3D);
+	}
+	//popupGroup.rotation = camera.rotation;
+
+	//draws the edge from the point to the popup
+	var lineGeom = new THREE.Geometry();
+	var lineMat = new THREE.LineBasicMaterial({ color: 0x777777, opacity: 1, linewidth: 2, transparent: true });
+	lineMat.depthWrite = false;
+	lineGeom.vertices.push(object.position);
+	lineGeom.vertices.push(popupFrame.position);
+
+	line = new THREE.Line( lineGeom, lineMat, THREE.LinePieces );
+	line.scale.x = line.scale.y = line.scale.z =1;
+	line.originalScale = 10;
+  	popup.push(line);
+	scene.add( line );
+}
+
+function MakeTransparent(onlyOpaque) { //makes all the points that aren't selected semitransparent
+	for(i in objects) {
+		if(objects[i] != onlyOpaque)
+			objects[i].material.opacity = 0.5;	
+		else
+			objects[i].material.opacity = 1;
+	}
+}
+
+function MakeBigger(object) { //makes the selected object bigger
+	for (i in objects) 
+		if(objects[i] != object)
+			objects[i].scale.set(sphereRadius, sphereRadius, sphereRadius);	
+		else
+			objects[i].scale.set(sphereRadius * 1.3, sphereRadius * 1.3, sphereRadius * 1.3);
+}
+
+</script>
+
+<div align="center"><table id="data-table"><div id="data-table-cont"></div></table></div>
+<br />
+<a href="{% url 'graph_oculus' %}">OCULUS HERE</a>
+{% endblock %}

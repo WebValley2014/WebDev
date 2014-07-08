@@ -42,7 +42,8 @@ def upload_preProcessed(request):
                 p = Pipeline(pip_name='classification', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
                 p.save()
                 handle_uploaded_file(p,request.FILES['file'])
-                return render(request, 'classification/tuttook.html')
+                render(request, 'classification/tuttook.html')
+		return HttpResponse('classification/tuttok.html')
         else:
             messages.error(request, 'Wrong file type')
     oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
@@ -66,7 +67,7 @@ def download(request, p_id):
     download_path = os.path.join(download_path, str(pip[0].pk))
     download_path = os.path.join(download_path, 'file')
 
-    #Retriv the download
+    #Retrive the download
     return download_file("file.txt", download_path)
 
 def option(request, p_id):
