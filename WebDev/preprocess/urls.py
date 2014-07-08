@@ -10,6 +10,7 @@ urlpatterns = patterns('preprocess.views',
     #Status
     url(regex='^status/$', view='statusPP', name='statusPP'),
     #Processing
+    url(regex='^processing_finish/(.+)/$', view='processing_finish', name='processing_finish'),
     url(regex='^processing/(.+)/$', view='processing', name='processing'),
     #Celery
     url(regex='^celery/(.+)/([0-1]{1})/$', view="start_preprocess", name="celery"),
@@ -17,7 +18,7 @@ urlpatterns = patterns('preprocess.views',
     #Upload page
     url(regex='^upload/$', view="upload", name='preproc_upload'),
     #In processing page
-    url(regex='^(.+)/$', view="get_results", name='get_result'),
+    # url(regex='^(.+)/$', view="get_results", name='get_result'),
     #Processing root (redirect to upload)
     url(regex=r'^$', view="preprocess_redirect", name='redirect_preproc'),
 )
