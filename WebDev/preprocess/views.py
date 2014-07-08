@@ -37,7 +37,7 @@ def upload(request):
                 file_sff = request.FILES['file_sff']
                 file_map = request.FILES['file_map']
             except:
-                messages.error(request, "Insert the correct file")
+                messages.error(request, "Insert the correct files")
                 form_error = True
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
@@ -50,7 +50,7 @@ def upload(request):
                 else:
                     messages.error(request, "File type incorrect")
         else:
-            messages.error(request, "Insert the correct file")
+            messages.error(request, "Insert the correct files")
         return HttpResponse('/preproc/upload/')
 
     # ELSE GENERATE THE FILE UPLOAD PAGE
