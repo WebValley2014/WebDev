@@ -141,3 +141,28 @@ main {
 	background-color: #c5d4c3 !important;
 	color: #333;
 }
+
+.centerform {
+	width: 340px;
+	margin-left: -170px;
+	margin-right: -170px;
+	text-align: center;
+	position: relative;
+	left: 50%;
+}
+
+.file_pair {
+	width: 700px;
+	margin-left: -350px;
+	margin-right: -350px;
+	position: relative;
+	left: 50%;
+}
+
+#plus_minus {
+	width: 84px;
+	margin-left: -42px;
+	margin-right: -42px;
+	position: relative;
+	left: 50%;
+}

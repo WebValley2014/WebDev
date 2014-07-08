@@ -31,12 +31,11 @@ def network(request, pip_id):
 def network_redirect(request):
     return HttpResponseRedirect("upload/")
 
-def step2(request):
-    return render(request, 'network/tuttook.html')
+#def step2(request, pip_id):
+#    return render(request, 'network/tuttook.html')
 
 @login_required(login_url="/login")
 def upload_network(request):
-    global inputName
     form_error = False
     form = NUploadFileForm()
     if request.POST:
@@ -64,13 +63,13 @@ def upload_network(request):
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
 
-                    handle_uploaded_file(p,fileData,inputName)
-                    handle_uploaded_file(p,fileLabel,inputName)
-                    handle_uploaded_file(p,fileSamples,inputName)
-                    handle_uploaded_file(p,fileFeature,inputName)
-                    handle_uploaded_file(p,fileRank,inputName)
-                    handle_uploaded_file(p,fileMetrics,inputName)
-                    return HttpResponse('/network/step2/')
+                    handle_uploaded_file(p,fileData,inputName,'nt_data')
+                    handle_uploaded_file(p,fileLabel,inputName, 'nt_label')
+                    handle_uploaded_file(p,fileSamples,inputName, 'nt_samples')
+                    handle_uploaded_file(p,fileFeature,inputName, 'nt_feature')
+                    handle_uploaded_file(p,fileRank,inputName, 'nt_rank')
+                    handle_uploaded_file(p,fileMetrics,inputName, 'nt_metrics')
+                    return HttpResponse('/network/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
         else:
@@ -83,7 +82,7 @@ def upload_network(request):
 
     tabFile = []
     for i in range(0, len(oldFiles), 6):
-        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4], oldFiles[i+5]))
+        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4], oldFiles[i+5], oldFiles[i].pip_id))
 
     return render(request, 'network/network.html', {'tabFile': tabFile, 'file_exist': (len(oldFiles)>0)})
 '''
@@ -150,6 +149,7 @@ def upload_network(request):
 '''
 
 
+
 @login_required(login_url="/login")
 def deleteFile(request, id1, id2, id3, id4, id5, id6):
     re = Results.objects.get(pk=int(id1))
@@ -165,3 +165,14 @@ def deleteFile(request, id1, id2, id3, id4, id5, id6):
     re = Results.objects.get(pk=int(id6))
     delete(re)
     return HttpResponseRedirect('/network/upload')
+
+@login_required(login_url="/login")
+def start_network(request, pip_id):
+    pip = Pipeline.objects.get(pip_id=pip_id)
+    file_nt_data = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_data')
+    file_nt_label = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_label')
+    file_nt_samples = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_samples')
+    file_nt_feature = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_feature')
+    file_nt_rank = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_rank')
+    file_nt_metrics = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_metrics')
+    preproc_id = settings.APP.send_task("network_task", (pip.pip_id, file_sff.filepath, file_map.filepath))

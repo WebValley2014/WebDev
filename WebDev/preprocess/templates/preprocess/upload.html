@@ -33,9 +33,9 @@
     	{% endfor %}
 	{% endif %}
 	<p style="text-align:center">For the moment adding any more forms will break everything<br />Select or drop a <strong>.TXT</strong>, a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
-	<form class="form fileformbox" method="post" enctype="multipart/form-data" style="width: 700px">
+	<form class="form fileformbox" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div class="input-group" style="width: 340px; margin-left: -170px; margin-right: -170px; position: relative; left: 50%">
+		<div class="input-group centerform">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-font" style="width:58px"> TXT</span>
 			</span>
@@ -43,7 +43,7 @@
 		</div>
 		<br />
 		<div class="file_buttons">
-			<div class="file_pair" style="width: 700px; margin-left: -350px; margin-right: -350px; position: relative; left: 50%;">
+			<div class="file_pair">
 				<div class="input-group" style="width: 340px; float: left;">
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
@@ -58,7 +58,7 @@
 				</div>
 			</div>
 			<br /><br />
-			<div id="plus_minus" style="width: 84px; margin-left: -42px; margin-right: -42px; position: relative; left: 50%;">
+			<div id="plus_minus">
 				<span class="btn btn-default" onclick="addFilePair()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</span>
@@ -71,11 +71,11 @@
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
 		<div id="progress_cont" style="display: none; height: 100px;">
-        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px; margin-left: -170px; margin-right: -170px;  position: relative; left: 50%;">
+        	<div class="progress progress-striped active centerform" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 			</div>
-			<div id="progress-num" style="width: 340px; margin-left: -170px; margin-right: -170px; text-align: center; position: relative; left: 50%; top: -39px; z-index:2">0 %</div>
-			<div style="margin-left: auto; margin-right: auto">
+			<div id="progress-num" class="centerform" style="text-align: center; top: -39px; z-index:2">0 %</div>
+			<div class="centerform">
 			<div id="f_size" class="glyphicon glyphicon-hdd"> 0 KB</div>
 			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> 0 KB/s</div>
 			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> 0s</div></div>
@@ -179,12 +179,7 @@
 		}
 
 		function uploadComplete(evt) {
-			if (evt.target.responseText == 'error') {
-				window.location.replace("{% url 'preproc_upload' %}")
-			}
-			else {
-				window.location.replace(evt.target.responseText);
-			}
+			window.location.replace(evt.target.responseText);
 		}
 
 		function uploadFailed(evt) {
@@ -201,7 +196,7 @@
     {% if file_exist %}
     	<table class="table table-striped" style="width:100%">
     		<tr>
-				<th>ZIP</th>
+				<th>File SFF</th>
 				<th>File MAP</th>
 				<th>Select</th>
 				<th>Delete</th>

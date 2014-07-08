@@ -105,6 +105,12 @@ class Results (models.Model):
         ('error', 'Error during computation'),
         ('zip', 'zip'),
         ('sff', 'sff')
+        ('nt_data', 'input data network'),
+        ('nt_label', 'input label network'),
+        ('nt_samples', 'input samples network'),
+        ('nt_feature', 'input feature network'),
+        ('nt_rank', 'input data network'),
+        ('nt_metrics', 'input data network'),
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery

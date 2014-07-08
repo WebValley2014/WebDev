@@ -11,10 +11,11 @@ class NUploadFileForm(forms.Form):
     fileMetrics = forms.FileField()
 
 class files():
-    def __init__(self, fileData, fileLabel, fileSamples, fileFeature, fileRank, fileMetrics):
+    def __init__(self, fileData, fileLabel, fileSamples, fileFeature, fileRank, fileMetrics, pip_id):
         self.fileData = fileData
         self.fileLabel = fileLabel
         self.fileSamples = fileSamples
         self.fileFeature = fileFeature
         self.fileRank = fileRank
         self.fileMetrics = fileMetrics
+        self.pip_id = pip_id
