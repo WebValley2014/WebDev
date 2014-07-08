@@ -84,7 +84,9 @@ def start_preprocess(request, pip_id, new_pip=0):
     file_sff = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='sff')
     file_map = Results.objects.get(pip_id=pip, process_name='preprocess', filetype='map')
 
-    preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+    #preproc_id = settings.APP.send_task("prepro", (pip.pip_id, file_sff.filepath, file_map.filepath))
+
+    preproc_id = settings.APP.send_task("add", (5, 10))
 
     input = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
     store_before_celery(pip, input, preproc_id.id)
