@@ -2,6 +2,8 @@ from celery import Celery
 from django.conf import settings
 import datetime
 import urllib2
+import ml_pipeline
+import multiprocessing
 
 
 
@@ -9,21 +11,19 @@ celery = Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
 
 
 @celery.task(bind=True , name='mlearn')
-def mlearn(self , uniqueJobID , OTUsFile):
+def mlearn(self , job_id, otu_file, class_file, *args, **kwargs):
 
-     startTime = unicode(datetime.datetime.now())
-     print "Running"
-     self.update_state(state='RUNNING', meta='Classification...')
+    print 'Classification started'
+    print self.request.id
+    self.update_state(state='RUNNING')
+    start_time = unicode(datetime.datetime.now())
+    pipeline = ml_pipeline.ML(job_id, otu_file, class_file)
+    result = pipeline.run(*args, **kwargs)
+
+    for key in result:
+        result[key] = os.path.abspath(result[key])
+
+    finish_time = unicode(datetime.datetime.now())
 
 
-
-     finishTime = unicode(datetime.datetime.now())
-     task_ret = { 'funct': t ,
-                  'st': startTime,
-                  'ft': finishTime
-                 }
-
-     x = 'http://localhost:8000/preproc/processing/%s/%s/' % (uniqueJobID, self.request.id)
-     #urllib2.urlopen(x)
-
-     return task_ret,
+     return {'funct': result , 'st': start_time, 'ft': finish_time}
