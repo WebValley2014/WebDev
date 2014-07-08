@@ -97,7 +97,6 @@ class Net:
             for r in np.where(self.setlabels == np.array(list(set(self.setlabels)))[ok])[0]:	#this is a very strange 2d-array with the positions of the ok-th different element of setlabels in setlabels itself
                 #print aunilabels
                 c2 = 0
-                for c in self.setlabels[self.nmetrics] self.setCol:#FIXME
                 for i in range(self.nmetrics)
                     c = self.setlabels[self.setrank[i]]
                     maux[r2, c2] = self.mdata[r, c]
@@ -148,15 +147,15 @@ class Net:
                     L2 = [M[j,k] for j in range(nRow)]
 
                     if np.var(L1)==0 and np.var(L2)==0:
-	                    pear=[1.0,123]
+                        pear=[1.0,123]
                     elif np.var(L1)==0 or np.var(L2)==0:
-	                    pear=[0.,123]
+                        pear=[0.,123]
                     else:
-	                    pear = pearsonr(L1,L2)    #output as array
+                        pear = pearsonr(L1,L2)    #output as array
 
                     if pear > thre:
-	                    self.mNet[i,k] = abs(pear[0])
-	                    self.mNet[k,i] = abs(pear[0])
+                        self.mNet[i,k] = abs(pear[0])
+                        self.mNet[k,i] = abs(pear[0])
         ### mNet is now our network matrix
 
         return self.mNet
