@@ -25,29 +25,43 @@
 
 {% block main %}
 	{% if messages %}
-		<ul class="messages">
     	{% for message in messages %}
-    		<li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <div class="alert alert-danger alert-dismissible" role="alert">
+            	<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            	<strong>Error!</strong> {{ message }}
+			</div>
     	{% endfor %}
-		</ul>
 	{% endif %}
+
 	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
-	<form class="form fileformbox" method="post" enctype="multipart/form-data"> 
+	<form class="form fileformbox" method="post" enctype="multipart/form-data" style="width: 700px">
 		{% csrf_token %}
-		<div class="input-group forminp">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
-			</span>
-			<input id="sff_1" name="file" type="file" class="form-control sff" />
+		<div class="file_buttons">
+			<div class="file_pair" style="width: 700px; margin-left: -350px; margin-right: -350px; position: relative; left: 50%;">
+				<div class="input-group" style="width: 340px; float: left;">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
+					</span>
+					<input id="sff_1" name="file" type="file" class="form-control sff" />
+				</div>
+				<div class="input-group" style="width: 340px; float: right">
+					<span class="input-group-addon">
+						<span class="glyphicon glyphicon-file"> MAP</span>
+					</span>
+					<input id="map_1" name="file" type="file" class="form-control map" />
+				</div>
+			</div>
+			<br /><br />
+			<div id="plus_minus" style="width: 84px; margin-left: -42px; margin-right: -42px; position: relative; left: 50%;">
+				<span class="btn btn-default" onclick="addFilePair()">
+					<span class="glyphicon glyphicon-plus"></span>
+				</span>
+				<span class="btn btn-default" onclick="removeFilePair()">
+					<span class="glyphicon glyphicon-minus"></span>
+				</span>
+			</div>
 		</div>
-		<br />
-		<div class="input-group forminp">
-			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file"> MAP</span>
-			</span>
-			<input id="map_1" name="file" type="file" class="form-control map" />
-		</div>
-		<br />
+		<br /><br />
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
 		<div id="progress_cont" style="display: none; height: 100px;">
@@ -56,12 +70,33 @@
 			</div>
 			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px; z-index:2">0 %</div>
 			<div style="margin-left: auto; margin-right: auto">
-			<div id="f_size" class="glyphicon glyphicon-hdd"> A</div>
-			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> B</div>
-			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> C</div></div>
+			<div id="f_size" class="glyphicon glyphicon-hdd"> 0 KB</div>
+			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> 0 KB/s</div>
+			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> 0s</div></div>
 		</div>
 	</form>
 	<script type="text/javascript">
+		var filePair = document.getElementsByClassName('file_pair')[0];
+		var fpParent = filePair.parentNode;
+
+		function addFilePair() {
+			var clone = filePair.cloneNode(true);
+			fpParent.insertBefore(clone, fpParent.childNodes[fpParent.children.length]);
+			var br = document.createElement('br');
+			fpParent.insertBefore(br, fpParent.childNodes[fpParent.children.length-1]);
+			var br = document.createElement('br');
+			fpParent.insertBefore(br, fpParent.childNodes[fpParent.children.length]);
+		}
+
+		function removeFilePair() {
+			var l = document.getElementsByClassName('file_pair').length;
+			if (l > 1) {
+				fpParent.removeChild(fpParent.childNodes[fpParent.children.length-3]);
+				fpParent.removeChild(fpParent.childNodes[fpParent.children.length-1]);
+				fpParent.removeChild(fpParent.childNodes[fpParent.children.length-1]);
+			}
+		} 
+
 		function uploadFile() {
 
 			/* CALCULATE TOTAL FILE SIZE */
@@ -84,7 +119,6 @@
 			}
 
           	document.getElementById('f_size').innerHTML = ' ' + (fileSize);
-
 
 			var fd = new FormData();
 			var files_sff = document.getElementsByClassName('sff');
@@ -151,7 +185,7 @@
 			alert("The upload has been canceled by the user or the browser dropped the connection.");
 		}
 	</script>
-	<br /><br />
+	<br />
 	<p style="text-align:center">Please wait for the files to finish uploading: do not leave the page, you will be redirected automatically.</p>
 	<br /><br />
     {% if file_exist %}

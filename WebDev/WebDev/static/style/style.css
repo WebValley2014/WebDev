@@ -126,9 +126,9 @@ main {
 }
 
 .fileformbox {
-	width: 340px !important;
-	margin-left: -170px !important;
-	margin-right: -170px !important;
+	width: 700px !important;
+	margin-left: -350px !important;
+	margin-right: -350px !important;
 	position: relative !important;
 	left: 50% !important;
 }

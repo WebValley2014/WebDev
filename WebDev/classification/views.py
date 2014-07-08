@@ -18,13 +18,13 @@ from forms import CLUploadFileForm
 from WebDev.utils import *
 
 @login_required(login_url="/login")
-def classification(request, p_id):
-    if not check_owner(request.user, p_id):
-        return render(request, "error_owner.html")
-    context = {
-        'p_id': p_id
-    }
-    return render(request, 'classification/main.html', context)
+def classification(request, pip_id):
+    try:
+        pip = Pipeline.objects.get(pip_id=pip_id)
+        result = Results.objects.get(pip_id=pip, process_name='processing')
+    except:
+        return HttpResponse('Bad Request: Pipline %s does not exist.' % (pip_id,))
+    return HttpResponse("FILE: %s" % (result.filepath,))
 
 @login_required(login_url="/login")
 def classification_redirect(request):
@@ -43,7 +43,7 @@ def upload_preProcessed(request):
                 p.save()
                 handle_uploaded_file(p,request.FILES['file'])
                 render(request, 'classification/tuttook.html')
-		return HttpResponse('classification/tuttok.html')
+		return HttpResponse('classification/tuttook.html')
         else:
             messages.error(request, 'Wrong file type')
     oldFiles = Results.objects.filter(process_name='classification', owner=request.user)
