@@ -51,10 +51,9 @@ def upload(request):
                     return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
-            else:
-                messages.warning(request, 'No uploaded file')
         else:
-            messages.error(request, "Insert the correct file")
+            messages.error(request, "Insert the correct files")
+        return HttpResponse('error')
 
     # ELSE GENERATE THE FILE UPLOAD PAGE
     pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
@@ -107,6 +106,21 @@ def processing(request, process_id):
     result = settings.APP.AsyncResult(process_id)
     return HttpResponse(result.status)
 
+
+def processing_finish(request, task_id):
+    print 'Chiamata'
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        if store_after_celery(rp, r):
+            return HttpResponse('OK')
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
+
+
 def processing_finish(request, pip_id, task_id):
     result = settings.APP.AsyncResult(task_id)
     while not result.ready():
@@ -117,6 +131,7 @@ def processing_finish(request, pip_id, task_id):
         return HttpResponse('OK')
     else:
         return HttpResponse('Error')
+
 
 
 @login_required(login_url='/login')
@@ -133,3 +148,4 @@ def statusPP(request):
     return render(request, 'preprocess/status.html', {'listPending': listPending, 'listOK': listOK})
 
 # CELERY FUNCTION
+
