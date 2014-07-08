@@ -39,7 +39,6 @@ def upload_preProcessed(request):
     form_error = False
     form = CLUploadFileForm()
     if request.POST:
-        print request.FILES
         if request.FILES:
             try:
                 file1 = request.FILES['file1']
@@ -47,10 +46,12 @@ def upload_preProcessed(request):
             except:
                 messages.error(request, "Insert the correct files")
                 form_error = True
-            li = [file1.name, file2.name]
-            if not different(li):
-                form_error = True
-                messages.error(request, "Several files with the same name")
+
+            if not form_error:
+                li = [file1.name, file2.name]
+                if not different(li):
+                    form_error = True
+                    messages.error(request, "Some files with the same name")
             if not form_error:
                 if checkExtension(file1, 'txt') and checkExtension(file2, 'txt'):
                     p = Pipeline(pip_name='Classification', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
@@ -60,6 +61,10 @@ def upload_preProcessed(request):
                     handle_uploaded_file(p,file1)
                     handle_uploaded_file(p,file2)
                     return HttpResponse('/class/step2/')
+                else:
+                    messages.error(request, "File type incorrect")
+        else:
+            messages.error(request, "Insert the correct files")
         return HttpResponse('/class/upload/')
     oldFiles = Results.objects.filter(process_name='Classification', owner=request.user)
     oldFiles = oldFiles.order_by('-id')
