@@ -45,10 +45,13 @@ def upload_network(request):
                 fileSamples = request.FILES['fileSamples']
                 fileFeature = request.FILES['fileFeature']
                 fileRank = request.FILES['fileRank']
-            except Exception, e:
-                print ('errore: %s' % (e,))
+            except:
                 messages.error(request, "Insert the correct files")
                 form_error = True
+            li = [fileData.name, fileLabel.name, fileSamples.name, fileFeature.name, fileRank.name]
+            if not different(li):
+                form_error = True
+                messages.error(request, "Several files with the same name")
             if not form_error:
                 if checkExtension(fileData, 'txt') and checkExtension(fileLabel, 'txt') and checkExtension(fileSamples, 'txt') and checkExtension(fileFeature, 'txt') and checkExtension(fileRank, 'txt'):
                     p = Pipeline(pip_name='Processing', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
@@ -62,7 +65,7 @@ def upload_network(request):
                     handle_uploaded_file(p,fileRank)
                     return HttpResponse('/network/step2/')
         return HttpResponse('/network/upload/')
-    oldFiles = Results.objects.filter(process_name='network', owner=request.user)
+    oldFiles = Results.objects.filter(process_name='Processing', owner=request.user)
     oldFiles = oldFiles.order_by('-id')
     return render(request, 'network/network.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
 '''

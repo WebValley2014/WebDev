@@ -54,6 +54,14 @@ def check_owner(user, p_id):
     else:
         return False
 
+# Checkes wether the elements of a list are all different
+def different(l):
+    for i in range(len(l)):
+        for j in range(i+1, len(l)):
+            if(l[i]==l[j]):
+                    return False
+    return True
+
 # Deletes the file corresponding to the given Results object
 def delete(re):
     pos = re.filepath #pos = '.../utente/uuid/app/file'
