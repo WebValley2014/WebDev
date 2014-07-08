@@ -121,4 +121,4 @@ UPLOAD_PATH = '/static/'
 LOGIN_REDIRECT_URL = '/'
 
 #RabbitMQ SETTINGS
-APP = celery.Celery('tasks', backend='amqp', broker = 'amqp://wvlab:wv2014@54.72.200.168/')
+APP = celery.Celery('tasks', backend='amqp', broker = 'amqp://guest@localhost//')

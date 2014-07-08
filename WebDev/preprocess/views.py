@@ -37,6 +37,7 @@ def upload(request):
                 file_map = request.FILES['file_map']
             except:
                 messages.error(request, "Insert the correct file")
+                form_error = True
             if not form_error:
                 if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
                     p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
