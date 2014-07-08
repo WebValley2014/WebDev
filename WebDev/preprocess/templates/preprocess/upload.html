@@ -122,14 +122,9 @@
 			var fd = new FormData();
 			var files_sff = document.getElementsByClassName('sff');
 			var files_map = document.getElementsByClassName('map');
-			var files_sff2 = new Array();
-			var files_map2 = new Array();
-			for (i = 0; i < files_sff.length; i++) {
-				files_sff2[i] = files_sff[i].files[i];
-				files_map2[i] = files_map[i].files[i]; // EXTRA CAUTION
-			}
-			fd.append("file_sff", files_sff2); // CAUTION
-			fd.append("file_map", files_map2); // CAUTION
+
+			fd.append("file_sff", files_sff[0].files[0]); // CAUTION
+			fd.append("file_map", files_map[0].files[0]); // CAUTION
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 
 			var xhr = new XMLHttpRequest();

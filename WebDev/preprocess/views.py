@@ -29,6 +29,7 @@ def get_results(request, p):
 
 @login_required(login_url="/login")
 def upload(request):
+    print 'Upload Chiamato'
     form_error, ex_error = False, False
     #IF FILE UPLOADED
     if request.POST:
@@ -49,7 +50,6 @@ def upload(request):
                     return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
-        else:
             messages.error(request, "Insert the correct files")
         return HttpResponse('/preproc/upload/')
 
