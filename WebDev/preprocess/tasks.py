@@ -30,12 +30,12 @@ import urllib2
 
 
 @celery.task(bind=True , name='prepro')
-def prepro(self , uniqueJobID , listofSFFfiles, listOfMappingFiles):
+def prepro(self , uniqueJobID , SFF1, SFF2, listOfMappingFiles):
 
      startTime = unicode(datetime.datetime.now())
      print "Running"
      self.update_state(state='RUNNING', meta='Preprocessing...')
-     t = preprocess(uniqueJobID, listofSFFfiles , listOfMappingFiles)
+     t = preprocess(uniqueJobID, SFF1, SFF2 , listOfMappingFiles)
      finishTime = unicode(datetime.datetime.now())
      task_ret = { 'funct': t ,
                   'st': startTime,
