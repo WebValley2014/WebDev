@@ -32,6 +32,9 @@ def network_task(self, **kwargs):
     *fileRank*
         (str)
         The filesystem path of the `rank.txt' file.
+    *fileMetrics*
+        (str)
+        The filesystem path of the `metrics.txt' file.    
     *outDir*
         (str)
         The filesystem path of the directory where store
@@ -40,7 +43,7 @@ def network_task(self, **kwargs):
     """
     # keys mandatory in kwargs
     path_keys = ['fileData', 'fileLabel', 'fileSamples', 'fileFeauture',
-                 'fileRank', 'outDir']
+                 'fileRank', 'fileMetrics', 'outDir']
     file_keys = path_keys[:-1]
     dir_keys = path_keys[-1]
     
@@ -65,8 +68,9 @@ def network_task(self, **kwargs):
                 return Exception(msg)
     
 
-    # go
-    netAnalysis = Net(data_fp, label_fp, samples_fp, feature_fp, rank_fp, out)
+    # build args list and get instance
+    args = [kwargs[arg] for arg in path_keys]
+    netAnalysis = Net(*args)
     try:
         netAnalysis.run()
         return True

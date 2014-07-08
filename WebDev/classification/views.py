@@ -54,19 +54,19 @@ def upload_preProcessed(request):
                     messages.error(request, "Some files with the same name")
             if not form_error:
                 if checkExtension(file1, 'txt') and checkExtension(file2, 'txt'):
-                    p = Pipeline(pip_name='Classification', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
+                    p = Pipeline(pip_name='classification', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
 
-                    handle_uploaded_file(p,file1)
-                    handle_uploaded_file(p,file2)
+                    handle_uploaded_file(p,file1,"Preprocessing")
+                    handle_uploaded_file(p,file2,"Preprocessing")
                     return HttpResponse('/class/step2/')
                 else:
                     messages.error(request, "File type incorrect")
         else:
             messages.error(request, "Insert the correct files")
         return HttpResponse('/class/upload/')
-    oldFiles = Results.objects.filter(process_name='Classification', owner=request.user)
+    oldFiles = Results.objects.filter(process_name='Preprocessing', owner=request.user)
     oldFiles = oldFiles.order_by('-id')
     return render(request, 'classification/classification.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
 

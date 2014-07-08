@@ -12,9 +12,11 @@ import mimetypes
 from django.core.files import File
 from django.utils.encoding import smart_str
 import uuid
-from forms import NUploadFileForm
+from forms import *
 from WebDev.utils import *
 import hashlib
+
+inputName = "Classification"
 
 @login_required(login_url="/login")
 def network(request, pip_id):
@@ -34,6 +36,7 @@ def step2(request):
 
 @login_required(login_url="/login")
 def upload_network(request):
+    global inputName
     form_error = False
     form = NUploadFileForm()
     if request.POST:
@@ -56,24 +59,31 @@ def upload_network(request):
                     messages.error(request, "Some files with the same name")
             if not form_error:
                 if checkExtension(fileData, 'txt') and checkExtension(fileLabel, 'txt') and checkExtension(fileSamples, 'txt') and checkExtension(fileFeature, 'txt') and checkExtension(fileRank, 'txt'):
-                    p = Pipeline(pip_name='Processing', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
+                    p = Pipeline(pip_name='network', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
 
-                    handle_uploaded_file(p,fileData)
-                    handle_uploaded_file(p,fileLabel)
-                    handle_uploaded_file(p,fileSamples)
-                    handle_uploaded_file(p,fileFeature)
-                    handle_uploaded_file(p,fileRank)
+                    handle_uploaded_file(p,fileData,inputName)
+                    handle_uploaded_file(p,fileLabel,inputName)
+                    handle_uploaded_file(p,fileSamples,inputName)
+                    handle_uploaded_file(p,fileFeature,inputName)
+                    handle_uploaded_file(p,fileRank,inputName)
                     return HttpResponse('/network/step2/')
                 else:
                     messages.error(request, "File type incorrect")
         else:
             messages.error(request, "Insert the correct files")
         return HttpResponse('/network/upload/')
-    oldFiles = Results.objects.filter(process_name='Processing', owner=request.user)
+
+    # Old files
+    oldFiles = Results.objects.filter(process_name=inputName, owner=request.user)
     oldFiles = oldFiles.order_by('-id')
-    return render(request, 'network/network.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
+
+    tabFile = []
+    for i in range(0, len(oldFiles), 5):
+        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4]))
+
+    return render(request, 'network/network.html', {'tabFile': tabFile, 'file_exist': (len(oldFiles)>0)})
 '''
         messages.warning(request, 'No uploaded file')
     if request.POST and request.FILES:
@@ -139,8 +149,15 @@ def upload_network(request):
 
 
 @login_required(login_url="/login")
-def deleteFile(request, id):
-    re = Results.objects.get(pk=id)
-    if re.owner == request.user:
-        delete(re)
+def deleteFile(request, id1, id2, id3, id4, id5):
+    re = Results.objects.get(pk=int(id1))
+    delete(re)
+    re = Results.objects.get(pk=int(id2))
+    delete(re)
+    re = Results.objects.get(pk=int(id3))
+    delete(re)
+    re = Results.objects.get(pk=int(id4))
+    delete(re)
+    re = Results.objects.get(pk=int(id5))
+    delete(re)
     return HttpResponseRedirect('/network/upload')
