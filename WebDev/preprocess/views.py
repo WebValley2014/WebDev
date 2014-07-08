@@ -29,7 +29,7 @@ def get_results(request, p):
 @login_required(login_url="/login")
 def upload(request):
     form_error, ex_error = False, False
-    # IF FIELE UPLOADED
+    #IF FILE UPLOADED
     if request.POST:
         if request.FILES:
             try:
@@ -102,6 +102,18 @@ def processing(request, process_id):
     result = settings.APP.AsyncResult(process_id)
     return HttpResponse(result.status)
 
+@login_required(login_url='/login')
+def statusPP(request):
+    tList = RunningProcess.objects.filter(process_name='Preprocessing')
+    listPending = []
+    listOK = []
+    for el in tList:
+        if el.pip_id.owner==request.user:
+            if(settings.APP.AsyncResult(el.task_id).status=='PENDING'):
+                listPending.append(el)
+            else:
+                listOK.append(el)
+    return render(request, 'preprocess/status.html', {'listPending': listPending, 'listOK': listOK})
 
 # CELERY FUNCTION
 
