@@ -32,10 +32,10 @@
 			</div>
     	{% endfor %}
 	{% endif %}
-	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	<p style="text-align:center">For the moment adding any more forms will break everything<br />Select or drop a <strong>.TXT</strong>, a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data" style="width: 700px">
 		{% csrf_token %}
-		<div class="input-group" style="width: 340px;">
+		<div class="input-group" style="width: 340px; margin-left: -170px; margin-right: -170px; position: relative; left: 50%">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-font" style="width:58px"> TXT</span>
 			</span>
@@ -71,10 +71,10 @@
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
 		<div id="progress_cont" style="display: none; height: 100px;">
-        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px">
+        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px; margin-left: -170px; margin-right: -170px;  position: relative; left: 50%;">
           		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 			</div>
-			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px; z-index:2">0 %</div>
+			<div id="progress-num" style="width: 340px; margin-left: -170px; margin-right: -170px; text-align: center; position: relative; left: 50%; top: -39px; z-index:2">0 %</div>
 			<div style="margin-left: auto; margin-right: auto">
 			<div id="f_size" class="glyphicon glyphicon-hdd"> 0 KB</div>
 			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> 0 KB/s</div>
@@ -131,7 +131,7 @@
 			var files_map = document.getElementsByClassName('map');
 			var len = files_sff.length; // MAYBE CHECK ERROR
 			fd.append("length", len);
-			fd.append("file_txt", document.getElementsByClassName('txt')[0]);
+			fd.append("file_txt", document.getElementsByClassName('txt')[0].files[0]);
 			for (i = 0; i < len; i++) {
 				fd.append("file_sff_" + i, files_sff[i].files[0]);
 				fd.append("file_map_" + i, files_map[i].files[0]);
