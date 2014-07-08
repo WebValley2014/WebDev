@@ -22,6 +22,8 @@ urlpatterns = patterns('',
     #FARINA
     url(r'^graph_prova/$', "WebDev.views.graph_prova", name='graph'),
     url(r'^graph_prova_oculus/$', "WebDev.views.graph_prova_oculus", name='graph_oculus'),
+    #STEFANO
+    url(r'^graph_2d/$', "WebDev.views.graph_2d", name='graph2d'),
 
 
     # Classification urls
