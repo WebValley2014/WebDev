@@ -6,12 +6,13 @@ import random
 
 class Net:
 
-    def __init__(self, dataname, labelsname, samplesname, featuresname, rankingname, pngoutputpath): ### ('X.txt', 'Y.txt', 'sampleIDs.txt', 'names.txt', 'X_l2r_l2loss_svc_SVM_std_featurelist.txt', '/pngout') (as a folder)
+    def __init__(self, dataname, labelsname, samplesname, featuresname, rankingname, metricsname, pngoutputpath): ### ('X.txt', 'Y.txt', 'sampleIDs.txt', 'names.txt', 'X_l2r_l2loss_svc_SVM_std_featurelist.txt', 'X_l2r_l2loss_svc_SVM_std_metrics.txt', '/pngout') (last one as a folder)
         self.dataname = dataname
         self.labelsname = labelsname
         self.samplesname = samplesname
         self.featuresname = featuresname
         self.rankingname = rankingname
+        self.metricsname = metricsname
         self.pngoutputpath = pngoutputpath
 
 ########
@@ -21,7 +22,7 @@ class Net:
         self.findsubmatrixes()
         self.mkadjmatrixes()
         self.mkpngoutput()
-        #return #FIXME# himadjmatrixes to DBizzarri
+        return self.himadjmatrix        #to DBizzarri
 
 ########
 
@@ -66,12 +67,20 @@ class Net:
             self.setrank[i].split('\t')
             self.setrank[i] = self.setrank[i][0]
 
+        filemetrics = open(self.metricsname)
+        nmetrics = filemetrics.readline()
+        filemetrics.close()
+        self.nmetrics = self.nmetrics.split('\t')
+        self.nmetrics = self.nmetrics[1]
+        self.nmetrics = self.nmetrics[:-1]
+        self.nmetrics = int(self.nmetrics)
+
 ########
 
-	def get_randColor():
-	    #RETURN A EXADECIMAL RANDOM COLOR ie #ff45e2
-	    r = lambda: random.randint(0, 255)
-	    return '#%02X%02X%02X' % (r(), r(), r())
+    def get_randColor():
+        #RETURN A EXADECIMAL RANDOM COLOR ie #ff45e2
+        r = lambda: random.randint(0, 255)
+        return '#%02X%02X%02X' % (r(), r(), r())
 
 ########
 
@@ -84,11 +93,12 @@ class Net:
         ok = 0	# for the condition of the while loop
         while ok < len(self.aunilabels):
             r2 = 0
-            maux = np.zeros((len(np.where(self.setlabels == self.aunilabels[ok])[0]), len(self.setCol)))
+            maux = np.zeros((len(np.where(self.setlabels == self.aunilabels[ok])[0]), nmetrics))
             for r in np.where(self.setlabels == np.array(list(set(self.setlabels)))[ok])[0]:	#this is a very strange 2d-array with the positions of the ok-th different element of setlabels in setlabels itself
                 #print aunilabels
                 c2 = 0
-                for c in self.setCol:
+                for i in range(self.nmetrics)
+                    c = self.setlabels[self.setrank[i]]
                     maux[r2, c2] = self.mdata[r, c]
                     c2 += 1
                 r2 += 1
@@ -112,7 +122,7 @@ class Net:
     	        hamming, ipsen, self.himadjmatrix[i, j] = df.him(self.adjmatrixes[i], self.adjmatrixes[j])	#calculates the him distance between two networks
                 self.himadjmatrix[j, i] = self.himadjmatrix[i, j]	#makes symmetric the 'adjacency' matrix
 
-        return (self.himadjmatrix)	#, aunilabels)
+        #return (self.himadjmatrix)	#, aunilabels)
 
 ########
 
@@ -137,52 +147,52 @@ class Net:
                     L2 = [M[j,k] for j in range(nRow)]
 
                     if np.var(L1)==0 and np.var(L2)==0:
-	                    pear=[1.0,123]
+                        pear=[1.0,123]
                     elif np.var(L1)==0 or np.var(L2)==0:
-	                    pear=[0.,123]
+                        pear=[0.,123]
                     else:
-	                    pear = pearsonr(L1,L2)    #output as array
+                        pear = pearsonr(L1,L2)    #output as array
 
                     if pear > thre:
-	                    self.mNet[i,k] = abs(pear[0])
-	                    self.mNet[k,i] = abs(pear[0])
+                        self.mNet[i,k] = abs(pear[0])
+                        self.mNet[k,i] = abs(pear[0])
         ### mNet is now our network matrix
 
         return self.mNet
 
 ########
 
-	def drawNetwork(**kwargs):
-	    """
-	    Read the data stored in self.metrics, using column 0 as
-	    x axis values. Select the columns specified by *valueCol*,
-	    *minCol*, *maxCol* as Y values and print a png chart.
-	    
-	    args:
-	    *matrix*
-		(numpy matrix)
-		matrix of adjacency    
-	    -----------------------
-	    optional args:
-	    *nodeColor*
-		(color)
-		color of the nodes. Defaults to "red".
-	    *lineColor*
-		(color)
-		The color of the func line (Y values). It defaults to "grey - #787878".
-	    *oudDir*
-		(str)
-		output dir. Defaults to `networks'.
-	    *outFile*
-		(str)
-		output filename. Defaults to `testNetwork.png'.
+    def drawNetwork(**kwargs):
+        """
+        Read the data stored in self.metrics, using column 0 as
+        x axis values. Select the columns specified by *valueCol*,
+        *minCol*, *maxCol* as Y values and print a png chart.
+
+        args:
+        *matrix*
+        (numpy matrix)
+        matrix of adjacency    
+        -----------------------
+        optional args:
+        *nodeColor*
+        (color)
+        color of the nodes. Defaults to "red".
+        *lineColor*
+        (color)
+        The color of the func line (Y values). It defaults to "grey - #787878".
+        *oudDir*
+        (str)
+        output dir. Defaults to `networks'.
+        *outFile*
+        (str)
+        output filename. Defaults to `testNetwork.png'.
 	    """
 	    # manage args
-	    matrix = kwargs.get('matrix')*3
-	    nodeColor = kwargs.get('nodeColor', 'red')
-	    lineColor = kwargs.get('lineColor', '#787878')
-	    outDir = kwargs.get('outDir', 'networks') 
-	    outFile = kwargs.get('outFile', 'testNetwork.png')
+        matrix = kwargs.get('matrix')*3
+        nodeColor = kwargs.get('nodeColor', 'red')
+        lineColor = kwargs.get('lineColor', '#787878')
+        outDir = kwargs.get('outDir', 'networks') 
+        outFile = kwargs.get('outFile', 'testNetwork.png')
         if not os.path.exists(outDir):
             os.makedirs(outDir)
         filePath = os.path.join(outDir, outFile)

@@ -169,20 +169,31 @@
 		}
 	</script>
 	<br />
+
     {% if file_exist %}
+      <h3>Choose among the old files</h3>
     <table class="table table-striped">
     <tr>
-        <th> File name </th>
+        <th> File data </th>
+        <th> File label </th>
+        <th> File samples </th>
+        <th> File feature </th>
+        <th> File rank </th>
         <th> Select </th>
         <th> Delete </th>
     </tr>
-	{% for fi in oldFiles %}
+	{% for el in tabFile %}
             <tr>
-            <td> {{ fi.filename }}</td>
+            <td> {{ el.fileData.filename }}</td>
+            <td> {{ el.fileLabel.filename }}</td>
+            <td> {{ el.fileSamples.filename }}</td>
+            <td> {{ el.fileFeature.filename }}</td>
+            <td> {{ el.fileRank.filename }}</td>
             <td> <a href="" {# da sistemare #}> SELECT </a></td>
-            <td> <a href={% url 'delete' fi.pk %}> DELETE </a> </td>
+            <td> <a href="/network/delete/{{ el.fileData.pk }}/{{ el.fileLabel.pk }}/{{ el.fileSamples.pk }}/{{ el.fileFeature.pk }}/{{ el.fileRank.pk }}/"> DELETE </a> </td>
             </tr>
 	{% endfor %}
     </table>
     {% endif %}
+
 {% endblock %}
