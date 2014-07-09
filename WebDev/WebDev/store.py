@@ -77,8 +77,8 @@ def store_after_celery_class(rundb, task_ret):
             for j in os.listdir(task_ret[0]['funct'][i]) :
                 resdb = Results(process_name=rundb.process_name,
                                 task_id=rundb,
-                                filepath=task_ret[0]['funct'][i][j],
-                                imagestore=task_ret[0]['funct'][i][j],
+                                filepath='%s/%s' % (task_ret[0]['funct'][i],j),
+                                imagestore=resdb.filepath,
                                 filetype='img',
                                 owner=rundb.pip_id.owner,
                                 pip_id=rundb.pip_id
