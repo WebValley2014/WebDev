@@ -111,6 +111,8 @@ class Results (models.Model):
         ('nt_feature', 'input feature network'),
         ('nt_rank', 'input data network'),
         ('nt_metrics', 'input data network'),
+        ('cl_otu', 'preprocess output'),
+        ('cl_class', 'input classification .txt'),
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery

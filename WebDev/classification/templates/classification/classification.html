@@ -37,16 +37,16 @@
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file"> TXT</span>
+				<span class="glyphicon glyphicon-file"> TXT - OTU </span>
 			</span>
-			<input id="file1" name="file1" type="file" class="form-control" />
+			<input id="file1" name="file_otu" type="file" class="form-control" />
 		</div>
 		<br />
         <div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file"> TXT</span>
+				<span class="glyphicon glyphicon-file"> TXT - CLASS </span>
 			</span>
-			<input id="file2" name="file2" type="file" class="form-control" />
+			<input id="file2" name="file_class" type="file" class="form-control" />
 		</div>
 		<br />
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
@@ -85,8 +85,8 @@
           	document.getElementById('f_size').innerHTML = ' ' + (fileSize);
 
 			var fd = new FormData();
-			fd.append("file1", file1);
-            fd.append("file2", file2);
+			fd.append("file_otu", file1);
+            fd.append("file_class", file2);
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 			var xhr = new XMLHttpRequest();
 			xhr.upload.addEventListener("progress", uploadProgress, false);
