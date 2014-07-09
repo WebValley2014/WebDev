@@ -104,7 +104,7 @@ class Results (models.Model):
         ('json', 'json file'),
         ('error', 'Error during computation'),
         ('zip', 'zip'),
-        ('sff', 'sff')
+        ('sff', 'sff'),
         ('nt_data', 'input data network'),
         ('nt_label', 'input label network'),
         ('nt_samples', 'input samples network'),
