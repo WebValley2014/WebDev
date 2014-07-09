@@ -73,13 +73,8 @@ def processing_finish(request, task_id):
     if result.ready():
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
-        print '------------------------------------------'
-        print str(rp)
-        print '------------------------------------------'
-        print str(r)
-        print '------------------------------------------'
         if store_after_celery_class(rp, r):
-           return HttpResponse('OK')
+           return HttpResponseRedirect('/class/show_results/%s/2D/' % (rp.pip_id.pip_id))
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/class/processing/%s/' % (task_id,))
