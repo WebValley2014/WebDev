@@ -22,18 +22,6 @@ import hashlib
 To Michele : If I am asleep when you review this , see FIX ME in each view and in store.py and Debug.
 '''
 
-
-
-
-
-
-
-
-
-
-
-
-
 from forms import *
 from WebDev.utils import *
 
