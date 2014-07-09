@@ -35,32 +35,40 @@ def classification(request, pip_id):
 def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
-@login_required(login_url="/login")
 def step2(request):
-    '''
-    #FIX ME : Doesn't Handle the Arguments .
-              HttpsResponseRedirect : Give the right URL.
-    '''
-    pip_id = request.POST.get('pip_id')
-    first = request.POST.get('First_Parameter')
-    second = request.POST.get('Second_Parameter')
-    third = request.POST.get('Third_Parameter')
 
-    pip = Pipeline.objects.get(pip_id=pip_id)
-    file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
-    file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
+    if request.POST:
+        try:
+            pip_id = request.POST['pip_id']
+            f_par = request.POST['First_Parameter']
+            s_par = request.POST['Second_Parameter']
+            t_par = request.POST['Third_Parameter']
+        except:
+            return HttpResponse('ERROR')
 
-    print 'Celery in launch'
-    ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': 'minmax', 'solver': 'randomForest', 'ranking': 'randomForest'})
-    print 'Celery launched'
+        pip = Pipeline.objects.get(pip_id=pip_id)
+        file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
+        file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
 
+        kw = {
+            'percentage': 10,
+            'n_groups': 10,
+            'scaling': 'minmax',
+            'solver': 'randomForest',
+            'ranking': 'randomForest',
+            'random': False,
+            'cv_k': 5,
+            'cv_n': 10
+        }
+        ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = kw)
 
-    input_data = {'file_OTU': file_otu.filepath, 'file_CLASS': file_class.filepath}
-    print  'Process Started'
-    store_before_celery(pip, input_data, ml_id.id, "classification")
-    print  'Saving Process to database'
+        input_data = {'file_OTU': file_otu.filepath, 'file_CLASS': file_class.filepath}
+        store_before_celery(pip, input_data, ml_id.id, "classification")
 
-    return HttpResponseRedirect("/class/processing/" + ml_id.id + "/")
+        return HttpResponseRedirect("/class/processing/" + ml_id.id + "/")
+
+    #If error redirect to option
+    return HttpResponseRedirect("/class/upload/")
 
 def learning_loading (request, task_id):
 
@@ -71,7 +79,7 @@ def learning_loading (request, task_id):
     if result.ready():
         return HttpResponseRedirect('/class/processing_finish/%s/' % (task_id,))
     else:
-        return HttpResponse(result.status)
+        return render(request, 'loading.html', {'status': result.status})
 
 def processing_finish(request, task_id):
     print 'Chiamata'
@@ -162,6 +170,7 @@ def show_results(request, pip_id, type):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
     media_path = os.path.join(settings.MEDIA_URL, partial_path)
+    print media_path
 
     if type == '2D':
         print 'in'
