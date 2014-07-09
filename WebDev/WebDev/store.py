@@ -127,4 +127,36 @@ def store_after_celery_class(rundb, task_ret):
     return True
 
 def store_after_celery_network(rundb, task_ret):
-    pass
+      #Create the new_path for the file
+    pipeline = rundb.pip_id
+
+
+    #IMG
+
+    i = 0
+    for img in task_ret['img']:
+        resdb = Results(
+            process_name=rundb.process_name,
+            task_id = rundb,
+            filename = task_ret['titles'][i] ,
+            filepath = img,
+            filetype='img',
+            owner = rundb.pip_id.owner,
+            pip_id = rundb.pip_id
+        )
+        resdb.save()
+        i++
+
+    #Matrix File
+
+        resdb = Results(
+            process_name=rundb.process_name,
+            task_id = rundb,
+            filepath = task_ret['matrix'],
+            filetype='txt',
+            owner = rundb.pip_id.owner,
+            pip_id = rundb.pip_id
+        )
+        resdb.save()
+
+    return True

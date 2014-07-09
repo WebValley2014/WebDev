@@ -115,7 +115,7 @@ def start_network(request, pip_id):
     file_nt_metrics = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_metrics')
     inputFiles = {'fileData': file_nt_data.filepath, 'fileLabel': file_nt_label.filepath, 'fileSamples': file_nt_samples.filepath,
                   'fileFeature': file_nt_feature.filepath, 'fileRank': file_nt_rank.filepath, 'fileMetrics': file_nt_metrics.filepath}
-    preproc_id = settings.APP.send_task("network_task", **inputFiles)
+    preproc_id = settings.APP.send_task("network_task", **inpu tFiles)
     store_before_celery(pip_id, inputFiles, preproc_id.id, "Network")
     return HttpResponseRedirect("/network/processing/" + preproc_id.id + "/")
 
