@@ -12,10 +12,10 @@ def about_us(request):
 
 # FARINA
 
-def graph_prova(request):
+def graph_3D(request):
     return render(request, 'graph_prova.html')
 
-def graph_prova_oculus(request):
+def graph_oculus_3D(request):
     return render(request, 'graph_prova_oculus.html')
 
 def tree_graph(request):

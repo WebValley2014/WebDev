@@ -20,11 +20,11 @@ urlpatterns = patterns('',
     #About_us
     url(r'^about_us/$', "WebDev.views.about_us", name='about'),
     #FARINA
-    url(r'^graph_prova/$', "WebDev.views.graph_prova", name='graph'),
-    url(r'^graph_prova_oculus/$', "WebDev.views.graph_prova_oculus", name='graph_oculus'),
-	url(r'^tree_graph/$', "WebDev.views.tree_graph", name='TreeGraph'),
+    url(r'^results/3D_graph/$', "WebDev.views.graph_3D", name='3Dgraph'),
+    url(r'^results/3D_graph_oculus/$', "WebDev.views.graph_oculus_3D", name='3Dgraph_oculus'),
+	url(r'^results/tree_graph/$', "WebDev.views.tree_graph", name='tree_graph'),
     #STEFANO
-    url(r'^graph_2d/$', "WebDev.views.graph_2d", name='graph2d'),
+    url(r'^results/graph_2d/$', "WebDev.views.graph_2d", name='2Dgraph'),
 
     # Classification urls
     url(r'^class/', include('classification.urls')),
