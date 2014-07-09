@@ -2,6 +2,7 @@ from models import *
 import datetime
 from django.core.files import File
 import os
+from django.contrib import messages
 
 def store_before_celery(pip_id, jinput, task_id , pname):
     '''
@@ -65,34 +66,59 @@ def store_after_celery_class(rundb, task_ret):
     :return: True
     '''
 
+    #Create the new_path for the file
+    pipeline = rundb.pip_id
+    partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+    partial_path = os.path.join(partial_path, 'classification')
+    new_path = os.path.join(settings.MEDIA_ROOT, partial_path)
 
+    #IMG
+    #Create the new img directroy and file path
+    img_path = os.path.join(new_path, 'img')
+    #Pick the img directory
+    img = task_ret['img']
+    try:
+        #Move the directory
+        os.renames(img, img_path)
+    except Exception, e:
+        pass
+    img_list = os.listdir(img_path)
+    for img in img_list:
+        img_full_path = os.path.join(new_path, img)
+        resdb = Results(
+            process_name=rundb.process_name,
+            task_id = rundb,
+            filepath = img_full_path,
+            filetype='img',
+            owner = rundb.pip_id.owner,
+            pip_id = rundb.pip_id
+        )
+        resdb.save()
 
-    rundb.started = task_ret[0]['st']
-    rundb.finished = task_ret[0]['ft']
+    #GENERIC FILE
+    file_store = {
+        'metrics':      os.path.join(new_path, 'matrics.txt'),
+        'stability':    os.path.join(new_path, 'stability.txt'),
+        'featurelist':  os.path.join(new_path, 'featurelist.txt')
+    }
+    file_type = [['metrics', 'nt_metrics'], ['stability', 'nt_stab'], ['featurelist', 'nt_feature']]
+    for type in file_type:
+        try:
+            #Move the file
+            os.rename(task_ret[type[0]], file_store[type[0]])
+        except:
+            pass
 
-    for i in task_ret[0]['funct']:
-        if i == 'img':
-            for j in os.listdir(task_ret[0]['funct'][i]) :
-                resdb = Results(process_name=rundb.process_name,
-                                task_id=rundb,
-                                filepath='%s/%s' % (task_ret[0]['funct'][i],j),
-                                imagestore=resdb.filepath,
-                                filetype='img',
-                                owner=rundb.pip_id.owner,
-                                pip_id=rundb.pip_id
-                                )
-
-
-        else:
-            resdb = Results(process_name=rundb.process_name,
-                            task_id=rundb,
-                            filepath=task_ret[0]['funct'][i],
-                            filetype='txt',
-                            owner=rundb.pip_id.owner,
-                            pip_id=rundb.pip_id
-                            )
-    resdb.save()
-
+        #SAVE IT IN DATABASE
+        resdb = Results(
+            process_name=rundb.process_name,
+            task_id = rundb,
+            filepath = file_store[type[0]],
+            filetype= type[1],
+            owner = rundb.pip_id.owner,
+            pip_id = rundb.pip_id
+        )
+        resdb.save()
 
     return True
 
