@@ -21,15 +21,6 @@
 
 
 <script>
-function path(name) {
-    	var path="/home/deborah/Desktop/graphs/" + name;
-	document.getElementById("graph").setAttribute('src', path);
-}
-
-function hidden(dis) {
-	dis.setAttribute('style', "display:none");
-}
-
 
 
 		window.pre = 'ACC';
@@ -51,6 +42,23 @@ function hidden(dis) {
 		}
 
 
+		function uniGraph(dis) {
+			var img = document.getElementById('graph');
+			window.nome = dis.innerHTML;
+			var src = window.nome + '.png';
+			img.setAttribute('src', window.path + 'otherGraphs/' + src);
+		}
+
+		function scaleNoVis() {
+			var scale = document.getElementById('scale');
+			scale.style.display = 'none';
+		}
+
+		function scaleSiVis() {
+			var scale = document.getElementById('scale');
+			scale.style.display = 'block';
+		}	
+
 </script>
 
 
@@ -66,13 +74,13 @@ function hidden(dis) {
             Linear<span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-           	<li onclick="changePre('ACC')" title="Accuracy"><a>ACC</a></li>
-		<li onclick="changePre('AUC')" title="Area Under Curve"><a>AUC</a></li>
-		<li onclick="changePre('MCC')" title="Matthew Correlation Coefficient"><a>MCC</a></li>
-		<li onclick="changePre('NPV')" title="Negative Predictive Value"><a>NPV</a></li>
-		<li onclick="changePre('PPV')" title="Positive Predictive Value" title="Positive Predictive Value" title="Positive Predictive Value"><a>PPV</a></li>
-		<li onclick="changePre('SENS')" title="Sensitivity"><a>SENS</a></li>
-		<li onclick="changePre('SPEC')" title="Specificity"><a>SPEC</a></li>
+           	<li onclick="changePre('ACC');scaleSiVis()" title="Accuracy"><a>ACC</a></li>
+		<li onclick="changePre('AUC');scaleSiVis()" title="Area Under Curve"><a>AUC</a></li>
+		<li onclick="changePre('MCC');scaleSiVis()" title="Matthew Correlation Coefficient"><a>MCC</a></li>
+		<li onclick="changePre('NPV');scaleSiVis()" title="Negative Predictive Value"><a>NPV</a></li>
+		<li onclick="changePre('PPV');scaleSiVis()" title="Positive Predictive Value" title="Positive Predictive Value" title="Positive Predictive Value"><a>PPV</a></li>
+		<li onclick="changePre('SENS');scaleSiVis()" title="Sensitivity"><a>SENS</a></li>
+		<li onclick="changePre('SPEC');scaleSiVis()" title="Specificity"><a>SPEC</a></li>
           </ul>
         </div>
 
@@ -84,7 +92,7 @@ function hidden(dis) {
             Histogram<span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-            <li href="" onclick="path('ACC_10.png')"><a>Graph 1</a></li>
+            <li href="" onclick="uniGraph(this);scaleNoVis()"><a>Graph 1</a></li>
           </ul>
         </div>
 </td>
@@ -94,20 +102,20 @@ function hidden(dis) {
             Network<span class="caret"></span>
           </button>
           <ul class="dropdown-menu" role="menu">
-  	    <li href="" onclick="path('ACC_10.png')"><a>Graph 1</a></li>
-  	    <li href="" onclick="path('ACC_100.png')"><a>Graph 2</a></li>
+  	    <li href="" onclick="uniGraph(this);scaleNoVis()"><a>Graph 1</a></li>
+  	    <li href="" onclick="uniGraph(this);scaleNoVis()"><a>Graph 2</a></li>
           </ul>
         </div>
 </td>
 <td>
         <div class="btn-group">
-          <button type="button" style="margin-left:60px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-            3D<span class="caret"></span>
-          </button>
-          <ul class="dropdown-menu" role="menu">
-  	    <li href="" onclick="window.location.href='http://www.google.com'"><a>3D Graphs</a></li>
-          </ul>
+          <button type="button" style="margin-left:60px" class="btn btn-default dropdown-toggle"><a href="https://www.google.it/" style="color:black">
+            3D</a></button>
         </div>
+
+
+
+
 
 </td>
 </tr>
@@ -118,7 +126,7 @@ function hidden(dis) {
 <div align="center">
 	<img id="graph" src="/home/deborah/Project/WebDev/WebDev/WebDev/WebDev/static/graphs_2d/ACC_10.png" style="margin-left: 10px;" />
 	<br />
-	<ul id='repetitions' class="pagination">
+	<ul id='scale' class="pagination">
 		<li onclick="changePost('10')"><a>10</a></li>
 		<li onclick="changePost('100')"><a>100</a></li>
 		<li onclick="changePost('1000')"><a>1000</a></li>
@@ -127,10 +135,15 @@ function hidden(dis) {
 </div>
 
 
+
+
+
+
+
 <body>
 
 <div align="center"><br /><br />
-<img id="graph" src="" alt=" ">
+<img id="graph" src="" alt="">
 </div>
 
 </body>
