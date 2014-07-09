@@ -37,14 +37,14 @@
 		{% csrf_token %}
 		<div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file"> TXT - OTU </span>
+				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> TXT - OTU </span>
 			</span>
 			<input id="file1" name="file_otu" type="file" class="form-control" />
 		</div>
 		<br />
         <div class="input-group forminp">
 			<span class="input-group-addon">
-				<span class="glyphicon glyphicon-file"> TXT - CLASS </span>
+				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> TXT - CLASS </span>
 			</span>
 			<input id="file2" name="file_class" type="file" class="form-control" />
 		</div>
@@ -142,15 +142,17 @@
     {% if file_exist %}
     <table class="table table-striped">
     <tr>
-        <th> File name </th>
+        <th> File OTU </th>
+        <th> File CLASS </th>
         <th> Select </th>
         <th> Delete </th>
     </tr>
-	{% for fi in oldFiles %}
+	{% for fi in tabFile %}
             <tr>
-            <td> {{ fi.filename }}</td>
-            <td> <a href="" {# da sistemare #}> SELECT </a></td>
-            <td> <a href={% url 'delete' fi.pk %}> DELETE </a> </td>
+            <td> {{ fi.file_otu.filename }}</td>
+            <td> {{ fi.file_class.filename }}</td>
+            <td> <a href="/class/option/{{ fi.pip_id }}/"> SELECT </a></td>
+            <td> <a href="/class/delete/{{ fi.file_otu.pk }}/{{ fi.file_class.pk }}"> DELETE </a> </td>
             </tr>
 	{% endfor %}
     </table>
