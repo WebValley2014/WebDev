@@ -14,6 +14,7 @@ from django.utils.encoding import smart_str
 import uuid
 from forms import *
 from WebDev.utils import *
+from WebDev.store import *
 import hashlib
 
 inputName = "Classification"
@@ -31,12 +32,11 @@ def network(request, pip_id):
 def network_redirect(request):
     return HttpResponseRedirect("upload/")
 
-def step2(request):
-    return render(request, 'network/tuttook.html')
+#def step2(request, pip_id):
+#    return render(request, 'network/tuttook.html')
 
 @login_required(login_url="/login")
 def upload_network(request):
-    global inputName
     form_error = False
     form = NUploadFileForm()
     if request.POST:
@@ -64,13 +64,13 @@ def upload_network(request):
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
 
-                    handle_uploaded_file(p,fileData,inputName)
-                    handle_uploaded_file(p,fileLabel,inputName)
-                    handle_uploaded_file(p,fileSamples,inputName)
-                    handle_uploaded_file(p,fileFeature,inputName)
-                    handle_uploaded_file(p,fileRank,inputName)
-                    handle_uploaded_file(p,fileMetrics,inputName)
-                    return HttpResponse('/network/step2/')
+                    handle_uploaded_file(p,fileData,inputName,'nt_data')
+                    handle_uploaded_file(p,fileLabel,inputName, 'nt_label')
+                    handle_uploaded_file(p,fileSamples,inputName, 'nt_samples')
+                    handle_uploaded_file(p,fileFeature,inputName, 'nt_feature')
+                    handle_uploaded_file(p,fileRank,inputName, 'nt_rank')
+                    handle_uploaded_file(p,fileMetrics,inputName, 'nt_metrics')
+                    return HttpResponse('/network/celery/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
         else:
@@ -83,71 +83,9 @@ def upload_network(request):
 
     tabFile = []
     for i in range(0, len(oldFiles), 6):
-        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4], oldFiles[i+5]))
+        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4], oldFiles[i+5], oldFiles[i].pip_id))
 
     return render(request, 'network/network.html', {'tabFile': tabFile, 'file_exist': (len(oldFiles)>0)})
-'''
-        messages.warning(request, 'No uploaded file')
-    if request.POST and request.FILES:
-        if checkExtension(request.FILES['fileData'], 'txt') and checkExtension(request.FILES['fileLabel'], 'txt') and checkExtension(request.FILES['fileSamples'], 'txt') and checkExtension(request.FILES['fileFeature'], 'txt') and checkExtension(request.FILES['fileRank'], 'txt'):
-            form = NUploadFileForm(request.POST, request.FILES)
-            if form.is_valid():
-                p = Pipeline(pip_name='network', pip_id=str(uuid.uuid1()), started=timezone.now(), description='', owner=request.user)
-                p.save()
-                # FIXME: to do: check on file name (maybe in js?)
-                handle_uploaded_file(p,request.FILES['fileData'])
-                handle_uploaded_file(p,request.FILES['fileLabel'])
-                handle_uploaded_file(p,request.FILES['fileSamples'])
-                handle_uploaded_file(p,request.FILES['fileFeature'])
-                handle_uploaded_file(p,request.FILES['fileRank'])
-                return render(request, 'network/tuttook.html')
-        else:
-            messages.error(request, 'Wrong file type')
-    oldFiles = Results.objects.filter(process_name='network', owner=request.user)
-    oldFiles = oldFiles.order_by('-id')
-    return render(request, 'network/network.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
-    '''
-'''
-@login_required(login_url="/login")
-def upload_network(request):
-    form_error, ex_error = False, False
-    #IF FILE UPLOADED
-    if request.POST:
-        if request.FILES:
-            try:
-                file_sff = request.FILES['file_sff']
-                file_map = request.FILES['file_map']
-            except:
-                messages.error(request, "Insert the correct file")
-                form_error = True
-            if not form_error:
-                if checkExtension(file_sff, 'sff') and checkExtension(file_map, 'map'):
-                    p = Pipeline(pip_name='network', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
-                                 started=timezone.now(), description='', owner=request.user)
-                    p.save()
-                    handle_uploaded_file(p, file_sff)
-                    handle_uploaded_file(p, file_map)
-                    return render(request, 'network/tuttook.html')
-                else:
-                    messages.error(request, "File type incorrect")
-        else:
-            messages.error(request, "Insert the correct file")
-        return HttpResponse('/network/upload/')
-
-    # ELSE GENERATE THE FILE UPLOAD PAGE
-    pre_file = Results.objects.filter(process_name='network', owner=request.user).order_by('-id')
-    #Order the list
-    final_file = pick_file_list(pre_file)
-    if len(final_file) == 0:
-        file_exist = False
-    else:
-        file_exist = True
-    c = {
-        'file_list': final_file,
-        'file_exist': file_exist
-    }
-    return render(request, 'network/network.html', c)
-'''
 
 
 @login_required(login_url="/login")
@@ -165,3 +103,36 @@ def deleteFile(request, id1, id2, id3, id4, id5, id6):
     re = Results.objects.get(pk=int(id6))
     delete(re)
     return HttpResponseRedirect('/network/upload')
+
+@login_required(login_url="/login")
+def start_network(request, pip_id):
+    pip = Pipeline.objects.get(pip_id=pip_id)
+    file_nt_data = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_data')
+    file_nt_label = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_label')
+    file_nt_samples = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_samples')
+    file_nt_feature = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_feature')
+    file_nt_rank = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_rank')
+    file_nt_metrics = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_metrics')
+    inputFiles = {'fileData': file_nt_data.filepath, 'fileLabel': file_nt_label.filepath, 'fileSamples': file_nt_samples.filepath,
+                  'fileFeature': file_nt_feature.filepath, 'fileRank': file_nt_rank.filepath, 'fileMetrics': file_nt_metrics.filepath}
+    preproc_id = settings.APP.send_task("network_task", **inputFiles)
+    store_before_celery(pip_id, inputFiles, preproc_id.id, "Network")
+    return HttpResponseRedirect("/network/processing/" + preproc_id.id + "/")
+
+def processing(request, task_id):
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        return HttpResponseRedirect('/network/processing_finish/%s/' % (task_id,))
+    else:
+        return HttpResponse(result.status)
+
+def processing_finish(request, task_id):
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        if store_after_celery(rp, r, 'txt'):
+            return HttpResponse('OK')
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/network/processing/%s/' % (task_id,))

@@ -10,7 +10,7 @@ __author__ = 'daniele'
 
 celery = Celery('tasks', backend='amqp', broker='amqp://guest@localhost//')
 
-@celery.task(bind=True)
+@celery.task(bind=True, name="network_task")
 def network_task(self, **kwargs):
     """
     Execute Davide Leonessi and Stefano Valentini network
@@ -70,10 +70,17 @@ def network_task(self, **kwargs):
 
     # build args list and get instance
     args = [kwargs[arg] for arg in path_keys]
-    netAnalysis = Net(*args)
+    
+    # start task
+    print "Starting celery network task ..."
+    print self.request.id
     try:
-        netAnalysis.run()
-        return True
+        self.update_state(state='RUNNING')
+        start_time = unicode(datetime.datetime.now())
+        netAnalysis = Net(*args)
+        result = netAnalysis.run()
+        finish_time = unicode(datetime.datetime.now())
+        return {'result' : result, 'st': start_time, 'ft': finish_time}
     except Exception, e:
         msg = "Error while executing Network Analysis. "
         msg+= "Details: {0}".format(e)
