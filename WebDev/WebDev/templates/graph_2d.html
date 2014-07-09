@@ -3,48 +3,115 @@
 
 {# HOME TAB ACTIVE #}
 
-{% block hometab %}
-	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
+{% block resultstab %}
+	<li class="activetab"><a href="{% url 'index' %}">RESULTS</a></li>
 {% endblock %}
 
 {# CONTENT #}
 
 {% block main %}
-	<ul class="pagination">
-		<li class="active" onclick="changePre(this)"><a>ACC</a></li>
-		<li onclick="changePre(this)"><a>AUC</a></li>
-		<li onclick="changePre(this)"><a>MCC</a></li>
-		<li onclick="changePre(this)"><a>NPV</a></li>
-		<li onclick="changePre(this)"><a>PPV</a></li>
-		<li onclick="changePre(this)"><a>SENS</a></li>
-		<li onclick="changePre(this)"><a>SPEC</a></li>
-	</ul>
-	<br /><br />
-	<img id="graph" src="../static/graphs_2d/ACC_100.png" style="margin-left: 10px;" />
-	<br /><br />
-	<ul class="pagination">
-		<li class="active" onclick="changePost(this)"><a>10</a></li>
-		<li onclick="changePost(this)"><a>100</a></li>
-		<li onclick="changePost(this)"><a>1000</a></li>
-		<li onclick="changePost(this)"><a>3964</a></li>
-	</ul>
+	<div align="center" style="text-align: center">
+		<h1>Graphs</h1>
+		<br /><br />
+		<div class="btn-group">
+			<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				Linear<span class="caret" style="margin-left: 5px"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li onclick="changePre(this)" title="Accuracy"><a>ACC</a></li>
+				<li onclick="changePre(this)" title="Area Under Curve"><a>AUC</a></li>
+				<li onclick="changePre(this)" title="Matthew Correlation Coefficient"><a>MCC</a></li>
+				<li onclick="changePre(this)" title="Negative Predictive Value"><a>NPV</a></li>
+				<li onclick="changePre(this)" title="Positive Predictive Value"><a>PPV</a></li>
+				<li onclick="changePre(this)" title="Sensitivity"><a>SENS</a></li>
+				<li onclick="changePre(this)" title="Specificity"><a>SPEC</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				Histogram<span class="caret" style="margin-left: 5px"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li onclick="changeHistogram(this)"><a>HISTO1</a></li>
+				<li onclick="changeHistogram(this)"><a>HISTO2</a></li>
+				<li onclick="changeHistogram(this)"><a>HISTO3</a></li>
+				<li onclick="changeHistogram(this)"><a>HISTO4</a></li>
+				<li onclick="changeHistogram(this)"><a>NET1</a></li>
+				<li onclick="changeHistogram(this)"><a>NET2</a></li>
+			</ul>
+		</div>
+		<div class="btn-group">
+			<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+				3D<span class="caret" style="margin-left: 5px"></span>
+			</button>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="{% url 'graph' %}">3D Graph</a></li>
+				<li><a>Oculus</a></li>
+				<li><a>Philogeny tree</a></li>
+			</ul>
+		</div>
+		<br /><br />
+		<div id="all_graphs">
+			<div id="graph_linear" style="display: none">
+				<img src="" style="margin-left: 10px;" />
+				<br /><br />
+				<ul id="repetitions" class="pagination">
+					<li onclick="changePost(this)"><a>10</a></li>
+					<li onclick="changePost(this)"><a>100</a></li>
+					<li onclick="changePost(this)"><a>1000</a></li>
+					<li onclick="changePost(this)"><a>3964</a></li>
+				</ul>
+			</div>
+			<div id="graph_histogram" style="display: none">
+				<img src="" style="width: 820px" />
+			</div>
+		</div>
+	</div>
+
 	<script>
-		window.pre = 'ACC';
-		window.post = '100';
-		window.path = document.URL.split('/graph_2d')[0] + "{% static 'graphs_2d/' %}"; // DIPENDE DA NOME PAGINA
+		var isLinear = false;
+		var isHistogram = false;
+		var pre = 'ACC';
+		var post = '10';
+		var path_lin = document.URL.split('/graph_2d')[0] + "{% static 'graphs_2d/' %}"; // DIPENDE DA NOME PAGINA
+		var path_his = document.URL.split('/graph_2d')[0] + "{% static 'graph_histo/' %}"; // DIPENDE DA NOME PAGINA
 
 		function changePre(dis) {
-			var img = document.getElementById('graph');
-			window.pre = dis.childNodes[0].innerHTML;
-			var src = window.pre + '_' + window.post + '.png';
-			img.setAttribute('src', window.path + src);
+			var img = document.getElementById('graph_linear').childNodes[1]; // 0 is text dunno
+			pre = dis.childNodes[0].innerHTML;
+			var src = pre + '_' + post + '.png';
+			img.setAttribute('src', path_lin + src);
+			if (isLinear == false) { showGraphDiv('lin') }
 		}
 
 		function changePost(dis) {
-			var img = document.getElementById('graph');
-			window.post = dis.childNodes[0].innerHTML;
-			var src = window.pre + '_' + window.post + '.png';
-			img.setAttribute('src', window.path + src);
+			var img = document.getElementById('graph_linear').childNodes[1]; // 0 is text dunno
+			post = dis.childNodes[0].innerHTML;
+			var src = pre + '_' + post + '.png';
+			img.setAttribute('src', path_lin + src);
+		}
+
+		function changeHistogram(dis) {
+			var img = document.getElementById('graph_histogram').childNodes[1];
+			var name = dis.childNodes[0].innerHTML;
+			var src = name + '.png';
+			img.setAttribute('src', path_his + src);
+			if (isHistogram == false) { showGraphDiv('his') }
+		}
+
+		function showGraphDiv(type) {
+			if (type == 'lin') {
+				document.getElementById('graph_linear').style.display = 'block';
+				document.getElementById('graph_histogram').style.display = 'none';
+				isLinear = true;
+				isHistogram = false;
+			}
+			else if (type == 'his') {
+				document.getElementById('graph_histogram').style.display = 'block';
+				document.getElementById('graph_linear').style.display = 'none';
+				isHistogram = true;
+				isLinear = false;
+			}
 		}
 	</script>
 {% endblock %}
