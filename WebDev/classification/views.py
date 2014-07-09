@@ -127,14 +127,17 @@ def upload_preProcessed(request):
             messages.error(request, "Insert the correct files")
         return HttpResponse('/class/upload/')
     # Old files
-    oldFiles = Results.objects.filter(process_name="processing", owner=request.user)
-    oldFiles = oldFiles.order_by('-id')
+    try:
+        oldFiles = Results.objects.filter(process_name="processing", owner=request.user)
+        oldFiles = oldFiles.order_by('-id')
 
-    tabFile = []
-    for i in range(0, len(oldFiles), 2):
-        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i].pip_id.pip_id))
+        tabFile = []
+        for i in range(0, len(oldFiles), 2):
+            tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i].pip_id.pip_id))
+    except:
+        tabFile = []
 
-    return render(request, 'classification/classification.html', {'tabFile': tabFile, 'file_exist': (len(oldFiles)>0)})
+    return render(request, 'classification/classification.html', {'tabFile': tabFile, 'file_exist': (len(tabFile)>0)})
 
 
 @login_required(login_url="/login")
