@@ -120,7 +120,11 @@ def start_network(request, pip_id):
     return HttpResponseRedirect("/network/processing/" + preproc_id.id + "/")
 
 def processing(request, task_id):
+       # Pick the results
     result = settings.APP.AsyncResult(task_id)
+    print str(result.status)
+    print str(settings.APP)
+
     if result.ready():
         return HttpResponseRedirect('/network/processing_finish/%s/' % (task_id,))
     else:
@@ -131,7 +135,7 @@ def processing_finish(request, task_id):
     if result.ready():
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
-        if store_after_celery(rp, r, 'txt'):
+        if store_after_celery_network(rp, r):
             return HttpResponse('OK')
         else:
             return HttpResponse('Error')
