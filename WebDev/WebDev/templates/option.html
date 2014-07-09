@@ -1,0 +1,120 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# TITLE #}
+{% block pagetitle %}
+	Classification - 
+{% endblock %}
+
+{# UPLOAD TAB ACTIVE #}
+{% block uploadtab %}
+	{% if user.is_authenticated %}
+		<li class="dropdown">
+			<a href="#" class="dropdown-toggle activetab" data-toggle="dropdown">START<span class="caret caretfix"></span></a>
+			<ul class="dropdown-menu" role="menu">
+				<li><a href="{% url 'preproc_upload' %}">Preprocessing</a></li>
+				<li class="disabled"><a href="{% url 'class_upload' %}">Classification</a></li>
+				<li><a href="{% url 'network_upload' %}">Network</a></li>
+			</ul>
+		</li>
+	{% endif %}
+{% endblock %}
+
+
+{# CONTENT #}
+
+
+{% block main %}
+
+	
+
+	<form action="/class/step2" method="POST" style="text-align: center">
+		<h2>Options for the machine learning algorithm</h2><br/>
+		<div style="float:left; margin-left: 170px">
+			<h4>Scaling method</h4>
+			<select name="First_Parameter" class="btn btn-default dropdown-toggle">
+				<option >std</option>
+				<option >norm_l2</option>
+				<option >minmax</option>
+			</select>
+		</div>
+		<div style="float:left;margin-left:10px">
+			<h4>Classifier</h4>
+			<select name="Second_Parameter" class="btn btn-default dropdown-toggle" style="width:180px">
+				<option >l2r_l2loss_svc</option>
+				<option >l2r_l2loss_svc_dual</option>
+				<option >l2r_l1loss_svc_dual</option>
+				<option >l2r_lr_dual</option>
+				<option >l1r_l2loss_svc</option>
+				<option >Random Forest</option>
+			</select>
+		</div>
+		<div style="float:left;margin-left:10px">
+			<h4 style="margin-left:20px">Feature ranking method</h4>
+			<select name="Third_Parameter" class="btn btn-default dropdown-toggle" style="margin-left:11px;width:180px">
+				<option >SVM</option>
+				<option >RFE</option>
+				<option >Random</option>
+				<option >Random Forest</option>
+			</select>
+		</div>
+		
+					<div class="input-group" style="float:left;margin-left:295px;padding: 10px 10px 10px;width:200px">
+					  <span class="input-group-addon">RF - no. trees</span>
+					  <input type="text" class="form-control" value="250">
+					</div>
+					
+			
+
+		<br/><br/><br/><br/><br/><br/><br/><br/>
+		<div>	
+			<div style="float:left">
+					<div class="input-group" style="padding: 10px 10px 3px;width:220px;margin-left:40px">
+					  <span class="input-group-addon">Cross validation_k</span>
+					  <input type="text" class="form-control" value="5">
+					</div>
+					<div class="input-group" style="padding: 3px 10px 10px;width:220px;margin-left:40px">
+					  <span class="input-group-addon">Cross validation_n</span>
+					  <input type="text" class="form-control" value="10">
+					</div>
+			</div>
+
+			<div style="float:left;margin-left:40px;margin-top:12px" >
+				<h4 title="Minimum percentage of samples that have zero values for each feature">Percentage</h4>
+				<select class = "selectpicker btn btn-default dropdown-toggle" style="width:76px">
+					<script language="javascript">
+						for (var i=0; i<=100; i++) {
+							if (i==10)
+								document.write('<option selected="selected">'+i+"</option>");
+							else 
+								document.write("<option>"+i+"</option>");
+						}
+					</script>
+				</select>
+			</div>
+
+			<div style="float:left;margin-left:40px;width:70px;margin-top:12px">
+				<h4 align="left">Random</h4><input type="checkbox" onclick="Alert(this)"><br/> </input>
+			</div>
+		</div>
+		
+
+	
+		<input type="submit" class="btn btn-default start" value="Next" onclick="uploadFile()" style="width: 100px; 				float:left;margin-left:170px;margin-top:50px" />
+		<input type="hidden" name="pip_id" value="{{ pip_id }}">
+
+		<script>
+			function Alert(dis) {
+                         if (dis.checked) {
+                            alert('ATTENTION! Checking this box will cause random output data with very low MCC. Therefore it should be used only for testing purposes, i.e. if the algorithm is working correctly the MCC should be very low (around zero). Otherwise there may be some problems with the data or the algorithm.');
+                        }
+                        return true;
+                   }
+		</script>
+
+
+
+		<br/><br/><br/><br/><br/>
+
+	</form>
+{% endblock %}
