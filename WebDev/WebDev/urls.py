@@ -25,7 +25,6 @@ urlpatterns = patterns('',
     #STEFANO
     url(r'^graph_2d/$', "WebDev.views.graph_2d", name='graph2d'),
 
-
     # Classification urls
     url(r'^class/', include('classification.urls')),
     # Preprocess urls
