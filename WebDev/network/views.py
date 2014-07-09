@@ -78,12 +78,15 @@ def upload_network(request):
         return HttpResponse('/network/upload/')
 
     # Old files
-    oldFiles = Results.objects.filter(process_name=inputName, owner=request.user)
-    oldFiles = oldFiles.order_by('-id')
+    try:
+        oldFiles = Results.objects.filter(process_name=inputName, owner=request.user)
+        oldFiles = oldFiles.order_by('-id')
 
-    tabFile = []
-    for i in range(0, len(oldFiles), 6):
-        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4], oldFiles[i+5], oldFiles[i].pip_id.pip_id))
+        tabFile = []
+        for i in range(0, len(oldFiles), 6):
+            tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i+2], oldFiles[i+3], oldFiles[i+4], oldFiles[i+5], oldFiles[i].pip_id.pip_id))
+    except:
+        tabFile = []
 
     return render(request, 'network/network.html', {'tabFile': tabFile, 'file_exist': (len(oldFiles)>0)})
 

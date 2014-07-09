@@ -81,17 +81,20 @@ def upload(request):
         return HttpResponse('/preproc/upload/')
 
     # ELSE GENERATE THE FILE UPLOAD PAGE
-    pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
-    #Order the list
-    final_file = pick_file_list(pre_file)
-    if len(final_file) == 0:
-        file_exist = False
-    else:
-        file_exist = True
-    c = {
-    'file_list': final_file,
-    'file_exist': file_exist
-    }
+    try:
+        pre_file = Results.objects.filter(process_name='preprocess', owner=request.user).order_by('-id')
+        #Order the list
+        final_file = pick_file_list(pre_file)
+        if len(final_file) == 0:
+            file_exist = False
+        else:
+            file_exist = True
+        c = {
+        'file_list': final_file,
+        'file_exist': file_exist
+        }
+    except:
+        c = {'file_list': [], 'file_exist': False}
     return render(request, 'preprocess/upload.html', c)
 
 
