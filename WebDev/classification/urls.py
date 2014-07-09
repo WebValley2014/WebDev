@@ -20,8 +20,7 @@ urlpatterns = patterns('classification.views',
 
     url(regex=r'^processing_finish/(.+)/$', view="learning_loading", name="learning_loading"),
 
-
-
+    url(regex=r'^show_results/$', view='show_results', name='show_results'),
     #Home Classification
     url(regex=r'^(.+)/$', view="classification", name="classification"),
     url(regex=r'^$', view="classification_redirect"),
