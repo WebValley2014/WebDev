@@ -39,11 +39,13 @@ def network_task(self, **kwargs):
         (str)
         The filesystem path of the directory where store
         the output files.
+    *Numerical Parameter*
+        float
     
     """
     # keys mandatory in kwargs
     path_keys = ['fileData', 'fileLabel', 'fileSamples', 'fileFeauture',
-                 'fileRank', 'fileMetrics', 'outDir']
+                 'fileRank', 'fileMetrics', 'outDir' , 'numPar']
     file_keys = path_keys[:-1]
     dir_keys = path_keys[-1]
     

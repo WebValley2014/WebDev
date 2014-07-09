@@ -55,8 +55,6 @@ def store_after_celery(rundb, task_ret, tp):
 def store_after_celery_class(rundb, task_ret):
     '''
 
-    Saving to image field was based on this
-    http://andrewbrookins.com/tech/set-the-path-to-an-imagefield-in-django-manually/
 
 
     Run after Celery Task
@@ -67,6 +65,7 @@ def store_after_celery_class(rundb, task_ret):
     '''
 
     #Create the new_path for the file
+
     pipeline = rundb.pip_id
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
@@ -122,33 +121,33 @@ def store_after_celery_class(rundb, task_ret):
 
     return True
 
-def store_after_celery_network(rundb, task_ret):
-      #Create the new_path for the file
-    pipeline = rundb.pip_id
+def store_after_celery_network(rundb, task_ret)
 
-
+    rundb.started = task_ret[0]['st']
+    rundb.finished = task_ret[0]['ft']
+    rundb.save()
     #IMG
 
     i = 0
-    for img in task_ret['img']:
+    for img in task_ret['result']['img']:
         resdb = Results(
             process_name=rundb.process_name,
             task_id = rundb,
-            filename = task_ret['titles'][i] ,
+            filename = task_ret['result']['titles'][i] ,
             filepath = img,
             filetype='img',
             owner = rundb.pip_id.owner,
             pip_id = rundb.pip_id
         )
         resdb.save()
-        i++
+        i = i+1
 
     #Matrix File
 
         resdb = Results(
             process_name=rundb.process_name,
             task_id = rundb,
-            filepath = task_ret['matrix'],
+            filepath = task_ret['result']['matrix'],
             filetype='txt',
             owner = rundb.pip_id.owner,
             pip_id = rundb.pip_id
