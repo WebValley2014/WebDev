@@ -105,7 +105,9 @@ def deleteFile(request, id1, id2, id3, id4, id5, id6):
     return HttpResponseRedirect('/network/upload')
 
 @login_required(login_url="/login")
-def start_network(request, pip_id):
+def start_network(request):
+    pip_id = request.POST.get('pip_id')
+    thre = float(request.POST.get('thre'))
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_nt_data = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_data')
     file_nt_label = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_label')
@@ -114,8 +116,10 @@ def start_network(request, pip_id):
     file_nt_rank = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_rank')
     file_nt_metrics = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_metrics')
     inputFiles = {'fileData': file_nt_data.filepath, 'fileLabel': file_nt_label.filepath, 'fileSamples': file_nt_samples.filepath,
-                  'fileFeature': file_nt_feature.filepath, 'fileRank': file_nt_rank.filepath, 'fileMetrics': file_nt_metrics.filepath}
-    #preproc_id = settings.APP.send_task("network_task", **inpu tFiles)
+                  'fileFeature': file_nt_feature.filepath, 'fileRank': file_nt_rank.filepath, 'fileMetrics': file_nt_metrics.filepath,
+                  'numPar': thre}
+
+    preproc_id = settings.APP.send_task("network_task", **inputFiles)
     store_before_celery(pip_id, inputFiles, preproc_id.id, "Network")
     return HttpResponseRedirect("/network/processing/" + preproc_id.id + "/")
 
