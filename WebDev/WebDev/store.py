@@ -66,6 +66,10 @@ def store_after_celery_class(rundb, task_ret):
     :return: True
     '''
 
+    print '+++++++++++++++++++++++++++++++++++++'
+    print str(task_ret)
+    print '+++++++++++++++++++++++++++++++++++++'
+
     #RUNDB
     rundb.started = task_ret[1]
     rundb.finished = task_ret[2]
@@ -103,9 +107,20 @@ def store_after_celery_class(rundb, task_ret):
     file_store = {
         'metrics':      os.path.join(new_path, 'matrics.txt'),
         'stability':    os.path.join(new_path, 'stability.txt'),
-        'featurelist':  os.path.join(new_path, 'featurelist.txt')
+        'featurelist':  os.path.join(new_path, 'featurelist.txt'),
+        'otu':          os.path.join(new_path, 'otu.txt'),
+        'filtered_otu': os.path.join(new_path, 'filtered_otu.txt')
+
     }
-    file_type = [['metrics', 'nt_metrics'], ['stability', 'nt_stab'], ['featurelist', 'nt_feature']]
+
+    file_type = [
+        ['metrics', 'nt_metrics'],
+        ['stability', 'nt_stab'],
+        ['featurelist', 'nt_feature'],
+        ['otu', 'nt_otu'],
+        ['filtered_otu', 'nt_filt'],
+    ]
+
     for type in file_type:
         try:
             #Move the file
@@ -130,15 +145,18 @@ def store_after_celery_network(rundb, task_ret):
       #Create the new_path for the file
     pipeline = rundb.pip_id
 
+    print '+++++++++++++++++++++++++++++++++++++'
+    print str(task_ret)
+    print '+++++++++++++++++++++++++++++++++++++'
 
     #IMG
 
     i = 0
-    for img in task_ret['img']:
+    for img in task_ret['result']['img']:
         resdb = Results(
             process_name=rundb.process_name,
             task_id = rundb,
-            filename = task_ret['titles'][i] ,
+            filename = task_ret['result']['titles'][i] ,
             filepath = img,
             filetype='img',
             owner = rundb.pip_id.owner,
@@ -152,7 +170,7 @@ def store_after_celery_network(rundb, task_ret):
         resdb = Results(
             process_name=rundb.process_name,
             task_id = rundb,
-            filepath = task_ret['matrix'],
+            filepath = task_ret['result']['matrix'],
             filetype='txt',
             owner = rundb.pip_id.owner,
             pip_id = rundb.pip_id

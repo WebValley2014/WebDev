@@ -112,18 +112,30 @@ def start_network(request):
     pip_id = request.POST.get('pip_id')
     thre = float(request.POST.get('thre'))
     pip = Pipeline.objects.get(pip_id=pip_id)
+
+    #Create the new_path for the file
+    partial_path = os.path.join(pip.owner.username, str(pip.pip_id))
+    partial_path = os.path.join(partial_path, 'network')
+    network_path = os.path.join(settings.MEDIA_ROOT, partial_path)
+    try:
+        os.mkdir(network_path)
+    except:
+        pass
+
     file_nt_data = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_data')
     file_nt_label = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_label')
     file_nt_samples = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_samples')
     file_nt_feature = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_feature')
     file_nt_rank = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_rank')
     file_nt_metrics = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_metrics')
+    print file_nt_data.filepath
     inputFiles = {'fileData': file_nt_data.filepath, 'fileLabel': file_nt_label.filepath, 'fileSamples': file_nt_samples.filepath,
                   'fileFeature': file_nt_feature.filepath, 'fileRank': file_nt_rank.filepath, 'fileMetrics': file_nt_metrics.filepath,
+                  'outDir': network_path,
                   'numPar': thre}
 
-    preproc_id = settings.APP.send_task("network_task", **inputFiles)
-    store_before_celery(pip_id, inputFiles, preproc_id.id, "Network")
+    preproc_id = settings.APP.send_task("network_task", kwargs=inputFiles)
+    store_before_celery(pip, inputFiles, preproc_id.id, "Network")
     return HttpResponseRedirect("/network/processing/" + preproc_id.id + "/")
 
 def processing(request, task_id):
