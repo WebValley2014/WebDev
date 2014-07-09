@@ -36,7 +36,7 @@ def handle_uploaded_file(pipeline, f, procName, filetype=None):
         for chunk in f.chunks():
             destination.write(chunk)
 
-    res = Results(process_name=procName, owner=pipeline.owner , pip_id=pipeline, ,, filetype=filetype, filename=f.name, filepath=full_path)
+    res = Results(process_name=procName, owner=pipeline.owner , pip_id=pipeline, filetype=filetype, filename=f.name, filepath=full_path)
     res.save()
 
 #This function generate the response to download the file that is linked in file_path
