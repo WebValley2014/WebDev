@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     #FARINA
     url(r'^graph_prova/$', "WebDev.views.graph_prova", name='graph'),
     url(r'^graph_prova_oculus/$', "WebDev.views.graph_prova_oculus", name='graph_oculus'),
+	url(r'^tree_graph/$', "WebDev.views.tree_graph", name='TreeGraph'),
     #STEFANO
     url(r'^graph_2d/$', "WebDev.views.graph_2d", name='graph2d'),
 
