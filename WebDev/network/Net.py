@@ -1,12 +1,19 @@
+#######################################################
+## this is the class Net.                            ##
+## it has been proudly imagined and happily coded by ##
+## Davide Leonessi & Stefano Valentini      (c) 2014 ##
+#######################################################
+
 import numpy as np
 from scipy.stats import pearsonr
-import pickle as pkl
 import distance_functions_2 as df ### him(G,H) with output (hamming, ipsen, him)!
+import igraph
 import random
+import os
 
 class Net:
 
-    def __init__(self, dataname, labelsname, samplesname, featuresname, rankingname, metricsname, pngoutputpath): ### ('X.txt', 'Y.txt', 'sampleIDs.txt', 'names.txt', 'X_l2r_l2loss_svc_SVM_std_featurelist.txt', 'X_l2r_l2loss_svc_SVM_std_metrics.txt', '/pngout') (last one as a folder)
+    def __init__(self, dataname, labelsname, samplesname, featuresname, rankingname, metricsname, pngoutputpath, thre): ### ('X.txt', 'Y.txt', 'sampleIDs.txt', 'names.txt', 'X_l2r_l2loss_svc_SVM_std_featurelist.txt', 'X_l2r_l2loss_svc_SVM_std_metrics.txt', 'pngout', 0.5) (last one as a folder)
         self.dataname = dataname
         self.labelsname = labelsname
         self.samplesname = samplesname
@@ -14,6 +21,7 @@ class Net:
         self.rankingname = rankingname
         self.metricsname = metricsname
         self.pngoutputpath = pngoutputpath
+        self.thre = thre
 
 ########
 
@@ -21,8 +29,8 @@ class Net:
         self.loadfiles()
         self.findsubmatrixes()
         self.mkadjmatrixes()
-        #FIXME self.mkpngoutput()
-        return self.himadjmatrix        #to DBizzarri
+        self.networkList()
+        return self.outDict
 
 ########
 
@@ -77,7 +85,7 @@ class Net:
 
 ########
 
-    def get_randColor():
+    def get_randColor(self):
         #RETURN A EXADECIMAL RANDOM COLOR ie #ff45e2
         r = lambda: random.randint(0, 255)
         return '#%02X%02X%02X' % (r(), r(), r())
@@ -111,7 +119,7 @@ class Net:
     def mkadjmatrixes(self):
         self.adjmatrixes = []
         for i in range(len(self.aunilabels)):	# sgrulla down le labels
-            self.adjmatrixes.append(self.mknetfeatures(self.alabels[i],0.1))	# uses features, not samples! 0.1 is the threshold: check it!
+            self.adjmatrixes.append(self.mknetfeatures(self.alabels[i]))	# uses features, not samples! there is the threshold: check it!
         self.adjmatrixes = np.array(self.adjmatrixes)
 		        ### now, the list adjmatrixes is filled in with the adjacency matrices of each different label
         self.himadjmatrix = np.zeros((len(self.aunilabels), len(self.aunilabels)))
@@ -125,7 +133,7 @@ class Net:
 
 ########
 
-    def mknetfeatures(self,M,thre):	#M is our dear big matrix
+    def mknetfeatures(self,M):	#M is our dear big matrix
                 #attempt: to make it work on all columns, instead than on a given set
         nRow, nCol = M.shape #define dimensions
 
@@ -152,16 +160,17 @@ class Net:
                     else:
                         pear = pearsonr(L1,L2)    #output as array
 
-                    if pear > thre:
-                        self.mNet[i,k] = abs(pear[0])
-                        self.mNet[k,i] = abs(pear[0])
+                    pear = abs(pear[0])
+                    if pear > self.thre:
+                        self.mNet[i,k] = pear
+                        self.mNet[k,i] = pear
         ### mNet is now our network matrix
 
         return self.mNet
 
 ########
 
-    def drawNetwork(**kwargs):
+    def drawNetwork(self, **kwargs):
         """
         Read the data stored in self.metrics, using column 0 as
         x axis values. Select the columns specified by *valueCol*,
@@ -187,9 +196,10 @@ class Net:
         output filename. Defaults to `testNetwork.png'.
 	    """
 	    # manage args
-        matrix = kwargs.get('matrix')*3
+        matrix = kwargs.get('matrix')
+        title = kwargs.get('title', 'test network')
         nodeColor = kwargs.get('nodeColor', 'red')
-        lineColor = kwargs.get('lineColor', '#787878')
+        lineColor = kwargs.get('lineColor', '#D8D8D8')
         outDir = kwargs.get('outDir', 'networks') 
         outFile = kwargs.get('outFile', 'testNetwork.png')
         if not os.path.exists(outDir):
@@ -197,12 +207,18 @@ class Net:
         filePath = os.path.join(outDir, outFile)
         g = igraph.Graph.Weighted_Adjacency(list(matrix),mode=igraph.ADJ_MAX)
         visual_style = {}
+        visual_style["title"] = title
         visual_style["vertex_size"] = 20
         visual_style["vertex_color"] = nodeColor
-        visual_style["vertex_label"] = self.setlabels
+        visual_style["vertex_label"] = self.setfeatures
         visual_style["edge_width"] = g.es["weight"]
+        a = g.degree()
+        for i in range(len(a)):
+            a[i] = a[i]/10
+        visual_style["vertex_size"] = a
+        
         #visual_style["layout"] = layout_kamada_kawai
-        visual_style["bbox"] = (900, 900)
+        visual_style["bbox"] = (5000, 5000)       #FIXME
         visual_style["margin"] = 20
         #plotting the network
         igraph.plot(g, filePath, **visual_style)
@@ -215,19 +231,35 @@ class Net:
 
         args:
         *srcListMatrix*
-            (str)
-            sorce file of the list of matrixs. File '*.pkl' need  
+            (str) 
         """
         myConf = {}
         n = 0
+        self.listtitles = []
+        self.listgraphpaths = []
         for mtr in self.adjmatrixes:
-
             myConf['matrix'] = mtr
             myConf['nodeColor'] = self.get_randColor()
-            myConf['lineColor'] = '#787878'
-            myConf['outPath'] = self.pngoutputpath
-            myConf['label'] = unique(self.setlabels)[n]
-            #myConf['listNames'] = labelReader(srcFileName)
+            myConf['lineColor'] = '#D8D8D8'
+            myConf['outDir'] = self.pngoutputpath
+            myConf['outFile'] = 'graph_label_' + str(int(self.aunilabels[n])) + '.png'
+            myConf['label'] = self.aunilabels[n]
+            if self.aunilabels[n] == 0:                             ###FIXME not generic at all FIXME###
+                myConf['title'] = 'Graph of diseased people'              
+                self.listtitles.append(['Graph of diseased people'])
+            elif self.aunilabels[n] == 1:
+                myConf['title'] = 'Graph of healthy people'
+                self.listtitles.append(['Graph of healthy people'])
+            else:
+                myConf['title'] = 'Graph of the label' + str(self.aunilabels[n])
+                self.listtitles.append('Graph of the label ' + str(self.aunilabels[n]))
+            self.listgraphpaths.append(os.path.join(myConf['outDir'], myConf['outFile']))
             self.drawNetwork(**myConf)
             n += 1
+
+        self.outDict = {}
+        self.outDict['img'] = [f for f in self.listgraphpaths]
+        self.outDict['titles'] = [t for t in self.listtitles]
+        self.outDict['matrix'] = self.himadjmatrix
+
 ########
