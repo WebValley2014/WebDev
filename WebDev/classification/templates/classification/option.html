@@ -30,24 +30,26 @@
 		<table style="width: 600px; margin-left: -300px; margin-right: -300px; position: relative; left: 50%">
 			<tr>
 				<th style="width: 200px; text-align: center">Scaling method<br /><br/></th>
-				<th style="width: 200px; text-align: center">SVM type<br /><br /></th>
+				<th style="width: 200px; text-align: center">Classifier<br /><br /></th>
 				<th style="width: 200px; text-align: center">Feature ranking method<br /><br /></th>
 			</tr>
 			<tr>
 				<td>
 					<select name="First_Parameter" class="btn btn-default dropdown-toggle">
-						<option value="norm_l2">norm_l2</option>
 						<option value="std">std</option>
 						<option value="minmax">minmax</option>
+						<option value="norm_l2">norm_l2</option>
 					</select>
 				</td>
 				<td>
 					<select name="Second_Parameter" class="btn btn-default dropdown-toggle">
-						<option value="l2r_l2loss_svc">l2r_l2loss_svc</option>
-						<option value="l2r_l2loss_svc_dual">l2r_l2loss_svc_dual</option>
+						<option value="l2r_l2loss_svc">SVM l2r_l2loss_svc</option>
+						<option value="l2r_l2loss_svc_dual">SVM l2r_l2loss_svc_dual</option>
 						<option value="l2r_l1loss_svc_dual">l2r_l1loss_svc_dual</option>
 						<option value="l2r_lr_dual">l2r_lr_dual</option>
 						<option value="l1r_l2loss_svc">l1r_l2loss_svc</option>
+						<li class="divider"></li>
+						<option value="randomForest">randomForest</option>
 					</select>
 				</td>
 				<td>
@@ -56,7 +58,7 @@
 						<option value="RFE">RFE</option>
 						<option value="ReliefF">ReliefF</option>
 						<option value="extraTrees">extraTrees</option>
-						<option value="Random_Forest">Random Forest</option>
+						<option value="randomForest">Random Forest</option>
 						<option value="Anova_F-score">Anova F-score</option>
 						<option value="random_ranking">random ranking</option>
 					</select>
