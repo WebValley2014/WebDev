@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^results/3D_graph_oculus/$', "WebDev.views.graph_oculus_3D", name='3Dgraph_oculus'),
 	url(r'^results/tree_graph/$', "WebDev.views.tree_graph", name='tree_graph'),
     #STEFANO
-    url(r'^results/graph_2d/$', "WebDev.views.graph_2d", name='2Dgraph'),
+    url(r'^results/2D_graph/$', "WebDev.views.graph_2d", name='2Dgraph'),
 
     # Classification urls
     url(r'^class/', include('classification.urls')),
