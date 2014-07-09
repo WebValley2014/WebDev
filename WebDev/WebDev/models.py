@@ -111,6 +111,7 @@ class Results (models.Model):
         ('nt_feature', 'input feature network'),
         ('nt_rank', 'input data network'),
         ('nt_metrics', 'input data network'),
+        ('nt_stab', 'input data network stability'),
         ('cl_otu', 'preprocess output'),
         ('cl_class', 'input classification .txt'),
     )

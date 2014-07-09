@@ -18,7 +18,7 @@ urlpatterns = patterns('classification.views',
 
     url(regex=r'^processing/(.+)/$', view="learning_loading", name="learning_loading"),
 
-    url(regex=r'^processing_finish/(.+)/$', view="learning_loading", name="learning_loading"),
+    url(regex=r'^processing_finish/(.+)/$', view="processing_finish", name="processing_finish"),
 
 
 

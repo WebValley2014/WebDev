@@ -85,7 +85,23 @@ def learning_loading (request, task_id):
     else:
         return HttpResponse(result.status)
 
-
+def processing_finish(request, task_id):
+    print 'Chiamata'
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        print '------------------------------------------'
+        print str(rp)
+        print '------------------------------------------'
+        print str(r)
+        print '------------------------------------------'
+        if store_after_celery_class(rp, r):
+           return HttpResponse('OK')
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/class/processing/%s/' % (task_id,))
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
