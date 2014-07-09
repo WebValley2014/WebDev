@@ -70,7 +70,7 @@ def upload_network(request):
                     handle_uploaded_file(p,fileFeature,inputName, 'nt_feature')
                     handle_uploaded_file(p,fileRank,inputName, 'nt_rank')
                     handle_uploaded_file(p,fileMetrics,inputName, 'nt_metrics')
-                    return HttpResponse('/network/celery/' + p.pip_id)
+                    return HttpResponse('/network/option/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
         else:
