@@ -52,14 +52,14 @@
 		</div>
 		<br /><br />
 		<div id="all_graphs">
-			<div id="graph_linear" style="display: none">
+			<div id="graph_linear" style="display: block">
 				<img src="" style="margin-left: 10px;" />
 				<br /><br />
 				<ul id="repetitions" class="pagination">
 					<li onclick="changePost(this)"><a>10</a></li>
 					<li onclick="changePost(this)"><a>100</a></li>
+					<!-- <li onclick="changePost(this)"><a>267</a></li> --->
 					<li onclick="changePost(this)"><a>1000</a></li>
-					<li onclick="changePost(this)"><a>3964</a></li>
 				</ul>
 			</div>
 			<div id="graph_histogram" style="display: none">
@@ -69,12 +69,13 @@
 	</div>
 
 	<script>
-		var isLinear = false;
+		var isLinear = true;
 		var isHistogram = false;
 		var pre = 'ACC';
 		var post = '10';
-		var path_lin = document.URL.split('/graph_2d')[0] + "{% static 'graphs_2d/' %}"; // DIPENDE DA NOME PAGINA
-		var path_his = document.URL.split('/graph_2d')[0] + "{% static 'graph_histo/' %}"; // DIPENDE DA NOME PAGINA
+		var path_lin = "{{ media_path }}";
+		var path_his = "{% static 'graph_histo/' %}";
+		document.getElementById('graph_linear').childNodes[1].setAttribute('src', path_lin + pre + '_' + post + '.png';
 
 		function changePre(dis) {
 			var img = document.getElementById('graph_linear').childNodes[1]; // 0 is text dunno
