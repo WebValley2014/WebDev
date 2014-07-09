@@ -50,6 +50,7 @@ def classification(request, pip_id):
 def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
+@login_required(login_url="/login")
 def step2(request, pip_id):
     '''
     #FIX ME : Doesn't Handle the Arguments .
@@ -172,8 +173,7 @@ def option(request, pip_id):
     return render(request, 'classification/option.html', {'pip_id': pip_id})
 
 @login_required(login_url="/login")
-def show_results(request):
-    pip_id = request.GET['pip_id']
+def show_results(request, pip_id):
     pipeline = Pipeline.objects.get(pip_id = pip_id)
     lis = Results.objects.filter(pip_id = pipeline, process_name='classification')
     type1 = 'img'
