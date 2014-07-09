@@ -107,7 +107,7 @@ def deleteFile(request, id1, id2, id3, id4, id5, id6):
 @login_required(login_url="/login")
 def start_network(request):
     pip_id = request.POST.get('pip_id')
-    thre = request.POST.get('thre')
+    thre = float(request.POST.get('thre'))
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_nt_data = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_data')
     file_nt_label = Results.objects.get(pip_id=pip, process_name=inputName, filetype='nt_label')
