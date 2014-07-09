@@ -1,3 +1,5 @@
+#VERSION 1.0 ALPHA
+
 from django.shortcuts import render
 
 
