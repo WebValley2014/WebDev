@@ -18,9 +18,6 @@ import hashlib
 
 
 
-'''
-To Michele : If I am asleep when you review this , see FIX ME in each view and in store.py and Debug.
-'''
 
 from forms import *
 from WebDev.utils import *
@@ -40,10 +37,7 @@ def classification_redirect(request):
 
 @login_required(login_url="/login")
 def step2(request, pip_id):
-    '''
-    #FIX ME : Doesn't Handle the Arguments .
-              HttpsResponseRedirect : Give the right URL.
-    '''
+
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
     file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
@@ -62,9 +56,7 @@ def step2(request, pip_id):
     return HttpResponseRedirect("/class/processing/" + ml_id.id + "/")
 
 def learning_loading (request, task_id):
-    '''
-    FIX ME : Correct the HTTP RESPONSE
-    '''
+
     # Pick the results
     result = settings.APP.AsyncResult(task_id)
     print str(result.status)
