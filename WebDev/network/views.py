@@ -137,5 +137,9 @@ def processing_finish(request, task_id):
             return HttpResponse('Error')
     return HttpResponseRedirect('/network/processing/%s/' % (task_id,))
 
+@login_required(login_url="/login")
+def option(request, pip_id):
+    return render(request, 'network/option.html', {'pip_id': pip_id})
+
 #@login_required(login_url="/login")
 #def showResults(request):

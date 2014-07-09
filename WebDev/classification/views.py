@@ -165,5 +165,6 @@ def download(request, p_id):
     #Retrive the download
     return download_file("file.txt", download_path)
 
+@login_required(login_url="/login")
 def option(request, pip_id):
     return render(request, 'classification/option.html', {'pip_id': pip_id})
