@@ -85,7 +85,7 @@ def store_after_celery_class(rundb, task_ret):
                                 )
 
 
-        else
+        else:
             resdb = Results(process_name=rundb.process_name,
                             task_id=rundb,
                             filepath=task_ret[0]['funct'][i],
