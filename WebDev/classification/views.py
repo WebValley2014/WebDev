@@ -60,7 +60,7 @@ def step2(request, pip_id):
     file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
 
     print 'Celery in launch'
-    ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath))
+    ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': 'minmax', 'solver': 'randomForest', 'ranking': 'randomForest'})
     print
     print 'Celery launched'
 
@@ -85,20 +85,6 @@ def learning_loading (request, task_id):
     else:
         return HttpResponse(result.status)
 
-def learning_finish(request, task_id):
-    '''
-    FIX ME : Correct the HTTP RESPONSE
-    '''
-    # Pick the results
-    result = settings.APP.AsyncResult(task_id)
-    if result.ready():
-        r = result.get()
-        rp = RunningProcess.objects.get(task_id=task_id)
-        if store_after_celery_class(rp, r, 'txt'):
-            return HttpResponse('OK')
-        else:
-            return HttpResponse('Error')
-    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
 
 
 @login_required(login_url="/login")
