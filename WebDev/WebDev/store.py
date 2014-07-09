@@ -39,6 +39,7 @@ def store_after_celery(rundb, task_ret, tp):
     print str()
     rundb.started = task_ret[0]['st']
     rundb.finished = task_ret[0]['ft']
+    rundb.save()
 
     resdb = Results(process_name=rundb.process_name,
                     task_id=rundb,
@@ -49,6 +50,7 @@ def store_after_celery(rundb, task_ret, tp):
                     )
     resdb.save()
     return True
+
 def store_after_celery_class(rundb, task_ret):
     '''
 
@@ -85,7 +87,7 @@ def store_after_celery_class(rundb, task_ret):
                                 )
 
 
-        else
+        else:
             resdb = Results(process_name=rundb.process_name,
                             task_id=rundb,
                             filepath=task_ret[0]['funct'][i],
