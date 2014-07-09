@@ -25,9 +25,6 @@
 
 
 {% block main %}
-
-	
-
 	<form action="/class/step2" method="POST" style="text-align: center">
 		<h2>Options for the machine learning algorithm</h2><br/>
 		<div style="float:left; margin-left: 170px">
@@ -58,14 +55,10 @@
 				<option >Random Forest</option>
 			</select>
 		</div>
-		
-					<div class="input-group" style="float:left;margin-left:295px;padding: 10px 10px 10px;width:200px">
-					  <span class="input-group-addon">RF - no. trees</span>
-					  <input type="text" class="form-control" value="250">
-					</div>
-					
-			
-
+		<div class="input-group" style="float:left;margin-left:295px;padding: 10px 10px 10px;width:200px">
+		  <span class="input-group-addon">RF - no. trees</span>
+		  <input type="text" class="form-control" value="250">
+		</div>
 		<br/><br/><br/><br/><br/><br/><br/><br/>
 		<div>	
 			<div style="float:left">
@@ -78,7 +71,6 @@
 					  <input type="text" class="form-control" value="10">
 					</div>
 			</div>
-
 			<div style="float:left;margin-left:40px;margin-top:12px" >
 				<h4 title="Minimum percentage of samples that have zero values for each feature">Percentage</h4>
 				<select class = "selectpicker btn btn-default dropdown-toggle" style="width:76px">
@@ -92,29 +84,20 @@
 					</script>
 				</select>
 			</div>
-
 			<div style="float:left;margin-left:40px;width:70px;margin-top:12px">
 				<h4 align="left">Random</h4><input type="checkbox" onclick="Alert(this)"><br/> </input>
 			</div>
 		</div>
-		
-
-	
-		<input type="submit" class="btn btn-default start" value="Next" onclick="uploadFile()" style="width: 100px; 				float:left;margin-left:170px;margin-top:50px" />
+		<input type="submit" class="btn btn-default start" value="Next" onclick="uploadFile()" style="width: 100px;float:left;margin-left:170px;margin-top:50px" />
 		<input type="hidden" name="pip_id" value="{{ pip_id }}">
-
 		<script>
 			function Alert(dis) {
-                         if (dis.checked) {
-                            alert('ATTENTION! Checking this box will cause random output data with very low MCC. Therefore it should be used only for testing purposes, i.e. if the algorithm is working correctly the MCC should be very low (around zero). Otherwise there may be some problems with the data or the algorithm.');
-                        }
-                        return true;
-                   }
+				if (dis.checked) {
+					alert('ATTENTION! Checking this box will cause random output data with very low MCC. Therefore it should be used only for testing purposes, i.e. if the algorithm is working correctly the MCC should be very low (around zero). Otherwise there may be some problems with the data or the algorithm.');
+				}
+				return true;
+			}
 		</script>
-
-
-
 		<br/><br/><br/><br/><br/>
-
 	</form>
 {% endblock %}
