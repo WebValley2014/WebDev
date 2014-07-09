@@ -81,13 +81,8 @@ def processing_finish(request, task_id):
     if result.ready():
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
-        print '------------------------------------------'
-        print str(rp)
-        print '------------------------------------------'
-        print str(r)
-        print '------------------------------------------'
         if store_after_celery_class(rp, r):
-           return HttpResponse('OK')
+           return HttpResponseRedirect('/class/show_results/%s/2D/' % (rp.pip_id.pip_id))
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/class/processing/%s/' % (task_id,))
@@ -161,20 +156,22 @@ def option(request, pip_id):
     return render(request, 'classification/option.html', {'pip_id': pip_id})
 
 @login_required(login_url="/login")
-def show_results(request, pip_id):
-    pipeline = Pipeline.objects.get(pip_id = pip_id)
-    lis = Results.objects.filter(pip_id = pipeline, process_name='classification')
-    type1 = 'img'
-    type2 = 'txt'
-    type3 = ''
-    listType1 = []
-    listType2 = []
-    listType3 = []
-    for el in lis:
-        if el.filetype==type1:
-            listType1.append(el.filepath)
-        elif el.filetype==type2:
-            listType2.append(el.filepath)
-        elif el.filetype==type3:
-            listType3.apppend(el.filepath)
-    return render(request, 'classification/results.html', {'list'+type1: listType1, 'list'+type2: listType2, 'list'+type3: listType3})
+def show_results(request, pip_id, type):
+    print pip_id
+    pipeline = Pipeline.objects.get(pip_id=pip_id)
+    #Create MEDIA path
+    partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+    partial_path = os.path.join(partial_path, 'classification')
+    media_path = os.path.join(settings.MEDIA_URL, partial_path)
+    print media_path
+
+    if type == '2D':
+        print 'in'
+        media_path = os.path.join(media_path, 'img/')
+        print media_path
+        context = {
+            'media_path': media_path
+        }
+        return render(request, 'classification/graph_2d.html', context)
+
+    return HttpResponse('Link does not exist')

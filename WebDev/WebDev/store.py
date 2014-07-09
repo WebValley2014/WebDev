@@ -66,6 +66,10 @@ def store_after_celery_class(rundb, task_ret):
     :return: True
     '''
 
+    #RUNDB
+    rundb.started = task_ret[1]
+    rundb.finished = task_ret[2]
+
     #Create the new_path for the file
     pipeline = rundb.pip_id
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
@@ -76,7 +80,7 @@ def store_after_celery_class(rundb, task_ret):
     #Create the new img directroy and file path
     img_path = os.path.join(new_path, 'img')
     #Pick the img directory
-    img = task_ret['img']
+    img = task_ret[0]['img']
     try:
         #Move the directory
         os.renames(img, img_path)
@@ -105,7 +109,7 @@ def store_after_celery_class(rundb, task_ret):
     for type in file_type:
         try:
             #Move the file
-            os.rename(task_ret[type[0]], file_store[type[0]])
+            os.rename(task_ret[0][type[0]], file_store[type[0]])
         except:
             pass
 
@@ -123,4 +127,36 @@ def store_after_celery_class(rundb, task_ret):
     return True
 
 def store_after_celery_network(rundb, task_ret):
-    pass
+      #Create the new_path for the file
+    pipeline = rundb.pip_id
+
+
+    #IMG
+
+    i = 0
+    for img in task_ret['img']:
+        resdb = Results(
+            process_name=rundb.process_name,
+            task_id = rundb,
+            filename = task_ret['titles'][i] ,
+            filepath = img,
+            filetype='img',
+            owner = rundb.pip_id.owner,
+            pip_id = rundb.pip_id
+        )
+        resdb.save()
+
+
+    #Matrix File
+
+        resdb = Results(
+            process_name=rundb.process_name,
+            task_id = rundb,
+            filepath = task_ret['matrix'],
+            filetype='txt',
+            owner = rundb.pip_id.owner,
+            pip_id = rundb.pip_id
+        )
+        resdb.save()
+
+    return True
