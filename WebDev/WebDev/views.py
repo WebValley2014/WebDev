@@ -13,15 +13,15 @@ def about_us(request):
 # FARINA
 
 def graph_3D(request):
-    return render(request, 'graph_prova.html')
+    return render(request, '2Dgraph.html')
 
 def graph_oculus_3D(request):
-    return render(request, 'graph_prova_oculus.html')
+    return render(request, '3Dgraph_oculus.html')
 
 def tree_graph(request):
-	return render(request, 'TreeGraph.html')
+	return render(request, 'tree_graph.html')
 
 # STEFANO
 
 def graph_2d(request):
-    return render(request, 'graph_2d.html')
+    return render(request, '2Dgraph.html')
