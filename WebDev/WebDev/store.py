@@ -64,6 +64,10 @@ def store_after_celery_class(rundb, task_ret):
     :return: True
     '''
 
+    #RUNDB
+    rundb.started = task_ret[1]
+    rundb.finished = task_ret[2]
+
     #Create the new_path for the file
 
     pipeline = rundb.pip_id
@@ -75,7 +79,7 @@ def store_after_celery_class(rundb, task_ret):
     #Create the new img directroy and file path
     img_path = os.path.join(new_path, 'img')
     #Pick the img directory
-    img = task_ret['img']
+    img = task_ret[0]['img']
     try:
         #Move the directory
         os.renames(img, img_path)
@@ -104,7 +108,7 @@ def store_after_celery_class(rundb, task_ret):
     for type in file_type:
         try:
             #Move the file
-            os.rename(task_ret[type[0]], file_store[type[0]])
+            os.rename(task_ret[0][type[0]], file_store[type[0]])
         except:
             pass
 
