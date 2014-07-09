@@ -50,27 +50,30 @@ def classification(request, pip_id):
 def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
-def step2(request, pip_id):
-    '''
-    #FIX ME : Doesn't Handle the Arguments .
-              HttpsResponseRedirect : Give the right URL.
-    '''
-    pip = Pipeline.objects.get(pip_id=pip_id)
-    file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
-    file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
+def step2(request):
 
-    print 'Celery in launch'
-    ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': 'minmax', 'solver': 'randomForest', 'ranking': 'randomForest'})
-    print
-    print 'Celery launched'
+    if request.POST:
+        try:
+            pip_id = request.POST['pip_id']
+            f_par = request.POST['First_Parameter']
+            s_par = request.POST['Second_Parameter']
+            t_par = request.POST['Third_Parameter']
+        except:
+            return HttpResponse('ERROR')
 
+        pip = Pipeline.objects.get(pip_id=pip_id)
+        file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
+        file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
 
-    input_data = {'file_OTU': file_otu.filepath, 'file_CLASS': file_class.filepath}
-    print  'Process Started'
-    store_before_celery(pip, input_data, ml_id.id, "classification")
-    print  'Saving Process to database'
+        ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': f_par, 'solver': s_par, 'ranking': t_par})
 
-    return HttpResponseRedirect("/class/processing/" + ml_id.id + "/")
+        input_data = {'file_OTU': file_otu.filepath, 'file_CLASS': file_class.filepath}
+        store_before_celery(pip, input_data, ml_id.id, "classification")
+
+        return HttpResponseRedirect("/class/processing/" + ml_id.id + "/")
+
+    #If error redirect to option
+    return HttpResponseRedirect("/class/upload/")
 
 def learning_loading (request, task_id):
     '''
@@ -86,17 +89,11 @@ def learning_loading (request, task_id):
         return HttpResponse(result.status)
 
 def processing_finish(request, task_id):
-    print 'Chiamata'
     # Pick the results
     result = settings.APP.AsyncResult(task_id)
     if result.ready():
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
-        print '------------------------------------------'
-        print str(rp)
-        print '------------------------------------------'
-        print str(r)
-        print '------------------------------------------'
         if store_after_celery_class(rp, r):
            return HttpResponse('OK')
         else:
@@ -172,21 +169,21 @@ def option(request, pip_id):
     return render(request, 'classification/option.html', {'pip_id': pip_id})
 
 @login_required(login_url="/login")
-def show_results(request):
-    pip_id = request.GET['pip_id']
-    pipeline = Pipeline.objects.get(pip_id = pip_id)
-    lis = Results.objects.filter(pip_id = pipeline, process_name='classification')
-    type1 = 'img'
-    type2 = 'txt'
-    type3 = ''
-    listType1 = []
-    listType2 = []
-    listType3 = []
-    for el in lis:
-        if el.filetype==type1:
-            listType1.append(el.filepath)
-        elif el.filetype==type2:
-            listType2.append(el.filepath)
-        elif el.filetype==type3:
-            listType3.apppend(el.filepath)
-    return render(request, 'classification/results.html', {'list'+type1: listType1, 'list'+type2: listType2, 'list'+type3: listType3})
+def show_results(request, pip_id, type):
+    print pip_id
+    pipeline = Pipeline.objects.get(pip_id=pip_id)
+    #Create MEDIA path
+    partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+    partial_path = os.path.join(partial_path, 'classification')
+    media_path = os.path.join(settings.MEDIA_URL, partial_path)
+
+    if type == '2D':
+        media_path = os.path.join(media_path, 'img')
+        print media_path
+        context = {
+            'media_path': media_path
+        }
+        return render(request, 'classification/graph_2d.html', context)
+
+    return HttpResponse('Link does not exist')
+

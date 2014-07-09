@@ -88,9 +88,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 #DUNNO IF NEEDED
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'WebDev/static'),
-)
+#STATICFILES_DIRS = (
+#    os.path.join(BASE_DIR, 'WebDev/static'),
+#)
 
 STATIC_ROOT = ''
 STATIC_URL = '/static/'
