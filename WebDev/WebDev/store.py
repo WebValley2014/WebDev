@@ -48,3 +48,6 @@ def store_after_celery(rundb, task_ret, tp):
                     )
     resdb.save()
     return True
+
+def store_after_celery_network(rundb, task_ret):
+    pass
