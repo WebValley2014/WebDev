@@ -34,6 +34,10 @@ def upload(request):
     if request.POST:
         if request.FILES:
             try:
+                file_txt = request.FILES['file_txt']
+            except:
+                print 'error'
+            try:
                 print str(request.FILES)
                 length = int(request.POST.get("length"))
                 file_sff = []
@@ -43,6 +47,7 @@ def upload(request):
                     b = request.FILES['file_map_%s' % (i,)]
                     file_sff.append(a)
                     file_map.append(b)
+                #file_txt = request.FILES['file_txt']
             except:
                 messages.error(request, "Insert the correct files")
                 form_error = True
@@ -51,6 +56,8 @@ def upload(request):
                 for i in range(length):
                     if not checkExtension(file_sff[i], 'sff') or not checkExtension(file_map[i], 'map'):
                         ex_error = True
+                if not checkExtension(file_txt, 'txt'):
+                    ex_error = True
                 print ex_error
                 if not ex_error:
                     p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
@@ -62,6 +69,7 @@ def upload(request):
                         print i
                         handle_uploaded_file(p, file_sff[i], 'preprocess')
                         handle_uploaded_file(p, file_map[i], 'preprocess')
+                    handle_uploaded_file(p, file_txt, 'processing', 'class')
                     print 'finish'
                     return HttpResponse('/preproc/celery/' + p.pip_id)
                 else:
@@ -112,7 +120,7 @@ def start_preprocess(request, pip_id, new_pip=0):
 
     input_data = {'file_map': file_map.filepath, 'file_sff': file_sff.filepath}
     print  'Salva su database prima che celery abbia finito'
-    store_before_celery(pip, input_data, preproc_id.id, "Preprocessing")
+    store_before_celery(pip, input_data, preproc_id.id, "processing")
 
     return HttpResponseRedirect("/preproc/processing/" + preproc_id.id + "/")
 
@@ -141,20 +149,6 @@ def processing_finish(request, task_id):
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
-
-
-'''
-def processing_finish(request, pip_id, task_id):
-	result = settings.APP.AsyncResult(task_id)
-	while not result.ready():
-		time.sleep(1)
-	r = result.get()
-	rp = RunningProcess.objects.get(task_id=task_id)
-	if store_after_celery(rp, r):
-		return HttpResponse('OK')
-	else:
-		return HttpResponse('Error')
-'''
 
 
 @login_required(login_url='/login')

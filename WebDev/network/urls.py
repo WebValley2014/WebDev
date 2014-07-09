@@ -17,6 +17,8 @@ urlpatterns = patterns('network.views',
     url(regex='^processing_finish/(.+)/$', view='processing_finish', name='processing_finish'),
     url(regex='^processing/(.+)/$', view='processing', name='processing'),
 
+    #url(regex='^results/$', view='showResults', name='showResults'),
+
     url(regex=r'^(.+)/$', view="network", name="network"),
-    url(regex=r'^$', view="network_redirect", name="network")
+    url(regex=r'^$', view="network_redirect", name="network"),
     )
