@@ -26,37 +26,44 @@
 {% block main %}
 	<form action="/class/step2" method="POST" style="text-align: center">
 		<h2>Options for the machine learning algorithm</h2>
-		<div style="float: left; margin-left: 170px">
-			<h4>Scaling method</h4>
-			<select name="First_Parameter" class="btn btn-default dropdown-toggle">
-				<option value="norm_l2">norm_l2</option>
-				<option value="std">std</option>
-				<option value="minmax">minmax</option>
-			</select>
-		</div>
-		<div style="float:left">
-			<h4>SVM type</h4>
-			<select name="Second_Parameter" class="btn btn-default dropdown-toggle">
-				<option value="l2r_l2loss_svc">l2r_l2loss_svc</option>
-				<option value="l2r_l2loss_svc_dual">l2r_l2loss_svc_dual</option>
-				<option value="l2r_l1loss_svc_dual">l2r_l1loss_svc_dual</option>
-				<option value="l2r_lr_dual">l2r_lr_dual</option>
-				<option value="l1r_l2loss_svc">l1r_l2loss_svc</option>
-			</select>
-		</div>
-		<div style="float: left">
-			<h4>Feature ranking method</h4>
-			<select name="Third_Parameter" class="btn btn-default dropdown-toggle">
-				<option value="SVM_(SVM_weights)">SVM (SVM weights)</option>
-				<option value="RFE">RFE</option>
-				<option value="ReliefF">ReliefF</option>
-				<option value="extraTrees">extraTrees</option>
-				<option value="Random_Forest">Random Forest</option>
-				<option value="Anova_F-score">Anova F-score</option>
-				<option value="random_ranking">random ranking</option>
-			</select>
-		</div>
-		<br /><br /><br /><br /><br />
+		<br />
+		<table style="width: 600px; margin-left: -300px; margin-right: -300px; position: relative; left: 50%">
+			<tr>
+				<th style="width: 200px; text-align: center">Scaling method<br /><br/></th>
+				<th style="width: 200px; text-align: center">SVM type<br /><br /></th>
+				<th style="width: 200px; text-align: center">Feature ranking method<br /><br /></th>
+			</tr>
+			<tr>
+				<td>
+					<select name="First_Parameter" class="btn btn-default dropdown-toggle">
+						<option value="norm_l2">norm_l2</option>
+						<option value="std">std</option>
+						<option value="minmax">minmax</option>
+					</select>
+				</td>
+				<td>
+					<select name="Second_Parameter" class="btn btn-default dropdown-toggle">
+						<option value="l2r_l2loss_svc">l2r_l2loss_svc</option>
+						<option value="l2r_l2loss_svc_dual">l2r_l2loss_svc_dual</option>
+						<option value="l2r_l1loss_svc_dual">l2r_l1loss_svc_dual</option>
+						<option value="l2r_lr_dual">l2r_lr_dual</option>
+						<option value="l1r_l2loss_svc">l1r_l2loss_svc</option>
+					</select>
+				</td>
+				<td>
+					<select name="Third_Parameter" class="btn btn-default dropdown-toggle">
+						<option value="SVM_(SVM_weights)">SVM (SVM weights)</option>
+						<option value="RFE">RFE</option>
+						<option value="ReliefF">ReliefF</option>
+						<option value="extraTrees">extraTrees</option>
+						<option value="Random_Forest">Random Forest</option>
+						<option value="Anova_F-score">Anova F-score</option>
+						<option value="random_ranking">random ranking</option>
+					</select>
+				</td>
+			</tr>
+		</table>
+		<br /><br />
 		<input type="submit" class="btn btn-default start" value="Next" onclick="uploadFile()" style="width: 100px" />
 		<input type="hidden" name="pip_id" value="{{ pip_id }}">
 	</form>
