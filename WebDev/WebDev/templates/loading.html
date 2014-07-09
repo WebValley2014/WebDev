@@ -3,10 +3,14 @@
 
 {# TITLE #}
 {% block pagetitle %}
-	Preprocess - 
+	Loading - 
 {% endblock %}
 
+{# RESULTS TAB ACTIVE #}
 
+{% block resultstab %}
+	<li class="activetab"><a href="{% url 'index' %}">RESULTS</a></li>
+{% endblock %}
 
 {# CONTENT #}
 

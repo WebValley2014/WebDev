@@ -13,7 +13,7 @@ def about_us(request):
 # FARINA
 
 def graph_3D(request):
-    return render(request, '2Dgraph.html')
+    return render(request, '3Dgraph.html')
 
 def graph_oculus_3D(request):
     return render(request, '3Dgraph_oculus.html')

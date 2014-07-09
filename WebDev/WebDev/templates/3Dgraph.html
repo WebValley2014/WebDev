@@ -1,10 +1,15 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{# HOME TAB ACTIVE #}
+{# TITLE #}
+{% block pagetitle %}
+	3D graph - 
+{% endblock %}
 
-{% block hometab %}
-	<li class="activetab"><a href="{% url 'index' %}">HOME</a></li>
+{# RESULTS TAB ACTIVE #}
+
+{% block resultstab %}
+	<li class="activetab"><a href="{% url 'index' %}">RESULTS</a></li>
 {% endblock %}
 
 {# CONTENT #}

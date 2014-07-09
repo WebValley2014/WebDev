@@ -1,7 +1,12 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{# HOME TAB ACTIVE #}
+{# TITLE #}
+{% block pagetitle %}
+	Tree graph - 
+{% endblock %}
+
+{# RESULTS TAB ACTIVE #}
 
 {% block resultstab %}
 	<li class="activetab"><a href="{% url 'index' %}">RESULTS</a></li>
