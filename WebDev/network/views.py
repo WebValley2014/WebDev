@@ -136,3 +136,6 @@ def processing_finish(request, task_id):
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/network/processing/%s/' % (task_id,))
+
+#@login_required(login_url="/login")
+#def showResults(request):
