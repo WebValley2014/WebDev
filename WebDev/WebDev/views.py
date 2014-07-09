@@ -18,6 +18,9 @@ def graph_prova(request):
 def graph_prova_oculus(request):
     return render(request, 'graph_prova_oculus.html')
 
+def tree_graph(request):
+	return render(request, 'TreeGraph.html')
+
 # STEFANO
 
 def graph_2d(request):

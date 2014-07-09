@@ -33,7 +33,7 @@
 										<li><a href="{% url 'network_upload' %}">Network</a></li>
 									</ul>
 								</li>{% endif %}{% endblock %}
-								{% block taskstab %}{% if user.is_authenticated %}<li><a href="#">TASKS</a></li>{% endif %}{% endblock %}
+								{% block resultstab %}{% if user.is_authenticated %}<li><a href="#">RESULTS</a></li>{% endif %}{% endblock %}
 								{% block abouttab %}<li><a href="{% url 'about' %}">ABOUT US</a></li>{% endblock %}
 								{% block contactstab %}<li><a href="{% url 'contact' %}">CONTACTS</a></li>{% endblock %}
 							</ul>

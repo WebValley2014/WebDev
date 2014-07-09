@@ -33,16 +33,16 @@
     	{% endfor %}
 	{% endif %}
 	<p style="text-align:center">Select or drop two <strong>.TXT</strong> files for the upload.</p><br />
-	<form id="dropform" class="form fileformbox dropzone" name="dropform" method="post" enctype="multipart/form-data">
+	<form class="form fileformbox" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div class="input-group forminp">
+		<div class="input-group centerform">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> TXT - OTU </span>
 			</span>
 			<input id="file1" name="file_otu" type="file" class="form-control" />
 		</div>
 		<br />
-        <div class="input-group forminp">
+        <div class="input-group centerform">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> TXT - CLASS </span>
 			</span>
@@ -52,14 +52,14 @@
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
 		<div id="progress_cont" style="display: none; height: 100px;">
-        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px">
+        	<div class="progress progress-striped active centerform" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 			</div>
-			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px ;z-index:2">0 %</div>
-			<div style="margin-left: auto; margin-right: auto">
-			<div id="f_size" class="glyphicon glyphicon-hdd"> A</div>
-			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> B</div>
-			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> C</div></div>
+			<div id="progress-num" class="centerform" style="text-align: center; top: -39px; z-index:2">0 %</div>
+			<div class="centerform">
+			<div id="f_size" class="glyphicon glyphicon-hdd"> 0 KB</div>
+			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> 0 KB/s</div>
+			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> 0s</div></div>
 		</div>
 	</form>
 	<br /><br />
