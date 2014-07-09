@@ -70,7 +70,7 @@ def upload_network(request):
                     handle_uploaded_file(p,fileFeature,inputName, 'nt_feature')
                     handle_uploaded_file(p,fileRank,inputName, 'nt_rank')
                     handle_uploaded_file(p,fileMetrics,inputName, 'nt_metrics')
-                    return HttpResponse('/network/celery/' + p.pip_id)
+                    return HttpResponse('/network/option/' + p.pip_id)
                 else:
                     messages.error(request, "File type incorrect")
         else:
@@ -136,6 +136,10 @@ def processing_finish(request, task_id):
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/network/processing/%s/' % (task_id,))
+
+@login_required(login_url="/login")
+def option(request, pip_id):
+    return render(request, 'network/option.html', {'pip_id': pip_id})
 
 #@login_required(login_url="/login")
 #def showResults(request):

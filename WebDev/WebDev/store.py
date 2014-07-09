@@ -54,12 +54,8 @@ def store_after_celery(rundb, task_ret, tp):
 def store_after_celery_class(rundb, task_ret):
     '''
 
-    FIX ME : Review syntax before launching
     Saving to image field was based on this
     http://andrewbrookins.com/tech/set-the-path-to-an-imagefield-in-django-manually/
-
-
-    Also Check whether do we need a new resdb-like variable for each run . I have no Idea and I need some Sleep.
 
 
     Run after Celery Task
@@ -79,8 +75,8 @@ def store_after_celery_class(rundb, task_ret):
             for j in os.listdir(task_ret[0]['funct'][i]) :
                 resdb = Results(process_name=rundb.process_name,
                                 task_id=rundb,
-                                filepath=task_ret[0]['funct'][i][j],
-                                imagestore=task_ret[0]['funct'][i][j],
+                                filepath='%s/%s' % (task_ret[0]['funct'][i],j),
+                                imagestore=resdb.filepath,
                                 filetype='img',
                                 owner=rundb.pip_id.owner,
                                 pip_id=rundb.pip_id
