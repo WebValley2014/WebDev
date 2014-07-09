@@ -1,6 +1,7 @@
 from models import *
 import datetime
-
+from django.core.files import File
+import os
 
 def store_before_celery(pip_id, jinput, task_id , pname):
     '''
@@ -47,6 +48,54 @@ def store_after_celery(rundb, task_ret, tp):
                     pip_id=rundb.pip_id
                     )
     resdb.save()
+    return True
+def store_after_celery_class(rundb, task_ret):
+    '''
+
+    FIX ME : Review syntax before launching
+    Saving to image field was based on this
+    http://andrewbrookins.com/tech/set-the-path-to-an-imagefield-in-django-manually/
+
+
+    Also Check whether do we need a new resdb-like variable for each run . I have no Idea and I need some Sleep.
+
+
+    Run after Celery Task
+    :param rundb: from store_before_celery
+    :param task_ret:  return of the celery task
+    :param tp: filetype
+    :return: True
+    '''
+
+
+
+    rundb.started = task_ret[0]['st']
+    rundb.finished = task_ret[0]['ft']
+
+    for i in task_ret[0]['funct']:
+        if i == 'img':
+            for j in os.listdir(task_ret[0]['funct'][i]) :
+                resdb = Results(process_name=rundb.process_name,
+                                task_id=rundb,
+                                filepath=task_ret[0]['funct'][i][j],
+                                imagestore=task_ret[0]['funct'][i][j],
+                                filetype='img',
+                                owner=rundb.pip_id.owner,
+                                pip_id=rundb.pip_id
+                                )
+
+
+        else
+            resdb = Results(process_name=rundb.process_name,
+                            task_id=rundb,
+                            filepath=task_ret[0]['funct'][i],
+                            filetype='txt',
+                            owner=rundb.pip_id.owner,
+                            pip_id=rundb.pip_id
+                            )
+    resdb.save()
+
+
     return True
 
 def store_after_celery_network(rundb, task_ret):

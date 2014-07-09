@@ -15,6 +15,24 @@ import uuid
 import hashlib
 # Create your views here.
 
+
+
+'''
+To Michele : If I am asleep when you review this , see FIX ME in each view and in store.py and Debug.
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
 from forms import CLUploadFileForm
 from WebDev.utils import *
 
@@ -31,8 +49,54 @@ def classification(request, pip_id):
 def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
-def step2(request):
-    return render(request, 'classification/tuttook.html')
+def step2(request, pip_id):
+    '''
+    #FIX ME : Doesn't Handle the Arguments .
+              HttpsResponseRedirect : Give the right URL.
+    '''
+    pip = Pipeline.objects.get(pip_id=pip_id)
+    file1 = Results.objects.get(pip_id=pip, process_name='classification', filetype='txt')
+    file2 = Results.objects.get(pip_id=pip, process_name='classification', filetype='txt')
+
+    ml_id = settings.APP.send_task("mlearn", (pip.pip_id, file1.filepath, file2.filepath))
+
+
+    input_data = {'file_OTU': file1.filepath, 'file_CLASS': file2.filepath}
+    print  'Process Started'
+    store_before_celery(pip, input_data, ml_id.id, "Classification")
+    print  'Saving Process to database'
+
+    return HttpResponseRedirect("/preproc/processing/" + ml_id.id + "/")
+
+def learning_loading (request, task_id):
+
+    '''
+    FIX ME : Correct the HTTP RESPONSE
+    '''
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    print str(result.status)
+    print str(settings.APP)
+    if result.ready():
+        return HttpResponseRedirect('/preproc/processing_finish/%s/' % (task_id,))
+    else:
+        return HttpResponse(result.status)
+
+def learning_finish(request, task_id):
+    '''
+    FIX ME : Correct the HTTP RESPONSE
+    '''
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        if store_after_celery_class(rp, r, 'txt'):
+            return HttpResponse('OK')
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
+
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
