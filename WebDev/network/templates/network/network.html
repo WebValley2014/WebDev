@@ -32,7 +32,7 @@
 			</div>
     	{% endfor %}
 	{% endif %}
-	<p style="text-align:center">Select or drop five <strong>.TXT</strong> files for the upload.</p><br />
+	<p style="text-align:center">Select or drop six <strong>.TXT</strong> files for the upload.</p><br />
 	<form id="dropform" class="form fileformbox dropzone" name="dropformCODES" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
 		<div class="input-group forminp">
@@ -69,6 +69,13 @@
 			</span>
 			<input id="fileRank" name="fileRank" type="file" class="form-control" />
 		</div>
+        <br />
+		<div class="input-group forminp">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> Metrics(TXT)</span>
+			</span>
+			<input id="fileMetrics" name="fileMetrics" type="file" class="form-control" />
+		</div>
 		<br />
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
@@ -98,6 +105,8 @@
         	if (fileFeature) { fileSize += fileFeature.sizeData; }
             var fileRank = document.getElementById('fileRank').files[0];
         	if (fileRank) { fileSize += fileRank.sizeData; }
+            var fileMetrics = document.getElementById('fileMetrics').files[0];
+        	if (fileMetrics) { fileSize += fileMetrics.sizeData; }
 			if (fileSize < 1024 * 1024) {
             	fileSize = (Math.round(fileSize * 100 / (1024)) / 100).toString() + ' KB';
 			}
@@ -117,6 +126,7 @@
             fd.append("fileSamples", fileSamples);
             fd.append("fileFeature", fileFeature);
             fd.append("fileRank", fileRank);
+            fd.append("fileMetrics", fileMetrics);
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 			var xhr = new XMLHttpRequest();
 			xhr.upload.addEventListener("progress", uploadProgress, false);
@@ -169,20 +179,33 @@
 		}
 	</script>
 	<br />
+
     {% if file_exist %}
+      <h3>Choose among the old files</h3>
     <table class="table table-striped">
     <tr>
-        <th> File name </th>
+        <th> File data </th>
+        <th> File label </th>
+        <th> File samples </th>
+        <th> File feature </th>
+        <th> File rank </th>
+        <th> File metrics </th>
         <th> Select </th>
         <th> Delete </th>
     </tr>
-	{% for fi in oldFiles %}
+	{% for el in tabFile %}
             <tr>
-            <td> {{ fi.filename }}</td>
-            <td> <a href="" {# da sistemare #}> SELECT </a></td>
-            <td> <a href={% url 'delete' fi.pk %}> DELETE </a> </td>
+            <td> {{ el.fileData.filename }}</td>
+            <td> {{ el.fileLabel.filename }}</td>
+            <td> {{ el.fileSamples.filename }}</td>
+            <td> {{ el.fileFeature.filename }}</td>
+            <td> {{ el.fileRank.filename }}</td>
+            <td> {{ el.fileMetrics.filename }}</td>
+            <td> <a href="/network/celery/{{ el.pip_id }}/"> SELECT </a></td>
+            <td> <a href="/network/delete/{{ el.fileData.pk }}/{{ el.fileLabel.pk }}/{{ el.fileSamples.pk }}/{{ el.fileFeature.pk }}/{{ el.fileRank.pk }}/{{ el.fileMetrics.pk }}/"> DELETE </a> </td>
             </tr>
 	{% endfor %}
     </table>
     {% endif %}
+
 {% endblock %}

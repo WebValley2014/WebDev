@@ -25,12 +25,12 @@ def get_bootsrap_badge(status):
 
     return badge
 
-def is_number(s):
-    try:
-        float(s)
-        return True
-    except ValueError:
-        return False
+# def is_number(s):
+#     try:
+#         float(s)
+#         return True
+#     except ValueError:
+#         return False
 
 
 class Pipeline(models.Model):
@@ -104,7 +104,13 @@ class Results (models.Model):
         ('json', 'json file'),
         ('error', 'Error during computation'),
         ('zip', 'zip'),
-        ('sff', 'sff')
+        ('sff', 'sff'),
+        ('nt_data', 'input data network'),
+        ('nt_label', 'input label network'),
+        ('nt_samples', 'input samples network'),
+        ('nt_feature', 'input feature network'),
+        ('nt_rank', 'input data network'),
+        ('nt_metrics', 'input data network'),
     )
 
     process_name = models.CharField(max_length=40, null=True, blank=True)       #celery
@@ -128,16 +134,16 @@ class Results (models.Model):
     def get_submitted(self):
         return self.task_id.submited
 
-    @property
-    def tables_to_json(self):
-        reader = csv.reader(self.filestore, delimiter='\t')
+    # @property
+    # def tables_to_json(self):
+    #     reader = csv.reader(self.filestore, delimiter='\t')
 
-        json_list = []
-        reader.next()
-        for line in iter(reader):
-            json_list.append([round(float(l), 3) if is_number(l) else l for l in line])
+    #     json_list = []
+    #     reader.next()
+    #     for line in iter(reader):
+    #         json_list.append([round(float(l), 3) if is_number(l) else l for l in line])
 
-        return {'aaData': json_list}
+    #     return {'aaData': json_list}
 
     @property
     def get_first_row(self):

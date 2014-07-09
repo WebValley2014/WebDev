@@ -32,26 +32,33 @@
 			</div>
     	{% endfor %}
 	{% endif %}
-	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
-	<form class="form fileformbox" method="post" enctype="multipart/form-data" style="width: 700px">
+	<p style="text-align:center">For the moment adding any more forms will break everything<br />Select or drop a <strong>.TXT</strong>, a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	<form class="form fileformbox" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
+		<div class="input-group centerform">
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-font" style="width:58px"> TXT</span>
+			</span>
+			<input name="file" type="file" class="form-control txt" />
+		</div>
+		<br />
 		<div class="file_buttons">
-			<div class="file_pair" style="width: 700px; margin-left: -350px; margin-right: -350px; position: relative; left: 50%;">
+			<div class="file_pair">
 				<div class="input-group" style="width: 340px; float: left;">
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-file" style="width:58px"> SFF</span>
 					</span>
-					<input id="sff_1" name="file" type="file" class="form-control sff" />
+					<input name="file" type="file" class="form-control sff" />
 				</div>
 				<div class="input-group" style="width: 340px; float: right">
 					<span class="input-group-addon">
 						<span class="glyphicon glyphicon-file"> MAP</span>
 					</span>
-					<input id="map_1" name="file" type="file" class="form-control map" />
+					<input name="file" type="file" class="form-control map" />
 				</div>
 			</div>
 			<br /><br />
-			<div id="plus_minus" style="width: 84px; margin-left: -42px; margin-right: -42px; position: relative; left: 50%;">
+			<div id="plus_minus">
 				<span class="btn btn-default" onclick="addFilePair()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</span>
@@ -64,11 +71,11 @@
 		<input type="button" class="btn btn-default centeredbutton start" value="Upload" onclick="uploadFile()" />
 		<br /><br />
 		<div id="progress_cont" style="display: none; height: 100px;">
-        	<div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" style="width:340px">
+        	<div class="progress progress-striped active centerform" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
           		<div id="progress-bar" class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
 			</div>
-			<div id="progress-num" style="width: 340px; text-align: center; position: relative; top: -39px; z-index:2">0 %</div>
-			<div style="margin-left: auto; margin-right: auto">
+			<div id="progress-num" class="centerform" style="text-align: center; top: -39px; z-index:2">0 %</div>
+			<div class="centerform">
 			<div id="f_size" class="glyphicon glyphicon-hdd"> 0 KB</div>
 			<div id="up_spd" class="glyphicon glyphicon-cloud-upload" style="margin-left: 10px"> 0 KB/s</div>
 			<div id="tm_lft" class="glyphicon glyphicon-time" style="margin-left: 10px"> 0s</div></div>
@@ -122,9 +129,13 @@
 			var fd = new FormData();
 			var files_sff = document.getElementsByClassName('sff');
 			var files_map = document.getElementsByClassName('map');
-
-			fd.append("file_sff", files_sff[0].files[0]); // CAUTION
-			fd.append("file_map", files_map[0].files[0]); // CAUTION
+			var len = files_sff.length; // MAYBE CHECK ERROR
+			fd.append("length", len);
+			fd.append("file_txt", document.getElementsByClassName('txt')[0].files[0]);
+			for (i = 0; i < len; i++) {
+				fd.append("file_sff_" + i, files_sff[i].files[0]);
+				fd.append("file_map_" + i, files_map[i].files[0]);
+			}
 			fd.append("csrfmiddlewaretoken", document.getElementsByName("csrfmiddlewaretoken")[0].value);
 
 			var xhr = new XMLHttpRequest();
@@ -168,12 +179,7 @@
 		}
 
 		function uploadComplete(evt) {
-			if (evt.target.responseText == 'error') {
-				window.location.replace("{% url 'preproc_upload' %}")
-			}
-			else {
-				window.location.replace(evt.target.responseText);
-			}
+			window.location.replace(evt.target.responseText);
 		}
 
 		function uploadFailed(evt) {
@@ -190,7 +196,7 @@
     {% if file_exist %}
     	<table class="table table-striped" style="width:100%">
     		<tr>
-				<th>ZIP</th>
+				<th>File SFF</th>
 				<th>File MAP</th>
 				<th>Select</th>
 				<th>Delete</th>

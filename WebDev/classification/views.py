@@ -15,6 +15,24 @@ import uuid
 import hashlib
 # Create your views here.
 
+
+
+'''
+To Michele : If I am asleep when you review this , see FIX ME in each view and in store.py and Debug.
+'''
+
+
+
+
+
+
+
+
+
+
+
+
+
 from forms import CLUploadFileForm
 from WebDev.utils import *
 
@@ -31,8 +49,54 @@ def classification(request, pip_id):
 def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
-def step2(request):
-    return render(request, 'classification/tuttook.html')
+def step2(request, pip_id):
+    '''
+    #FIX ME : Doesn't Handle the Arguments .
+              HttpsResponseRedirect : Give the right URL.
+    '''
+    pip = Pipeline.objects.get(pip_id=pip_id)
+    file1 = Results.objects.get(pip_id=pip, process_name='classification', filetype='txt')
+    file2 = Results.objects.get(pip_id=pip, process_name='classification', filetype='txt')
+
+    ml_id = settings.APP.send_task("mlearn", (pip.pip_id, file1.filepath, file2.filepath))
+
+
+    input_data = {'file_OTU': file1.filepath, 'file_CLASS': file2.filepath}
+    print  'Process Started'
+    store_before_celery(pip, input_data, ml_id.id, "Classification")
+    print  'Saving Process to database'
+
+    return HttpResponseRedirect("/preproc/processing/" + ml_id.id + "/")
+
+def learning_loading (request, task_id):
+
+    '''
+    FIX ME : Correct the HTTP RESPONSE
+    '''
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    print str(result.status)
+    print str(settings.APP)
+    if result.ready():
+        return HttpResponseRedirect('/preproc/processing_finish/%s/' % (task_id,))
+    else:
+        return HttpResponse(result.status)
+
+def learning_finish(request, task_id):
+    '''
+    FIX ME : Correct the HTTP RESPONSE
+    '''
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        if store_after_celery_class(rp, r, 'txt'):
+            return HttpResponse('OK')
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
+
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
@@ -54,19 +118,19 @@ def upload_preProcessed(request):
                     messages.error(request, "Some files with the same name")
             if not form_error:
                 if checkExtension(file1, 'txt') and checkExtension(file2, 'txt'):
-                    p = Pipeline(pip_name='Classification', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
+                    p = Pipeline(pip_name='classification', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
 
-                    handle_uploaded_file(p,file1)
-                    handle_uploaded_file(p,file2)
+                    handle_uploaded_file(p,file1,"Preprocessing")
+                    handle_uploaded_file(p,file2,"Preprocessing")
                     return HttpResponse('/class/step2/')
                 else:
                     messages.error(request, "File type incorrect")
         else:
             messages.error(request, "Insert the correct files")
         return HttpResponse('/class/upload/')
-    oldFiles = Results.objects.filter(process_name='Classification', owner=request.user)
+    oldFiles = Results.objects.filter(process_name='Preprocessing', owner=request.user)
     oldFiles = oldFiles.order_by('-id')
     return render(request, 'classification/classification.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
 
