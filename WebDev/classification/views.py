@@ -168,9 +168,11 @@ def show_results(request, pip_id, type):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
     media_path = os.path.join(settings.MEDIA_URL, partial_path)
+    print media_path
 
     if type == '2D':
-        media_path = os.path.join(media_path, 'img')
+        print 'in'
+        media_path = os.path.join(media_path, 'img/')
         print media_path
         context = {
             'media_path': media_path
