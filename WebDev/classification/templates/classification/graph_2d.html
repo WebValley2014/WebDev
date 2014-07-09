@@ -73,9 +73,14 @@
 		var isHistogram = false;
 		var pre = 'ACC';
 		var post = '10';
+<<<<<<< HEAD:WebDev/WebDev/templates/graph_2d.html
 		var path_lin = "{{ media_path }}";
 		var path_his = "{% static 'graph_histo/' %}";
-		document.getElementById('graph_linear').childNodes[1].setAttribute('src', path_lin + pre + '_' + post + '.png');
+		document.getElementById('graph_linear').childNodes[1].setAttribute('src', path_lin + pre + '_' + post + '.png';
+=======
+		var path_lin = "{{ media_path }}"; // DIPENDE DA NOME PAGINA
+		var path_his = document.URL.split('/graph_2d')[0] + "{% static 'graph_histo/' %}"; // DIPENDE DA NOME PAGINA
+>>>>>>> e295ef14010c02aaa4545edec8c8d9320caf375f:WebDev/classification/templates/classification/graph_2d.html
 
 		function changePre(dis) {
 			var img = document.getElementById('graph_linear').childNodes[1]; // 0 is text dunno

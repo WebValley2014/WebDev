@@ -18,21 +18,6 @@ import hashlib
 
 
 
-'''
-To Michele : If I am asleep when you review this , see FIX ME in each view and in store.py and Debug.
-'''
-
-
-
-
-
-
-
-
-
-
-
-
 
 from forms import *
 from WebDev.utils import *
@@ -50,18 +35,23 @@ def classification(request, pip_id):
 def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
-def step2(request, pip_id):
+@login_required(login_url="/login")
+def step2(request):
     '''
     #FIX ME : Doesn't Handle the Arguments .
               HttpsResponseRedirect : Give the right URL.
     '''
+    pip_id = request.POST.get('pip_id')
+    first = request.POST.get('First_Parameter')
+    second = request.POST.get('Second_Parameter')
+    third = request.POST.get('Third_Parameter')
+
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
     file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
 
     print 'Celery in launch'
     ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': 'minmax', 'solver': 'randomForest', 'ranking': 'randomForest'})
-    print
     print 'Celery launched'
 
 
@@ -73,9 +63,7 @@ def step2(request, pip_id):
     return HttpResponseRedirect("/class/processing/" + ml_id.id + "/")
 
 def learning_loading (request, task_id):
-    '''
-    FIX ME : Correct the HTTP RESPONSE
-    '''
+
     # Pick the results
     result = settings.APP.AsyncResult(task_id)
     print str(result.status)
@@ -85,7 +73,18 @@ def learning_loading (request, task_id):
     else:
         return HttpResponse(result.status)
 
-
+def processing_finish(request, task_id):
+    print 'Chiamata'
+    # Pick the results
+    result = settings.APP.AsyncResult(task_id)
+    if result.ready():
+        r = result.get()
+        rp = RunningProcess.objects.get(task_id=task_id)
+        if store_after_celery_class(rp, r):
+           return HttpResponseRedirect('/class/show_results/%s/2D/' % (rp.pip_id.pip_id))
+        else:
+            return HttpResponse('Error')
+    return HttpResponseRedirect('/class/processing/%s/' % (task_id,))
 
 @login_required(login_url="/login")
 def upload_preProcessed(request):
@@ -154,3 +153,23 @@ def download(request, p_id):
 @login_required(login_url="/login")
 def option(request, pip_id):
     return render(request, 'classification/option.html', {'pip_id': pip_id})
+
+@login_required(login_url="/login")
+def show_results(request, pip_id, type):
+    print pip_id
+    pipeline = Pipeline.objects.get(pip_id=pip_id)
+    #Create MEDIA path
+    partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+    partial_path = os.path.join(partial_path, 'classification')
+    media_path = os.path.join(settings.MEDIA_URL, partial_path)
+
+    if type == '2D':
+        print 'in'
+        media_path = os.path.join(media_path, 'img/')
+        print media_path
+        context = {
+            'media_path': media_path
+        }
+        return render(request, 'classification/graph_2d.html', context)
+
+    return HttpResponse('Link does not exist')
