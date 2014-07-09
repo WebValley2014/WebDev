@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap</title>
+	<link href="TreeGraph_files/style.css" rel="stylesheet">
+    <link href="TreeGraph_files/bootstrap.css" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+	<script src="3DLibraries/build/three.js"></script>
+ <script src="3DLibraries/examples/js/controls/OrbitControls.js"></script>
+		<script src="3DLibraries/build/THREEx.KeyboardState.js"></script>
+
+	<div id="wrapper">
+		<nav id="topnavbar" class="navbar navbar-default" role="navigation">
+  			<div class="container-fluid">
+    			<div class="navbar-header">
+      				<img src="TreeGraph_files/logograssetto.png" id="logoimage">
+    			</div>
+    			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      	  				<ul class="nav navbar-nav navbar-right">
+							<ul class="nav navbar-nav">
+							<li class="activetab"><a href="#">HOME</a></li>
+        					<li><a href="#">UPLOAD</a></li>
+        					<li><a href="#">TASKS</a></li>
+							<li><a href="">ABOUT THE PROJECT</a></li>
+               				<li><a href="">CONTACTS</a></li>
+        				</ul>
+          				<li class="dropdown">
+            			<a href="#" class="dropdown" data-toggle="dropdown">LOGIN<span id="caretlogin" class="caret"></span></a>
+            				<div id="logindropdown" class="dropdown-menu">
+              					<form class="form" id="formLogin"> 
+                					<div class="input-group">
+  										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-user"></span>
+										</span>
+  										<input class="form-control" placeholder="Username" type="text">
+									</div>
+									<br>
+									<div class="input-group">
+  										<span class="input-group-addon">
+											<span class="glyphicon glyphicon-asterisk"></span>
+										</span>
+  										<input class="form-control" placeholder="Password" type="password">
+									</div>
+									<br>
+									<button id="loginbutton" type="button" class="btn btn-default">Submit</button>
+              					</form>
+            				</div>
+          				</li>
+      				</ul>
+    			</div>
+  			</div>
+		</nav>
+		<div class="navseparator"></div>
+		<main>
+			<div align="center"><p>Controls: A and D to rotate. W and S to go up and down. Q and E to zoom. Left and Right mouse buttons to zoom the 2nd graph.</p></div>
+			<div id="threeJsCanvas" style="position: static;" align="center"></canvas></div>
+<!-- ----------------------------------------------------------------------------------------------------------------------------------- -->
+        <script type="text/javascript">
+function ajaxRequest(){
+    var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+    if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
+        for (var i=0; i<activexmodes.length; i++){
+            try{
+                return new ActiveXObject(activexmodes[i])
+            }
+            catch(e){
+    //suppress error
+            }
+        }
+    }
+    else if (window.XMLHttpRequest) // if Mozilla, Safari etc
+        return new XMLHttpRequest()
+ else
+  return false
+}
+
+var r ;
+var call = function(url) {
+    var a = new ajaxRequest ();
+
+    a.open("GET", url, false);
+    a.send(null);
+    r = a.responseText;
+
+}
+
+// standard global variables
+var container, scene, renderer, controls;
+var topcamera, sideCamera;
+
+document.addEventListener( 'mousedown', onDocumentMouseDown, false );
+document.addEventListener( 'mouseup', onDocumentMouseUp, false );
+var projector = new THREE.Projector();
+
+//My Variables
+var objects = []; //contains the 3D points of the graph
+var XSize = 940;
+var YSize = 600;
+var labels = [];
+var edges = [];
+var parsedPointsJson = [];
+var parsedBoxPlotsJson = [];
+var rankRatio = 200;
+var maxZ = 0;
+var isShowingLabels = true;
+var labelsDate = Date.now();
+var windowsDate = Date.now();
+var triangle; 
+var maxLogInData = 0;
+var leftMouseIsDown = false;
+var rightMouseIsDown = false;
+var onlyOneWindow = false;
+
+var camerahelper;
+
+init();
+animate();
+			
+function init() 
+{
+
+    container = document.getElementById("threeJsCanvas");
+	//document.body.appendChild(container);
+
+	scene = new THREE.Scene();
+	keyboard = new THREEx.KeyboardState();
+	
+	// camera attributes
+	var VIEW_ANGLE = 60, ASPECT = XSize/YSize, NEAR = 0.1, FAR = 20000;
+	// set up topCamera
+	//topCamera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+	var Y = XSize / YSize;
+	topCamera = new THREE.OrthographicCamera( -1.2, 1.2, -Y, Y, 10, -10);
+	scene.add(topCamera);
+	//topCamera.position.set(0, 0, -5.2);
+	topCamera.position.set(0, 0, 0);
+	//topCamera.rotation.set(0, Math.PI, 0);
+	topCamera.rotation.set(0, 0, 0);
+
+
+	// set up sideCamera
+	sideCamera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
+	scene.add(sideCamera);
+	sideCamera.position.set(0, 0, -0.44);
+	sideCamera.lookAt(new THREE.Vector3(0, -4, 0));	
+	sideCamera.rotation.set(Math.PI / 2 - 0 * (Math.PI / 180), 0, 0);
+
+    renderer = new THREE.WebGLRenderer({antialias: true});
+	renderer.setSize(XSize, YSize);
+	renderer.setClearColorHex( 0x000000, 1 );
+	renderer.autoClear = false;
+
+	container = document.getElementById("threeJsCanvas");
+    //document.body.appendChild( container );
+	
+	container.appendChild( renderer.domElement );
+	
+	controls = new THREE.OrbitControls( sideCamera, renderer.domElement );
+	controls.target = new THREE.Vector3(0, -4, 0);
+	controls.noRotate = true;
+	controls.noPan = true;
+	controls.noZoom = true;
+	///////////
+	// LIGHT //
+	///////////
+	
+	var light = new THREE.PointLight(0xffffff);
+	light.position.set(10, 10, 10);
+	scene.add(light);
+	var ambientLight = new THREE.AmbientLight(0x666666);
+	scene.add(ambientLight);
+
+	var centralLight = new THREE.PointLight(0xffffff);
+	centralLight.position.set(0, 0, 0);
+	scene.add(centralLight);
+
+	var cameraLight = new THREE.PointLight(0xbbbbbb);
+	cameraLight.position.set(0, 0, -6);
+	scene.add(cameraLight);
+
+	/////////////
+	// DRAWING //
+	/////////////
+
+	call("http://localhost/DavideFarina/prova_json_6.txt");
+	ParsePointsJSON();
+	CreateGraph();
+	call("http://localhost/DavideFarina/boxPlotsData.txt");
+	ParseBoxPlotsJSON();
+	//CreateBoxPlots();
+	CreateLabels();
+	CreateTriangle();
+}
+
+function ParsePointsJSON() {
+	var parsed = JSON.parse(r);
+	for(i in parsed.data) {
+		parsedPointsJson.push(parsed.data[i]);
+		if(parsedPointsJson[i].rank > maxZ)
+			maxZ = parsedPointsJson[i].rank; }
+}
+
+function ParseBoxPlotsJSON() {
+	var parsed = JSON.parse(r);
+	for(i in parsed.data)
+		parsedBoxPlotsJson.push(parsed.data[i]);
+}
+
+function CreateGraph() {
+	var maxCoord = 0; //the biggest |coord|
+
+	for(i in objects)
+		scene.remove(objects[i])
+
+	for(i in parsedPointsJson) {
+		/*
+		if(parsedPointsJson[i].x > maxCoord)
+			maxCoord = parsedPointsJson[i].x;
+		else if(parsedPointsJson[i].x * -1 > maxCoord)
+			maxCoord = parsedPointsJson[i].x * -1;
+		else if(parsedPointsJson[i].y > maxCoord)
+			maxCoord = parsedPointsJson[i].y;
+		else if(parsedPointsJson[i].y * -1 > maxCoord)
+			maxCoord = parsedPointsJson[i].y * -1;
+		else if(Math.log10(parsedPointsJson[i].rank + 1)> maxCoord)
+			maxCoord = Math.log10(parsedPointsJson[i].rank + 1);
+		else if(Math.log10(parsedPointsJson[i].rank + 1) * -1> maxCoord)
+			maxCoord = Math.log10(parsedPointsJson[i].rank + 1) * -1;*/
+
+		if(Math.log10(parsedPointsJson[i].rank) > maxLogInData)
+			maxLogInData = Math.log10(parsedPointsJson[i].rank);
+
+		var sphereGeom = new THREE.SphereGeometry(0.08 / (0.5 *  parsedPointsJson[i].depth + 2), 16, 16);
+		var sphereMat;
+		if(parsedPointsJson[i].id == 0)
+			sphereMat = new THREE.MeshLambertMaterial({color: 0x000000, wireframe:false, ambient:0x000000});
+		else if(parseFloat(parsedPointsJson[i].change) < 0)
+			sphereMat = new THREE.MeshLambertMaterial({color: 0x00ff00, wireframe:false, ambient:0x444444});
+		else if(parseFloat(parsedPointsJson[i].change) > 0)
+			sphereMat = new THREE.MeshLambertMaterial({color: 0xff0000, wireframe:false, ambient:0x444444});
+		else
+			sphereMat = new THREE.MeshLambertMaterial({color: 0xcccccc, wireframe:false, ambient:0x444444});
+		var sphere = new THREE.Mesh(sphereGeom, sphereMat);
+		if(parsedPointsJson[i].rank != 0)
+			sphere.position.set(parsedPointsJson[i].x, parsedPointsJson[i].y, Math.log10(parsedPointsJson[i].rank + 1) * -1);
+		else
+			sphere.position.set(parsedPointsJson[i].x, parsedPointsJson[i].y, Math.log10(maxZ + 1) * -1);
+		//sphere.position.set(parsedPointsJson[i].x, parsedPointsJson[i].y, 0);
+		objects.push(sphere);
+		objects[i].id = parsedPointsJson[i].id;
+		objects[i].childs = parsedPointsJson[i].childs;
+		if(parsedPointsJson[i].id == 0) {
+			sphere.scale.set(2, 2, 2);
+			sphere.position.set(0, 0, -0.44);
+		}
+		scene.add(sphere);
+	}
+	//at this point "objects" has every sphere with every id. We can now do the edges.
+	/*for(i in objects) {
+		for(j in objects[i].childs) 
+			drawEdge(objects[i], objects[objects[i].childs[j]]);
+	}*/
+	for(i in objects)
+		for (j in objects[i].childs)
+			for(k in objects)
+				if(objects[k].id == objects[i].childs[j]) {
+					if(objects[k].childs.length == 0)
+						drawEdge(objects[i], objects[k], true, k);
+					else
+						drawEdge(objects[i], objects[k], false, k);
+					break; }
+	
+	if(maxLogInData < 2)
+		maxLogInData = 2;
+	var containerGeom = new THREE.CubeGeometry(maxLogInData + 0.2, maxLogInData + 0.2, maxLogInData + 0.2, 1, 1, 1);
+	containerGeom.applyMatrix(new THREE.Matrix4().makeScale( -1, 1, 1 ) ); //flips the normals
+
+	var texture = THREE.ImageUtils.loadTexture( "gridBigger.png" );
+	var containerMat = new THREE.MeshLambertMaterial({map:texture});
+	var container = new THREE.Mesh(containerGeom, containerMat);
+
+	container.position.set(0, 0, -maxLogInData / 2 - 0.2);
+	scene.add(container);
+
+}
+
+function CreateBoxPlots() {
+		//still needs the rotation
+	for(i in parsedBoxPlotsJson) {
+		var group = new THREE.Object3D();
+		var boxGeom1 = new THREE.CubeGeometry(0.01, 0.01, eval(parsedBoxPlotsJson[i].end1 - parsedBoxPlotsJson[i].start1)/10, 1, 1, 1);
+		var boxMat1 = new THREE.MeshLambertMaterial({color: 0xff0000});
+		var box1 = new THREE.Mesh(boxGeom1, boxMat1);	
+		box1.position.set(-0.008, 0, -0.06 + parsedBoxPlotsJson[i].start1 / 10 + (parsedBoxPlotsJson[i].end1 - parsedBoxPlotsJson[i].start1)/ 20);
+		group.add(box1);
+
+		var boxGeom2 = new THREE.CubeGeometry(0.01, 0.01, eval(parsedBoxPlotsJson[i].end2 - parsedBoxPlotsJson[i].start2)/10, 1, 1, 1);
+		var boxMat2 = new THREE.MeshLambertMaterial({color: 0xdddddd});
+		var box2 = new THREE.Mesh(boxGeom2, boxMat2);
+		box2.position.set(0.008, 0, -0.06 + parsedBoxPlotsJson[i].start2 / 10 + (parsedBoxPlotsJson[i].end2 - parsedBoxPlotsJson[i].start2)/20);
+		group.add(box2);
+
+		group.rotation.set(0, 0, Math.PI / 2);
+		group.position.set(objects[i].position.x, objects[i].position.y, objects[i].position.z + 0.1);
+		scene.add(group);
+	}
+}
+
+function CreateLabels() {
+	for(i in parsedPointsJson) {
+		var spritey = makeTextSprite( parsedPointsJson[i].name, 
+		{ fontsize: 24, borderColor: {r:255, g:0, b:0, a:1.0}, backgroundColor: {r:255, g:100, b:100, a:0.8} } );
+		spritey.position.set(parsedPointsJson[i].x + 0.15, parsedPointsJson[i].y - 0.03, Math.log10(parsedPointsJson[i].rank + 1) * -1);
+		//spritey.position.set(1, 0, -1.35);
+		labels.push(spritey);
+		scene.add( spritey );
+	}
+}
+
+function ShowLabels() {
+	if(Date.now() - labelsDate > 500) {
+		labelsDate = Date.now();
+		if(isShowingLabels)
+			for(i in labels)
+				scene.remove(labels[i]);
+		else
+			for(i in labels)
+				scene.add(labels[i]);
+		isShowingLabels = !isShowingLabels;
+	}
+}
+
+function CreateTriangle() {
+   var geom = new THREE.Geometry();
+    var v1 = new THREE.Vector3(0,0,0);
+    var v2 = new THREE.Vector3(1.15,0,0);
+    var v3 = new THREE.Vector3(1,0.6,0);
+    
+    geom.vertices.push(v1);
+    geom.vertices.push(v2);
+    geom.vertices.push(v3);
+    
+    geom.faces.push( new THREE.Face3( 0, 1, 2 ) );
+    geom.computeFaceNormals();
+    
+    triangle= new THREE.Mesh( geom, new THREE.MeshLambertMaterial({color: 0x0000cc, transparent: true, opacity: 0.7, wireframe:false}) );	
+	triangle.rotation.set(0, Math.PI, 0);
+	triangle.position.set(0, 0, -maxLogInData - 0.1 );
+    scene.add(triangle);
+}
+
+function onWindowResize() {
+
+	sideCamera.left = window.innerWidth / -2;
+	sideCamera.right = window.innerWidth / 2;
+	sideCamera.top = window.innerHeight / 2;
+	sideCamera.bottom = window.innerHeight / -2;
+	sideCamera.updateProjectionMatrix();
+	sideCamera.update();
+	renderer.setSize(window.innerWidth, window.innerHeight);
+
+}
+
+function animate() 
+{
+	if (keyboard.pressed("A")) { //rotation while in the middle
+		sideCamera.rotation.set(Math.PI / 2 - 0 * (Math.PI / 180), sideCamera.rotation.y + 0.01, sideCamera.rotation.z); 
+	}
+	if (keyboard.pressed("D")) { //rotation while in the middle
+        sideCamera.rotation.set(Math.PI / 2 - 0 * (Math.PI / 180), sideCamera.rotation.y - 0.01, sideCamera.rotation.z);
+	}
+	if (keyboard.pressed("W")) { //up
+		if(sideCamera.position.z < (-1.44 + 1))
+			sideCamera.position.set(sideCamera.position.x, sideCamera.position.y, sideCamera.position.z + 0.005); 
+	}
+	if (keyboard.pressed("S")) { //down
+		if(sideCamera.position.z > (-1.44 - 1))
+        	sideCamera.position.set(sideCamera.position.x, sideCamera.position.y, sideCamera.position.z - 0.005);
+	}
+	if (keyboard.pressed("Q")) { //zoom
+		sideCamera.translateZ( 0.005 ); 
+	}
+	if (keyboard.pressed("E")) { //zoom
+        sideCamera.translateZ( -0.005 );
+	}
+	if (keyboard.pressed("Z")) { //orbit
+        sideCamera.rotation.set(Math.PI / 2 - 0 * (Math.PI / 180), sideCamera.rotation.y - 0.01, sideCamera.rotation.z );
+		sideCamera.position.set(Math.sin(sideCamera.rotation.y) * 2, -Math.cos(sideCamera.rotation.y) * 2, sideCamera.position.z);
+	}
+	if (keyboard.pressed("X")) { //orbit
+        sideCamera.rotation.set(Math.PI / 2 - 0 * (Math.PI / 180), sideCamera.rotation.y + 0.01, sideCamera.rotation.z );
+		sideCamera.position.set(Math.sin(sideCamera.rotation.y) * 2, -Math.cos(sideCamera.rotation.y) * 2, sideCamera.position.z);
+	}
+	if (keyboard.pressed("L")) { //labels on off
+        ShowLabels();
+	}
+	if (keyboard.pressed("C")) { //camera back to 0 0 z
+        sideCamera.position.set(0, 0, -1.44);
+	}
+	if (keyboard.pressed("R")) { //1 or 2 windows
+		SwitchWindows();        
+	}
+	
+	//Update triangle
+	if(!(triangle == undefined))
+		triangle.rotation.set(triangle.rotation.x, triangle.rotation.y, -sideCamera.rotation.y + 90* (Math.PI / 180));
+
+    requestAnimationFrame( animate );
+	render();	
+
+	//Mouse Zoom
+	if(leftMouseIsDown)
+		topCamera.position.set(topCamera.position.x, topCamera.position.y, topCamera.position.z + 0.05);
+	if(rightMouseIsDown)
+		topCamera.position.set(topCamera.position.x, topCamera.position.y, topCamera.position.z - 0.05);
+}
+
+function SwitchWindows() {
+	if(Date.now() - windowsDate > 500) {
+		windowsDate = Date.now();
+	onlyOneWindow = !onlyOneWindow;
+	}
+}
+
+
+function render() 
+{	
+	//renderer.render( scene, sideCamera );
+	if(!onlyOneWindow) {
+		var SCREEN_WIDTH = renderer.domElement.width, SCREEN_HEIGHT = renderer.domElement.height;
+		sideCamera.aspect = 0.5 * SCREEN_WIDTH / SCREEN_HEIGHT;
+		topCamera.aspect = 0.5 * SCREEN_WIDTH / SCREEN_HEIGHT;
+		sideCamera.updateProjectionMatrix();
+		topCamera.updateProjectionMatrix();
+	
+		// setViewport parameters:
+		//  lower_left_x, lower_left_y, viewport_width, viewport_height
+
+		renderer.clear();
+
+		// left side
+		renderer.setViewport( 1, 1,   0.5 * SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2 );
+		renderer.render( scene, sideCamera );
+
+		// right side
+		renderer.setViewport( 0.5 * SCREEN_WIDTH, 1,   0.5 * SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2 );
+		renderer.render( scene, topCamera );
+	}
+	else {
+		var SCREEN_WIDTH = renderer.domElement.width, SCREEN_HEIGHT = renderer.domElement.height;
+		sideCamera.aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+		sideCamera.updateProjectionMatrix();
+	
+		// setViewport parameters:
+		//  lower_left_x, lower_left_y, viewport_width, viewport_height
+
+		renderer.setViewport( 0, 0, SCREEN_WIDTH, SCREEN_HEIGHT );
+		renderer.clear();
+
+		// left side
+		renderer.setViewport( 1, 1, SCREEN_WIDTH - 2, SCREEN_HEIGHT - 2 );
+		renderer.render( scene, sideCamera );
+	}
+}
+
+function drawEdge(source, target, semitransparent, id) { //draws an edge from "source" to "target"
+	var lineGeom = new THREE.Geometry();
+	var lineMat;
+	if(!semitransparent)
+		lineMat = new THREE.LineBasicMaterial({ color: 0x000066, opacity: 1, linewidth: 0.5 + 80 / Math.pow((parsedPointsJson[id].depth + 1), 3), transparent: true });
+	else
+		lineMat = new THREE.LineBasicMaterial({ color: 0x000066, opacity: 0.5, linewidth: 0.5 + 80 / Math.pow((parsedPointsJson[id].depth + 1), 3), transparent: true });
+	lineMat.depthWrite = false;
+	lineGeom.vertices.push(source.position);
+	lineGeom.vertices.push(target.position);
+
+	line = new THREE.Line( lineGeom, lineMat, THREE.LinePieces );
+	line.scale.x = line.scale.y = line.scale.z = 1;
+	line.originalScale = 10;
+				
+	edges.push(line);
+	scene.add( line );
+}
+
+function onDocumentMouseDown( event ) { //called when the user clicks
+	switch(event.button) {
+		case 0: { //left
+			leftMouseIsDown = true; break; }
+		case 2: { //right
+			rightMouseIsDown = true; break; }
+	}
+}
+
+function onDocumentMouseUp( event ) { //called when the user clicks
+	switch(event.button) {
+		case 0: { //left
+			leftMouseIsDown = false; break;}
+		case 2: { //right
+			rightMouseIsDown = false; break; }
+	}
+}
+
+function makeTextSprite( message, parameters )
+{
+	if ( parameters === undefined ) parameters = {};
+	
+	var fontface = parameters.hasOwnProperty("fontface") ? 
+		parameters["fontface"] : "Arial";
+	
+	var fontsize = parameters.hasOwnProperty("fontsize") ? 
+		parameters["fontsize"] : 18;
+	
+	var borderThickness = parameters.hasOwnProperty("borderThickness") ? 
+		parameters["borderThickness"] : 0.1;
+	
+	var borderColor = parameters.hasOwnProperty("borderColor") ?
+		parameters["borderColor"] : { r:0, g:0, b:0, a:1.0 };
+	
+	var backgroundColor = parameters.hasOwnProperty("backgroundColor") ?
+		parameters["backgroundColor"] : { r:255, g:255, b:255, a:1.0 };
+
+	//var spriteAlignment = THREE.SpriteAlignment.topLeft;
+		
+	var canvas = document.createElement('canvas');
+	var context = canvas.getContext('2d');
+	context.font = "Bold " + fontsize + "px " + fontface;
+    
+	// get size data (height depends only on font size)
+	var metrics = context.measureText( message );
+	var textWidth = metrics.width;
+	
+	// background color
+	context.fillStyle   = "rgba(" + backgroundColor.r + "," + backgroundColor.g + ","
+								  + backgroundColor.b + "," + backgroundColor.a + ")";
+	// border color
+	context.strokeStyle = "rgba(" + borderColor.r + "," + borderColor.g + ","
+								  + borderColor.b + "," + borderColor.a + ")";
+
+	context.lineWidth = borderThickness;
+	roundRect(context, borderThickness/2, borderThickness/2, textWidth + borderThickness, fontsize * 1.4 + borderThickness, 6);
+	// 1.4 is extra height factor for text below baseline: g,j,p,q.
+	
+	// text color
+	context.fillStyle = "rgba(0, 0, 0, 1.0)";
+
+	context.fillText( message, borderThickness, fontsize + borderThickness);
+	
+	// canvas contents will be used for a texture
+	var texture = new THREE.Texture(canvas) 
+	texture.needsUpdate = true;
+
+	var spriteMaterial = new THREE.SpriteMaterial( 
+		{ map: texture, useScreenCoordinates: false } );
+	var sprite = new THREE.Sprite( spriteMaterial );
+	sprite.scale.set(0.4,0.2,0.002);
+	return sprite;	
+}
+
+function roundRect(ctx, x, y, w, h, r) 
+{
+    ctx.beginPath();
+    ctx.moveTo(x+r, y);
+    ctx.lineTo(x+w-r, y);
+    ctx.quadraticCurveTo(x+w, y, x+w, y+r);
+    ctx.lineTo(x+w, y+h-r);
+    ctx.quadraticCurveTo(x+w, y+h, x+w-r, y+h);
+    ctx.lineTo(x+r, y+h);
+    ctx.quadraticCurveTo(x, y+h, x, y+h-r);
+    ctx.lineTo(x, y+r);
+    ctx.quadraticCurveTo(x, y, x+r, y);
+    ctx.closePath();
+    ctx.fill();
+	ctx.stroke();   
+}
+</script>
+
+<div align="center"><div id="data-table-cont"></div><table id="data-table"></table></div>
+		</main>
+		<div class="navseparator"></div>
+		<nav id="bottomnavbar" class="navbar navbar-default" role="navigation">
+  			<div id="footercontainer" class="container">
+				<div id="footerleft"> 
+					<b>Contacts:</b>
+					<ul id="contactlist">
+						<li><a href="http://www.fbk.eu/">FBK Fondazione Bruno Kessler - Trento - +39 0461 314200</a></li> 
+        				<li><a href="https://webvalley.fbk.eu/">WebValley - FBK</a></li>
+						<li><a href="http://www.ospedalebambinogesu.it/home">Ospedale Bambino Gesu' - Roma - urp@opbg.net</a></li>
+					</ul>
+				</div>
+				<div id="footerright">
+					<img src="TreeGraph_files/logoCassaRurale.png" class="logofooter" alt="Cassa Rurale logo">
+    				<img src="TreeGraph_files/logoComano.png" class="logofooter" alt="Comano logo">
+				</div> 
+  			</div>
+		</nav>
+	</div>
+
+    <script src="TreeGraph_files/jquery.js"></script>
+    <script src="TreeGraph_files/bootstrap.js"></script>
+  
+
+</body></html>

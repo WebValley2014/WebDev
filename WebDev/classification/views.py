@@ -34,7 +34,7 @@ To Michele : If I am asleep when you review this , see FIX ME in each view and i
 
 
 
-from forms import CLUploadFileForm
+from forms import *
 from WebDev.utils import *
 
 @login_required(login_url="/login")
@@ -43,7 +43,7 @@ def classification(request, pip_id):
         pip = Pipeline.objects.get(pip_id=pip_id)
         result = Results.objects.get(pip_id=pip, process_name='processing')
     except:
-        return HttpResponse('Bad Request: Pipline %s does not exist.' % (pip_id,))
+        return HttpResponse('Bad Request: Pipeline %s does not exist.' % (pip_id,))
     return HttpResponse("FILE: %s" % (result.filepath,))
 
 @login_required(login_url="/login")
@@ -60,7 +60,7 @@ def step2(request, pip_id):
     file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
 
     print 'Celery in launch'
-    ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath))
+    ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': 'minmax', 'solver': 'randomForest', 'ranking': 'randomForest'})
     print
     print 'Celery launched'
 
@@ -85,20 +85,6 @@ def learning_loading (request, task_id):
     else:
         return HttpResponse(result.status)
 
-def learning_finish(request, task_id):
-    '''
-    FIX ME : Correct the HTTP RESPONSE
-    '''
-    # Pick the results
-    result = settings.APP.AsyncResult(task_id)
-    if result.ready():
-        r = result.get()
-        rp = RunningProcess.objects.get(task_id=task_id)
-        if store_after_celery_class(rp, r, 'txt'):
-            return HttpResponse('OK')
-        else:
-            return HttpResponse('Error')
-    return HttpResponseRedirect('/preproc/processing/%s/' % (task_id,))
 
 
 @login_required(login_url="/login")
@@ -127,22 +113,29 @@ def upload_preProcessed(request):
 
                     handle_uploaded_file(p,file_otu,"processing", 'cl_otu')
                     handle_uploaded_file(p,file_class,"processing", 'cl_class')
-                    return HttpResponse('/class/step2/%s/' % (p.pip_id,))
+                    return HttpResponse('/class/option/%s/' % (p.pip_id,))
                 else:
                     messages.error(request, "File type incorrect")
         else:
             messages.error(request, "Insert the correct files")
         return HttpResponse('/class/upload/')
-    oldFiles = Results.objects.filter(process_name='Preprocessing', owner=request.user)
+    # Old files
+    oldFiles = Results.objects.filter(process_name="processing", owner=request.user)
     oldFiles = oldFiles.order_by('-id')
-    return render(request, 'classification/classification.html', {'oldFiles': oldFiles, 'file_exist': (len(oldFiles)>0)})
+
+    tabFile = []
+    for i in range(0, len(oldFiles), 2):
+        tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i].pip_id.pip_id))
+
+    return render(request, 'classification/classification.html', {'tabFile': tabFile, 'file_exist': (len(oldFiles)>0)})
 
 
 @login_required(login_url="/login")
-def deleteFile(request, id):
-    re = Results.objects.get(pk=id)
-    if re.owner == request.user:
-        delete(re)
+def deleteFile(request, id1, id2):
+    re = Results.objects.get(pk=int(id1))
+    delete(re)
+    re = Results.objects.get(pk=int(id2))
+    delete(re)
     return HttpResponseRedirect('/class/upload')
 
 
@@ -158,5 +151,6 @@ def download(request, p_id):
     #Retrive the download
     return download_file("file.txt", download_path)
 
-def option(request, p_id):
-    return render(request, 'classification/option.html', {'p_id': p_id})
+@login_required(login_url="/login")
+def option(request, pip_id):
+    return render(request, 'classification/option.html', {'pip_id': pip_id})
