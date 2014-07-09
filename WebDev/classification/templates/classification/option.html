@@ -25,6 +25,7 @@
 
 {% block main %}
 	<form action="/class/step2/" method="POST" style="text-align: center">
+    {% csrf_token %}
 		<h2>Options for the machine learning algorithm</h2>
 		<br />
 		<table style="width: 600px; margin-left: -300px; margin-right: -300px; position: relative; left: 50%">

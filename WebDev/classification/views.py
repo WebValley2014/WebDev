@@ -36,7 +36,15 @@ def classification_redirect(request):
     return HttpResponseRedirect("upload/")
 
 @login_required(login_url="/login")
-def step2(request, pip_id):
+def step2(request):
+    '''
+    #FIX ME : Doesn't Handle the Arguments .
+              HttpsResponseRedirect : Give the right URL.
+    '''
+    pip_id = request.POST.get('pip_id')
+    first = request.POST.get('First_Parameter')
+    second = request.POST.get('Second_Parameter')
+    third = request.POST.get('Third_Parameter')
 
     pip = Pipeline.objects.get(pip_id=pip_id)
     file_otu = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_otu')
@@ -44,7 +52,6 @@ def step2(request, pip_id):
 
     print 'Celery in launch'
     ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = {'scaling': 'minmax', 'solver': 'randomForest', 'ranking': 'randomForest'})
-    print
     print 'Celery launched'
 
 
@@ -155,7 +162,6 @@ def show_results(request, pip_id, type):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
     media_path = os.path.join(settings.MEDIA_URL, partial_path)
-    print media_path
 
     if type == '2D':
         print 'in'
