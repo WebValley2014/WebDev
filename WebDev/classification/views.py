@@ -39,10 +39,27 @@ def step2(request):
 
     if request.POST:
         try:
+            #Pip id
             pip_id = request.POST['pip_id']
-            #f_par = request.POST['First_Parameter']
-            #s_par = request.POST['Second_Parameter']
-            #t_par = request.POST['Third_Parameter']
+            #Random
+            try:
+                r = request.POST['random']
+                random = True
+            except:
+                random = False
+            #PRAMAETER
+            percentage = request.POST['percentage']
+            print percentage
+            scaling = request.POST['scaling']
+            print scaling
+            solver = request.POST['solver']
+            print solver
+            ranking = request.POST['ranking']
+            print ranking
+            cv_k = request.POST['cv_k']
+            print cv_k
+            cv_n = request.POST['cv_n']
+            print cv_n
         except:
             return HttpResponse('ERROR')
 
@@ -51,14 +68,14 @@ def step2(request):
         file_class = Results.objects.get(pip_id=pip, process_name='processing', filetype='cl_class')
 
         kw = {
-            'percentage': 10,
-            'n_groups': 10,
-            'scaling': 'minmax',            #First
-            'solver': 'randomForest',       #Second
-            'ranking': 'randomForest',      #Third
-            'random': False,
-            'cv_k': 5,
-            'cv_n': 10
+            'percentage':   percentage,
+            'n_groups':     10,
+            'scaling':      scaling,
+            'solver':       solver,
+            'ranking':      ranking,
+            'random':       random,
+            'cv_k':         cv_k,
+            'cv_n':         cv_n
         }
         ml_id = settings.APP.send_task("ml", (pip.pip_id, file_otu.filepath, file_class.filepath), kwargs = kw)
 
@@ -173,6 +190,8 @@ def show_results(request, pip_id, type):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
     media_path = os.path.join(settings.MEDIA_URL, partial_path)
+    link_three = '/class/show_results/%s/%s/' % (pip_id, 'three')
+    link_2d = '/class/show_results/%s/%s/' % (pip_id, '2D')
     print media_path
 
     if type == '2D':
@@ -180,8 +199,23 @@ def show_results(request, pip_id, type):
         media_path = os.path.join(media_path, 'img/')
         print media_path
         context = {
-            'media_path': media_path
+            'media_path': media_path,
+            'link_three': link_three,
+            'link_2d': link_2d
         }
         return render(request, 'classification/graph_2d.html', context)
+
+    if type == 'three':
+        print 'in'
+        json_path = os.path.join(media_path, '3dphylo.json')
+        file_3d = os.path.join(media_path, 'x')
+        print json_path
+        context = {
+            'json_file': json_path,
+            'link_three': link_three,
+            'link_2d': link_2d,
+            'file_3d': file_3d
+        }
+        return render(request, 'classification/tree_graph.html', context)
 
     return HttpResponse('Link does not exist')

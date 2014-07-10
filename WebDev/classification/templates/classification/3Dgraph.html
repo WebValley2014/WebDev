@@ -133,7 +133,7 @@ function init()
 	// DRAWING //
 	/////////////
 
-	call("{% static '3DLibraries/principal_coordinates.txt' %}"); // DA MODIFICARE
+	call("{{ file_3d }}"); // DA MODIFICARE
 	ReadToMatrix();
 	call("{$ static '3DLibraries/testStatus.txt' %}"); // DA MODIFICARE
 	ReadToStatus();

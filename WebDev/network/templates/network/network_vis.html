@@ -31,55 +31,58 @@
 	<div style="text-align: center">
 		<h1>Network graphs</h1>
 		<br />
-		{# for i in label_names #}
-			<!-- <button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ forloop.counter0 }}">{{ i }}</button> --->
-		{# endfor #}
-		<button type="button" class="btn btn-default activated" onclick="changeGraph(this)" value="0">HISTO1</button>
-		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="1">HISTO2</button>
-		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="2">HISTO3</button>
+		{% for i in label_names %}
+			<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ forloop.counter0 }}">{{ i }}</button>
+		{% endfor %}
 		<br /><br />
 		<div id="graph">
 			<img src="{% static 'graph_histo/HISTO1.png' %}" style="width: 800px; margin-left: 10px;" />
 			<br /><br />
 			<table class="table">
 				<tr>
-				    {# for i in label_names #}
-						<!-- <th>{{ i }}</th> -->
-					{# endfor #}
-					<th>HISTO2</th>
-					<th>HISTO3</th>
+				    {% for i in label_names %}
+						{% if forloop.last %}{% else %}<th>{{ i }}</th>{% endif %}
+					{% endfor %}
 				</tr>
 				<tr>
-					{# for i in label_distances #}
-						<!-- <td>{{ i }}</td> -->
-					{# endfor #}
-					<td>NUMERO 1</td>
-					<td>NUMERO 2</td>
+					{% for i in label_names %}
+						{% if forloop.last %}{% else %}<td>{{ i }}</td>{% endif %}
+					{% endfor %}
 				</tr>
 			</table>
 		</div>
 	</div>
 	<script>
 		// var path = "{{ media_path }}";
-		var path = "{% static 'graph_histo/' %}";
+		var path = "{{ graph_path }}";
 		var img = document.getElementById('graph').childNodes[1];
 		var table = document.getElementsByClassName('table')[0];
 		var len = 3 /*{{ matrix.len }}*/;
 
-		var matrix = [[],[],[],/*{# for i in labe.len #}[],{# endfor #}*/];
+		var matrix = [
+		{% for m in matrix %}
+		    [
+		    {% for i in m %}
+		        '{{ i }}' ,
 
-		matrix[0][1] = 'NUMERO 1';
+		    {% endfor %}
+		    ],
+		{% endfor %}
+		]
+
+
+		/*matrix[0][1] = 'NUMERO 1';
 		matrix[0][2] = 'NUMERO 2';
 
 		matrix[1][0] = 'NUMERO 1';
 		matrix[1][2] = 'NUMERO 2';
 
 		matrix[2][0] = 'NUMERO 1';
-		matrix[2][1] = 'NUMERO 2';
+		matrix[2][1] = 'NUMERO 2'; */
 		
-		/*{# for i in matrixver.len #}
-			{# for j in matrixhor.len #}
-				matrix[{{ i }}][{{ j }}] = {{ matrixIJelm }};
+		/*{# for m in matrix #}
+			{# for j in m #}
+				matrix[{{ m }}][{{ j }}] = {{ matrixIJelm }};
 			{# endfor #}
 		{# endfor #} */
 
