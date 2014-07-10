@@ -84,7 +84,7 @@ def store_after_celery_class(rundb, task_ret):
     #Create the new img directroy and file path
     img_path = os.path.join(new_path, 'img')
     #Pick the img directory
-    img = task_ret[0]['img']
+    img = task_ret['funct']['img']
     try:
         #Move the directory
         os.renames(img, img_path)
