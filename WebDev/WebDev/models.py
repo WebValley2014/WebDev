@@ -112,6 +112,8 @@ class Results (models.Model):
         ('nt_rank', 'input data network'),
         ('nt_metrics', 'input data network'),
         ('nt_stab', 'input data network stability'),
+        ('nt_otu', 'output data class'),
+        ('nt_filt', 'output data class'),
         ('cl_otu', 'preprocess output'),
         ('cl_class', 'input classification .txt'),
     )

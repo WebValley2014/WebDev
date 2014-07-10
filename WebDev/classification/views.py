@@ -129,14 +129,14 @@ def upload_preProcessed(request):
     # Old files
     try:
         oldFiles = Results.objects.filter(process_name="processing", owner=request.user)
-        oldFiles = oldFiles.order_by('-id')
+        #oldFiles = oldFiles.order_by('-id')
 
         tabFile = []
         for i in range(0, len(oldFiles), 2):
             tabFile.append(files(oldFiles[i], oldFiles[i+1], oldFiles[i].pip_id.pip_id))
     except:
         tabFile = []
-
+    rotate(tabFile)
     return render(request, 'classification/classification.html', {'tabFile': tabFile, 'file_exist': (len(tabFile)>0)})
 
 

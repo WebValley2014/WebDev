@@ -3,6 +3,7 @@ from django.conf import settings
 
 from Net import Net
 import sys
+import datetime
 import os
 
 __author__ = 'daniele'
@@ -44,9 +45,9 @@ def network_task(self, **kwargs):
     
     """
     # keys mandatory in kwargs
-    path_keys = ['fileData', 'fileLabel', 'fileSamples', 'fileFeauture',
+    path_keys = ['fileData', 'fileLabel', 'fileSamples', 'fileFeature',
                  'fileRank', 'fileMetrics', 'outDir' , 'numPar']
-    file_keys = path_keys[:-1]
+    file_keys = path_keys[:-2]
     dir_keys = path_keys[-1]
     
     # check if i get all the args
@@ -76,15 +77,15 @@ def network_task(self, **kwargs):
     # start task
     print "Starting celery network task ..."
     print self.request.id
-    try:
-        self.update_state(state='RUNNING')
-        start_time = unicode(datetime.datetime.now())
-        netAnalysis = Net(*args)
-        result = netAnalysis.run()
-        finish_time = unicode(datetime.datetime.now())
-        return {'result' : result, 'st': start_time, 'ft': finish_time}
-    except Exception, e:
-        msg = "Error while executing Network Analysis. "
-        msg+= "Details: {0}".format(e)
-        return Exception(e)
-    
+    #try:
+    self.update_state(state='RUNNING')
+    start_time = unicode(datetime.datetime.now())
+    netAnalysis = Net(*args)
+    result = netAnalysis.run()
+    finish_time = unicode(datetime.datetime.now())
+    return {'result' : result, 'st': start_time, 'ft': finish_time}
+    #except Exception, e:
+        # msg = "Error while executing Network Analysis. "
+        # msg+= "Details: {0}".format(e)
+        # return Exception(e)
+        #
