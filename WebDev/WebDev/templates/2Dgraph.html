@@ -1,15 +1,10 @@
 {% extends "base.html" %}
 {% load staticfiles %}
 
-{# TITLE #}
-{% block pagetitle %}
-	2D graphs - 
-{% endblock %}
-
-{# RESULTS TAB ACTIVE #}
+{# HOME TAB ACTIVE #}
 
 {% block resultstab %}
-	<li class="activetab"><a href="#">RESULTS</a></li>
+	<li class="activetab"><a href="{% url 'index' %}">RESULTS</a></li>
 {% endblock %}
 
 {# CONTENT #}
@@ -19,7 +14,7 @@
 		<h1>Graphs</h1>
 		<br /><br />
 		<div class="btn-group">
-			<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<button type="button" style="margin-right:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 				Linear<span class="caret" style="margin-left: 5px"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
@@ -33,27 +28,18 @@
 			</ul>
 		</div>
 		<div class="btn-group">
-			<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-				Histogram<span class="caret" style="margin-left: 5px"></span>
-			</button>
-			<ul class="dropdown-menu" role="menu">
-				<li onclick="changeHistogram(this)"><a>HISTO1</a></li>
-				<li onclick="changeHistogram(this)"><a>HISTO2</a></li>
-				<li onclick="changeHistogram(this)"><a>HISTO3</a></li>
-				<li onclick="changeHistogram(this)"><a>HISTO4</a></li>
-				<li onclick="changeHistogram(this)"><a>NET1</a></li>
-				<li onclick="changeHistogram(this)"><a>NET2</a></li>
-			</ul>
+			<button type="button" style="margin-right:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Histogram</button>
 		</div>
+		<a href="{{ link_tree }}"><input type="button" class="btn btn-default start" value="Phylogenetic tree" style="min-width: 100px" /></a>
 		<div class="btn-group">
-			<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+			<!--<button type="button" style="margin-left:20px" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
 				3D<span class="caret" style="margin-left: 5px"></span>
 			</button>
 			<ul class="dropdown-menu" role="menu">
-				<li><a href="{% url '3Dgraph' %}">3D Graph</a></li>
-				<li><a href="{% url '3Dgraph_oculus' %}">Oculus</a></li>
-				<li><a href="{% url 'tree_graph' %}">Phylogenetic tree</a></li>
-			</ul>
+				<li><a href="">3D Graph</a></li>
+				<li><a>Oculus</a></li>
+				<li><a href="{{ link_three }}">Philogeny tree</a></li>
+			</ul>--->
 		</div>
 		<br /><br />
 		<div id="all_graphs">
@@ -68,11 +54,47 @@
 				</ul>
 			</div>
 			<div id="graph_histogram" style="display: none">
-				<img src="" style="width: 820px" />
+				<div id="chart">
+				</div>
+				<div id="data-table">
+				</div>
 			</div>
 		</div>
 	</div>
+	<script type="text/javascript" src="{% static '2DLibraries/d3.min.js' %}"></script>
+	<script type="text/javascript" src="{% static '2DLibraries/2DPlot.js' %}"></script>
+	<script>
+      function ajaxRequest(){
+	  var activexmodes=["Msxml2.XMLHTTP", "Microsoft.XMLHTTP"] //activeX versions to check for in IE
+	  if (window.ActiveXObject){ //Test for support for ActiveXObject in IE first (as XMLHttpRequest in IE7 is broken)
+	      for (var i=0; i<activexmodes.length; i++){
+		  try{
+		      return new ActiveXObject(activexmodes[i])
+		  }
+		  catch(e){
+		      //suppress error
+		  }
+	      }
+	  }
+	  else if (window.XMLHttpRequest) // if Mozilla, Safari etc
+	      return new XMLHttpRequest()
+	  else
+	      return false
+      }
 
+      var r ;
+      var call = function(url) {
+          var a = new ajaxRequest ();
+          
+          a.open("GET", url, false);
+          a.send(null);
+          r = a.responseText;
+          CHART.go(r);
+	  TABLE.go();
+      }
+
+	window.onload = function(){ call('{# #}'); };
+    </script>
 	<script>
 		var isLinear = true;
 		var isHistogram = false;
@@ -81,6 +103,8 @@
 		var path_lin = "{{ media_path }}";
 		var path_his = "{% static 'graph_histo/' %}";
 		document.getElementById('graph_linear').childNodes[1].setAttribute('src', path_lin + pre + '_' + post + '.png');
+		var path_lin = "{{ media_path }}";
+		var path_his = "{% static 'graph_histo/' %}";
 
 		function changePre(dis) {
 			var img = document.getElementById('graph_linear').childNodes[1]; // 0 is text dunno
@@ -98,10 +122,10 @@
 		}
 
 		function changeHistogram(dis) {
-			var img = document.getElementById('graph_histogram').childNodes[1];
+			/*var img = document.getElementById('graph_histogram').childNodes[1];
 			var name = dis.childNodes[0].innerHTML;
 			var src = name + '.png';
-			img.setAttribute('src', path_his + src);
+			img.setAttribute('src', path_his + src);*/
 			if (isHistogram == false) { showGraphDiv('his') }
 		}
 
