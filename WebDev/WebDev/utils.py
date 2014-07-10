@@ -79,3 +79,12 @@ def delete(re):
     except:
         pass
     re.delete()
+
+def swap(lis, a, b):
+    t = lis[a]
+    lis[a]=lis[b]
+    lis[b] = t
+
+def rotate(lis):
+    for i in range(len(lis)/2):
+        swap(lis, i, len(lis)-1-i)
