@@ -32,10 +32,10 @@
 			</div>
     	{% endfor %}
 	{% endif %}
-	<p style="text-align:center">For the moment adding any more forms will break everything<br />Select or drop a <strong>.TXT</strong>, a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
+	<p style="text-align:center">Select or drop a <strong>.SFF</strong> and a <strong>.MAP</strong> file for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div class="input-group centerform">
+		<div class="input-group centerform" style="display: none">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-font" style="width:58px"> LABELS</span>
 			</span>

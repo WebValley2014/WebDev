@@ -35,14 +35,14 @@
 	<p style="text-align:center">Select or drop two <strong>.TXT</strong> files for the upload.</p><br />
 	<form class="form fileformbox" method="post" enctype="multipart/form-data">
 		{% csrf_token %}
-		<div class="input-group centerform">
+		<div class="input-group" style="width: 100%">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> OTU TABLE </span>
 			</span>
 			<input id="file1" name="file_otu" type="file" class="form-control" />
 		</div>
 		<br />
-        <div class="input-group centerform">
+        <div class="input-group" style="width: 100%">
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-file" style="width:140px; text-align: left"> LABELS </span>
 			</span>
