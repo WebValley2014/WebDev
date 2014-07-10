@@ -150,7 +150,7 @@ def processing(request, task_id):
         print 'redirect'
         return HttpResponseRedirect('/network/processing_finish/%s/' % (task_id,))
     else:
-        return HttpResponse(result.status)
+        return render(request, 'loading.html', {'status': result.status})
 
 def processing_finish(request, task_id):
     result = settings.APP.AsyncResult(task_id)

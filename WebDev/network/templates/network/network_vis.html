@@ -28,15 +28,19 @@
 			text-align: center;
 		}
 	</style>
-	<div style="text-align: center">
+	<div id="cont" style="text-align: center">
 		<h1>Network graphs</h1>
 		<br />
 		{% for i in label_names %}
-			<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ forloop.counter0 }}">{{ i }}</button>
+			{% if forloop.first %}
+                <button type="button" class="btn btn-default activated" onclick="changeGraph(this)" value="{{ forloop.counter0 }}">{{ i }}</button>
+            {% else %}
+                <button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ forloop.counter0 }}">{{ i }}</button>
+            {% endif %}
 		{% endfor %}
 		<br /><br />
 		<div id="graph">
-			<img src="{% static 'graph_histo/HISTO1.png' %}" style="width: 800px; margin-left: 10px;" />
+			<img src="" style="width: 800px; margin-left: 10px;" />
 			<br /><br />
 			<table class="table">
 				<tr>
@@ -53,11 +57,11 @@
 		</div>
 	</div>
 	<script>
-		// var path = "{{ media_path }}";
 		var path = "{{ graph_path }}";
 		var img = document.getElementById('graph').childNodes[1];
 		var table = document.getElementsByClassName('table')[0];
-		var len = 3 /*{{ matrix.len }}*/;
+		var len = {{ label_names|length }};
+        img.setAttribute('src', path + document.getElementsByClassName('activated')[0].innerHTML + '.png');
 
 		var matrix = [
 		{% for m in matrix %}
@@ -68,23 +72,7 @@
 		    {% endfor %}
 		    ],
 		{% endfor %}
-		]
-
-
-		/*matrix[0][1] = 'NUMERO 1';
-		matrix[0][2] = 'NUMERO 2';
-
-		matrix[1][0] = 'NUMERO 1';
-		matrix[1][2] = 'NUMERO 2';
-
-		matrix[2][0] = 'NUMERO 1';
-		matrix[2][1] = 'NUMERO 2'; */
-		
-		/*{# for m in matrix #}
-			{# for j in m #}
-				matrix[{{ m }}][{{ j }}] = {{ matrixIJelm }};
-			{# endfor #}
-		{# endfor #} */
+		];
 
 		function changeGraph(dis) {
 			dis.className = dis.className + " activated";
