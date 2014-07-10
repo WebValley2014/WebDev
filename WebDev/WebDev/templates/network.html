@@ -20,36 +20,37 @@
 			min-width: 80px;
 		}
 
-		.table th, td {
-			width: 200px;
+		.table th {
 			text-align: center;
 		}
 	</style>
 	<div style="text-align: center">
 		<h1>Network graphs</h1>
 		<br />
-		{% for i in label_names %}
-			<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ i }}">{{ i}}</button>
-		{% endfor %}
-		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="HISTO1">A</button>
-		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="HISTO2">B</button>
-		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="HISTO3">C</button>
+		{# for i in range(label_names) #}
+			<!-- <button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ i }}">{{ label_names_i }}</button> --->
+		{# endfor #}
+		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="0">HISTO1</button>
+		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="1">HISTO2</button>
+		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="2">HISTO3</button>
 		<br /><br />
 		<div id="graph">
 			<img src="{% static 'graph_histo/HISTO1.png' %}" style="width: 800px; margin-left: 10px;" />
 			<br /><br />
 			<table class="table">
 				<tr>
-				    {% for i in label_names %}
-						<th>{{ i }}</th>
-					{% endfor %}
+				    {# for i in label_names #}
+						<!-- <th>{{ i }}</th> -->
+					{# endfor #}
+					<th>A</th>
 					<th>B</th>
 					<th>C</th>
 				</tr>
 				<tr>
-					{% for i in label_distances %}
-						<td>{{ i }}</td>
-					{% endfor %}
+					{# for i in label_distances #}
+						<!-- <td>{{ i }}</td> -->
+					{# endfor #}
+					<td>0</td>
 					<td>NUMERO 1</td>
 					<td>NUMERO 2</td>
 				</tr>
@@ -59,12 +60,39 @@
 	<script>
 		// var path = "{{ media_path }}";
 		var path = "{% static 'graph_histo/' %}";
+		var img = document.getElementById('graph').childNodes[1];
+		var table = document.getElementsByClassName('table')[0];
+		var len = 3 /*{{ matrix.len }}*/;
+
+		var matrix = [[],[],[]];
+
+		matrix[0][0] = '0';
+		matrix[0][1] = 'NUMERO 1';
+		matrix[0][2] = 'NUMERO 2';
+
+		matrix[1][0] = 'NUMERO 1';
+		matrix[1][1] = '0';
+		matrix[1][2] = 'NUMERO 2';
+
+		matrix[2][0] = 'NUMERO 1';
+		matrix[2][1] = 'NUMERO 2';
+		matrix[2][2] = '0';
+
+		
+		/*{# for i in matrixver.len #}
+			{# for j in matrixhor.len #}
+				matrix[{{ i }}][{{ j }}] = {{ matrixIJelm }};
+			{# endfor #}
+		{# endfor #} */
 
 		function changeGraph(dis) {
-			var img = document.getElementById('graph').childNodes[1];
-			var name = dis.value;
+			var name = dis.innerHTML;
 			var src = name + '.png';
 			img.setAttribute('src', path + src);
+
+			for (i = 0; i < len; i++) {
+				table.getElementsByTagName('td')[i].innerHTML = matrix[dis.value][i];
+			}
 		}
 	</script>
 {% endblock %}
