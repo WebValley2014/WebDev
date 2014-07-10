@@ -62,6 +62,10 @@ class Net:
             self.setfeatures[i] = self.setfeatures[i][d+1:]
             self.legendfeatures.append(thesetfeatures[i][t+1:])
 
+        for i in range(len(self.legendfeatures)):       ## taking only the last field of the name
+            self.legendfeatures[i] = self.legendfeatures[i].split(';')
+            self.legendfeatures[i] = self.legendfeatures[i][-1]
+
         lsmpl, lsftr = self.mdata.shape
         if len(self.setsamples) != len(self.setlabels) or lsmpl != len(self.setlabels) or lsftr != len(self.setfeatures):
             print 'error, invalid input: data not coherent'
@@ -204,24 +208,27 @@ class Net:
         outFile = kwargs.get('outFile', 'testNetwork.png')
         if not os.path.exists(outDir):
             os.makedirs(outDir)
-        filePath = os.path.join(outDir, outFile)
+        filePath = outDir + '/' + outFile
         g = igraph.Graph.Weighted_Adjacency(list(matrix),mode=igraph.ADJ_MAX)
         visual_style = {}
         visual_style["title"] = title
         visual_style["vertex_size"] = 20
         visual_style["vertex_color"] = nodeColor
-        visual_style["vertex_label"] = self.setfeatures
+        visual_style["vertex_label"] = self.legendfeatures
+        visual_style["label_angle"] = 1.57
+        visual_style["label_dist"] = 100
         visual_style["edge_width"] = g.es["weight"]
-        a = g.degree()
-        for i in range(len(a)):
-            a[i] = a[i]/10
-        visual_style["vertex_size"] = a
-        
-        #visual_style["layout"] = layout_kamada_kawai
-        visual_style["bbox"] = (5000, 5000)       #FIXME
+        degrees = g.degree()
+        print degrees
+        for i in range(len(degrees)):
+            degrees[i] = degrees[i] * 5
+        visual_style["vertex_size"] = degrees
+        visual_style["layout"] = g.layout("circle")
+        #bbox = BoundingBox(750, 750, 750, 750)
+        #visual_style["bbox"] = bbox       ####FIXME####
         visual_style["margin"] = 20
         #plotting the network
-        igraph.plot(g, filePath, **visual_style)
+        igraph.plot(g, filePath, bbox = (1200,1200), **visual_style)
 
 ########
 
@@ -241,29 +248,29 @@ class Net:
             myConf['matrix'] = mtr
             myConf['nodeColor'] = self.get_randColor()
             myConf['lineColor'] = '#D8D8D8'
-            saveDirectory = os.path.join(self.outputpath, 'img')
+            saveDirectory = self.outputpath + '/img'
             if not os.path.exists(saveDirectory):
                 os.makedirs(saveDirectory)
             myConf['outDir'] = saveDirectory
             myConf['outFile'] = 'graph_label_' + str(int(self.aunilabels[n])) + '.png'
-            myConf['label'] = self.aunilabels[n]
+            myConf['label'] = self.legendfeatures
             myConf['title'] = 'Graph of the label ' + str(self.aunilabels[n])
             self.listtitles.append('Graph of the label ' + str(self.aunilabels[n]))
-            self.listgraphpaths.append(os.path.join(myConf['outDir'], myConf['outFile']))
+            self.listgraphpaths.append(myConf['outDir'] + '/' + myConf['outFile'])
             self.drawNetwork(**myConf)
             n += 1
 
         self.outDict = {}
         self.outDict['img'] = [f for f in self.listgraphpaths]
         self.outDict['titles'] = [t for t in self.listtitles]
-        saveDirectory1 = os.path.join(self.outputpath, 'data')
+        saveDirectory1 = self.outputpath + '/' + 'data'
         if not os.path.exists(saveDirectory1):
             os.makedirs(saveDirectory1)
-        np.savetxt(os.path.join(saveDirectory1, 'himmatrix.txt'), self.himadjmatrix)
-        self.outDict['matrix'] = os.path.join(self.outputpath, 'data/himmatrix.txt')
+        np.savetxt(saveDirectory1 + '/' + 'himmatrix.txt', self.himadjmatrix)
+        self.outDict['matrix'] = self.outputpath, '/data/himmatrix.txt'
 
 ########
 
-if __name__ == '__main__':
-    n = Net('X.txt', 'Y.txt', 'sampleIDs.txt', 'names.txt', 'X_l2r_l2loss_svc_SVM_std_featurelist.txt', 'X_l2r_l2loss_svc_SVM_std_metrics.txt', 'outfolder', 0.95)
-    n.run()
+# if __name__ == '__main__':
+#     n = Net('gevers/X.txt', 'gevers/Y.txt', 'gevers/sampleIDs.txt', 'gevers/names.txt', 'gevers/X_l2r_l2loss_svc_SVM_std_featurelist.txt', 'gevers/X_l2r_l2loss_svc_SVM_std_metrics.txt', 'outfolder', 0.1)
+#     n.run()

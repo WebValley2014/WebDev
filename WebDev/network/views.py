@@ -133,8 +133,9 @@ def start_network(request):
                   'fileFeature': file_nt_feature.filepath, 'fileRank': file_nt_rank.filepath, 'fileMetrics': file_nt_metrics.filepath,
                   'outDir': network_path,
                   'numPar': thre}
-
+    print 'start'
     preproc_id = settings.APP.send_task("network_task", kwargs=inputFiles)
+    print 'launched'
     store_before_celery(pip, inputFiles, preproc_id.id, "Network")
     return HttpResponseRedirect("/network/processing/" + preproc_id.id + "/")
 
