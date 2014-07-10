@@ -20,6 +20,10 @@
 			min-width: 80px;
 		}
 
+		.activated {
+			background-color: #c5d4c3 !important;
+		}
+
 		.table th {
 			text-align: center;
 		}
@@ -27,10 +31,10 @@
 	<div style="text-align: center">
 		<h1>Network graphs</h1>
 		<br />
-		{# for i in range(label_names) #}
-			<!-- <button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ i }}">{{ label_names_i }}</button> --->
+		{# for i in label_names #}
+			<!-- <button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ forloop.counter0 }}">{{ i }}</button> --->
 		{# endfor #}
-		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="0">HISTO1</button>
+		<button type="button" class="btn btn-default activated" onclick="changeGraph(this)" value="0">HISTO1</button>
 		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="1">HISTO2</button>
 		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="2">HISTO3</button>
 		<br /><br />
@@ -42,15 +46,13 @@
 				    {# for i in label_names #}
 						<!-- <th>{{ i }}</th> -->
 					{# endfor #}
-					<th>A</th>
-					<th>B</th>
-					<th>C</th>
+					<th>HISTO2</th>
+					<th>HISTO3</th>
 				</tr>
 				<tr>
 					{# for i in label_distances #}
 						<!-- <td>{{ i }}</td> -->
 					{# endfor #}
-					<td>0</td>
 					<td>NUMERO 1</td>
 					<td>NUMERO 2</td>
 				</tr>
@@ -64,20 +66,16 @@
 		var table = document.getElementsByClassName('table')[0];
 		var len = 3 /*{{ matrix.len }}*/;
 
-		var matrix = [[],[],[]];
+		var matrix = [[],[],[],/*{# for i in labe.len #}[],{# endfor #}*/];
 
-		matrix[0][0] = '0';
 		matrix[0][1] = 'NUMERO 1';
 		matrix[0][2] = 'NUMERO 2';
 
 		matrix[1][0] = 'NUMERO 1';
-		matrix[1][1] = '0';
 		matrix[1][2] = 'NUMERO 2';
 
 		matrix[2][0] = 'NUMERO 1';
 		matrix[2][1] = 'NUMERO 2';
-		matrix[2][2] = '0';
-
 		
 		/*{# for i in matrixver.len #}
 			{# for j in matrixhor.len #}
@@ -86,12 +84,18 @@
 		{# endfor #} */
 
 		function changeGraph(dis) {
+			dis.className = dis.className + " activated";
 			var name = dis.innerHTML;
 			var src = name + '.png';
 			img.setAttribute('src', path + src);
-
+			var j = 0;
 			for (i = 0; i < len; i++) {
-				table.getElementsByTagName('td')[i].innerHTML = matrix[dis.value][i];
+				if (i != dis.value) {
+					table.getElementsByTagName('th')[j].innerHTML = dis.parentNode.getElementsByTagName('button')[i].innerHTML;
+					table.getElementsByTagName('td')[j].innerHTML = matrix[dis.value][i];
+					dis.parentNode.getElementsByTagName('button')[i].className = dis.parentNode.getElementsByTagName('button')[i].className.split(' activated')[0];
+					j += 1;
+				}
 			}
 		}
 	</script>

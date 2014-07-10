@@ -36,43 +36,43 @@
 								{% block resultstab %}{% if user.is_authenticated %}<li><a href="#">RESULTS</a></li>{% endif %}{% endblock %}
 								{% block abouttab %}<li><a href="{% url 'about' %}">ABOUT US</a></li>{% endblock %}
 								{% block contactstab %}<li><a href="{% url 'contact' %}">CONTACTS</a></li>{% endblock %}
+								{% block login %}<li class="dropdown">
+									<a href="#" class="dropdown" data-toggle="dropdown">
+										{% if user.is_authenticated %}
+											{{ user.username | upper }}
+										{% else %}
+											LOGIN
+										{% endif %}
+										<span class="caret caretfix"></span>
+									</a>
+									<div id="logindropdown" class="dropdown-menu">
+										{% if user.is_authenticated %}
+											{# MERDA DA SISTEMARE #}
+											<a href="/logout/"><button type="submit" class="btn btn-default centeredbutton">LOGOUT</button></a>
+										{% else %}
+											<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
+											{% csrf_token %}
+												<div class="input-group">
+													<span class="input-group-addon">
+														<span class="glyphicon glyphicon-user"></span>
+													</span>
+													<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
+												</div>
+												<br />
+												<div class="input-group">
+													<span class="input-group-addon">
+														<span class="glyphicon glyphicon-asterisk"></span>
+													</span>
+													<input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
+												</div>
+												<br />
+												<button type="submit" class="btn btn-default centeredbutton">Submit</button>
+												<input type="hidden" name="next" value="/">
+											</form>
+										{% endif %}
+									</div>
+								</li>{% endblock %}
 							</ul>
-							{% block login %}<li class="dropdown">
-								<a href="#" class="dropdown" data-toggle="dropdown">
-									{% if user.is_authenticated %}
-										{{ user.username | upper }}
-									{% else %}
-										LOGIN
-									{% endif %}
-									<span class="caret caretfix"></span>
-								</a>
-								<div id="logindropdown" class="dropdown-menu">
-									{% if user.is_authenticated %}
-										{# MERDA DA SISTEMARE #}
-										<a href="/logout/"><button type="submit" class="btn btn-default centeredbutton">LOGOUT</button></a>
-									{% else %}
-										<form class="form formbox" action="{% url 'django.contrib.auth.views.login' %}" method="POST">
-										{% csrf_token %}
-											<div class="input-group">
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-user"></span>
-												</span>
-												<input id="id_username" name="username" type="text" class="form-control" placeholder="Username">
-											</div>
-											<br />
-											<div class="input-group">
-												<span class="input-group-addon">
-													<span class="glyphicon glyphicon-asterisk"></span>
-												</span>
-												<input type="password" name="password" id="id_password" class="form-control" placeholder="Password">
-											</div>
-											<br />
-											<button type="submit" class="btn btn-default centeredbutton">Submit</button>
-											<input type="hidden" name="next" value="/">
-										</form>
-									{% endif %}
-								</div>
-							</li>{% endblock %}
 						</ul>
 					</div>
 				</div>
