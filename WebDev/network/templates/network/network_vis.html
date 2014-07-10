@@ -74,6 +74,8 @@
 		{% endfor %}
 		];
 
+        table.getElementsByTagName('td')[0].innerHTML = matrix[0][1];
+
 		function changeGraph(dis) {
 			dis.className = dis.className + " activated";
 			var name = dis.innerHTML;

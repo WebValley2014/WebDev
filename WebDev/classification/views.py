@@ -190,7 +190,7 @@ def show_results(request, pip_id, type):
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
     media_path = os.path.join(settings.MEDIA_URL, partial_path)
-    link_three = '/class/show_results/%s/%s/' % (pip_id, 'three')
+    link_tree = '/class/show_results/%s/%s/' % (pip_id, 'tree')
     link_2d = '/class/show_results/%s/%s/' % (pip_id, '2D')
     print media_path
 
@@ -200,19 +200,20 @@ def show_results(request, pip_id, type):
         print media_path
         context = {
             'media_path': media_path,
-            'link_three': link_three,
+            'link_tree': link_tree,
             'link_2d': link_2d
         }
+        print link_tree
         return render(request, 'classification/graph_2d.html', context)
 
-    if type == 'three':
+    if type == 'tree':
         print 'in'
         json_path = os.path.join(media_path, '3dphylo.json')
         file_3d = os.path.join(media_path, 'x')
         print json_path
         context = {
             'json_file': json_path,
-            'link_three': link_three,
+            'link_tree': link_tree,
             'link_2d': link_2d,
             'file_3d': file_3d
         }

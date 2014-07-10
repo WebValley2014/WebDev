@@ -195,14 +195,14 @@
     </tr>
 	{% for el in tabFile %}
             <tr>
-            <td> {{ el.fileData.filename }}</td>
-            <td> {{ el.fileLabel.filename }}</td>
-            <td> {{ el.fileSamples.filename }}</td>
-            <td> {{ el.fileFeature.filename }}</td>
-            <td> {{ el.fileRank.filename }}</td>
-            <td> {{ el.fileMetrics.filename }}</td>
-            <td> <a href="/network/option/{{ el.pip_id }}/"> SELECT </a></td>
-            <td> <a href="/network/delete/{{ el.fileData.pk }}/{{ el.fileLabel.pk }}/{{ el.fileSamples.pk }}/{{ el.fileFeature.pk }}/{{ el.fileRank.pk }}/{{ el.fileMetrics.pk }}/"> DELETE </a> </td>
+            <td>{{ el.fileData.filename|truncatechars:14 }}</td>
+            <td>{{ el.fileLabel.filename|truncatechars:14 }}</td>
+            <td>{{ el.fileSamples.filename|truncatechars:14 }}</td>
+            <td>{{ el.fileFeature.filename|truncatechars:14 }}</td>
+            <td>{{ el.fileRank.filename|truncatechars:14 }}</td>
+            <td>{{ el.fileMetrics.filename|truncatechars:14 }}</td>
+            <td><a href="/network/option/{{ el.pip_id }}/"> SELECT </a></td>
+            <td><a href="/network/delete/{{ el.fileData.pk }}/{{ el.fileLabel.pk }}/{{ el.fileSamples.pk }}/{{ el.fileFeature.pk }}/{{ el.fileRank.pk }}/{{ el.fileMetrics.pk }}/"> DELETE </a> </td>
             </tr>
 	{% endfor %}
     </table>
