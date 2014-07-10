@@ -71,8 +71,8 @@ def store_after_celery_class(rundb, task_ret):
     print '+++++++++++++++++++++++++++++++++++++'
 
     #RUNDB
-    rundb.started = task_ret[1]
-    rundb.finished = task_ret[2]
+    rundb.started = task_ret['st']
+    rundb.finished = task_ret['ft']
 
     #Create the new_path for the file
     pipeline = rundb.pip_id
