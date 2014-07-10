@@ -25,6 +25,8 @@ urlpatterns = patterns('',
 	url(r'^results/tree_graph/$', "WebDev.views.tree_graph", name='tree_graph'),
     #STEFANO
     url(r'^results/2D_graph/$', "WebDev.views.graph_2d", name='2Dgraph'),
+	#LEONESSI
+	url(r'^results/network/$', "WebDev.views.network", name='network_graph'),
 
     # Classification urls
     url(r'^class/', include('classification.urls')),

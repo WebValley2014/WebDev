@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load staticfiles %}
 
 {# TITLE #}
 {% block pagetitle %}
@@ -15,17 +16,29 @@
 {# CONTENT #}
 
 {% block main %}
+	<style>
+		.nolist {
+			margin-bottom: 20px;
+			overflow: hidden;
+			border-top: 1px solid #ccc;
+		}
 
-	<h1 align="center">The TEAM</h1><br />
+		.nolist li {
+			line-height: 1.5em;
+			border-bottom: 1px solid #ccc;
+			float: left;
+		}
 
-<div align="center">
-	<img src="../static/img/OurTeam.png" height="400px"/>
-</div>
-
-
-	<br /><br /><h3>The WebValley team:</h3>
-	<h4>Tutors</h4>
-	<ul class="nolist">
+		.single { width: 820px; }
+		.single li { width: 100% }
+		.double { width: 340px; }
+		.double li { width: 50%; }
+	</style>
+	<img src="{% static 'img/OurTeam.png' %}" style="float: right; margin-top: 100px" />
+	<b style="font-size: 20px">The WebValley team:</b>
+	<br />
+	<b style="font-size: 17px">Tutors</b>
+	<ul class="nolist double">
 		<li>Claudia Dolci</li>
 		<li>Giuseppe Jurman</li>
 		<li>Cesare Furlanello</li>
@@ -37,12 +50,11 @@
 		<li>Gabriele Franch</li>
 		<li>Martina Calovi</li>
 		<li>Michele Filosi</li>
-		<li><b>Roberto Visintainer (for friends: #BobbeVis or <a href="https://twitter.com/hashtag/visintainer?src=hash">#Visintainer</a>)</b></li>
+		<li>Roberto Visintainer</li>
 		<li>Ernesto Arbitrio</li>
-	</ul><br />
-
-	<h4>Students</h4>
-	<ul class="nolist">
+	</ul>
+	<b style="font-size: 17px">Students</b>
+	<ul class="nolist double">
 		<li>Andrea Rivera</li>
 		<li>Cristian Lizan</li>	
 		<li>Davide Bizzarri</li>
@@ -63,9 +75,10 @@
 		<li>Talissa Dreossi</li>
 		<li>Yuan Chen</li>
 	</ul>
-
-	<br /><h2>Special thanks to</h2>
-	<ul class="nolist">
+	<br />
+	<b style="font-size: 20px">Special thanks to:</b>
+	<br /><br />
+	<ul class="nolist single">
 		<li>Provincia Autonoma di Trento</li>
 		<li>APT Terme di Comano</li><br>
 		<li>Dolomiti di Brenta</li>
@@ -85,31 +98,29 @@
 		<li>Universita' di Roma</li>
 		<li>Fondazione Edmund Mach</li>
 	</ul>
-
-	<br /><h2>Contacts</h2>
-	<h4>Fondazione Bruno Kessler</h4>
-	<ul class="nolist">
+	<br />
+	<b style="font-size: 20px">Contacts:</b>
+	<br /><br />
+	<b style="font-size: 17px">Fondazione Bruno Kessler</b>
+	<ul class="nolist single">
 		<li>Via Sommarive, 18</li>
 		<li>Povo (Trento), Italy 38123</li>
 		<li>P: +39 366 7554977</li><br>
-		<li>webvalley@fbk.eu</li>
-		<li>http://webvalley.fbk.eu</li><br>
+		<li>email: <a href="mailto:webvalley@fbk.eu">webvalley@fbk.eu</a></li>
+		<li>website: <a href="http://webvalley.fbk.eu/">http://webvalley.fbk.eu</a></li>
 		<li>Cesare Furlanello</li>
 		<li>Giuseppe Jurman - jurman at fbk dot eu</li>
 		<li>Martina Calovi - mcalovi at fbk dot eu</li>
-	</ul><br>
-
-	<h4>Bambino Gesu' Ospedale Pediatrico</h4>
-	<ul class="nolist">
+	</ul>
+	<b style="font-size: 17px">Bambino Gesu' Ospedale Pediatrico</b>
+	<ul class="nolist single">
 		<li>Centralino</li>
 		<li>tel. +39 06.6859.1</li><br>
 		<li>URP - Ufficio Relazioni con il Pubblico</li>
-		<li>e-mail: urp@opbg.net </li><br>
-		<li>tel. +39 06.6859.4888 - Sedi di Roma Gianicolo, Taormina, Potenza e Catanzaro </li>
-		<li>tel. +39 06.6859.3638 - Sede di Roma San Paolo </li>
+		<li>e-mail: <a href="mailto:urp@opbg.net">urp@opbg.net</a></li>
+		<li>website: <a href="http://www.ospedalebambinogesu.it/">http://www.ospedalebambinogesu.it</a></li>
+		<li>tel. +39 06.6859.4888 - Sedi di Roma Gianicolo, Taormina, Potenza e Catanzaro</li>
+		<li>tel. +39 06.6859.3638 - Sede di Roma San Paolo</li>
 		<li>tel. +39 06.6859.3555 - Sedi di Palidoro e Santa Marinella</li>
 	</ul>
-	
-
-
 {% endblock %}

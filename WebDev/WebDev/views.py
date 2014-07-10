@@ -25,3 +25,8 @@ def tree_graph(request):
 
 def graph_2d(request):
     return render(request, '2Dgraph.html')
+
+# LEONESSI
+
+def network(request):
+	return render(request, 'network.html')
