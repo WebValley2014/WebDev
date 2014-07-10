@@ -40,9 +40,9 @@ def step2(request):
     if request.POST:
         try:
             pip_id = request.POST['pip_id']
-            f_par = request.POST['First_Parameter']
-            s_par = request.POST['Second_Parameter']
-            t_par = request.POST['Third_Parameter']
+            #f_par = request.POST['First_Parameter']
+            #s_par = request.POST['Second_Parameter']
+            #t_par = request.POST['Third_Parameter']
         except:
             return HttpResponse('ERROR')
 
@@ -53,9 +53,9 @@ def step2(request):
         kw = {
             'percentage': 10,
             'n_groups': 10,
-            'scaling': 'minmax',
-            'solver': 'randomForest',
-            'ranking': 'randomForest',
+            'scaling': 'minmax',            #First
+            'solver': 'randomForest',       #Second
+            'ranking': 'randomForest',      #Third
             'random': False,
             'cv_k': 5,
             'cv_n': 10

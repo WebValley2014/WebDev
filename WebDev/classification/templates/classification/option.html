@@ -31,7 +31,7 @@
 		<h5>DO NOT MESS WITH THE OPTIONS OR IT WILL BREAK</h5><br/><br/>
 		<div style="float:left; margin-left: 170px">
 			<h4>Scaling method</h4>
-			<select name="First_Parameter" class="btn btn-default dropdown-toggle">
+			<select name="scaling" class="btn btn-default dropdown-toggle">
 				<option >std</option>
 				<option >norm_l2</option>
 				<option >minmax</option>
@@ -39,7 +39,7 @@
 		</div>
 		<div style="float:left;margin-left:10px">
 			<h4>Classifier</h4>
-			<select name="Second_Parameter" class="btn btn-default dropdown-toggle" style="width:180px">
+			<select name="solver" class="btn btn-default dropdown-toggle" style="width:180px">
 				<option >l2r_l2loss_svc</option>
 				<option >l2r_l2loss_svc_dual</option>
 				<option >l2r_l1loss_svc_dual</option>
@@ -50,7 +50,7 @@
 		</div>
 		<div style="float:left;margin-left:10px">
 			<h4 style="margin-left:20px">Feature ranking method</h4>
-			<select name="Third_Parameter" class="btn btn-default dropdown-toggle" style="margin-left:11px;width:180px">
+			<select name="ranking" class="btn btn-default dropdown-toggle" style="margin-left:11px;width:180px">
 				<option >SVM</option>
 				<option >RFE</option>
 				<option >Random</option>
@@ -66,11 +66,11 @@
 			<div style="float:left">
 					<div class="input-group" style="padding: 10px 10px 3px;width:220px;margin-left:40px">
 					  <span class="input-group-addon">Cross validation_k</span>
-					  <input type="text" class="form-control" value="5">
+					  <input name="cv_k" type="text" class="form-control" value="5">
 					</div>
 					<div class="input-group" style="padding: 3px 10px 10px;width:220px;margin-left:40px">
 					  <span class="input-group-addon">Cross validation_n</span>
-					  <input type="text" class="form-control" value="10">
+					  <input name="cv_n" type="text" class="form-control" value="10">
 					</div>
 			</div>
 			<div style="float:left;margin-left:40px;margin-top:12px" >
