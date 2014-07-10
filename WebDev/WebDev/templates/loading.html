@@ -23,29 +23,34 @@
 			</div>
     	{% endfor %}
 	{% endif %}
-        <style>
-            .glyphicon-refresh-animate {
-                                           -animation: spin .7s infinite linear;
-                                           -webkit-animation: spin2 .7s infinite linear;
+	<style>
+		.glyphicon-refresh-animate {
+			-animation: spin .7s infinite linear;
+			-webkit-animation: spin2 .7s infinite linear;
+			-moz-animation: spin3 .7s infinite linear;
+		}
 
-                                        }
-            @-webkit-keyframes spin2 {
-    from { -webkit-transform: rotate(0deg);}
-    to { -webkit-transform: rotate(360deg);}
-}
+		@-webkit-keyframes spin2 {
+			from { -webkit-transform: rotate(0deg); }
+			to { -webkit-transform: rotate(360deg); }
+		}
 
-@keyframes spin {
-    from { transform: scale(1) rotate(0deg);}
-    to { transform: scale(1) rotate(360deg);}
-}
-        </style>
+		@keyframes spin {
+			from { transform: scale(1) rotate(0deg); }
+			to { transform: scale(1) rotate(360deg); }
+		}
 
-     <div style="text-align: center">
-        <h3>Please Wait. Do Not Close This Page.</h3>
-	        <button class="btn btn-lg btn-success" align="center""><span class="glyphicon glyphicon-refresh" style="-animation: spin .7s infinite linear; -webkit-animation: spin2 .7s infinite linear;"></span> {{status}}</button>
-        <h4>You will be redirected after the process is finished. This may take a very long time.</h4>
-     </div>
-     <script>
-         setTimeout(function(){ location.reload(); }, 5000);
-     </script>
+		@-moz-keyframes spin3 {
+			from { -moz-transform: rotate(0deg); }
+			to { -moz-transform: rotate(360deg); }
+		}
+	</style>
+	<div style="text-align: center">
+	<h3>Please Wait. Do Not Close This Page.</h3>
+	<button class="btn btn-lg btn-success" align="center"><span class="glyphicon glyphicon-refresh" style="-animation: spin .7s infinite linear; -webkit-animation: spin2 .7s infinite linear;"></span> {{status}}</button>
+	<h4>You will be redirected after the process is finished. This may take a very long time.</h4>
+	</div>
+	<script>
+		setTimeout(function(){ location.reload(); }, 5000);
+	</script>
 {% endblock %}
