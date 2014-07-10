@@ -208,11 +208,13 @@ def show_results(request, pip_id, type):
     if type == 'three':
         print 'in'
         json_path = os.path.join(media_path, '3dphylo.json')
+        file_3d = os.path.join(media_path, 'x')
         print json_path
         context = {
             'json_file': json_path,
             'link_three': link_three,
-            'link_2d': link_2d
+            'link_2d': link_2d,
+            'file_3d': file_3d
         }
         return render(request, 'classification/tree_graph.html', context)
 

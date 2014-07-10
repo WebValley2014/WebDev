@@ -16,6 +16,7 @@ from forms import *
 from WebDev.utils import *
 from WebDev.store import *
 import hashlib
+import numpy as np
 
 inputName = "Classification"
 
@@ -146,6 +147,7 @@ def processing(request, task_id):
     print str(settings.APP)
 
     if result.ready():
+        print 'redirect'
         return HttpResponseRedirect('/network/processing_finish/%s/' % (task_id,))
     else:
         return HttpResponse(result.status)
@@ -156,7 +158,7 @@ def processing_finish(request, task_id):
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
         if store_after_celery_network(rp, r):
-            return HttpResponse('OK')
+            return HttpResponseRedirect('/network/show_results/%s/' % (rp.pip_id.pip_id,))
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/network/processing/%s/' % (task_id,))
@@ -164,6 +166,40 @@ def processing_finish(request, task_id):
 @login_required(login_url="/login")
 def option(request, pip_id):
     return render(request, 'network/option.html', {'pip_id': pip_id})
+
+def show_results(request, pip_id):
+    print pip_id
+    pipeline = Pipeline.objects.get(pip_id=pip_id)
+    #Create MEDIA path
+    partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+    partial_path = os.path.join(partial_path, 'network')
+    media_path = os.path.join(settings.MEDIA_URL, partial_path)
+    #Graph_path
+    graph_path = os.path.join(media_path, 'img')+'/'
+
+    print settings.BASE_DIR
+    print graph_path
+    a_graph_path = settings.BASE_DIR + graph_path
+    print a_graph_path
+
+    file_list = os.listdir(a_graph_path)
+    for i in range(len(file_list)):
+        file_list[i] = file_list[i].replace('.png', '')
+
+    m_path = os.path.join(media_path, 'data')
+    file_path = os.path.join(m_path, 'himmatrix.txt')
+    file_path = settings.BASE_DIR + file_path
+    matrix = np.genfromtxt(file_path)
+
+    print str(matrix)
+
+    context = {
+        'graph_path': graph_path,
+        'label_names': file_list,
+        'matrix': matrix
+    }
+
+    return render(request, 'network/network_vis.html', context)
 
 #@login_required(login_url="/login")
 #def showResults(request):

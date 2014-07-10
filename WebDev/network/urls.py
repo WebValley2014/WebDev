@@ -6,6 +6,8 @@ admin.autodiscover()
 
 
 urlpatterns = patterns('network.views',
+
+    url(regex=r'^show_results/(.+)/$', view="show_results", name="show_results_net"),
     #Upload Pre-Processed file
     url(regex=r'^upload/$', view="upload_network", name="network_upload"),
     url(regex=r'^start_network/$', view='start_network', name='start_network'),
