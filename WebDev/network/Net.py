@@ -1,7 +1,7 @@
 #######################################################
 ## this is the class Net.                            ##
 ## it has been proudly imagined and happily coded by ##
-## Davide Leonessi & Stefano Valentini      (c) 2014 ##
+## Davide Leonessi & Stefano Valentini          2014 ##
 #######################################################
 
 import numpy as np

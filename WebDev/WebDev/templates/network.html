@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+
+{# TITLE #}
+{% block pagetitle %}
+	Network graphs - 
+{% endblock %}
+
+{# RESULTS TAB ACTIVE #}
+
+{% block resultstab %}
+	<li class="activetab"><a href="#">RESULTS</a></li>
+{% endblock %}
+
+{# CONTENT #}
+
+{% block main %}
+	<style>
+		.btn {
+			min-width: 80px;
+		}
+
+		.table th, td {
+			width: 200px;
+			text-align: center;
+		}
+	</style>
+	<div style="text-align: center">
+		<h1>Network graphs</h1>
+		<br />
+		{% for i in label_names %}
+			<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="{{ i }}">{{ i}}</button>
+		{% endfor %}
+		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="HISTO1">A</button>
+		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="HISTO2">B</button>
+		<button type="button" class="btn btn-default" onclick="changeGraph(this)" value="HISTO3">C</button>
+		<br /><br />
+		<div id="graph">
+			<img src="{% static 'graph_histo/HISTO1.png' %}" style="width: 800px; margin-left: 10px;" />
+			<br /><br />
+			<table class="table">
+				<tr>
+				    {% for i in label_names %}
+						<th>{{ i }}</th>
+					{% endfor %}
+					<th>B</th>
+					<th>C</th>
+				</tr>
+				<tr>
+					{% for i in label_distances %}
+						<td>{{ i }}</td>
+					{% endfor %}
+					<td>NUMERO 1</td>
+					<td>NUMERO 2</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<script>
+		// var path = "{{ media_path }}";
+		var path = "{% static 'graph_histo/' %}";
+
+		function changeGraph(dis) {
+			var img = document.getElementById('graph').childNodes[1];
+			var name = dis.value;
+			var src = name + '.png';
+			img.setAttribute('src', path + src);
+		}
+	</script>
+{% endblock %}
