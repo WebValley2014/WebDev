@@ -19,14 +19,15 @@ urlpatterns = patterns('',
     url(r'^contact/$', "WebDev.views.contact", name='contact'),
     #About_us
     url(r'^about_us/$', "WebDev.views.about_us", name='about'),
+    url(r'^cesare/furlanello/$', 'WebDev.views.cf', name='cf'),
     #FARINA
     url(r'^results/3D_graph/$', "WebDev.views.graph_3D", name='3Dgraph'),
     url(r'^results/3D_graph_oculus/$', "WebDev.views.graph_oculus_3D", name='3Dgraph_oculus'),
-	url(r'^results/tree_graph/$', "WebDev.views.tree_graph", name='tree_graph'),
+    url(r'^results/tree_graph/$', "WebDev.views.tree_graph", name='tree_graph'),
     #STEFANO
     url(r'^results/2D_graph/$', "WebDev.views.graph_2d", name='2Dgraph'),
 	#LEONESSI
-	url(r'^results/network/$', "WebDev.views.network", name='network_graph'),
+    url(r'^results/network/$', "WebDev.views.network", name='network_graph'),
 
     # Classification urls
     url(r'^class/', include('classification.urls')),
