@@ -1,0 +1,23 @@
+#changes in WebDevNEW with respect to git download
+
+in WebDev/settings.py (at the very end of the file):
+APP = celery.Celery('Pipeline.tasks', broker = 'amqp://wvlab:wv2014@54.72.200.168/', backend = 'amqp')
+changed to:
+APP = celery.Celery('Pipeline.tasks', broker = 'amqp://guest:guest@localhost/', backend = 'amqp')
+for local running
+USAGE: comment/uncomment either line to select execution mode
+
+in ./:
+tasks.py for Celery worker added. It runs the tasks in the folders preprocess/, classification/, and network/
+Again, execution mode local/cloud can be chosen: same as above
+
+classification files changed with those in github/Pipeline:
+ml_pipeline.py
+plot_metrics.py
+ml/ folder (all files)
+phylo3d/ folder
+
+in ml_pipeline.py:
+In ML.convert_input: Edited the otu table and labels sort command. Now sorts the tables correctly
+In ML.machine_learning: Fixed the issue that random labels was always selected due to wrong kwargs handling
+

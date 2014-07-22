@@ -1,0 +1,3670 @@
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding Unassigned:Other:Other:Other
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.00195367010885
+0.0
+-0.00026274303731
+-0.00026274303731
+-0.000366159384615
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00156617071261
+0.00182453545847
+0.00179674428619
+0.00179674428619
+0.00179674428619
+0.0
+0.0
+-0.00044526165222
+-0.000525486074619
+0.000689473432519
+0.0
+0.0
+-0.0151934190299
+0.0
+-0.000693962526024
+0.00097611058122
+0.0
+-0.000693962526024
+0.0
+0.000321538612253
+0.000321538612253
+-0.0109619866814
+-0.0109619866814
+-0.145632916727
+-0.145632916727
+0.000296208530805
+0.000296208530805
+0.0
+0.0
+0.0
+-0.000381388253242
+0.0
+-0.000381388253242
+-0.000381388253242
+0.00129287007323
+-0.000519750519751
+-0.000381388253242
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00047091572751
+0.0
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+-0.0107142857143
+-0.0107142857143
+0.0
+-0.000265886732252
+-0.000265886732252
+0.0
+0.0
+0.0
+0.00998701626445
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+-0.00236468733579
+-0.0250874300155
+0.00595811087948
+-0.00026274303731
+0.0
+0.0
+0.000420433453755
+-0.00069011238185
+0.0
+0.00302833043
+0.0472959403854
+-0.327011372857
+-0.327011372857
+0.0
+0.0
+0.0
+0.0
+-0.326266771219
+0.0
+0.0
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.0
+0.0
+0.00302833043
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00738647076456
+0.0126448007537
+0.0126448007537
+0.00333951150093
+0.00578691257734
+0.187327639209
+0.000673189383716
+0.185847708054
+0.185847708054
+-0.00106354692901
+0.0
+-0.000653594771242
+0.0
+0.00125430897135
+0.0
+0.0
+0.0
+-0.0216326760366
+0.0
+0.00875065764279
+-0.0768808777119
+-0.0258865189745
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00308440056504
+0.00175157788929
+-0.0113325999708
+0.00175157788929
+0.00175157788929
+0.0186237841725
+-0.0547715145109
+-0.0547715145109
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7fae9aa4a190
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f38c1e2d190
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7fad0e33b150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding Unassigned:Other:Other:Other
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.00195367010885
+0.0
+-0.00026274303731
+-0.00026274303731
+-0.000366159384615
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00156617071261
+0.00182453545847
+0.00179674428619
+0.00179674428619
+0.00179674428619
+0.0
+0.0
+-0.00044526165222
+-0.000525486074619
+0.000689473432519
+0.0
+0.0
+-0.0151934190299
+0.0
+-0.000693962526024
+0.00097611058122
+0.0
+-0.000693962526024
+0.0
+0.000321538612253
+0.000321538612253
+-0.0109619866814
+-0.0109619866814
+-0.145632916727
+-0.145632916727
+0.000296208530805
+0.000296208530805
+0.0
+0.0
+0.0
+-0.000381388253242
+0.0
+-0.000381388253242
+-0.000381388253242
+0.00129287007323
+-0.000519750519751
+-0.000381388253242
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00047091572751
+0.0
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+-0.0107142857143
+-0.0107142857143
+0.0
+-0.000265886732252
+-0.000265886732252
+0.0
+0.0
+0.0
+0.00998701626445
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+-0.00236468733579
+-0.0250874300155
+0.00595811087948
+-0.00026274303731
+0.0
+0.0
+0.000420433453755
+-0.00069011238185
+0.0
+0.00302833043
+0.0472959403854
+-0.327011372857
+-0.327011372857
+0.0
+0.0
+0.0
+0.0
+-0.326266771219
+0.0
+0.0
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.0
+0.0
+0.00302833043
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00738647076456
+0.0126448007537
+0.0126448007537
+0.00333951150093
+0.00578691257734
+0.187327639209
+0.000673189383716
+0.185847708054
+0.185847708054
+-0.00106354692901
+0.0
+-0.000653594771242
+0.0
+0.00125430897135
+0.0
+0.0
+0.0
+-0.0216326760366
+0.0
+0.00875065764279
+-0.0768808777119
+-0.0258865189745
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00308440056504
+0.00175157788929
+-0.0113325999708
+0.00175157788929
+0.00175157788929
+0.0186237841725
+-0.0547715145109
+-0.0547715145109
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7fb2484ed150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding Unassigned:Other:Other:Other
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.00195367010885
+0.0
+-0.00026274303731
+-0.00026274303731
+-0.000366159384615
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00156617071261
+0.00182453545847
+0.00179674428619
+0.00179674428619
+0.00179674428619
+0.0
+0.0
+-0.00044526165222
+-0.000525486074619
+0.000689473432519
+0.0
+0.0
+-0.0151934190299
+0.0
+-0.000693962526024
+0.00097611058122
+0.0
+-0.000693962526024
+0.0
+0.000321538612253
+0.000321538612253
+-0.0109619866814
+-0.0109619866814
+-0.145632916727
+-0.145632916727
+0.000296208530805
+0.000296208530805
+0.0
+0.0
+0.0
+-0.000381388253242
+0.0
+-0.000381388253242
+-0.000381388253242
+0.00129287007323
+-0.000519750519751
+-0.000381388253242
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00047091572751
+0.0
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+-0.0107142857143
+-0.0107142857143
+0.0
+-0.000265886732252
+-0.000265886732252
+0.0
+0.0
+0.0
+0.00998701626445
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+-0.00236468733579
+-0.0250874300155
+0.00595811087948
+-0.00026274303731
+0.0
+0.0
+0.000420433453755
+-0.00069011238185
+0.0
+0.00302833043
+0.0472959403854
+-0.327011372857
+-0.327011372857
+0.0
+0.0
+0.0
+0.0
+-0.326266771219
+0.0
+0.0
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.0
+0.0
+0.00302833043
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00738647076456
+0.0126448007537
+0.0126448007537
+0.00333951150093
+0.00578691257734
+0.187327639209
+0.000673189383716
+0.185847708054
+0.185847708054
+-0.00106354692901
+0.0
+-0.000653594771242
+0.0
+0.00125430897135
+0.0
+0.0
+0.0
+-0.0216326760366
+0.0
+0.00875065764279
+-0.0768808777119
+-0.0258865189745
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00308440056504
+0.00175157788929
+-0.0113325999708
+0.00175157788929
+0.00175157788929
+0.0186237841725
+-0.0547715145109
+-0.0547715145109
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f4a623ca150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.0547715145109
+-0.0547715145109
+-0.327011372857
+-0.327011372857
+-0.326266771219
+0.00308440056504
+-0.0107142857143
+-0.0107142857143
+-0.00236468733579
+0.00333951150093
+0.00175157788929
+0.00175157788929
+0.00175157788929
+0.00302833043
+0.00179674428619
+0.0
+0.00179674428619
+0.00179674428619
+0.00302833043
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00182453545847
+0.0
+-0.00857588357588
+0.0
+0.0
+0.000673189383716
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00875065764279
+0.00578691257734
+0.00595811087948
+0.0
+0.0126448007537
+0.0126448007537
+-0.00026274303731
+-0.00026274303731
+0.0
+0.0
+0.0
+0.00738647076456
+0.00129287007323
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0186237841725
+-0.000693962526024
+-0.000693962526024
+0.0
+0.187327639209
+0.0
+0.0
+0.0
+0.0472959403854
+0.0
+0.0
+-0.145632916727
+-0.145632916727
+-0.0113325999708
+-0.00156617071261
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.0109619866814
+-0.0109619866814
+0.000296208530805
+0.000296208530805
+-0.000265886732252
+-0.000265886732252
+0.000689473432519
+0.0
+0.0
+0.0
+-0.000653594771242
+0.0
+0.00998701626445
+0.0
+0.0
+0.00097611058122
+0.0
+0.0
+0.0
+-0.0258865189745
+0.0
+0.0
+-0.00044526165222
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00026274303731
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000525486074619
+-0.0768808777119
+0.0
+-0.00069011238185
+0.0
+-0.0151934190299
+0.000420433453755
+-0.000519750519751
+0.0
+-0.00047091572751
+-0.000366159384615
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.0
+0.000134731330435
+0.00125430897135
+0.0
+0.000321538612253
+-0.00195367010885
+0.000321538612253
+-0.00106354692901
+0.0
+-0.0216326760366
+0.0
+-0.0250874300155
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f5b76fe5150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f2ffcfe5150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding Unassigned:Other:Other:Other
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.00195367010885
+0.0
+-0.00026274303731
+-0.00026274303731
+-0.000366159384615
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00156617071261
+0.00182453545847
+0.00179674428619
+0.00179674428619
+0.00179674428619
+0.0
+0.0
+-0.00044526165222
+-0.000525486074619
+0.000689473432519
+0.0
+0.0
+-0.0151934190299
+0.0
+-0.000693962526024
+0.00097611058122
+0.0
+-0.000693962526024
+0.0
+0.000321538612253
+0.000321538612253
+-0.0109619866814
+-0.0109619866814
+-0.145632916727
+-0.145632916727
+0.000296208530805
+0.000296208530805
+0.0
+0.0
+0.0
+-0.000381388253242
+0.0
+-0.000381388253242
+-0.000381388253242
+0.00129287007323
+-0.000519750519751
+-0.000381388253242
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00047091572751
+0.0
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+-0.0107142857143
+-0.0107142857143
+0.0
+-0.000265886732252
+-0.000265886732252
+0.0
+0.0
+0.0
+0.00998701626445
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+-0.00857588357588
+-0.00236468733579
+-0.0250874300155
+0.00595811087948
+-0.00026274303731
+0.0
+0.0
+0.000420433453755
+-0.00069011238185
+0.0
+0.00302833043
+0.0472959403854
+-0.327011372857
+-0.327011372857
+0.0
+0.0
+0.0
+0.0
+-0.326266771219
+0.0
+0.0
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.000134731330435
+0.0
+0.0
+0.00302833043
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00738647076456
+0.0126448007537
+0.0126448007537
+0.00333951150093
+0.00578691257734
+0.187327639209
+0.000673189383716
+0.185847708054
+0.185847708054
+-0.00106354692901
+0.0
+-0.000653594771242
+0.0
+0.00125430897135
+0.0
+0.0
+0.0
+-0.0216326760366
+0.0
+0.00875065764279
+-0.0768808777119
+-0.0258865189745
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00308440056504
+0.00175157788929
+-0.0113325999708
+0.00175157788929
+0.00175157788929
+0.0186237841725
+-0.0547715145109
+-0.0547715145109
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f17aaa4b150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f48ab5ed150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.0547715145109
+-0.0547715145109
+-0.327011372857
+-0.327011372857
+-0.326266771219
+0.00308440056504
+-0.0107142857143
+-0.0107142857143
+-0.00236468733579
+0.00333951150093
+0.00175157788929
+0.00175157788929
+0.00175157788929
+0.00302833043
+0.00179674428619
+0.0
+0.00179674428619
+0.00179674428619
+0.00302833043
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00182453545847
+0.0
+-0.00857588357588
+0.0
+0.0
+0.000673189383716
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00875065764279
+0.00578691257734
+0.00595811087948
+0.0
+0.0126448007537
+0.0126448007537
+-0.00026274303731
+-0.00026274303731
+0.0
+0.0
+0.0
+0.00738647076456
+0.00129287007323
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0186237841725
+-0.000693962526024
+-0.000693962526024
+0.0
+0.187327639209
+0.0
+0.0
+0.0
+0.0472959403854
+0.0
+0.0
+-0.145632916727
+-0.145632916727
+-0.0113325999708
+-0.00156617071261
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.0109619866814
+-0.0109619866814
+0.000296208530805
+0.000296208530805
+-0.000265886732252
+-0.000265886732252
+0.000689473432519
+0.0
+0.0
+0.0
+-0.000653594771242
+0.0
+0.00998701626445
+0.0
+0.0
+0.00097611058122
+0.0
+0.0
+0.0
+-0.0258865189745
+0.0
+0.0
+-0.00044526165222
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00026274303731
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000525486074619
+-0.0768808777119
+0.0
+-0.00069011238185
+0.0
+-0.0151934190299
+0.000420433453755
+-0.000519750519751
+0.0
+-0.00047091572751
+-0.000366159384615
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.0
+0.000134731330435
+0.00125430897135
+0.0
+0.000321538612253
+-0.00195367010885
+0.000321538612253
+-0.00106354692901
+0.0
+-0.0216326760366
+0.0
+-0.0250874300155
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.0547715145109
+-0.0547715145109
+-0.327011372857
+-0.327011372857
+-0.326266771219
+0.00308440056504
+-0.0107142857143
+-0.0107142857143
+-0.00236468733579
+0.00333951150093
+0.00175157788929
+0.00175157788929
+0.00175157788929
+0.00302833043
+0.00179674428619
+0.0
+0.00179674428619
+0.00179674428619
+0.00302833043
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00182453545847
+0.0
+-0.00857588357588
+0.0
+0.0
+0.000673189383716
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00875065764279
+0.00578691257734
+0.00595811087948
+0.0
+0.0126448007537
+0.0126448007537
+-0.00026274303731
+-0.00026274303731
+0.0
+0.0
+0.0
+0.00738647076456
+0.00129287007323
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0186237841725
+-0.000693962526024
+-0.000693962526024
+0.0
+0.187327639209
+0.0
+0.0
+0.0
+0.0472959403854
+0.0
+0.0
+-0.145632916727
+-0.145632916727
+-0.0113325999708
+-0.00156617071261
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.0109619866814
+-0.0109619866814
+0.000296208530805
+0.000296208530805
+-0.000265886732252
+-0.000265886732252
+0.000689473432519
+0.0
+0.0
+0.0
+-0.000653594771242
+0.0
+0.00998701626445
+0.0
+0.0
+0.00097611058122
+0.0
+0.0
+0.0
+-0.0258865189745
+0.0
+0.0
+-0.00044526165222
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00026274303731
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000525486074619
+-0.0768808777119
+0.0
+-0.00069011238185
+0.0
+-0.0151934190299
+0.000420433453755
+-0.000519750519751
+0.0
+-0.00047091572751
+-0.000366159384615
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.0
+0.000134731330435
+0.00125430897135
+0.0
+0.000321538612253
+-0.00195367010885
+0.000321538612253
+-0.00106354692901
+0.0
+-0.0216326760366
+0.0
+-0.0250874300155
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f440c194150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.0547715145109
+-0.0547715145109
+-0.327011372857
+-0.327011372857
+-0.326266771219
+0.00308440056504
+-0.0107142857143
+-0.0107142857143
+-0.00236468733579
+0.00333951150093
+0.00175157788929
+0.00175157788929
+0.00175157788929
+0.00302833043
+0.00179674428619
+0.0
+0.00179674428619
+0.00179674428619
+0.00302833043
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00182453545847
+0.0
+-0.00857588357588
+0.0
+0.0
+0.000673189383716
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00875065764279
+0.00578691257734
+0.00595811087948
+0.0
+0.0126448007537
+0.0126448007537
+-0.00026274303731
+-0.00026274303731
+0.0
+0.0
+0.0
+0.00738647076456
+0.00129287007323
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0186237841725
+-0.000693962526024
+-0.000693962526024
+0.0
+0.187327639209
+0.0
+0.0
+0.0
+0.0472959403854
+0.0
+0.0
+-0.145632916727
+-0.145632916727
+-0.0113325999708
+-0.00156617071261
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.0109619866814
+-0.0109619866814
+0.000296208530805
+0.000296208530805
+-0.000265886732252
+-0.000265886732252
+0.000689473432519
+0.0
+0.0
+0.0
+-0.000653594771242
+0.0
+0.00998701626445
+0.0
+0.0
+0.00097611058122
+0.0
+0.0
+0.0
+-0.0258865189745
+0.0
+0.0
+-0.00044526165222
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00026274303731
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000525486074619
+-0.0768808777119
+0.0
+-0.00069011238185
+0.0
+-0.0151934190299
+0.000420433453755
+-0.000519750519751
+0.0
+-0.00047091572751
+-0.000366159384615
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.0
+0.000134731330435
+0.00125430897135
+0.0
+0.000321538612253
+-0.00195367010885
+0.000321538612253
+-0.00106354692901
+0.0
+-0.0216326760366
+0.0
+-0.0250874300155
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f5983485150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.0547715145109
+-0.0547715145109
+-0.327011372857
+-0.327011372857
+-0.326266771219
+0.00308440056504
+-0.0107142857143
+-0.0107142857143
+-0.00236468733579
+0.00333951150093
+0.00175157788929
+0.00175157788929
+0.00175157788929
+0.00302833043
+0.00179674428619
+0.0
+0.00179674428619
+0.00179674428619
+0.00302833043
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00182453545847
+0.0
+-0.00857588357588
+0.0
+0.0
+0.000673189383716
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00875065764279
+0.00578691257734
+0.00595811087948
+0.0
+0.0126448007537
+0.0126448007537
+-0.00026274303731
+-0.00026274303731
+0.0
+0.0
+0.0
+0.00738647076456
+0.00129287007323
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0186237841725
+-0.000693962526024
+-0.000693962526024
+0.0
+0.187327639209
+0.0
+0.0
+0.0
+0.0472959403854
+0.0
+0.0
+-0.145632916727
+-0.145632916727
+-0.0113325999708
+-0.00156617071261
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.0109619866814
+-0.0109619866814
+0.000296208530805
+0.000296208530805
+-0.000265886732252
+-0.000265886732252
+0.000689473432519
+0.0
+0.0
+0.0
+-0.000653594771242
+0.0
+0.00998701626445
+0.0
+0.0
+0.00097611058122
+0.0
+0.0
+0.0
+-0.0258865189745
+0.0
+0.0
+-0.00044526165222
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00026274303731
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000525486074619
+-0.0768808777119
+0.0
+-0.00069011238185
+0.0
+-0.0151934190299
+0.000420433453755
+-0.000519750519751
+0.0
+-0.00047091572751
+-0.000366159384615
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.0
+0.000134731330435
+0.00125430897135
+0.0
+0.000321538612253
+-0.00195367010885
+0.000321538612253
+-0.00106354692901
+0.0
+-0.0216326760366
+0.0
+-0.0250874300155
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7f437f660190
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m
+Sample cutoff: 6
+Original feature size: 268
+New feature size: 156
+Tuning SVM...
+Scaling: std
+C: 0.000000 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000001 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000010 -> MCC 0.559, test error 0.236 (train MCC 0.751, train error 0.141)
+C: 0.000100 -> MCC 0.543, test error 0.243 (train MCC 0.762, train error 0.134)
+C: 0.001000 -> MCC 0.530, test error 0.250 (train MCC 0.884, train error 0.062)
+C: 0.010000 -> MCC 0.350, test error 0.339 (train MCC 0.993, train error 0.003)
+C: 0.100000 -> MCC 0.284, test error 0.368 (train MCC 1.000, train error 0.000)
+C: 1.000000 -> MCC 0.267, test error 0.379 (train MCC 1.000, train error 0.000)
+C: 10.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 100.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 1000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+C: 10000.000000 -> MCC 0.261, test error 0.382 (train MCC 1.000, train error 0.000)
+Best C: 1e-07 (MCC: 0.559)
+No module named MySQLdb
+No module named PyQt4.QtGui
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Rikenellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia
+Adding k__Bacteria:p__Bacteroidetes
+Adding k__Bacteria:p__Actinobacteria
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Barnesiellaceae]:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Lachnospira
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__[Ruminococcus]
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Streptococcaceae:g__Streptococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae:g__Sediminibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__
+Adding k__Bacteria:p__Bacteroidetes:c__[Saprospirae]:o__[Saprospirales]:f__Chitinophagaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Dehalobacteriaceae:g__Dehalobacterium
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Porphyromonadaceae:g__Parabacteroides
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Sphingomonadales:f__Sphingomonadaceae:g__Sphingomonas
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__Collinsella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__Rhizobiales:f__Phyllobacteriaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Rhodocyclales:f__Rhodocyclaceae
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Bacilli
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Dorea
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__[Eubacterium]
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Gemellales:f__Gemellaceae:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Blautia
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae:Other
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales:f__Moraxellaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae:g__Granulicatella
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pseudomonadales
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Carnobacteriaceae
+Adding k__Bacteria:p__Proteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Christensenellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria
+Adding k__Bacteria:p__Firmicutes
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__SMB53
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes:o__RF39:f__
+Adding k__Bacteria:p__Tenericutes:c__Mollicutes
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Bacteroidaceae:g__Bacteroides
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Faecalibacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]
+Adding k__Bacteria:p__Tenericutes
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__:g__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__:f__
+Adding k__Bacteria:p__TM7:c__TM7-3:o__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae:g__Haemophilus
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Lactobacillaceae:g__Lactobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Pasteurellales:f__Pasteurellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__Prevotellaceae:g__Prevotella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Veillonella
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__:g__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32:f__
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria:o__RF32
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Odoribacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Bacillales
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:Other
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Coprobacillus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]:g__Parvimonas
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae
+Adding k__Bacteria:p__TM7:c__TM7-3
+Adding k__Bacteria:p__TM7
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Dialister
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Lactobacillales:f__Enterococcaceae:g__Enterococcus
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:Other
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales:f__Fusobacteriaceae:g__Fusobacterium
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Odoribacteraceae]:g__Butyricimonas
+Adding k__Bacteria:p__Fusobacteria
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia
+Adding k__Bacteria:p__Fusobacteria:c__Fusobacteriia:o__Fusobacteriales
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]:g__
+Adding k__Bacteria:p__Proteobacteria:c__Gammaproteobacteria:o__Enterobacteriales:f__Enterobacteriaceae:Other
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__S24-7:g__
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Oxalobacteraceae
+Adding k__Bacteria:p__Actinobacteria:c__Actinobacteria:o__Actinomycetales:f__Actinomycetaceae:g__Actinomyces
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae:g__Turicibacter
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales:f__Turicibacteraceae
+Adding k__Bacteria:p__Firmicutes:c__Bacilli:o__Turicibacterales
+Adding k__Bacteria:p__Firmicutes:c__Erysipelotrichi:o__Erysipelotrichales:f__Erysipelotrichaceae:g__Holdemania
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]:g__Paraprevotella
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae:o__Verrucomicrobiales:f__Verrucomicrobiaceae
+Adding k__Bacteria:p__Verrucomicrobia:c__Verrucomicrobiae
+Adding k__Bacteria:p__Verrucomicrobia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__Clostridium
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Acidaminococcus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales
+Adding k__Bacteria:p__Bacteroidetes:c__Bacteroidia:o__Bacteroidales:f__[Paraprevotellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Oscillospira
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Mogibacteriaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__[Tissierellaceae]
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Coprococcus
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Ruminococcus
+Adding Unassigned:Other:Other
+Adding Unassigned:Other:Other:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales
+Adding Unassigned:Other:Other:Other:Other
+Adding Unassigned:Other
+Adding k__Bacteria:p__Firmicutes:c__Clostridia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae:g__Phascolarctobacterium
+Adding Unassigned:Other:Other:Other:Other:Other
+Adding k__Bacteria:p__Proteobacteria:c__Alphaproteobacteria
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae:g__Anaerotruncus
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Anaerostipes
+Adding k__Bacteria:p__Proteobacteria:c__Betaproteobacteria:o__Burkholderiales:f__Alcaligenaceae:g__Sutterella
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Lachnospiraceae:g__Roseburia
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Clostridiaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Veillonellaceae
+Adding k__Bacteria:p__Actinobacteria:c__Coriobacteriia:o__Coriobacteriales:f__Coriobacteriaceae:g__
+Adding k__Bacteria:p__Firmicutes:c__Clostridia:o__Clostridiales:f__Ruminococcaceae
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+0
+-0.0547715145109
+-0.0547715145109
+-0.327011372857
+-0.327011372857
+-0.326266771219
+0.00308440056504
+-0.0107142857143
+-0.0107142857143
+-0.00236468733579
+0.00333951150093
+0.00175157788929
+0.00175157788929
+0.00175157788929
+0.00302833043
+0.00179674428619
+0.0
+0.00179674428619
+0.00179674428619
+0.00302833043
+0.00293391724202
+0.00293391724202
+0.0
+0.0
+0.0
+0.0
+0.0
+0.00182453545847
+0.0
+-0.00857588357588
+0.0
+0.0
+0.000673189383716
+-0.00857588357588
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0169916646889
+0.00875065764279
+0.00578691257734
+0.00595811087948
+0.0
+0.0126448007537
+0.0126448007537
+-0.00026274303731
+-0.00026274303731
+0.0
+0.0
+0.0
+0.00738647076456
+0.00129287007323
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0186237841725
+-0.000693962526024
+-0.000693962526024
+0.0
+0.187327639209
+0.0
+0.0
+0.0
+0.0472959403854
+0.0
+0.0
+-0.145632916727
+-0.145632916727
+-0.0113325999708
+-0.00156617071261
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.0109619866814
+-0.0109619866814
+0.000296208530805
+0.000296208530805
+-0.000265886732252
+-0.000265886732252
+0.000689473432519
+0.0
+0.0
+0.0
+-0.000653594771242
+0.0
+0.00998701626445
+0.0
+0.0
+0.00097611058122
+0.0
+0.0
+0.0
+-0.0258865189745
+0.0
+0.0
+-0.00044526165222
+-0.0063465843675
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.00026274303731
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+0.0
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000381388253242
+-0.000525486074619
+-0.0768808777119
+0.0
+-0.00069011238185
+0.0
+-0.0151934190299
+0.000420433453755
+-0.000519750519751
+0.0
+-0.00047091572751
+-0.000366159384615
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.000134731330435
+0.000134731330435
+0.185847708054
+0.0
+0.000134731330435
+0.00125430897135
+0.0
+0.000321538612253
+-0.00195367010885
+0.000321538612253
+-0.00106354692901
+0.0
+-0.0216326760366
+0.0
+-0.0250874300155
+Begin plot
+Step 1
+Block 1
+Step 3
+Step 10
+[1;36m 
+ -------------- celery@luca-VirtualBox v3.1.12 (Cipater)
+---- **** ----- 
+--- * ***  * -- Linux-3.13.0-24-generic-x86_64-with-Ubuntu-14.04-trusty
+-- * - **** --- 
+- ** ---------- [config]
+- ** ---------- .> app:         tasks:0x7fd497de8150
+- ** ---------- .> transport:   amqp://guest:**@localhost:5672//
+- ** ---------- .> results:     disabled
+- *** --- * --- .> concurrency: 1 (prefork)
+-- ******* ---- 
+--- ***** ----- [queues]
+ -------------- .> celery           exchange=celery(direct) key=celery
+                
+[0m[0m
+[tasks]
+  . ml
+  . network_task
+  . prepro
+[0m

@@ -1,0 +1,9 @@
+run server with
+
+(CODES)luca@luca-VirtualBox:~/CODES/WebDevNEW_for_commit$ python manage.py runserver
+
+run celery with
+
+(CODES)luca@luca-VirtualBox:~/CODES/WebDevNEW_for_commit$ celery -A tasks -b amqp://guest:guest@localhost:5672// worker --loglevel=info
+
+changes listed in CHANGES file
