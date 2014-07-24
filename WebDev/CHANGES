@@ -1,4 +1,17 @@
-#changes in WebDevNEW with respect to git download
+2014-07-25 #changes with respect to 2014-07-22 commit 504db17e6349ff98df9a8b7ba82308605040ecfa
+
+FIXED ISSUE #13: Now different classifications of same input files
+   are saved in different subfolders: <MEDIAURL>/<username>/<pipelineID>/classification/<MLparameters>
+   So for each ML run the corresponding graphs are shown
+   changes in files:
+	tasks.py
+	classification/ml_pipeline.py
+	classification/urls.py
+	classification/views.py
+	WebDev/store.py
+
+
+2014-07-22 #changes in WebDevNEW with respect to git download
 
 in WebDev/settings.py (at the very end of the file):
 APP = celery.Celery('Pipeline.tasks', broker = 'amqp://wvlab:wv2014@54.72.200.168/', backend = 'amqp')

@@ -1,0 +1,101 @@
+Linux version
+
+Using ReadLine
+
+Running 64Bit Version
+
+mothur v.1.31.2
+Last updated: 6/13/2013
+
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+University of Michigan
+pschloss@umich.edu
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+Type 'quit()' to exit program
+Script Mode
+
+
+mothur > set.dir(output=/tmp/tmp2OEkpc)
+Mothur's directories:
+outputDir=/tmp/tmp2OEkpc/
+
+mothur > set.logfile(name=/dev/null)
+
+mothur > split.groups(fasta=/tmp/tmpGXctEV/ITBE8TS01.trim.fasta,group=/tmp/tmpGXctEV/ITBE8TS01.groups)
+
+Processing group: IBD.10
+Processing group: IBD.18
+Processing group: IBD.2
+Processing group: IBD.20
+Processing group: IBD.22
+Processing group: IBD.29
+Processing group: IBD.3
+Processing group: IBD.30
+Processing group: IBD.31
+Processing group: IBD.33
+Processing group: IBD.34
+Processing group: IBD.36
+Processing group: IBD.37
+Processing group: IBD.38
+Processing group: IBD.4
+Processing group: IBD.40
+Processing group: IBD.43
+Processing group: IBD.46
+Processing group: IBD.48
+Processing group: IBD.50
+Processing group: IBD.51
+Processing group: IBD.58
+Processing group: IBD.6
+Processing group: IBD.60
+Processing group: IBD.61
+Processing group: IBD.68
+Processing group: IBD.70
+Processing group: IBD.73
+Processing group: IBD.8
+Processing group: IBD.9
+
+Output File Names: 
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.10.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.18.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.2.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.20.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.22.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.29.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.3.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.30.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.31.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.33.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.34.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.36.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.37.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.38.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.4.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.40.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.43.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.46.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.48.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.50.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.51.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.58.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.6.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.60.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.61.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.68.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.70.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.73.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.8.fasta
+/tmp/tmp2OEkpc/ITBE8TS01.trim.IBD.9.fasta
+
+
+mothur > quit()

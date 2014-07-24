@@ -1,0 +1,60 @@
+Linux version
+
+Using ReadLine
+
+Running 64Bit Version
+
+mothur v.1.31.2
+Last updated: 6/13/2013
+
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+University of Michigan
+pschloss@umich.edu
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+Type 'quit()' to exit program
+Script Mode
+
+
+mothur > set.dir(output=/tmp/tmpGXctEV)
+Mothur's directories:
+outputDir=/tmp/tmpGXctEV/
+
+mothur > set.logfile(name=/dev/null)
+
+mothur > sffinfo(sff=/home/luca/sff/ITBE8TS01.sff,fasta=T)
+Extracting info from /home/luca/sff/ITBE8TS01.sff ...
+10000
+20000
+30000
+40000
+50000
+60000
+70000
+80000
+90000
+100000
+110000
+120000
+130000
+140000
+150000
+151475
+It took 88 secs to extract 151475.
+Output File Names: 
+/tmp/tmpGXctEV/ITBE8TS01.fasta
+/tmp/tmpGXctEV/ITBE8TS01.qual
+/tmp/tmpGXctEV/ITBE8TS01.flow
+
+
+mothur > quit()

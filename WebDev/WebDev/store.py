@@ -76,8 +76,11 @@ def store_after_celery_class(rundb, task_ret):
 
     #Create the new_path for the file
     pipeline = rundb.pip_id
+    feat_str=task_ret['feat_str']
+    #partial_path = os.path.join(pipeline.owner.username, (str(pipeline.pip_id)+feat_str))
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
     partial_path = os.path.join(partial_path, 'classification')
+    partial_path = os.path.join(partial_path, feat_str)   
     new_path = os.path.join(settings.MEDIA_ROOT, partial_path)
 
     #IMG

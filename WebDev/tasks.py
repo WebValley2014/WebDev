@@ -51,6 +51,7 @@ def prepro(self , uniqueJobID , listofSFFfiles, listOfMappingFiles):
 def mlearn(self , job_id, otu_file, class_file, *args, **kwargs):
 
     print 'Classification started'
+    #print job_id
     print self.request.id
     self.update_state(state='RUNNING')
     start_time = unicode(datetime.datetime.now())
@@ -72,20 +73,22 @@ def mlearn(self , job_id, otu_file, class_file, *args, **kwargs):
     
     
     pipeline = ml_pipeline.ML(job_id, otu_file, class_file)
-    result = pipeline.run(*args, **kwargs)
+    result, feat_str = pipeline.run(*args, **kwargs)
     #result = pipeline.run()
     #result = pipeline.run(args, kwargs)
+    
+    print result
+    #print '\n\n\n'
 
+	
     for key in result:
         result[key] = os.path.abspath(result[key])
 
-
-    print result
     
     finish_time = unicode(datetime.datetime.now())
 
 
-    return {'funct': result , 'st': start_time, 'ft': finish_time}
+    return {'funct': result , 'st': start_time, 'ft': finish_time, 'feat_str': feat_str}
 
 
 @celery.task(bind=True, name="network_task")

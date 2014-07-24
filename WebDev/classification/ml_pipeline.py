@@ -24,6 +24,7 @@ class ML:
         self.job_id = job_id
         self.dir = tempfile.mkdtemp()
         self.result = {}
+        self.feat_str ='' #string with features from kwargs
 
     def __del__(self):
         import shutil
@@ -37,6 +38,14 @@ class ML:
         #print ranking
         #print args
         #print kwargs
+        
+        self.differentiate_path(percentage, n_groups, scaling, solver, ranking, **kwargs)
+        
+        #print self.feat_str
+        
+        self.job_id+=self.feat_str
+        
+        #print self.job_id
         
         otu_table = self.filter_otu(percentage)
         matrix, classes = self.convert_input(otu_table)
@@ -70,7 +79,7 @@ class ML:
         #print numpy.loadtxt(self.result['metrics'],delimiter='\t',dtype=str,skiprows=1)
         
 
-        return self.result
+        return self.result, self.feat_str
         
 
     def command(self, args):
@@ -176,8 +185,8 @@ class ML:
 			if not isinstance(value, bool):
 				options.append(str(value))
         
-        #print "OPTIONS"
-        #print options
+        print "OPTIONS"
+        print options
         
 		
         outdir = os.path.join(self.dir, 'out')
@@ -189,7 +198,7 @@ class ML:
 
         prefix = os.path.join(os.path.dirname(self.otu_file), self.job_id + '.')
         
-        #print prefix
+        print prefix
        
         
         for filename in os.listdir(outdir):
@@ -237,6 +246,27 @@ class ML:
         script = os.path.join(os.path.dirname(__file__), 'phylo3D', 'process.py')
         self.result['json'] = os.path.join(os.path.dirname(self.otu_file), self.job_id + '.json')
         process = self.command(['python', script, xml, self.result['featurelist'], self.result['json']])
+    def differentiate_path(self,percentage, n_groups, scaling, solver, ranking, **kwargs):
+		#feat_str='__'
+		feat_str=''
+		feat_str+=str(scaling)
+		feat_str+='_'+str(solver)
+		feat_str+='_'+str(ranking)
+		feat_str+='_'+str(scaling)
+		if 'cv_n' in kwargs:
+			feat_str+='_cv_n_'+str(kwargs['cv_n'])
+		if 'cv_k' in kwargs:
+			feat_str+='_cv_k_'+str(kwargs['cv_k'])
+		feat_str+='_'+str(percentage)+'_percent'
+		if 'random' in kwargs:
+			if kwargs['random']:
+				feat_str+='_random'
+		#feat_str+='_'
+		feat_str=feat_str.replace('_','-')
+		self.feat_str=feat_str
+		return feat_str
+		
+		
 
 if __name__ == '__main__':
     if len(sys.argv) < 3:

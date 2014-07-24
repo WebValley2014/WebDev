@@ -106,7 +106,7 @@ def processing_finish(request, task_id):
         r = result.get()
         rp = RunningProcess.objects.get(task_id=task_id)
         if store_after_celery_class(rp, r):
-           return HttpResponseRedirect('/class/show_results/%s/2D/' % (rp.pip_id.pip_id))
+           return HttpResponseRedirect('/class/show_results/%s/%s/2D/' % (rp.pip_id.pip_id, r['feat_str']))
         else:
             return HttpResponse('Error')
     return HttpResponseRedirect('/class/processing/%s/' % (task_id,))
@@ -183,15 +183,19 @@ def option(request, pip_id):
     return render(request, 'classification/option.html', {'pip_id': pip_id})
 
 @login_required(login_url="/login")
-def show_results(request, pip_id, type):
+def show_results(request, pip_id, feat_str, type):
     print pip_id
     pipeline = Pipeline.objects.get(pip_id=pip_id)
     #Create MEDIA path
     partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+    #partial_path = os.path.join(pipeline.owner.username, str(pip_id))
     partial_path = os.path.join(partial_path, 'classification')
+    partial_path = os.path.join(partial_path, feat_str)
     media_path = os.path.join(settings.MEDIA_URL, partial_path)
-    link_tree = '/class/show_results/%s/%s/' % (pip_id, 'tree')
-    link_2d = '/class/show_results/%s/%s/' % (pip_id, '2D')
+    #link_tree = '/class/show_results/%s/%s/' % (pip_id, 'tree')
+    #link_2d = '/class/show_results/%s/%s/' % (pip_id, '2D')
+    link_tree = '/class/show_results/%s/%s/%s/' % (pip_id, feat_str, 'tree')
+    link_2d = '/class/show_results/%s/%s/%s/' % (pip_id, feat_str, '2D')
     print media_path
 
     if type == '2D':

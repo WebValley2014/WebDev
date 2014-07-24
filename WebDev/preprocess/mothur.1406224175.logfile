@@ -1,0 +1,232 @@
+Linux version
+
+Using ReadLine
+
+Running 64Bit Version
+
+mothur v.1.31.2
+Last updated: 6/13/2013
+
+by
+Patrick D. Schloss
+
+Department of Microbiology & Immunology
+University of Michigan
+pschloss@umich.edu
+http://www.mothur.org
+
+When using, please cite:
+Schloss, P.D., et al., Introducing mothur: Open-source, platform-independent, community-supported software for describing and comparing microbial communities. Appl Environ Microbiol, 2009. 75(23):7537-41.
+
+Distributed under the GNU General Public License
+
+Type 'help()' for information on the commands that are available
+
+Type 'quit()' to exit program
+Script Mode
+
+
+mothur > set.dir(output=/tmp/tmpGXctEV)
+Mothur's directories:
+outputDir=/tmp/tmpGXctEV/
+
+mothur > set.logfile(name=/dev/null)
+
+mothur > trim.seqs(oligos=/tmp/tmpGXctEV/IT.oligo,fasta=/tmp/tmpGXctEV/ITBE8TS01.fasta,qfile=/tmp/tmpGXctEV/ITBE8TS01.qual)
+
+Using 1 processors.
+1000
+2000
+3000
+4000
+5000
+6000
+7000
+8000
+9000
+10000
+11000
+12000
+13000
+14000
+15000
+16000
+17000
+18000
+19000
+20000
+21000
+22000
+23000
+24000
+25000
+26000
+27000
+28000
+29000
+30000
+31000
+32000
+33000
+34000
+35000
+36000
+37000
+38000
+39000
+40000
+41000
+42000
+43000
+44000
+45000
+46000
+47000
+48000
+49000
+50000
+51000
+52000
+53000
+54000
+55000
+56000
+57000
+58000
+59000
+60000
+61000
+62000
+63000
+64000
+65000
+66000
+67000
+68000
+69000
+70000
+71000
+72000
+73000
+74000
+75000
+76000
+77000
+78000
+79000
+80000
+81000
+82000
+83000
+84000
+85000
+86000
+87000
+88000
+89000
+90000
+91000
+92000
+93000
+94000
+95000
+96000
+97000
+98000
+99000
+100000
+101000
+102000
+103000
+104000
+105000
+106000
+107000
+108000
+109000
+110000
+111000
+112000
+113000
+114000
+115000
+116000
+117000
+118000
+119000
+120000
+121000
+122000
+123000
+124000
+125000
+126000
+127000
+128000
+129000
+130000
+131000
+132000
+133000
+134000
+135000
+136000
+137000
+138000
+139000
+140000
+141000
+142000
+143000
+144000
+145000
+146000
+147000
+148000
+149000
+150000
+151000
+151475
+
+Group count: 
+IBD.10	3642
+IBD.18	4968
+IBD.2	4715
+IBD.20	2303
+IBD.22	2923
+IBD.29	5740
+IBD.3	4545
+IBD.30	4915
+IBD.31	5781
+IBD.33	3849
+IBD.34	4375
+IBD.36	5400
+IBD.37	5766
+IBD.38	3303
+IBD.4	5394
+IBD.40	4055
+IBD.43	5596
+IBD.46	3766
+IBD.48	4491
+IBD.50	3657
+IBD.51	4003
+IBD.58	2041
+IBD.6	3138
+IBD.60	3867
+IBD.61	5588
+IBD.68	2623
+IBD.70	2350
+IBD.73	5165
+IBD.8	4541
+IBD.9	2683
+Total of all groups is 125183
+
+Output File Names: 
+/tmp/tmpGXctEV/ITBE8TS01.trim.fasta
+/tmp/tmpGXctEV/ITBE8TS01.scrap.fasta
+/tmp/tmpGXctEV/ITBE8TS01.trim.qual
+/tmp/tmpGXctEV/ITBE8TS01.scrap.qual
+/tmp/tmpGXctEV/ITBE8TS01.groups
+
+
+mothur > quit()
