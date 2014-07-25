@@ -65,7 +65,7 @@ parser.add_argument('DATAFILE', type=str, help='Training datafile')
 parser.add_argument('LABELSFILE', type=str, help='Sample labels')
 parser.add_argument('SCALING', type=str, choices=['norm_l2', 'std', 'minmax'], default='norm_l2', help='Scaling method')
 parser.add_argument('ML_TYPE', type=str, choices=['randomForest', 'l2r_l2loss_svc', 'l2r_l2loss_svc_dual', 'l2r_l1loss_svc_dual', 'l2r_lr_dual', 'l1r_l2loss_svc'], help='SVM type')
-parser.add_argument('RANK_METHOD', type=str, choices=['SVM', 'RFE', 'randomForest', 'random'], help='Feature ranking method: SVM (SVM weights), RFE, ReliefF, extraTrees, Random Forest, Anova F-score, random ranking')
+parser.add_argument('RANK_METHOD', type=str, choices=['SVM', 'RFE', 'randomForest', 'random', 'ReliefF', 'tree', 'KBest'], help='Feature ranking method: SVM (SVM weights), RFE, ReliefF, extraTrees, Random Forest, Anova F-score, random ranking')
 parser.add_argument('OUTDIR', type=str, help='Output directory')
 parser.add_argument('--random', action='store_true', help='Run with random sample labels')
 parser.add_argument('--cv_k', type=np.int, default=5, help='Number of CV folds')
@@ -98,7 +98,8 @@ OUTFILE = os.path.join(OUTDIR, '_'.join([BASEFILE, SVM_TYPE, RANK_METHOD, SCALIN
 # load modules
 if RANK_METHOD == 'randomForest' or SVM_TYPE == 'randomForest':
     from sklearn.ensemble import RandomForestClassifier
-    RANK_METHOD = 'randomForest'
+    if RANK_METHOD == 'SVM' or RANK_METHOD=='RFE':
+		RANK_METHOD = 'randomForest'
 
 # number of CV folds
 #CV_K = 5
@@ -226,7 +227,7 @@ for n in range(CV_N):
             svm = mlpy.LibLinear(solver_type=SVM_TYPE, C=C, weight=w)
         
         if RANK_METHOD == 'random':
-            ranking_tmp = np.arange(len(var_names))
+            ranking_tmp = np.arange(len(var_names)-1)
             np.random.shuffle(ranking_tmp)
         elif RANK_METHOD == 'SVM':
             svm.learn(x_tr, y_tr)
@@ -236,10 +237,12 @@ for n in range(CV_N):
             ranking_tmp = mlpy.rfe_w2(x_tr, y_tr, rfe_p, svm)
         elif RANK_METHOD == 'ReliefF':
             relief = ReliefF(relief_k, seed=n)
+            
             relief.learn(x_tr, y_tr)
             w = relief.w()
             ranking_tmp = np.argsort(w)[::-1]
         elif RANK_METHOD == 'tree' :
+            from sklearn.ensemble import ExtraTreesClassifier
             forest = ExtraTreesClassifier(n_estimators=250, criterion='gini', random_state=n)
             forest.fit(x_tr, y_tr)
             ranking_tmp = np.argsort(forest.feature_importances_)[::-1]
@@ -248,6 +251,7 @@ for n in range(CV_N):
             forest.fit(x_tr, y_tr)
             ranking_tmp = np.argsort(forest.feature_importances_)[::-1]
         elif RANK_METHOD == 'KBest':
+            from sklearn.feature_selection import SelectKBest, f_classif
             selector = SelectKBest(f_classif)
             selector.fit(x_tr, y_tr)
             ranking_tmp = np.argsort( -np.log10(selector.pvalues_) )[::-1]

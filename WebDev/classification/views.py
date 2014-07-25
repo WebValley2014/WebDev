@@ -54,7 +54,12 @@ def step2(request):
             print scaling
             solver = request.POST['solver']
             print solver
-            ranking = request.POST['ranking']
+            ranking_svm=request.POST['ranking_svm']
+            ranking_rf=request.POST['ranking_rf']
+            if solver!='randomForest':
+				ranking=ranking_svm
+            else:
+				ranking=ranking_rf
             print ranking
             cv_k = request.POST['cv_k']
             print cv_k

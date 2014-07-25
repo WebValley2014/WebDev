@@ -1,5 +1,6 @@
 2014-07-25 19:50
-   changed options in classification
+   changed options in classification and fixed classification/ml/svmlin_training.py to run all possible options 
+	(except ReliefF, unknown modules needed) -> once working, relief_k option has to be added to options page
 
 2014-07-25 #changes with respect to 2014-07-22 commit 504db17e6349ff98df9a8b7ba82308605040ecfa
 
