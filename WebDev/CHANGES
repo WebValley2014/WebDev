@@ -1,3 +1,6 @@
+2014-07-25 19:50
+   changed options in classification
+
 2014-07-25 #changes with respect to 2014-07-22 commit 504db17e6349ff98df9a8b7ba82308605040ecfa
 
 FIXED ISSUE #13: Now different classifications of same input files

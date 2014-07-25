@@ -39,22 +39,35 @@
 		</div>
 		<div style="float:left;margin-left:10px">
 			<h4>Classifier</h4>
-			<select name="solver" class="btn btn-default dropdown-toggle" style="width:180px">
-				<option >l2r_l2loss_svc</option>
-				<option >l2r_l2loss_svc_dual</option>
-				<option >l2r_l1loss_svc_dual</option>
-				<option >l2r_lr_dual</option>
-				<option >l1r_l2loss_svc</option>
-				<option >Random Forest</option>
+			<select name="solver" class="btn btn-default dropdown-toggle" style="width:180px" onchange='changeoptions(this)'>
+				<option value="l2r_l2loss_svc">SVM l2r_l2loss_svc</option>
+				<option value="l2r_l2loss_svc_dual">SVM l2r_l2loss_svc_dual</option>
+				<option value="l2r_l1loss_svc_dual">SVM l2r_l1loss_svc_dual</option>
+				<option value="l2r_lr_dual">SVM l2r_lr_dual</option>
+				<option value="l1r_l2loss_svc">SVM l1r_l2loss_svc</option>
+				<option value="randomForest">Random Forest</option>
 			</select>
 		</div>
-		<div style="float:left;margin-left:10px">
+		<div id='yesSVM' style="float:left;margin-left:10px">
 			<h4 style="margin-left:20px">Feature ranking method</h4>
 			<select name="ranking" class="btn btn-default dropdown-toggle" style="margin-left:11px;width:180px">
-				<option >SVM</option>
-				<option >RFE</option>
-				<option >Random</option>
-				<option >Random Forest</option>
+				<option value="SVM">SVM (SVM weights)</option>
+				<option value="RFE">RFE</option>
+				<option value="randomForest">Random Forest</option>
+				<option value="ReliefF">ReliefF</option>
+				<option value="tree">extraTrees</option>
+				<option value="kBest">Anova F-score (kBest)</option>
+				<option value="random">Random Ranking</option>
+			</select>
+		</div>
+		<div id='noSVM' style="display: none;float:left;margin-left:10px">
+			<h4 style="margin-left:20px">Feature ranking method</h4>
+			<select name="ranking" class="btn btn-default dropdown-toggle" style="margin-left:11px;width:180px">
+				<option value="randomForest">Random Forest</option>				
+				<option value="ReliefF">ReliefF</option>
+				<option value="tree">extraTrees</option>
+				<option value="kBest">Anova F-score (kBest)</option>
+				<option value="random">Random Ranking</option>
 			</select>
 		</div>
 		<div class="input-group" style="float:left;margin-left:295px;padding: 10px 10px 10px;width:200px">
@@ -100,6 +113,23 @@
 					alert('ATTENTION! Checking this box will cause random output data with very low MCC. Therefore it should be used only for testing purposes, i.e. if the algorithm is working correctly the MCC should be very low (around zero). Otherwise there may be some problems with the data or the algorithm.');
 				}
 				return true;
+			}
+			function changeoptions(dis) {
+				//alert("ciao");
+				if (dis.selectedIndex==5) {
+					//alert(document.getElementById("onlySVM"));
+					swap("noSVM","yesSVM");
+				}
+				else {
+					swap("yesSVM","noSVM");
+				}
+			}
+			function swap(one, two) {
+			    document.getElementById(one).style.display = 'block';
+			    document.getElementById(two).style.display = 'none';
+			}
+			function hide(one) {
+			    document.getElementById(one).style.display = 'none';
 			}
 		</script>
 		<br/><br/><br/><br/><br/>
