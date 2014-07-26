@@ -146,6 +146,7 @@
         <th> File CLASS </th>
         <th> Select </th>
         <th> Delete </th>
+        <th> Download </th>
     </tr>
 	{% for fi in tabFile %}
             <tr>
@@ -153,6 +154,7 @@
             <td> {{ fi.file_class.filename }}</td>
             <td> <a href="/class/option/{{ fi.pip_id }}/"> SELECT </a></td>
             <td> <a href="/class/delete/{{ fi.file_otu.pk }}/{{ fi.file_class.pk }}"> DELETE </a> </td>
+            <td> <a href="/class/downloadOTU/{{ fi.pip_id }}"> Download </a> </td>
             </tr>
 	{% endfor %}
     </table>

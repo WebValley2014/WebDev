@@ -1,3 +1,17 @@
+2014-07-26 18:00
+   added download button before and after classification. 
+   Added zip folder and zip list of files in WebDev/utils.py for downloading
+   changes in files:
+	classification/urls.py
+	classification/views.py
+	WebDev/store.py
+	WebDev/utils.py
+	classification/templates/classification/classification.html
+	classification/templates/classification/graph_2d.html
+	classification/templates/classification/tree_graph.html
+	
+
+
 2014-07-25 19:50
    changed options in classification and fixed classification/ml/svmlin_training.py to run all possible options 
 	(except ReliefF, unknown modules needed) -> once working, relief_k option has to be added to options page

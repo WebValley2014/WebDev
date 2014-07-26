@@ -4,6 +4,7 @@ from django.contrib import messages
 from django.conf import settings
 from WebDev.models import *
 from WebDev.store import *
+from WebDev.utils import *
 import os
 from django.utils import timezone
 import os, tempfile, zipfile
@@ -175,13 +176,50 @@ def deleteFile(request, id1, id2):
 def download(request, p_id):
 
     #Generate the path file
-    pip = Pipeline.objects.filter(id=int(p_id))
+    #pip = Pipeline.objects.filter(id=int(p_id))
+    pip = Pipeline.objects.filter(id=p_id)
     download_path = os.path.join(settings.MEDIA_CLASSIFICATION_ROOT, str(pip[0].owner))
     download_path = os.path.join(download_path, str(pip[0].pk))
     download_path = os.path.join(download_path, 'file')
 
     #Retrive the download
     return download_file("file.txt", download_path)
+    
+@login_required(login_url="/login")
+def download2(request, pip_id, feat_str):
+
+	
+	pipeline = Pipeline.objects.get(pip_id=pip_id)
+	partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+	partial_path = os.path.join(partial_path, 'classification')
+	partial_path = os.path.join(partial_path, feat_str)
+	media_path = os.path.join(settings.MEDIA_ROOT, partial_path)
+	download_path = os.path.join(media_path, feat_str+".zip")
+	#Retrive the download
+	return download_file(feat_str+".zip", download_path)
+	
+def downloadOTU(request, pip_id):
+	
+	
+	pipeline = Pipeline.objects.get(pip_id=pip_id)
+	partial_path = os.path.join(pipeline.owner.username, str(pipeline.pip_id))
+	partial_path = os.path.join(partial_path, 'processing')
+	media_path = os.path.join(settings.MEDIA_ROOT, partial_path)
+	
+	print media_path
+	
+	filelist=os.listdir(media_path)
+	filelist.remove("img")
+	print filelist
+	for idx in range(len(filelist)):
+		filelist[idx]=os.path.join(media_path,filelist[idx])
+	print filelist
+	
+	ziplist(filelist,os.path.join(media_path,pip_id+".zip"),media_path)
+	
+	download_path = os.path.join(media_path, pip_id+".zip")
+	#Retrive the download
+	return download_file(pip_id+".zip", download_path)
 
 @login_required(login_url="/login")
 def option(request, pip_id):
@@ -189,6 +227,9 @@ def option(request, pip_id):
 
 @login_required(login_url="/login")
 def show_results(request, pip_id, feat_str, type):
+	
+	
+    print "PAGE REFRESH"
     print pip_id
     pipeline = Pipeline.objects.get(pip_id=pip_id)
     #Create MEDIA path
@@ -201,22 +242,25 @@ def show_results(request, pip_id, feat_str, type):
     #link_2d = '/class/show_results/%s/%s/' % (pip_id, '2D')
     link_tree = '/class/show_results/%s/%s/%s/' % (pip_id, feat_str, 'tree')
     link_2d = '/class/show_results/%s/%s/%s/' % (pip_id, feat_str, '2D')
+    #link_download_all = '/class/show_results/%s/%s/%s/' % (pip_id, feat_str, 'download')
+    link_download_all = '/class/download2/%s/%s/' % (pip_id, feat_str) #sdfgsdfgdgf
     print media_path
 
     if type == '2D':
-        print 'in'
+        print 'in 2D'
         media_path = os.path.join(media_path, 'img/')
         print media_path
         context = {
             'media_path': media_path,
             'link_tree': link_tree,
-            'link_2d': link_2d
+            'link_2d': link_2d,
+            'link_download_all': link_download_all
         }
         print link_tree
         return render(request, 'classification/graph_2d.html', context)
 
     if type == 'tree':
-        print 'in'
+        print 'in tree'
         json_path = os.path.join(media_path, '3dphylo.json')
         file_3d = os.path.join(media_path, 'x')
         print json_path
@@ -224,8 +268,10 @@ def show_results(request, pip_id, feat_str, type):
             'json_file': json_path,
             'link_tree': link_tree,
             'link_2d': link_2d,
-            'file_3d': file_3d
+            'file_3d': file_3d,
+            'link_download_all': link_download_all
         }
         return render(request, 'classification/tree_graph.html', context)
+
 
     return HttpResponse('Link does not exist')

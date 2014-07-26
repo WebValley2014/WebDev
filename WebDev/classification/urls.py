@@ -11,10 +11,14 @@ urlpatterns = patterns('classification.views',
     url(regex=r'^step2/$', view='step2', name='step2'),
     #Download
     url(regex=r'^download/(.+)/$', view="download", name="download"),
+    url(regex=r'^download2/(.+)/(.+)/$', view="download2", name="download"),
+    
     #Option-PreAnalytics
     url(regex=r'^option/(.+)/$', view="option", name="option"),
 
     url(regex=r'^delete/(.+)/(.+)/$', view="deleteFile", name="delete"),
+    
+    url(regex=r'^downloadOTU/(.+)/$', view="downloadOTU", name="download"),
 
     url(regex=r'^processing/(.+)/$', view="learning_loading", name="learning_loading"),
 

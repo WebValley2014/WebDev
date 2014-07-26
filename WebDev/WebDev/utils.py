@@ -4,6 +4,7 @@ import os
 from django.core.servers.basehttp import FileWrapper
 import mimetypes
 from .models import *
+import zipfile
 
 # Returns the file extension
 def fileExtension(f):
@@ -88,3 +89,18 @@ def swap(lis, a, b):
 def rotate(lis):
     for i in range(len(lis)/2):
         swap(lis, i, len(lis)-1-i)
+        
+def zipdir(path, zip_file, rootpath):
+	myZip=zipfile.ZipFile(zip_file,'w')
+	for root, dirs, files in os.walk(path):
+		for file in files:
+			if os.path.abspath(os.path.join(root, file))!=os.path.abspath(zip_file):
+				myZip.write(os.path.join(root, file),os.path.relpath(os.path.join(root, file),rootpath))
+	myZip.close()
+
+def ziplist(files, zip_file, rootpath):
+	myZip=zipfile.ZipFile(zip_file,'w')
+	for file in files:
+		if os.path.abspath(file)!=os.path.abspath(zip_file):
+			myZip.write(file,os.path.relpath(file,rootpath))
+	myZip.close()		

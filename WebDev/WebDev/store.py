@@ -3,6 +3,7 @@ import datetime
 from django.core.files import File
 import os
 from django.contrib import messages
+from utils import *
 
 def store_before_celery(pip_id, jinput, task_id , pname):
     '''
@@ -142,8 +143,10 @@ def store_after_celery_class(rundb, task_ret):
             pip_id = rundb.pip_id
         )
         resdb.save()
-
+    
+    zipdir(new_path,os.path.join(new_path,feat_str+".zip"),new_path)
     return True
+    
 
 def store_after_celery_network(rundb, task_ret):
       #Create the new_path for the file
