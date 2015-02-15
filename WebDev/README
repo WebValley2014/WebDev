@@ -1,3 +1,7 @@
+before first launch run
+
+(CODES)luca@luca-VirtualBox:~/CODES/WebDevNEW_for_commit$ python manage.py syncdb
+
 run server with
 
 (CODES)luca@luca-VirtualBox:~/CODES/WebDevNEW_for_commit$ python manage.py runserver

@@ -144,6 +144,8 @@ def store_after_celery_class(rundb, task_ret):
         )
         resdb.save()
     
+    save_network_input_data(new_path, task_ret['ML_input_data'], file_store)
+    
     zipdir(new_path,os.path.join(new_path,feat_str+".zip"),new_path)
     return True
     

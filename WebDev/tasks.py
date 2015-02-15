@@ -57,8 +57,10 @@ def mlearn(self , job_id, otu_file, class_file, *args, **kwargs):
     start_time = unicode(datetime.datetime.now())
     
     #print job_id
+    #print '++++++++++++++++++'
     #print otu_file
     #print class_file
+    #print '++++++++++++++++++'
     
     #import numpy as np
     #OTUS=np.loadtxt(otu_file,delimiter='\t',dtype=str)
@@ -88,7 +90,7 @@ def mlearn(self , job_id, otu_file, class_file, *args, **kwargs):
     finish_time = unicode(datetime.datetime.now())
 
 
-    return {'funct': result , 'st': start_time, 'ft': finish_time, 'feat_str': feat_str}
+    return {'funct': result , 'st': start_time, 'ft': finish_time, 'feat_str': feat_str, 'ML_input_data': {'otu_table': otu_file, 'labels': class_file}}
 
 
 @celery.task(bind=True, name="network_task")

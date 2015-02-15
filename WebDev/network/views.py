@@ -26,7 +26,7 @@ def network(request, pip_id):
         pip = Pipeline.objects.get(pip_id=pip_id)
         result = Results.objects.get(pip_id=pip, process_name='processing')
     except:
-        return HttpResponse('Bad Request: Pipline %s does not exist.' % (pip_id,))
+        return HttpResponse('Bad Request: Pipeline %s does not exist.' % (pip_id,))
     return HttpResponse("FILE: %s" % (result.filepath,))
 
 @login_required(login_url="/login")
@@ -118,6 +118,7 @@ def start_network(request):
     partial_path = os.path.join(pip.owner.username, str(pip.pip_id))
     partial_path = os.path.join(partial_path, 'network')
     network_path = os.path.join(settings.MEDIA_ROOT, partial_path)
+    print network_path
     try:
         os.mkdir(network_path)
     except:

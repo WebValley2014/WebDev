@@ -104,3 +104,26 @@ def ziplist(files, zip_file, rootpath):
 		if os.path.abspath(file)!=os.path.abspath(zip_file):
 			myZip.write(file,os.path.relpath(file,rootpath))
 	myZip.close()		
+	
+def save_network_input_data(path, inputdata, other_files):
+	import numpy as np
+	import shutil
+	print inputdata
+	
+	net_path=os.path.join(path,"network_input")
+	if not os.path.exists(net_path):
+		os.makedirs(net_path)
+	
+	otu_table=np.loadtxt(inputdata['otu_table'],dtype='str')  #load ML input otu table
+	labels=np.loadtxt(inputdata['labels'],dtype='str')
+
+	
+	np.savetxt(os.path.join(net_path,"X.txt"), otu_table.swapaxes(0,1)[1:-1],fmt=['%s']*otu_table.swapaxes(0,1).shape[1])
+	np.savetxt(os.path.join(net_path,"Y.txt"),labels[:,1],fmt="%s")
+	np.savetxt(os.path.join(net_path,"sampleIDs.txt"),labels[:,0],fmt="%s")
+	np.savetxt(os.path.join(net_path,"names.txt"),otu_table[:,(0,-1)],fmt="%s\t%s")
+	shutil.copy(other_files['metrics'],os.path.join(net_path,"metrics.txt"))
+	shutil.copy(other_files['featurelist'],os.path.join(net_path,"featurelist.txt"))
+	
+
+	

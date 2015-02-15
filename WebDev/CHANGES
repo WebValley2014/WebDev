@@ -1,3 +1,7 @@
+2015-02-15
+   edited ML output to match network input
+
+
 2014-07-26 18:00
    added download button before and after classification. 
    Added zip folder and zip list of files in WebDev/utils.py for downloading
