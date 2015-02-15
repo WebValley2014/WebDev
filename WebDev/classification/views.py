@@ -209,7 +209,8 @@ def downloadOTU(request, pip_id):
 	print media_path
 	
 	filelist=os.listdir(media_path)
-	filelist.remove("img")
+	
+	#filelist.remove("img")
 	print filelist
 	for idx in range(len(filelist)):
 		filelist[idx]=os.path.join(media_path,filelist[idx])
