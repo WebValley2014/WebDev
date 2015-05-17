@@ -30,6 +30,7 @@ def get_results(request, p):
 @login_required(login_url="/login")
 def upload(request):
     form_error, ex_error = False, False
+    print "CIAO"
     # IF FILE UPLOADED
     if request.POST:
         if request.FILES:
@@ -37,6 +38,7 @@ def upload(request):
                 file_txt = request.FILES['file_txt']
             except:
                 print 'error'
+                #print request.FILES
             try:
                 print str(request.FILES)
                 length = int(request.POST.get("length"))
@@ -48,18 +50,24 @@ def upload(request):
                     file_sff.append(a)
                     file_map.append(b)
                 #file_txt = request.FILES['file_txt']
+                print file_sff
+                print file_map
             except:
                 messages.error(request, "Insert the correct files")
                 form_error = True
+            print "Form error: "
             print form_error
             if not form_error:
+                #print fileExtension(file_sff[i])
                 for i in range(length):
                     if not checkExtension(file_sff[i], 'sff') or not checkExtension(file_map[i], 'map'):
                         ex_error = True
-                if not checkExtension(file_txt, 'txt'):
-                    ex_error = True
+                #if not checkExtension(file_txt, 'txt'):
+                #    ex_error = True
+                print "ex_error: "
                 print ex_error
                 if not ex_error:
+                    print "STARTING!"
                     p = Pipeline(pip_name='preprocess', pip_id=hashlib.md5(str(uuid.uuid1())).hexdigest(),
                                  started=timezone.now(), description='', owner=request.user)
                     p.save()
